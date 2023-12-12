@@ -1,0 +1,13 @@
+[gd_scene format=3 uid="uid://bkdnrwe7a3fic"]
+
+[node name="redrawLabel" type="RichTextLabel"]
+offset_left = 10.0
+offset_top = 80.0
+offset_right = 191.0
+offset_bottom = 128.0
+mouse_filter = 2
+theme_override_colors/default_color = Color(0, 0, 0, 1)
+theme_override_font_sizes/normal_font_size = 32
+bbcode_enabled = true
+text = "[center]Redraw
+[/center]"

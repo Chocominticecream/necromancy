@@ -1,0 +1,16 @@
+[remap]
+
+importer="bitmap"
+type="BitMap"
+uid="uid://cl1tidir4655p"
+path="res://.godot/imported/triangleclickmask.png-7b1bcc0cfad37505df5ae7c4b1bf6ae2.res"
+
+[deps]
+
+source_file="res://assets/clickmasks/triangleclickmask.png"
+dest_files=["res://.godot/imported/triangleclickmask.png-7b1bcc0cfad37505df5ae7c4b1bf6ae2.res"]
+
+[params]
+
+create_from=0
+threshold=0.5

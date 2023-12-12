@@ -1,0 +1,171 @@
+[gd_scene load_steps=9 format=3 uid="uid://c4t0qci1b1wj6"]
+
+[ext_resource type="Script" path="res://scenes/levels/decks.gd" id="1_tdpnw"]
+[ext_resource type="Script" path="res://scenes/levels/draw.gd" id="2_er755"]
+[ext_resource type="Texture2D" uid="uid://bharxinwotuuv" path="res://assets/placeholders/square-rounded-512.png" id="3_pufj1"]
+[ext_resource type="Script" path="res://scenes/levels/discard.gd" id="4_lrhs1"]
+[ext_resource type="Script" path="res://scenes/levels/pass.gd" id="5_ds7ne"]
+[ext_resource type="Script" path="res://scenes/levels/redraw.gd" id="5_psdsv"]
+[ext_resource type="Texture2D" uid="uid://iuerj03bgclw" path="res://assets/placeholders/circle-512.png" id="6_irrae"]
+[ext_resource type="PackedScene" uid="uid://bkdnrwe7a3fic" path="res://scenes/widgets/baselabel.tscn" id="8_k1ayk"]
+
+[node name="battleUI" type="Control"]
+layout_mode = 3
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+
+[node name="decks" type="Control" parent="."]
+anchors_preset = 0
+script = ExtResource("1_tdpnw")
+
+[node name="draw" type="Control" parent="decks"]
+anchors_preset = 0
+offset_left = 1700.0
+offset_top = 750.0
+offset_right = 1700.0
+offset_bottom = 750.0
+script = ExtResource("2_er755")
+
+[node name="drawDeckSprite" type="Sprite2D" parent="decks/draw"]
+self_modulate = Color(0, 0, 0, 1)
+scale = Vector2(0.4, 0.6)
+texture = ExtResource("3_pufj1")
+centered = false
+
+[node name="drawLabel" type="RichTextLabel" parent="decks/draw"]
+layout_mode = 0
+offset_left = 55.0
+offset_top = 120.0
+offset_right = 155.0
+offset_bottom = 180.0
+theme_override_font_sizes/normal_font_size = 32
+bbcode_enabled = true
+text = "[center]Draw[/center]"
+
+[node name="drawValue" type="RichTextLabel" parent="decks/draw"]
+layout_mode = 0
+offset_left = 55.0
+offset_top = 180.0
+offset_right = 155.0
+offset_bottom = 240.0
+theme_override_font_sizes/normal_font_size = 32
+bbcode_enabled = true
+text = "[center]0[/center]"
+
+[node name="discard" type="Control" parent="decks"]
+anchors_preset = 0
+offset_left = 20.0
+offset_top = 750.0
+offset_right = 20.0
+offset_bottom = 750.0
+script = ExtResource("4_lrhs1")
+
+[node name="discardDeckSprite" type="Sprite2D" parent="decks/discard"]
+self_modulate = Color(0, 0, 0, 1)
+scale = Vector2(0.4, 0.6)
+texture = ExtResource("3_pufj1")
+centered = false
+
+[node name="discardLabel" type="RichTextLabel" parent="decks/discard"]
+layout_mode = 0
+offset_left = 13.0
+offset_top = 120.0
+offset_right = 195.0
+offset_bottom = 180.0
+theme_override_font_sizes/normal_font_size = 32
+bbcode_enabled = true
+text = "[center]Discard[/center]"
+
+[node name="discardValue" type="RichTextLabel" parent="decks/discard"]
+layout_mode = 0
+offset_left = 55.0
+offset_top = 180.0
+offset_right = 155.0
+offset_bottom = 240.0
+theme_override_font_sizes/normal_font_size = 32
+bbcode_enabled = true
+text = "[center]0[/center]"
+
+[node name="hand" type="Control" parent="decks"]
+anchors_preset = 0
+
+[node name="pass" type="Control" parent="."]
+anchors_preset = 0
+offset_left = 1700.0
+offset_top = 50.0
+offset_right = 1740.0
+offset_bottom = 90.0
+mouse_filter = 1
+script = ExtResource("5_ds7ne")
+
+[node name="passButton" type="TextureButton" parent="pass"]
+layout_mode = 0
+offset_right = 512.0
+offset_bottom = 512.0
+scale = Vector2(0.4, 0.4)
+texture_normal = ExtResource("6_irrae")
+texture_pressed = ExtResource("6_irrae")
+texture_hover = ExtResource("6_irrae")
+
+[node name="passLabel" type="RichTextLabel" parent="pass"]
+layout_mode = 0
+offset_left = 10.0
+offset_top = 80.0
+offset_right = 191.0
+offset_bottom = 128.0
+mouse_filter = 2
+theme_override_colors/default_color = Color(0, 0, 0, 1)
+theme_override_font_sizes/normal_font_size = 32
+bbcode_enabled = true
+text = "[center]Pass[/center]"
+
+[node name="redraw" type="Control" parent="."]
+layout_mode = 3
+anchors_preset = 0
+offset_left = 20.0
+offset_top = 50.0
+offset_right = 60.0
+offset_bottom = 90.0
+mouse_filter = 1
+script = ExtResource("5_psdsv")
+
+[node name="redrawButton" type="TextureButton" parent="redraw"]
+layout_mode = 0
+offset_right = 512.0
+offset_bottom = 512.0
+scale = Vector2(0.4, 0.4)
+texture_normal = ExtResource("6_irrae")
+texture_pressed = ExtResource("6_irrae")
+texture_hover = ExtResource("6_irrae")
+
+[node name="redrawLabel" parent="redraw" instance=ExtResource("8_k1ayk")]
+layout_mode = 0
+offset_left = 9.0
+offset_top = 75.0
+offset_right = 190.0
+offset_bottom = 123.0
+
+[node name="enemyField" type="Control" parent="."]
+anchors_preset = 0
+offset_right = 40.0
+offset_bottom = 40.0
+
+[node name="heroField" type="Control" parent="."]
+anchors_preset = 0
+offset_right = 40.0
+offset_bottom = 40.0
+
+[node name="UI wireframe" type="Control" parent="."]
+anchors_preset = 0
+offset_right = 40.0
+offset_bottom = 40.0
+
+[connection signal="mouse_entered" from="pass/passButton" to="pass" method="_on_redraw_button_mouse_entered"]
+[connection signal="mouse_exited" from="pass/passButton" to="pass" method="_on_redraw_button_mouse_exited"]
+[connection signal="pressed" from="pass/passButton" to="decks" method="_on_redraw_button_pressed"]
+[connection signal="mouse_entered" from="redraw/redrawButton" to="redraw" method="_on_redraw_button_mouse_entered"]
+[connection signal="mouse_exited" from="redraw/redrawButton" to="redraw" method="_on_redraw_button_mouse_exited"]
+[connection signal="pressed" from="redraw/redrawButton" to="decks" method="_on_redraw_button_pressed"]

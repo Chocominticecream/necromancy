@@ -1,0 +1,120 @@
+{
+	"sheets": [
+		{
+			"name": "SpellData",
+			"columns": [
+				{
+					"typeStr": "1",
+					"name": "name"
+				},
+				{
+					"typeStr": "3",
+					"name": "Energy"
+				},
+				{
+					"typeStr": "1",
+					"name": "description",
+					"display": null
+				},
+				{
+					"typeStr": "8",
+					"name": "effect",
+					"display": null
+				}
+			],
+			"lines": [
+				{
+					"Energy": 0,
+					"description": "A weak magical attack that deals 3 magic damage to an enemy.",
+					"effect": [
+						{
+							"effectType": "magicAttack",
+							"value": 3
+						}
+					],
+					"name": "Wisp"
+				}
+			],
+			"separators": [],
+			"props": {}
+		},
+		{
+			"name": "SpellData@effect",
+			"props": {
+				"hide": true
+			},
+			"separators": [],
+			"lines": [],
+			"columns": [
+				{
+					"typeStr": "1",
+					"name": "effectType",
+					"display": null
+				},
+				{
+					"typeStr": "3",
+					"name": "value"
+				}
+			]
+		},
+		{
+			"name": "SummonData",
+			"columns": [
+				{
+					"typeStr": "1",
+					"name": "name"
+				},
+				{
+					"typeStr": "1",
+					"name": "description",
+					"display": null
+				},
+				{
+					"typeStr": "3",
+					"name": "counter"
+				},
+				{
+					"typeStr": "3",
+					"name": "energy"
+				},
+				{
+					"typeStr": "3",
+					"name": "attack"
+				},
+				{
+					"typeStr": "3",
+					"name": "hp"
+				},
+				{
+					"typeStr": "8",
+					"name": "effect",
+					"display": null
+				}
+			],
+			"lines": [
+				{
+					"name": "Zombie",
+					"description": "A run of the mill ordinary zombie.",
+					"energy": 1,
+					"attack": 5,
+					"hp": 10,
+					"effect": [],
+					"counter": 3
+				}
+			],
+			"separators": [],
+			"props": {}
+		},
+		{
+			"name": "SummonData@effect",
+			"props": {
+				"hide": true
+			},
+			"separators": [],
+			"lines": [],
+			"columns": []
+		}
+	],
+	"customTypes": [],
+	"compress": false
+}

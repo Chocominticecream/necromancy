@@ -1,0 +1,17 @@
+[gd_scene load_steps=3 format=3 uid="uid://dj66ecsukdg8e"]
+
+[ext_resource type="Texture2D" uid="uid://q6p8hp3svmij" path="res://assets/placeholders/square-128.png" id="1_hdme5"]
+[ext_resource type="PackedScene" uid="uid://c4t0qci1b1wj6" path="res://scenes/levels/battleUI.tscn" id="1_j0k7h"]
+
+[node name="battleScene" type="Node2D"]
+
+[node name="background" type="Sprite2D" parent="."]
+self_modulate = Color(0.788235, 0.968627, 0.756863, 1)
+position = Vector2(943, 559.5)
+scale = Vector2(15.7344, 9.74219)
+texture = ExtResource("1_hdme5")
+
+[node name="Camera2D" type="Camera2D" parent="."]
+anchor_mode = 0
+
+[node name="battleUI" parent="Camera2D" instance=ExtResource("1_j0k7h")]

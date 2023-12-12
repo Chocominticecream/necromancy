@@ -1,0 +1,14 @@
+Godot Engine v3.4.4.stable.official.419e713a2 - https://godotengine.org
+OpenGL ES 3.0 Renderer: NVIDIA GeForce RTX 3050 Laptop GPU/PCIe/SSE2
+OpenGL ES Batching: ON
+ 
+ERROR: res://battleScene.tscn:1 - Parse Error: Saved with newer format version
+   at: open (scene/resources/resource_format_text.cpp:812) - res://battleScene.tscn:1 - Parse Error: Saved with newer format version
+ERROR: Failed to load resource 'res://battleScene.tscn'.
+   at: load (core/io/resource_loader.cpp:206) - Condition "err != OK" is true. Returned: RES()
+ERROR: Failed loading resource: res://battleScene.tscn. Make sure resources have been imported by opening the project in the editor at least once.
+   at: _load (core/io/resource_loader.cpp:270) - Condition "found" is true. Returned: RES()
+ERROR: Failed loading scene: res://battleScene.tscn
+   at: start (main/main.cpp:2011) - Condition "!scene" is true. Returned: false
+WARNING: ObjectDB instances leaked at exit (run with --verbose for details).
+   at: cleanup (core/object.cpp:2064) - ObjectDB instances leaked at exit (run with --verbose for details).
