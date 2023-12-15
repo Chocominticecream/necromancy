@@ -1,0 +1,7 @@
+[gd_scene load_steps=3 format=3 uid="uid://q5xlufcfun57"]
+
+[ext_resource type="PackedScene" uid="uid://cb88yr5ic2fsh" path="res://scenes/widgets/BaseCard.tscn" id="1_ei2fd"]
+[ext_resource type="Script" path="res://scenes/widgets/SpellCard.gd" id="2_r03g0"]
+
+[node name="SpellCard" instance=ExtResource("1_ei2fd")]
+script = ExtResource("2_r03g0")

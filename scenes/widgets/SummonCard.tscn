@@ -1,0 +1,80 @@
+[gd_scene load_steps=5 format=3 uid="uid://bnfo40s245gem"]
+
+[ext_resource type="PackedScene" uid="uid://cb88yr5ic2fsh" path="res://scenes/widgets/BaseCard.tscn" id="1_l753g"]
+[ext_resource type="Script" path="res://scenes/widgets/SummonCard.gd" id="2_rv30f"]
+[ext_resource type="Texture2D" uid="uid://iuerj03bgclw" path="res://assets/placeholders/circle-512.png" id="3_687cd"]
+[ext_resource type="FontFile" uid="uid://foyvqv5qw4c4" path="res://assets/fonts/Roboto-Bold.ttf" id="4_tu82l"]
+
+[node name="SummonCard" instance=ExtResource("1_l753g")]
+script = ExtResource("2_rv30f")
+
+[node name="AttackSprite" type="Sprite2D" parent="spriteNodes/graphicsScaler" index="6"]
+self_modulate = Color(0.717647, 1, 0.905882, 1)
+position = Vector2(17, 297)
+scale = Vector2(0.1, 0.1)
+texture = ExtResource("3_687cd")
+
+[node name="hpSprite" type="Sprite2D" parent="spriteNodes/graphicsScaler" index="7"]
+self_modulate = Color(0.717647, 1, 0.905882, 1)
+position = Vector2(190, 297)
+scale = Vector2(0.1, 0.1)
+texture = ExtResource("3_687cd")
+
+[node name="Attack" type="RichTextLabel" parent="spriteNodes/TextNormal" index="4"]
+layout_mode = 0
+offset_left = -6.0
+offset_top = 283.0
+offset_right = 38.0
+offset_bottom = 317.0
+mouse_filter = 2
+theme_override_colors/default_color = Color(0, 0, 0, 1)
+theme_override_fonts/normal_font = ExtResource("4_tu82l")
+theme_override_fonts/bold_font = ExtResource("4_tu82l")
+theme_override_font_sizes/normal_font_size = 24
+theme_override_font_sizes/bold_font_size = 24
+bbcode_enabled = true
+text = "[center]0"
+
+[node name="Hp" type="RichTextLabel" parent="spriteNodes/TextNormal" index="5"]
+layout_mode = 0
+offset_left = 169.0
+offset_top = 282.0
+offset_right = 213.0
+offset_bottom = 316.0
+mouse_filter = 2
+theme_override_colors/default_color = Color(0, 0, 0, 1)
+theme_override_fonts/normal_font = ExtResource("4_tu82l")
+theme_override_fonts/bold_font = ExtResource("4_tu82l")
+theme_override_font_sizes/normal_font_size = 24
+theme_override_font_sizes/bold_font_size = 24
+bbcode_enabled = true
+text = "[center]0"
+
+[node name="Attack" type="RichTextLabel" parent="spriteNodes/TextFocused" index="4"]
+layout_mode = 0
+offset_top = 367.0
+offset_right = 44.0
+offset_bottom = 407.0
+mouse_filter = 2
+theme_override_colors/default_color = Color(0, 0, 0, 1)
+theme_override_fonts/normal_font = ExtResource("4_tu82l")
+theme_override_fonts/bold_font = ExtResource("4_tu82l")
+theme_override_font_sizes/normal_font_size = 24
+theme_override_font_sizes/bold_font_size = 32
+bbcode_enabled = true
+text = "[center][b]0"
+
+[node name="hp" type="RichTextLabel" parent="spriteNodes/TextFocused" index="5"]
+layout_mode = 0
+offset_left = 225.0
+offset_top = 367.0
+offset_right = 269.0
+offset_bottom = 407.0
+mouse_filter = 2
+theme_override_colors/default_color = Color(0, 0, 0, 1)
+theme_override_fonts/normal_font = ExtResource("4_tu82l")
+theme_override_fonts/bold_font = ExtResource("4_tu82l")
+theme_override_font_sizes/normal_font_size = 24
+theme_override_font_sizes/bold_font_size = 32
+bbcode_enabled = true
+text = "[center][b]0"

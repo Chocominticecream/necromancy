@@ -9,7 +9,11 @@ enum{
     inHand, #check in hand, no focus
     inPlay, #check in play, already assigned to a cardslot
     inMouse, #check if its held in the mouse (ready to be played)
+    
+    focusing, #playing focus animation
     focusInHand, #check if in hand, focussing
+    unfocusing, #playing unfocus
+    
     moveDrawnCardToHand, #check if card is being moved to hand
     reOrganiseHand, #reorganise (card is being moved to hand)
     discardCard, #card is being discarded to the pile

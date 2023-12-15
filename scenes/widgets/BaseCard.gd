@@ -1,4 +1,12 @@
 extends MarginContainer
+class_name BaseCard
+
+#miscellaneous variables for calculation purposes
+var printedname : String : get = nameget, set = nameset
+var effect : Array : get = effectget, set = effectset
+var energy : int : get = energyget, set = energyset
+var description : String : get = descget, set = descset
+var type : String
 
 var projresolution = Vector2(ProjectSettings.get_setting("display/window/size/viewport_width"),ProjectSettings.get_setting("display/window/size/viewport_height"))
 #for state machine of the card
@@ -34,6 +42,40 @@ var focusrot
 #animation
 @onready var animation = $AnimationPlayer
 
+#----------------------------setters and getters---------------------------------
+    
+func nameset(val):
+    $spriteNodes/TextNormal/Name.text = "[center]" + str(val) + "[/center]"
+    $spriteNodes/TextFocused/Name.text = "[center][b]" + str(val) + "[/center]"
+    printedname = val
+    
+func nameget():
+    return printedname
+    
+func effectset(val):
+    effect = val
+    
+func effectget():
+    return effect
+
+func energyset(val):
+    $spriteNodes/TextNormal/Energy.text = "[center]" + str(val) + "[/center]"
+    $spriteNodes/TextFocused/Energy.text = "[center][b]" + str(val) + "[/center]"
+    energy = val
+
+func energyget():
+    return energy
+    
+func descset(val):
+    $spriteNodes/TextNormal/Description.text = "[center]" + str(val) + "[/center]"
+    $spriteNodes/TextFocused/Description.text = "[center][b]" + str(val) + "[/center]"
+    description = val
+
+func descget():
+    return description
+
+#--------------------------------end of setters/getters-------------------------------------
+
 func _ready():
     animation.speed_scale = 1/DRAWTIME
 
@@ -58,13 +100,15 @@ func _process(delta):
        focusing:
           TweenNode = create_tween()
           var focuspt = target
+          rotation_degrees = 0
           animation.play("simpleFocus")
               #1.62
           focuspt.y = projresolution.y*1.5 - $spriteNodes/graphicsScaler/Cardbackground.texture.get_height()*scale.y*1.8
           TweenNode.tween_property(self, "global_position", focuspt , DRAWTIME).set_ease(Tween.EASE_IN_OUT).set_trans(Tween.TRANS_LINEAR)
-          TweenNode.tween_property(self, "rotation_degrees", 0 , DRAWTIME).set_ease(Tween.EASE_IN_OUT).set_trans(Tween.TRANS_LINEAR)
+          $spriteNodes.z_index = 1
           state = focusInHand
        unfocusing:
+          $spriteNodes.z_index = 0
           state = reOrganiseHand
        focusInHand:
           pass

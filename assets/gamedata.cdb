@@ -65,6 +65,10 @@
 					"name": "name"
 				},
 				{
+					"typeStr": "3",
+					"name": "numID"
+				},
+				{
 					"typeStr": "1",
 					"name": "description",
 					"display": null
@@ -99,7 +103,8 @@
 					"attack": 5,
 					"hp": 10,
 					"effect": [],
-					"counter": 3
+					"counter": 3,
+					"numID": 0
 				}
 			],
 			"separators": [],
