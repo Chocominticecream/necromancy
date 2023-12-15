@@ -3,6 +3,8 @@ extends Node2D
 var deck = []
 var cardfunc = Universalfunc.new()
 
+# a change
+
 func createStarterDeck(deck):
      var data_cbd = cardfunc.readDatabase()
      var zombieentry = cardfunc.findCard(data_cbd, 0, "SummonData", "numID")
