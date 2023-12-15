@@ -1,0 +1,6 @@
+res://scenes/widgets/BaseCard.tscn
+res://scenes/levels/Transition.gd
+res://scenes/levels/battleScene.tscn
+res://scenes/widgets/SummonCard.tscn
+res://scenes/widgets/SpellCard.tscn
+res://scenes/levels/Transition.tscn
