@@ -9,7 +9,11 @@
 				},
 				{
 					"typeStr": "3",
-					"name": "Energy"
+					"name": "numID"
+				},
+				{
+					"typeStr": "3",
+					"name": "energy"
 				},
 				{
 					"typeStr": "1",
@@ -24,7 +28,6 @@
 			],
 			"lines": [
 				{
-					"Energy": 0,
 					"description": "A weak magical attack that deals 3 magic damage to an enemy.",
 					"effect": [
 						{
@@ -32,7 +35,9 @@
 							"value": 3
 						}
 					],
-					"name": "Wisp"
+					"name": "Wisp",
+					"energy": 0,
+					"numID": 0
 				}
 			],
 			"separators": [],

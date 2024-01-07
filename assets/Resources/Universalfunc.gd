@@ -73,12 +73,12 @@ func createCard(carddict, type):
      #load all card values into variables
      var base
      #create a base empty card
-     if type == 'summon_data':
+     if type == 'summon':
        base = load("res://scenes/widgets/Summoncard.tscn").instantiate()
        var att = carddict["attack"]
        var hp = carddict["hp"]
-       var printedname = carddict["printedName"]
-       var energy = carddict["energyCost"]
+       var printedname = carddict["name"]
+       var energy = carddict["energy"]
        var effect = carddict["effect"]
        var description = carddict["description"]
     
@@ -87,19 +87,19 @@ func createCard(carddict, type):
        base.printedname = printedname
        base.effect = effect
        base.energy = energy
-       base.description = description + '. ' + createEffectDesc(effect, base.type)
+       base.description = description #+ '. ' + createEffectDesc(effect, base.type)
     
-     elif type == 'spell_sheet':
+     elif type == 'spell':
        base = load("res://scenes/widgets/Spellcard.tscn").instantiate()
-       var printedname = carddict["printedName"]
-       var energy = carddict["energyCost"]
+       var printedname = carddict["name"]
+       var energy = carddict["energy"]
        var effect = carddict["effect"]
        var description = carddict["description"]
        
        base.printedname = printedname
        base.effect = effect
        base.energy = energy
-       base.description = description + '. ' + createEffectDesc(effect, base.type)
+       base.description = description #+ '. ' + createEffectDesc(effect, base.type)
      
      return base
 

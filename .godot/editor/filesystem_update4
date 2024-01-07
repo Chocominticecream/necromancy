@@ -1,12 +1,17 @@
-<<<<<<< HEAD
-res://scenes/levels/battleScene.tscn
 res://scenes/levels/Transition.tscn
-res://assets/Resources/Universalfunc.gd
-=======
+res://scenes/levels/main_menu.tscn
+res://scenes/widgets/baselabel.tscn
+res://scenes/levels/battleScene.tscn
+res://scenes/levels/battleUI.tscn
 res://scenes/widgets/BaseCard.tscn
-res://scenes/levels/Transition.gd
-res://scenes/levels/battleScene.tscn
 res://scenes/widgets/SummonCard.tscn
-res://scenes/widgets/SpellCard.tscn
-res://scenes/levels/Transition.tscn
->>>>>>> main
+res://scenes/widgets/SpellCard.gd
+res://scenes/widgets/SummonCard.gd
+res://scenes/levels/decks.gd
+res://scenes/levels/Transition.gd
+res://scenes/widgets/BaseCard.gd
+res://assets/Singletons/data_manager.gd
+res://scenes/levels/draw.gd
+res://scenes/widgets/nextScene.gd
+res://scenes/levels/redraw.gd
+res://assets/Resources/Universalfunc.gd
