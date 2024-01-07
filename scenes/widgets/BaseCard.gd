@@ -45,8 +45,8 @@ var focusrot
 #----------------------------setters and getters---------------------------------
     
 func nameset(val):
-    $spriteNodes/TextNormal/Name.text = "[center]" + str(val) + "[/center]"
-    $spriteNodes/TextFocused/Name.text = "[center][b]" + str(val) + "[/center]"
+    $spriteNodes/TextNormal/Name.text = "[center]" + str(val) 
+    $spriteNodes/TextFocused/Name.text = "[center][b]" + str(val) 
     printedname = val
     
 func nameget():
@@ -59,16 +59,16 @@ func effectget():
     return effect
 
 func energyset(val):
-    $spriteNodes/TextNormal/Energy.text = "[center]" + str(val) + "[/center]"
-    $spriteNodes/TextFocused/Energy.text = "[center][b]" + str(val) + "[/center]"
+    $spriteNodes/TextNormal/Energy.text = "[center]" + str(val) 
+    $spriteNodes/TextFocused/Energy.text = "[center][b]" + str(val)
     energy = val
 
 func energyget():
     return energy
     
 func descset(val):
-    $spriteNodes/TextNormal/Description.text = "[center]" + str(val) + "[/center]"
-    $spriteNodes/TextFocused/Description.text = "[center][b]" + str(val) + "[/center]"
+    $spriteNodes/TextNormal/Description.text = "[center]" + str(val)
+    $spriteNodes/TextFocused/Description.text = "[center][b]" + str(val)
     description = val
 
 func descget():
@@ -103,7 +103,7 @@ func _process(delta):
           rotation_degrees = 0
           animation.play("simpleFocus")
               #1.62
-          focuspt.y = projresolution.y*1.5 - $spriteNodes/graphicsScaler/Cardbackground.texture.get_height()*scale.y*1.8
+          focuspt.y = projresolution.y*1.45 - $spriteNodes/graphicsScaler/Cardbackground.texture.get_height()*scale.y*1.8
           TweenNode.tween_property(self, "global_position", focuspt , DRAWTIME).set_ease(Tween.EASE_IN_OUT).set_trans(Tween.TRANS_LINEAR)
           $spriteNodes.z_index = 1
           state = focusInHand

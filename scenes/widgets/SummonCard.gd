@@ -6,25 +6,18 @@ var hp : int :get = hpget, set = hpset
 var attack : int : get = attget, set = attset
 
 func hpset(val):
-    $spriteNodes/TextNormal/Name.text = "[center]" + str(val) + "[/center]"
-    $spriteNodes/TextFocused/Name.text = "[center][b]" + str(val) + "[/center]"
+    $spriteNodes/TextNormal/Hp.text = "[center]" + str(val)
+    $spriteNodes/TextFocused/Hp.text = "[center][b]" + str(val) 
     hp = val 
 
 func hpget():
     return hp
 
 func attset(val):
-    $textNodes/attack.text = "[center]" + str(val) + "[/center]"
-    $spriteNodes/textNodes/attack.text = "[center][b]" + str(val) + "[/center]"
+    $spriteNodes/TextNormal/Attack.text = "[center]" + str(val) 
+    $spriteNodes/TextFocused/Attack.text = "[center][b]" + str(val) 
     attack = val 
 
 func attget():
     return attack
 # Called when the node enters the scene tree for the first time.
-func _ready():
-    pass # Replace with function body.
-
-
-# Called every frame. 'delta' is the elapsed time since the previous frame.
-func _process(delta):
-    pass

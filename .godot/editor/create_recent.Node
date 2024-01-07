@@ -1,9 +1,10 @@
+RichTextLabel
+Button
+TextureButton
+Control
 Sprite2D
 AnimationPlayer
-Control
-RichTextLabel
 Node2D
 Camera2D
-TextureButton
 MarginContainer
 XRController3D

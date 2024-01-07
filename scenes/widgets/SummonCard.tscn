@@ -64,7 +64,7 @@ theme_override_font_sizes/bold_font_size = 32
 bbcode_enabled = true
 text = "[center][b]0"
 
-[node name="hp" type="RichTextLabel" parent="spriteNodes/TextFocused" index="5"]
+[node name="Hp" type="RichTextLabel" parent="spriteNodes/TextFocused" index="5"]
 layout_mode = 0
 offset_left = 225.0
 offset_top = 367.0

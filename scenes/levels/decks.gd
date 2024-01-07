@@ -107,6 +107,11 @@ func reorganiser():
 
 # Called when the node enters the scene tree for the first time.
 func _ready():
+    $draw.drawdeck = DataManager.maindeck.duplicate()
+    $draw/drawValue.text = str(len(DataManager.maindeck))
+    # for i in range(10):
+       # var base = load("res://scenes/widgets/Summoncard.tscn").instantiate()
+       # $draw.drawdeck.append(base)
     carddrawer(5)
 
 
