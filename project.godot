@@ -17,6 +17,7 @@ config/icon="res://icon.svg"
 [autoload]
 
 DataManager="*res://assets/Singletons/data_manager.gd"
+EventsBus="*res://assets/Singletons/eventsBus.gd"
 
 [display]
 

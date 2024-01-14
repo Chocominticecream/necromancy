@@ -91,7 +91,7 @@ func _process(delta):
     
     match state:
        inHand:
-          pass
+          self.scale = Vector2(1,1)
        reOrganiseHand:
           $spriteNodes.z_index = 1
           TweenNode = create_tween()
@@ -126,7 +126,7 @@ func _process(delta):
        focusInHand:
           rotation_degrees = 0
        inPlay:
-          self.scale = Vector2(0.8,0.8)
+          self.scale = Vector2(0.64,0.64)
         
         
 
@@ -156,19 +156,21 @@ func _on_animation_player_animation_finished(simpleUnfocus):
     pass
 
 func _get_drag_data(at_position):
-    var preview = Node2D.new()
-    var texture = $spriteNodes.duplicate()
-    texture.scale = texture.scale * 0.3
-    preview.add_child(texture)
-    #preview.expand_mode = 1
-    #preview.size = Vector2(30,30)
     
-    var ghostdrag = Control.new()
-    ghostdrag.add_child(preview)
-    set_drag_preview(ghostdrag)
-    state = playing
+    if state == focusInHand:
+      var preview = Node2D.new()
+      var texture = $spriteNodes.duplicate()
+      texture.scale = texture.scale * 0.3
+      preview.add_child(texture)
+      #preview.expand_mode = 1
+      #preview.size = Vector2(30,30)
     
-    return self
+      var ghostdrag = Control.new()
+      ghostdrag.add_child(preview)
+      set_drag_preview(ghostdrag)
+      state = playing
+    
+      return self
 
 func _can_drop_data(at_position, data):
     return data

@@ -1,14 +1,15 @@
-[gd_scene load_steps=12 format=3 uid="uid://c4t0qci1b1wj6"]
+[gd_scene load_steps=13 format=3 uid="uid://c4t0qci1b1wj6"]
 
 [ext_resource type="Script" path="res://scenes/levels/battleUI.gd" id="1_rpntx"]
 [ext_resource type="Script" path="res://scenes/levels/decks.gd" id="1_tdpnw"]
 [ext_resource type="Script" path="res://scenes/levels/draw.gd" id="2_er755"]
 [ext_resource type="Texture2D" uid="uid://bharxinwotuuv" path="res://assets/placeholders/square-rounded-512.png" id="3_pufj1"]
 [ext_resource type="Script" path="res://scenes/levels/discard.gd" id="4_lrhs1"]
-[ext_resource type="PackedScene" uid="uid://1objcl2hfcod" path="res://scenes/widgets/cardSlot.tscn" id="5_4kmr6"]
 [ext_resource type="Script" path="res://scenes/levels/pass.gd" id="5_ds7ne"]
 [ext_resource type="Script" path="res://scenes/levels/redraw.gd" id="5_psdsv"]
 [ext_resource type="Texture2D" uid="uid://iuerj03bgclw" path="res://assets/placeholders/circle-512.png" id="6_irrae"]
+[ext_resource type="PackedScene" uid="uid://cp2dq35rmenyb" path="res://scenes/widgets/Hero_slot.tscn" id="6_psknn"]
+[ext_resource type="PackedScene" uid="uid://du33lb712teva" path="res://scenes/widgets/Enemy_slot.tscn" id="6_y6pg6"]
 [ext_resource type="PackedScene" uid="uid://bkdnrwe7a3fic" path="res://scenes/widgets/baselabel.tscn" id="8_k1ayk"]
 [ext_resource type="Script" path="res://scenes/levels/endTurn.gd" id="9_q2lej"]
 
@@ -98,27 +99,81 @@ anchors_preset = 0
 
 [node name="enemyField" type="Control" parent="."]
 anchors_preset = 0
-offset_right = 40.0
+offset_left = 150.0
+offset_right = 190.0
 offset_bottom = 40.0
+
+[node name="CardSlot" parent="enemyField" instance=ExtResource("6_y6pg6")]
+layout_mode = 0
+offset_left = 320.0
+offset_top = 170.0
+offset_right = 488.0
+offset_bottom = 422.0
+
+[node name="CardSlot2" parent="enemyField" instance=ExtResource("6_y6pg6")]
+offset_left = 520.0
+offset_top = 170.0
+offset_right = 688.0
+offset_bottom = 422.0
+
+[node name="CardSlot3" parent="enemyField" instance=ExtResource("6_y6pg6")]
+offset_left = 720.0
+offset_top = 170.0
+offset_right = 888.0
+offset_bottom = 422.0
+
+[node name="CardSlot4" parent="enemyField" instance=ExtResource("6_y6pg6")]
+offset_left = 920.0
+offset_top = 170.0
+offset_right = 1088.0
+offset_bottom = 422.0
+
+[node name="CardSlot5" parent="enemyField" instance=ExtResource("6_y6pg6")]
+offset_left = 1120.0
+offset_top = 170.0
+offset_right = 1288.0
+offset_bottom = 422.0
 
 [node name="heroField" type="Control" parent="."]
 anchors_preset = 0
-offset_right = 40.0
+offset_left = 150.0
+offset_right = 190.0
 offset_bottom = 40.0
 
-[node name="CardSlot" parent="heroField" instance=ExtResource("5_4kmr6")]
+[node name="CardSlot" parent="heroField" instance=ExtResource("6_psknn")]
 layout_mode = 0
-offset_left = 764.0
-offset_top = 472.0
-offset_right = 932.0
-offset_bottom = 724.0
+offset_left = 320.0
+offset_top = 470.0
+offset_right = 488.0
+offset_bottom = 722.0
 
-[node name="CardSlot2" parent="heroField" instance=ExtResource("5_4kmr6")]
+[node name="CardSlot2" parent="heroField" instance=ExtResource("6_psknn")]
 layout_mode = 0
-offset_left = 1044.0
-offset_top = 471.0
-offset_right = 1212.0
-offset_bottom = 723.0
+offset_left = 520.0
+offset_top = 470.0
+offset_right = 688.0
+offset_bottom = 722.0
+
+[node name="CardSlot3" parent="heroField" instance=ExtResource("6_psknn")]
+layout_mode = 0
+offset_left = 720.0
+offset_top = 470.0
+offset_right = 888.0
+offset_bottom = 722.0
+
+[node name="CardSlot4" parent="heroField" instance=ExtResource("6_psknn")]
+layout_mode = 0
+offset_left = 920.0
+offset_top = 470.0
+offset_right = 1088.0
+offset_bottom = 722.0
+
+[node name="CardSlot5" parent="heroField" instance=ExtResource("6_psknn")]
+layout_mode = 0
+offset_left = 1120.0
+offset_top = 470.0
+offset_right = 1288.0
+offset_bottom = 722.0
 
 [node name="UI wireframe" type="Control" parent="."]
 anchors_preset = 0
