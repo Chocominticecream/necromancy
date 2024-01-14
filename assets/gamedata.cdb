@@ -36,7 +36,7 @@
 						}
 					],
 					"name": "Wisp",
-					"energy": 0,
+					"energy": 1,
 					"numID": 0
 				}
 			],
@@ -104,7 +104,7 @@
 				{
 					"name": "Zombie",
 					"description": "A run of the mill ordinary zombie.",
-					"energy": 1,
+					"energy": 2,
 					"attack": 5,
 					"hp": 10,
 					"effect": [],

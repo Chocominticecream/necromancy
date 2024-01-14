@@ -24,7 +24,6 @@ func _ready():
     cardfunc.copyDatabase()
     createStarterDeck(DataManager.maindeck)
     DataManager.maindeck.shuffle()
-    
 
 
 # Called every frame. 'delta' is the elapsed time since the previous frame.

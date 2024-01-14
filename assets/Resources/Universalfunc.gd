@@ -88,6 +88,7 @@ func createCard(carddict, type):
        base.effect = effect
        base.energy = energy
        base.description = description #+ '. ' + createEffectDesc(effect, base.type)
+       base.type = "summon"
     
      elif type == 'spell':
        base = load("res://scenes/widgets/Spellcard.tscn").instantiate()
@@ -100,6 +101,7 @@ func createCard(carddict, type):
        base.effect = effect
        base.energy = energy
        base.description = description #+ '. ' + createEffectDesc(effect, base.type)
+       base.type = "spell"
      
      return base
 

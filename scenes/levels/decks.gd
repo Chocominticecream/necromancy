@@ -65,7 +65,7 @@ func cardpositioner(i):
     var newposition
     
     var projresolution = Vector2(ProjectSettings.get_setting("display/window/size/viewport_width"),ProjectSettings.get_setting("display/window/size/viewport_height"))
-    var centreCardOval = projresolution * Vector2(0.5, 1.25)
+    var centreCardOval = projresolution * Vector2(0.48, 1.25)
     var Hor_rad = projresolution.x * 0.6
     var Ver_rad = projresolution.y * 0.5
     var angle = PI/2 + cardspread * (float(num_cards)/1.7 - num_cards)
@@ -109,6 +109,8 @@ func reorganiser():
 func _ready():
     $draw.drawdeck = DataManager.maindeck.duplicate()
     $draw/drawValue.text = str(len(DataManager.maindeck))
+    EventsBus.connect("resetCards", reorganiser)
+        
     # for i in range(10):
        # var base = load("res://scenes/widgets/Summoncard.tscn").instantiate()
        # $draw.drawdeck.append(base)

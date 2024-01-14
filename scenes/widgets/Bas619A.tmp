@@ -1,0 +1,318 @@
+[gd_scene load_steps=9 format=3 uid="uid://cb88yr5ic2fsh"]
+
+[ext_resource type="Texture2D" uid="uid://bharxinwotuuv" path="res://assets/placeholders/square-rounded-512.png" id="2_mvs82"]
+[ext_resource type="Texture2D" uid="uid://usvgdabdqbcp" path="res://assets/placeholders/squareoutline.png" id="3_0pi0c"]
+[ext_resource type="Texture2D" uid="uid://q6p8hp3svmij" path="res://assets/placeholders/square-128.png" id="4_sdltv"]
+[ext_resource type="Texture2D" uid="uid://iuerj03bgclw" path="res://assets/placeholders/circle-512.png" id="5_tmnj2"]
+[ext_resource type="FontFile" uid="uid://foyvqv5qw4c4" path="res://assets/fonts/Roboto-Bold.ttf" id="6_eluye"]
+
+[sub_resource type="Animation" id="Animation_avfhl"]
+resource_name = "simpleFocus"
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("spriteNodes/graphicsScaler:scale")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [Vector2(1.3, 1.3)]
+}
+tracks/1/type = "value"
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/path = NodePath(".:size")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [Vector2(273, 409.5)]
+}
+tracks/2/type = "value"
+tracks/2/imported = false
+tracks/2/enabled = true
+tracks/2/path = NodePath("spriteNodes/TextNormal:visible")
+tracks/2/interp = 1
+tracks/2/loop_wrap = true
+tracks/2/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 1,
+"values": [false]
+}
+tracks/3/type = "value"
+tracks/3/imported = false
+tracks/3/enabled = true
+tracks/3/path = NodePath("spriteNodes/TextFocused:visible")
+tracks/3/interp = 1
+tracks/3/loop_wrap = true
+tracks/3/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 1,
+"values": [true]
+}
+
+[sub_resource type="Animation" id="Animation_gmjir"]
+resource_name = "simpleUnfocus"
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath(".:size")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0, 1),
+"transitions": PackedFloat32Array(1, 1),
+"update": 0,
+"values": [Vector2(273, 409.5), Vector2(210, 315)]
+}
+tracks/1/type = "value"
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/path = NodePath("spriteNodes/TextNormal:visible")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 1,
+"values": [true]
+}
+tracks/2/type = "value"
+tracks/2/imported = false
+tracks/2/enabled = true
+tracks/2/path = NodePath("spriteNodes/graphicsScaler:scale")
+tracks/2/interp = 1
+tracks/2/loop_wrap = true
+tracks/2/keys = {
+"times": PackedFloat32Array(0, 1),
+"transitions": PackedFloat32Array(1, 1),
+"update": 0,
+"values": [Vector2(1.3, 1.3), Vector2(1, 1)]
+}
+tracks/3/type = "value"
+tracks/3/imported = false
+tracks/3/enabled = true
+tracks/3/path = NodePath("spriteNodes/TextNormal:scale")
+tracks/3/interp = 1
+tracks/3/loop_wrap = true
+tracks/3/keys = {
+"times": PackedFloat32Array(0, 1),
+"transitions": PackedFloat32Array(1, 1),
+"update": 0,
+"values": [Vector2(1.3, 1.3), Vector2(1, 1)]
+}
+tracks/4/type = "value"
+tracks/4/imported = false
+tracks/4/enabled = true
+tracks/4/path = NodePath("spriteNodes/TextFocused:visible")
+tracks/4/interp = 1
+tracks/4/loop_wrap = true
+tracks/4/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 1,
+"values": [false]
+}
+
+[sub_resource type="AnimationLibrary" id="AnimationLibrary_5tw3a"]
+_data = {
+"simpleFocus": SubResource("Animation_avfhl"),
+"simpleUnfocus": SubResource("Animation_gmjir")
+}
+
+[node name="BaseCard" type="MarginContainer"]
+offset_right = 210.0
+offset_bottom = 315.0
+
+[node name="spriteNodes" type="Node2D" parent="."]
+
+[node name="graphicsScaler" type="Node2D" parent="spriteNodes"]
+
+[node name="Cardbackground" type="Sprite2D" parent="spriteNodes/graphicsScaler"]
+scale = Vector2(0.4, 0.6)
+texture = ExtResource("2_mvs82")
+centered = false
+
+[node name="Cardborder" type="Sprite2D" parent="spriteNodes/graphicsScaler"]
+self_modulate = Color(0, 0, 0, 1)
+position = Vector2(-24, -35)
+scale = Vector2(0.5, 0.75)
+texture = ExtResource("3_0pi0c")
+centered = false
+
+[node name="CardArt" type="Sprite2D" parent="spriteNodes/graphicsScaler"]
+self_modulate = Color(0.435294, 0.435294, 0.435294, 1)
+position = Vector2(20, 30)
+scale = Vector2(1.25, 1.25)
+texture = ExtResource("4_sdltv")
+centered = false
+
+[node name="NameRibbon" type="Sprite2D" parent="spriteNodes/graphicsScaler"]
+self_modulate = Color(0.717647, 1, 0.905882, 1)
+position = Vector2(100.7, 30)
+scale = Vector2(0.341016, 0.06)
+texture = ExtResource("2_mvs82")
+
+[node name="TypeRibbon" type="Sprite2D" parent="spriteNodes/graphicsScaler"]
+self_modulate = Color(0.717647, 1, 0.905882, 1)
+position = Vector2(101, 177)
+scale = Vector2(0.341016, 0.0534375)
+texture = ExtResource("2_mvs82")
+
+[node name="EnergySprite" type="Sprite2D" parent="spriteNodes/graphicsScaler"]
+self_modulate = Color(0.694118, 0.694118, 0.694118, 1)
+position = Vector2(1, 7)
+scale = Vector2(0.1, 0.1)
+texture = ExtResource("5_tmnj2")
+centered = false
+
+[node name="TextNormal" type="Control" parent="spriteNodes"]
+layout_mode = 3
+anchors_preset = 0
+offset_right = 40.0
+offset_bottom = 40.0
+mouse_filter = 2
+
+[node name="Name" type="RichTextLabel" parent="spriteNodes/TextNormal"]
+layout_mode = 0
+offset_left = 38.0
+offset_top = 18.0
+offset_right = 177.0
+offset_bottom = 41.0
+mouse_filter = 2
+theme_override_colors/default_color = Color(0, 0, 0, 1)
+theme_override_fonts/normal_font = ExtResource("6_eluye")
+theme_override_fonts/bold_font = ExtResource("6_eluye")
+theme_override_font_sizes/normal_font_size = 18
+theme_override_font_sizes/bold_font_size = 24
+bbcode_enabled = true
+text = "[center]Name"
+
+[node name="Type" type="RichTextLabel" parent="spriteNodes/TextNormal"]
+layout_mode = 0
+offset_left = 22.0
+offset_top = 166.0
+offset_right = 182.0
+offset_bottom = 189.0
+mouse_filter = 2
+theme_override_colors/default_color = Color(0, 0, 0, 1)
+theme_override_fonts/normal_font = ExtResource("6_eluye")
+theme_override_fonts/bold_font = ExtResource("6_eluye")
+theme_override_font_sizes/normal_font_size = 18
+theme_override_font_sizes/bold_font_size = 24
+bbcode_enabled = true
+text = "[center]Type"
+
+[node name="Energy" type="RichTextLabel" parent="spriteNodes/TextNormal"]
+layout_mode = 0
+offset_left = 4.0
+offset_top = 17.0
+offset_right = 48.0
+offset_bottom = 51.0
+mouse_filter = 2
+theme_override_colors/default_color = Color(0, 0, 0, 1)
+theme_override_fonts/normal_font = ExtResource("6_eluye")
+theme_override_fonts/bold_font = ExtResource("6_eluye")
+theme_override_font_sizes/normal_font_size = 24
+theme_override_font_sizes/bold_font_size = 24
+bbcode_enabled = true
+text = "[center]0"
+
+[node name="Description" type="RichTextLabel" parent="spriteNodes/TextNormal"]
+layout_mode = 0
+offset_left = 15.0
+offset_top = 192.0
+offset_right = 191.0
+offset_bottom = 270.0
+mouse_filter = 2
+theme_override_colors/default_color = Color(0, 0, 0, 1)
+theme_override_fonts/normal_font = ExtResource("6_eluye")
+theme_override_fonts/bold_font = ExtResource("6_eluye")
+theme_override_font_sizes/normal_font_size = 14
+theme_override_font_sizes/bold_font_size = 24
+bbcode_enabled = true
+text = "[center]Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt"
+
+[node name="TextFocused" type="Control" parent="spriteNodes"]
+visible = false
+layout_mode = 3
+anchors_preset = 0
+offset_right = 273.0
+offset_bottom = 409.0
+mouse_filter = 2
+
+[node name="Name" type="RichTextLabel" parent="spriteNodes/TextFocused"]
+layout_mode = 0
+offset_left = 54.0
+offset_top = 22.0
+offset_right = 226.0
+offset_bottom = 54.0
+mouse_filter = 2
+theme_override_colors/default_color = Color(0, 0, 0, 1)
+theme_override_fonts/normal_font = ExtResource("6_eluye")
+theme_override_fonts/bold_font = ExtResource("6_eluye")
+theme_override_font_sizes/normal_font_size = 18
+theme_override_font_sizes/bold_font_size = 24
+bbcode_enabled = true
+text = "[center][b]Name"
+
+[node name="Type" type="RichTextLabel" parent="spriteNodes/TextFocused"]
+layout_mode = 0
+offset_left = 52.0
+offset_top = 216.0
+offset_right = 212.0
+offset_bottom = 247.0
+mouse_filter = 2
+theme_override_colors/default_color = Color(0, 0, 0, 1)
+theme_override_fonts/normal_font = ExtResource("6_eluye")
+theme_override_fonts/bold_font = ExtResource("6_eluye")
+theme_override_font_sizes/normal_font_size = 18
+theme_override_font_sizes/bold_font_size = 24
+bbcode_enabled = true
+text = "[center][b]Type"
+
+[node name="Energy" type="RichTextLabel" parent="spriteNodes/TextFocused"]
+layout_mode = 0
+offset_left = 8.0
+offset_top = 23.0
+offset_right = 60.0
+offset_bottom = 66.0
+mouse_filter = 2
+theme_override_colors/default_color = Color(0, 0, 0, 1)
+theme_override_fonts/normal_font = ExtResource("6_eluye")
+theme_override_fonts/bold_font = ExtResource("6_eluye")
+theme_override_font_sizes/normal_font_size = 24
+theme_override_font_sizes/bold_font_size = 32
+bbcode_enabled = true
+text = "[center][b]0"
+
+[node name="Description" type="RichTextLabel" parent="spriteNodes/TextFocused"]
+layout_mode = 0
+offset_left = 18.0
+offset_top = 249.0
+offset_right = 244.0
+offset_bottom = 377.0
+mouse_filter = 2
+theme_override_colors/default_color = Color(0, 0, 0, 1)
+theme_override_fonts/normal_font = ExtResource("6_eluye")
+theme_override_fonts/bold_font = ExtResource("6_eluye")
+theme_override_font_sizes/normal_font_size = 14
+theme_override_font_sizes/bold_font_size = 18
+bbcode_enabled = true
+text = "[center][b]Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt"
+
+[node name="AnimationPlayer" type="AnimationPlayer" parent="."]
+libraries = {
+"": SubResource("AnimationLibrary_5tw3a")
+}
+
+[connection signal="gui_input" from="." to="." method="_on_gui_input"]
+[connection signal="mouse_entered" from="." to="." method="_on_mouse_entered"]
+[connection signal="mouse_exited" from="." to="." method="_on_mouse_exited"]
+[connection signal="animation_finished" from="AnimationPlayer" to="." method="_on_animation_player_animation_finished"]
