@@ -1,13 +1,16 @@
-[gd_scene load_steps=9 format=3 uid="uid://c4t0qci1b1wj6"]
+[gd_scene load_steps=12 format=3 uid="uid://c4t0qci1b1wj6"]
 
+[ext_resource type="Script" path="res://scenes/levels/battleUI.gd" id="1_rpntx"]
 [ext_resource type="Script" path="res://scenes/levels/decks.gd" id="1_tdpnw"]
 [ext_resource type="Script" path="res://scenes/levels/draw.gd" id="2_er755"]
 [ext_resource type="Texture2D" uid="uid://bharxinwotuuv" path="res://assets/placeholders/square-rounded-512.png" id="3_pufj1"]
 [ext_resource type="Script" path="res://scenes/levels/discard.gd" id="4_lrhs1"]
+[ext_resource type="PackedScene" uid="uid://1objcl2hfcod" path="res://scenes/widgets/cardSlot.tscn" id="5_4kmr6"]
 [ext_resource type="Script" path="res://scenes/levels/pass.gd" id="5_ds7ne"]
 [ext_resource type="Script" path="res://scenes/levels/redraw.gd" id="5_psdsv"]
 [ext_resource type="Texture2D" uid="uid://iuerj03bgclw" path="res://assets/placeholders/circle-512.png" id="6_irrae"]
 [ext_resource type="PackedScene" uid="uid://bkdnrwe7a3fic" path="res://scenes/widgets/baselabel.tscn" id="8_k1ayk"]
+[ext_resource type="Script" path="res://scenes/levels/endTurn.gd" id="9_q2lej"]
 
 [node name="battleUI" type="Control"]
 layout_mode = 3
@@ -16,6 +19,7 @@ anchor_right = 1.0
 anchor_bottom = 1.0
 grow_horizontal = 2
 grow_vertical = 2
+script = ExtResource("1_rpntx")
 
 [node name="decks" type="Control" parent="."]
 anchors_preset = 0
@@ -92,16 +96,50 @@ text = "[center]0[/center]"
 [node name="hand" type="Control" parent="decks"]
 anchors_preset = 0
 
-[node name="pass" type="Control" parent="."]
+[node name="enemyField" type="Control" parent="."]
+anchors_preset = 0
+offset_right = 40.0
+offset_bottom = 40.0
+
+[node name="heroField" type="Control" parent="."]
+anchors_preset = 0
+offset_right = 40.0
+offset_bottom = 40.0
+
+[node name="CardSlot" parent="heroField" instance=ExtResource("5_4kmr6")]
+layout_mode = 0
+offset_left = 764.0
+offset_top = 472.0
+offset_right = 932.0
+offset_bottom = 724.0
+
+[node name="CardSlot2" parent="heroField" instance=ExtResource("5_4kmr6")]
+layout_mode = 0
+offset_left = 1044.0
+offset_top = 471.0
+offset_right = 1212.0
+offset_bottom = 723.0
+
+[node name="UI wireframe" type="Control" parent="."]
+anchors_preset = 0
+offset_right = 40.0
+offset_bottom = 40.0
+
+[node name="turnButtons" type="Control" parent="."]
+anchors_preset = 0
+offset_right = 40.0
+offset_bottom = 40.0
+
+[node name="pass" type="Control" parent="turnButtons"]
 anchors_preset = 0
 offset_left = 1700.0
-offset_top = 50.0
+offset_top = 500.0
 offset_right = 1740.0
-offset_bottom = 90.0
+offset_bottom = 540.0
 mouse_filter = 1
 script = ExtResource("5_ds7ne")
 
-[node name="passButton" type="TextureButton" parent="pass"]
+[node name="passButton" type="TextureButton" parent="turnButtons/pass"]
 layout_mode = 0
 offset_right = 512.0
 offset_bottom = 512.0
@@ -110,7 +148,7 @@ texture_normal = ExtResource("6_irrae")
 texture_pressed = ExtResource("6_irrae")
 texture_hover = ExtResource("6_irrae")
 
-[node name="passLabel" type="RichTextLabel" parent="pass"]
+[node name="passLabel" type="RichTextLabel" parent="turnButtons/pass"]
 layout_mode = 0
 offset_left = 10.0
 offset_top = 80.0
@@ -122,17 +160,17 @@ theme_override_font_sizes/normal_font_size = 32
 bbcode_enabled = true
 text = "[center]Pass[/center]"
 
-[node name="redraw" type="Control" parent="."]
+[node name="redraw" type="Control" parent="turnButtons"]
 layout_mode = 3
 anchors_preset = 0
 offset_left = 20.0
-offset_top = 50.0
+offset_top = 500.0
 offset_right = 60.0
-offset_bottom = 90.0
+offset_bottom = 540.0
 mouse_filter = 1
 script = ExtResource("5_psdsv")
 
-[node name="redrawButton" type="TextureButton" parent="redraw"]
+[node name="redrawButton" type="TextureButton" parent="turnButtons/redraw"]
 layout_mode = 0
 offset_right = 512.0
 offset_bottom = 512.0
@@ -141,31 +179,51 @@ texture_normal = ExtResource("6_irrae")
 texture_pressed = ExtResource("6_irrae")
 texture_hover = ExtResource("6_irrae")
 
-[node name="redrawLabel" parent="redraw" instance=ExtResource("8_k1ayk")]
+[node name="redrawLabel" parent="turnButtons/redraw" instance=ExtResource("8_k1ayk")]
 layout_mode = 0
 offset_left = 9.0
 offset_top = 75.0
 offset_right = 190.0
 offset_bottom = 123.0
 
-[node name="enemyField" type="Control" parent="."]
+[node name="endTurn" type="Control" parent="turnButtons"]
+visible = false
+layout_mode = 3
 anchors_preset = 0
-offset_right = 40.0
-offset_bottom = 40.0
+offset_left = 1700.0
+offset_top = 500.0
+offset_right = 1740.0
+offset_bottom = 540.0
+mouse_filter = 1
+script = ExtResource("9_q2lej")
 
-[node name="heroField" type="Control" parent="."]
-anchors_preset = 0
-offset_right = 40.0
-offset_bottom = 40.0
+[node name="endButton" type="TextureButton" parent="turnButtons/endTurn"]
+layout_mode = 0
+offset_right = 512.0
+offset_bottom = 512.0
+scale = Vector2(0.4, 0.4)
+texture_normal = ExtResource("6_irrae")
+texture_pressed = ExtResource("6_irrae")
+texture_hover = ExtResource("6_irrae")
 
-[node name="UI wireframe" type="Control" parent="."]
-anchors_preset = 0
-offset_right = 40.0
-offset_bottom = 40.0
+[node name="endLabel" type="RichTextLabel" parent="turnButtons/endTurn"]
+layout_mode = 0
+offset_left = 10.0
+offset_top = 80.0
+offset_right = 191.0
+offset_bottom = 128.0
+mouse_filter = 2
+theme_override_colors/default_color = Color(0, 0, 0, 1)
+theme_override_font_sizes/normal_font_size = 32
+bbcode_enabled = true
+text = "[center]End turn[/center]"
 
-[connection signal="mouse_entered" from="pass/passButton" to="pass" method="_on_redraw_button_mouse_entered"]
-[connection signal="mouse_exited" from="pass/passButton" to="pass" method="_on_redraw_button_mouse_exited"]
-[connection signal="pressed" from="pass/passButton" to="decks" method="_on_redraw_button_pressed"]
-[connection signal="mouse_entered" from="redraw/redrawButton" to="redraw" method="_on_redraw_button_mouse_entered"]
-[connection signal="mouse_exited" from="redraw/redrawButton" to="redraw" method="_on_redraw_button_mouse_exited"]
-[connection signal="pressed" from="redraw/redrawButton" to="decks" method="_on_redraw_button_pressed"]
+[connection signal="mouse_entered" from="turnButtons/pass/passButton" to="turnButtons/pass" method="_on_redraw_button_mouse_entered"]
+[connection signal="mouse_exited" from="turnButtons/pass/passButton" to="turnButtons/pass" method="_on_redraw_button_mouse_exited"]
+[connection signal="pressed" from="turnButtons/pass/passButton" to="decks" method="_on_redraw_button_pressed"]
+[connection signal="mouse_entered" from="turnButtons/redraw/redrawButton" to="turnButtons/redraw" method="_on_redraw_button_mouse_entered"]
+[connection signal="mouse_exited" from="turnButtons/redraw/redrawButton" to="turnButtons/redraw" method="_on_redraw_button_mouse_exited"]
+[connection signal="pressed" from="turnButtons/redraw/redrawButton" to="decks" method="_on_redraw_button_pressed"]
+[connection signal="mouse_entered" from="turnButtons/endTurn/endButton" to="turnButtons/endTurn" method="_on_redraw_button_mouse_entered"]
+[connection signal="mouse_exited" from="turnButtons/endTurn/endButton" to="turnButtons/endTurn" method="_on_redraw_button_mouse_exited"]
+[connection signal="pressed" from="turnButtons/endTurn/endButton" to="decks" method="_on_redraw_button_pressed"]

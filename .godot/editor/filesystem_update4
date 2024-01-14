@@ -1,6 +1,8 @@
 res://scenes/levels/Transition.tscn
-res://scenes/levels/main_menu.tscn
-res://scenes/widgets/baselabel.tscn
-res://scenes/levels/battleScene.tscn
-res://scenes/widgets/BaseCard.tscn
 res://scenes/widgets/BaseCard.gd
+res://scenes/levels/main_menu.tscn
+res://scenes/levels/battleScene.tscn
+res://scenes/levels/battleUI.tscn
+res://scenes/widgets/cardSlot.tscn
+res://scenes/widgets/BaseCard.tscn
+res://scenes/levels/decks.gd

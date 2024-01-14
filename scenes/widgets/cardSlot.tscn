@@ -1,0 +1,17 @@
+[gd_scene load_steps=3 format=3 uid="uid://1objcl2hfcod"]
+
+[ext_resource type="Script" path="res://scenes/levels/CardSlot.gd" id="1_ay5wa"]
+[ext_resource type="Texture2D" uid="uid://usvgdabdqbcp" path="res://assets/placeholders/squareoutline.png" id="2_b1snm"]
+
+[node name="CardSlot" type="MarginContainer"]
+offset_left = 859.0
+offset_top = 307.0
+offset_right = 1027.0
+offset_bottom = 559.0
+script = ExtResource("1_ay5wa")
+
+[node name="CardSlotBorder" type="Sprite2D" parent="."]
+position = Vector2(-15, -25)
+scale = Vector2(0.4, 0.6)
+texture = ExtResource("2_b1snm")
+centered = false

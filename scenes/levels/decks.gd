@@ -109,6 +109,8 @@ func reorganiser():
 func _ready():
     $draw.drawdeck = DataManager.maindeck.duplicate()
     $draw/drawValue.text = str(len(DataManager.maindeck))
+    for slot in get_parent().get_node("heroField").get_children():
+        slot.connect("resetCards", reorganiser)
     # for i in range(10):
        # var base = load("res://scenes/widgets/Summoncard.tscn").instantiate()
        # $draw.drawdeck.append(base)
