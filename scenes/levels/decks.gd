@@ -27,33 +27,60 @@ func carddrawer(drawno):
      var handglobal = $hand
      var drawvalue = drawno
      var drawdeck = drawglobal.drawdeck
+     var discarddeck = $discard.discarddeck
      #append the top card to hand and then remove it 
      for i in range(drawvalue):
          if len(drawdeck) < 1:
-            pass
+            reshuffleIntoDraw(drawglobal, $discard)
             if len(drawdeck) < 1:
                break
           
          var childcard = drawdeck[0]
-         
          #reorganise the hand
          handglobal.add_child(childcard)
          #to be used to play card drawing animation
+         
+         childcard.animationFinished = false
          childcard.global_position = drawglobal.global_position
          childcard.target = cardpositioner(i)
          childcard.targetrot = cardrotater(i)
-         childcard.state = moveDrawnCardToHand
+         childcard.state = childcard.moveDrawnCardToHand
          drawdeck.erase(drawdeck[0])
          await get_tree().create_timer(childcard.DRAWTIME).timeout;
          $draw/drawValue.text = "[center]" + str(int($draw/drawValue.text) - 1) + "[/center]"
+         reorganiser()
          #if is_instance_valid(drawdeck[0]):
          #   drawdeck[0].free()
-         reorganiser()
-         
      #reorganise the hand one last time
      reorganiser()
+     EventsBus.emit_signal("setAnimationstate", true)
     
 #END TURN LOGIC
+func cardRedrawer():
+    var discardGlobal = $discard
+    var handGlobal = $hand
+    var discardDeck = discardGlobal.discarddeck
+    EventsBus.emit_signal("setAnimationstate", false)
+    for card in handGlobal.get_children():
+        card.target = discardGlobal.global_position
+        card.targetrot = 0
+        card.state = card.redrawCard 
+        discardDeck.append(card)
+        await get_tree().create_timer(card.DRAWTIME).timeout;
+        card.get_parent().remove_child(card)
+        reorganiser()
+        $discard/discardValue.text = "[center]" + str(int($discard/discardValue.text) + 1) + "[/center]"
+    carddrawer(5)
+
+func reshuffleIntoDraw(drawdeck, discarddeck):
+    
+     for i in range(len(discarddeck.discarddeck)):
+         drawdeck.drawdeck.append(discarddeck.discarddeck[0])
+         discarddeck.discarddeck.erase(discarddeck.discarddeck[0])
+         drawdeck.drawdeck[0].state = drawdeck.drawdeck[0].inDraw
+         drawdeck.get_node("drawValue").text = "[center]" + str(int(drawdeck.get_node("drawValue").text) + 1) + "[/center]"
+         discarddeck.get_node("discardValue").text = "[center]" + str(int(discarddeck.get_node("discardValue").text) - 1) + "[/center]"
+     #drawdeck.drawdeck.shuffle()
 
 #CARD POSITIONING LOGIC
 #take an integer value and positions the card
@@ -110,7 +137,6 @@ func _ready():
     $draw.drawdeck = DataManager.maindeck.duplicate()
     $draw/drawValue.text = str(len(DataManager.maindeck))
     EventsBus.connect("resetCards", reorganiser)
-        
     # for i in range(10):
        # var base = load("res://scenes/widgets/Summoncard.tscn").instantiate()
        # $draw.drawdeck.append(base)
@@ -125,4 +151,6 @@ func startTurn():
     pass
     
 func _on_redraw_button_pressed():
-    pass # Replace with function body.
+    cardRedrawer()
+    
+   

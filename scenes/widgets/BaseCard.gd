@@ -6,6 +6,7 @@ var effect : Array : get = effectget, set = effectset
 var energy : int : get = energyget, set = energyset
 var description : String : get = descget, set = descset
 var type : String 
+var animationFinished = false
 
 var projresolution = Vector2(ProjectSettings.get_setting("display/window/size/viewport_width"),ProjectSettings.get_setting("display/window/size/viewport_height"))
 #for state machine of the card
@@ -23,8 +24,11 @@ enum{
     discardCard, #card is being discarded to the pile
     inSlot, #card is held in mouse and about to be played into a cardslot
     inDeck, #card is in a deck
+    redrawCard, #card is being moved into the discard for redrawing
     
     playing, #card is being played
+    inDiscard, #card is in the discardpile
+    inDraw
     
     }
     
@@ -41,6 +45,7 @@ var target
 var targetrot
 var focustarget
 var focusrot
+var targetdiscard
 
 #animation
 @onready var animation = $AnimationPlayer
@@ -77,10 +82,18 @@ func descset(val):
 func descget():
     return description
 
+func stateset(val):
+    state = val
+
+func animationset(val):
+    animationFinished = val
+
 #--------------------------------end of setters/getters-------------------------------------
 
 func _ready():
     animation.speed_scale = 1/DRAWTIME
+    EventsBus.connect("setState", stateset)
+    EventsBus.connect("setAnimationstate", animationset)
 
 func _process(delta):
     
@@ -100,16 +113,27 @@ func _process(delta):
           TweenRotate.tween_property(self, "rotation_degrees", targetrot , DRAWTIME).set_ease(Tween.EASE_IN_OUT).set_trans(Tween.TRANS_LINEAR)
           state = inHand
        moveDrawnCardToHand:
+          global_position = Vector2(1750, 750)
           $spriteNodes.z_index = 2
           TweenNode = create_tween()
           TweenRotate = create_tween()
           TweenNode.tween_property(self, "global_position", target , DRAWTIME).set_ease(Tween.EASE_IN_OUT).set_trans(Tween.TRANS_LINEAR)
           TweenRotate.tween_property(self, "rotation_degrees", targetrot , DRAWTIME).set_ease(Tween.EASE_IN_OUT).set_trans(Tween.TRANS_LINEAR)
+          state = inHand
        discardCard:
+          $spriteNodes.z_index = 0
           TweenNode = create_tween()
           TweenRotate = create_tween()
           TweenNode.tween_property(self, "global_position", target , DRAWTIME).set_ease(Tween.EASE_IN_OUT).set_trans(Tween.TRANS_LINEAR)
           TweenRotate.tween_property(self, "rotation_degrees", targetrot , DRAWTIME).set_ease(Tween.EASE_IN_OUT).set_trans(Tween.TRANS_LINEAR)
+          state = inDiscard
+       redrawCard:
+          $spriteNodes.z_index = 0
+          TweenNode = create_tween()
+          TweenRotate = create_tween()
+          TweenNode.tween_property(self, "global_position", target , DRAWTIME).set_ease(Tween.EASE_IN_OUT).set_trans(Tween.TRANS_LINEAR)
+          TweenRotate.tween_property(self, "rotation_degrees", targetrot , DRAWTIME).set_ease(Tween.EASE_IN_OUT).set_trans(Tween.TRANS_LINEAR)
+          state = inDiscard
        focusing:
           rotation_degrees = 0
           TweenNode = create_tween()
@@ -127,6 +151,10 @@ func _process(delta):
           rotation_degrees = 0
        inPlay:
           self.scale = Vector2(0.64,0.64)
+       inDiscard:
+          pass
+       inDraw:
+          target = Vector2(1700,750)
         
         
 
@@ -139,7 +167,7 @@ func _on_mouse_entered():
 func _on_mouse_exited():
     #put unfocus aniamtion here instead of the state machine as a weird glitch is making the unfocus
     #effect play everytime its in the state machine
-    if state == focusInHand:
+    if state == focusInHand and animationFinished == true:
       animation.play("simpleUnfocus")
       state = unfocusing
     
@@ -148,7 +176,7 @@ func _on_mouse_exited():
 
 func _on_gui_input(event):
     if event is InputEventMouseMotion:
-       if state == inHand and !Input.is_action_pressed("ui_left_click"):
+       if state == inHand and !Input.is_action_pressed("ui_left_click") and animationFinished == true:
          state = focusing
 
 

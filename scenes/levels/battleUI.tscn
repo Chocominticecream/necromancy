@@ -27,6 +27,7 @@ anchors_preset = 0
 script = ExtResource("1_tdpnw")
 
 [node name="draw" type="Control" parent="decks"]
+z_index = 1
 anchors_preset = 0
 offset_left = 1700.0
 offset_top = 750.0
@@ -36,7 +37,8 @@ script = ExtResource("2_er755")
 
 [node name="drawDeckSprite" type="Sprite2D" parent="decks/draw"]
 self_modulate = Color(0, 0, 0, 1)
-scale = Vector2(0.4, 0.6)
+position = Vector2(-16, -29)
+scale = Vector2(0.462, 0.693)
 texture = ExtResource("3_pufj1")
 centered = false
 
@@ -61,6 +63,7 @@ bbcode_enabled = true
 text = "[center]0[/center]"
 
 [node name="discard" type="Control" parent="decks"]
+z_index = 1
 anchors_preset = 0
 offset_left = 20.0
 offset_top = 750.0
@@ -70,7 +73,8 @@ script = ExtResource("4_lrhs1")
 
 [node name="discardDeckSprite" type="Sprite2D" parent="decks/discard"]
 self_modulate = Color(0, 0, 0, 1)
-scale = Vector2(0.4, 0.6)
+position = Vector2(-17, -30)
+scale = Vector2(0.462, 0.693)
 texture = ExtResource("3_pufj1")
 centered = false
 
@@ -111,24 +115,28 @@ offset_right = 488.0
 offset_bottom = 422.0
 
 [node name="CardSlot2" parent="enemyField" instance=ExtResource("6_y6pg6")]
+layout_mode = 0
 offset_left = 520.0
 offset_top = 170.0
 offset_right = 688.0
 offset_bottom = 422.0
 
 [node name="CardSlot3" parent="enemyField" instance=ExtResource("6_y6pg6")]
+layout_mode = 0
 offset_left = 720.0
 offset_top = 170.0
 offset_right = 888.0
 offset_bottom = 422.0
 
 [node name="CardSlot4" parent="enemyField" instance=ExtResource("6_y6pg6")]
+layout_mode = 0
 offset_left = 920.0
 offset_top = 170.0
 offset_right = 1088.0
 offset_bottom = 422.0
 
 [node name="CardSlot5" parent="enemyField" instance=ExtResource("6_y6pg6")]
+layout_mode = 0
 offset_left = 1120.0
 offset_top = 170.0
 offset_right = 1288.0

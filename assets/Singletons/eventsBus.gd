@@ -1,6 +1,8 @@
 extends Node
 
 signal resetCards()
+signal setState(val)
+signal setAnimationstate(val)
 
 # Called when the node enters the scene tree for the first time.
 func _ready():
