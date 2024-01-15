@@ -16,6 +16,7 @@ offset_bottom = 71.0
 script = ExtResource("2_py4be")
 
 [node name="BaseCard" parent="Button" instance=ExtResource("2_qsbml")]
+layout_mode = 0
 offset_left = 56.0
 offset_top = 125.0
 offset_right = 266.0

@@ -32,6 +32,7 @@ func carddrawer(drawno):
      for i in range(drawvalue):
          if len(drawdeck) < 1:
             reshuffleIntoDraw(drawglobal, $discard)
+            await get_tree().create_timer(0.2).timeout
             if len(drawdeck) < 1:
                break
           
@@ -67,17 +68,18 @@ func cardRedrawer():
         card.state = card.redrawCard
         discardDeck.append(card)
         await get_tree().create_timer(card.DRAWTIME).timeout;
-        card.get_parent().remove_child(card)
+        if card.get_parent() != null:
+          card.get_parent().remove_child(card)
         reorganiser()
         $discard/discardValue.text = "[center]" + str(int($discard/discardValue.text) + 1) + "[/center]"
     carddrawer(5)
 
 func reshuffleIntoDraw(drawdeck, discarddeck):
-    
+     
+     #buggy code to set the position correctly (omg)
      for i in range(len(discarddeck.discarddeck)):
          var card = discarddeck.discarddeck[i]
          card.state = card.inDiscard
-         card.target = Vector2(1750,750)
          card.visible = false
          $draw.add_child(card)
          #dummy timer so that the card can register its position, the methods after this may have processed way too fast
@@ -87,14 +89,17 @@ func reshuffleIntoDraw(drawdeck, discarddeck):
         
      for i in range(len(discarddeck.discarddeck)):
          var card = discarddeck.discarddeck[i]
-         card.visible = true   
-         
-         #drawdeck.drawdeck.append(discarddeck.discarddeck[0])
-         #discarddeck.discarddeck.erase(discarddeck.discarddeck[0])
-         #drawdeck.drawdeck[0].state = drawdeck.drawdeck[0].inDraw
-         #drawdeck.get_node("drawValue").text = "[center]" + str(int(drawdeck.get_node("drawValue").text) + 1) + "[/center]"
-         #discarddeck.get_node("discardValue").text = "[center]" + str(int(discarddeck.get_node("discardValue").text) - 1) + "[/center]"
-     #drawdeck.drawdeck.shuffle()
+         $draw.remove_child(card)
+         card.visible = true
+         #$draw.add_child(card)   
+    
+     for i in range(len(discarddeck.discarddeck)):  
+         drawdeck.drawdeck.append(discarddeck.discarddeck[0])
+         discarddeck.discarddeck.erase(discarddeck.discarddeck[0])
+         drawdeck.drawdeck[0].state = drawdeck.drawdeck[0].inDraw
+         drawdeck.get_node("drawValue").text = "[center]" + str(int(drawdeck.get_node("drawValue").text) + 1) + "[/center]"
+         discarddeck.get_node("discardValue").text = "[center]" + str(int(discarddeck.get_node("discardValue").text) - 1) + "[/center]"
+     drawdeck.drawdeck.shuffle()
 
 #CARD POSITIONING LOGIC
 #take an integer value and positions the card
