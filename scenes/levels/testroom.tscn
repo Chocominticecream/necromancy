@@ -1,0 +1,24 @@
+[gd_scene load_steps=5 format=3 uid="uid://d1uxd1kj0mhom"]
+
+[ext_resource type="PackedScene" uid="uid://mkstt6knrqh6" path="res://scenes/widgets/BaseButton.tscn" id="1_b1iir"]
+[ext_resource type="Script" path="res://scenes/levels/testroom.gd" id="1_k2r0k"]
+[ext_resource type="Script" path="res://scenes/widgets/testButton.gd" id="2_py4be"]
+[ext_resource type="PackedScene" uid="uid://cb88yr5ic2fsh" path="res://scenes/widgets/BaseCard.tscn" id="2_qsbml"]
+
+[node name="Testroom" type="Node2D"]
+script = ExtResource("1_k2r0k")
+
+[node name="Button" parent="." instance=ExtResource("1_b1iir")]
+offset_left = 61.0
+offset_top = 40.0
+offset_right = 216.0
+offset_bottom = 71.0
+script = ExtResource("2_py4be")
+
+[node name="BaseCard" parent="Button" instance=ExtResource("2_qsbml")]
+offset_left = 56.0
+offset_top = 125.0
+offset_right = 266.0
+offset_bottom = 440.0
+
+[connection signal="pressed" from="Button" to="." method="_on_button_pressed"]

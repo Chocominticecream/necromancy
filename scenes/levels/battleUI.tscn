@@ -63,7 +63,6 @@ bbcode_enabled = true
 text = "[center]0[/center]"
 
 [node name="discard" type="Control" parent="decks"]
-z_index = 1
 anchors_preset = 0
 offset_left = 20.0
 offset_top = 750.0

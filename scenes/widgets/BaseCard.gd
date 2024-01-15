@@ -41,8 +41,8 @@ var DRAWTIME = 0.2
 var tweened = false
 
 #rotation and position
-var target
-var targetrot
+var target = position
+var targetrot = 0
 var focustarget
 var focusrot
 var targetdiscard
@@ -113,7 +113,7 @@ func _process(delta):
           TweenRotate.tween_property(self, "rotation_degrees", targetrot , DRAWTIME).set_ease(Tween.EASE_IN_OUT).set_trans(Tween.TRANS_LINEAR)
           state = inHand
        moveDrawnCardToHand:
-          global_position = Vector2(1750, 750)
+          #global_position = Vector2(1750, 750)
           $spriteNodes.z_index = 2
           TweenNode = create_tween()
           TweenRotate = create_tween()
@@ -205,3 +205,4 @@ func _can_drop_data(at_position, data):
 
 func _drop_data(at_position, data):
     pass
+
