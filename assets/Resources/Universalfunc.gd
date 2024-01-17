@@ -81,6 +81,7 @@ func createCard(carddict, type):
        var energy = carddict["energy"]
        var effect = carddict["effect"]
        var description = carddict["description"]
+       var counter = carddict["counter"]
     
        base.attack = att
        base.hp = hp
@@ -88,6 +89,7 @@ func createCard(carddict, type):
        base.effect = effect
        base.energy = energy
        base.description = description #+ '. ' + createEffectDesc(effect, base.type)
+       base.counter = counter
        base.type = "summon"
     
      elif type == 'spell':

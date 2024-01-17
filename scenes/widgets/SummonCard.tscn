@@ -14,11 +14,20 @@ position = Vector2(17, 297)
 scale = Vector2(0.1, 0.1)
 texture = ExtResource("3_687cd")
 
-[node name="hpSprite" type="Sprite2D" parent="spriteNodes/graphicsScaler" index="7"]
+[node name="HpSprite" type="Sprite2D" parent="spriteNodes/graphicsScaler" index="7"]
 self_modulate = Color(0.717647, 1, 0.905882, 1)
 position = Vector2(190, 297)
 scale = Vector2(0.1, 0.1)
 texture = ExtResource("3_687cd")
+
+[node name="CounterSprite" type="Sprite2D" parent="spriteNodes/graphicsScaler" index="8"]
+self_modulate = Color(0, 0.741176, 0.596078, 1)
+position = Vector2(105, 297)
+scale = Vector2(0.12, 0.12)
+texture = ExtResource("3_687cd")
+
+[node name="Type" parent="spriteNodes/TextNormal" index="1"]
+text = "[center]Summon"
 
 [node name="Attack" type="RichTextLabel" parent="spriteNodes/TextNormal" index="4"]
 layout_mode = 0
@@ -50,6 +59,24 @@ theme_override_font_sizes/bold_font_size = 24
 bbcode_enabled = true
 text = "[center]0"
 
+[node name="Counter" type="RichTextLabel" parent="spriteNodes/TextNormal" index="6"]
+layout_mode = 0
+offset_left = 84.0
+offset_top = 283.0
+offset_right = 128.0
+offset_bottom = 317.0
+mouse_filter = 2
+theme_override_colors/default_color = Color(0, 0, 0, 1)
+theme_override_fonts/normal_font = ExtResource("4_tu82l")
+theme_override_fonts/bold_font = ExtResource("4_tu82l")
+theme_override_font_sizes/normal_font_size = 24
+theme_override_font_sizes/bold_font_size = 24
+bbcode_enabled = true
+text = "[center]0"
+
+[node name="Type" parent="spriteNodes/TextFocused" index="1"]
+text = "[center][b]Summon"
+
 [node name="Attack" type="RichTextLabel" parent="spriteNodes/TextFocused" index="4"]
 layout_mode = 0
 offset_top = 367.0
@@ -70,6 +97,21 @@ offset_left = 225.0
 offset_top = 367.0
 offset_right = 269.0
 offset_bottom = 407.0
+mouse_filter = 2
+theme_override_colors/default_color = Color(0, 0, 0, 1)
+theme_override_fonts/normal_font = ExtResource("4_tu82l")
+theme_override_fonts/bold_font = ExtResource("4_tu82l")
+theme_override_font_sizes/normal_font_size = 24
+theme_override_font_sizes/bold_font_size = 32
+bbcode_enabled = true
+text = "[center][b]0"
+
+[node name="Counter" type="RichTextLabel" parent="spriteNodes/TextFocused" index="6"]
+layout_mode = 0
+offset_left = 112.0
+offset_top = 366.0
+offset_right = 160.0
+offset_bottom = 409.0
 mouse_filter = 2
 theme_override_colors/default_color = Color(0, 0, 0, 1)
 theme_override_fonts/normal_font = ExtResource("4_tu82l")

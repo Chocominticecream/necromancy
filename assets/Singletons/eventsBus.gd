@@ -1,8 +1,13 @@
 extends Node
 
+#card animation signals
 signal resetCards()
 signal setState(val)
 signal setAnimationstate(val)
+
+#basic card action signals
+signal takedamage()
+signal attack()
 
 # Called when the node enters the scene tree for the first time.
 func _ready():
