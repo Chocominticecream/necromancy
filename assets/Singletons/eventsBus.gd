@@ -8,6 +8,7 @@ signal setAnimationstate(val)
 #basic card action signals
 signal takedamage()
 signal attack()
+signal countdown(val)
 
 # Called when the node enters the scene tree for the first time.
 func _ready():

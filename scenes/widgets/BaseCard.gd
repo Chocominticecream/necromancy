@@ -6,7 +6,7 @@ var effect : Array : get = effectget, set = effectset
 var energy : int : get = energyget, set = energyset
 var description : String : get = descget, set = descset
 var type : String 
-var animationFinished = false
+var animationFinished : bool = false
 
 var projresolution = Vector2(ProjectSettings.get_setting("display/window/size/viewport_width"),ProjectSettings.get_setting("display/window/size/viewport_height"))
 #for state machine of the card
@@ -92,6 +92,8 @@ func animationset(val):
 
 func _ready():
     animation.speed_scale = 1/DRAWTIME
+    
+    #animation signals
     EventsBus.connect("setState", stateset)
     EventsBus.connect("setAnimationstate", animationset)
 

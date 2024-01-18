@@ -170,6 +170,7 @@ func startTurn():
     pass
     
 func _on_redraw_button_pressed():
+    EventsBus.emit_signal("countdown", 1)
     cardRedrawer()
     
    
