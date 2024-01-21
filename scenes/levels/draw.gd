@@ -13,4 +13,4 @@ func drawget():
 func _ready():
     pass
 
-
+#old pos is 1750,750

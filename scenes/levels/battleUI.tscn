@@ -1,4 +1,4 @@
-[gd_scene load_steps=13 format=3 uid="uid://c4t0qci1b1wj6"]
+[gd_scene load_steps=18 format=3 uid="uid://c4t0qci1b1wj6"]
 
 [ext_resource type="Script" path="res://scenes/levels/battleUI.gd" id="1_rpntx"]
 [ext_resource type="Script" path="res://scenes/levels/decks.gd" id="1_tdpnw"]
@@ -7,11 +7,16 @@
 [ext_resource type="Script" path="res://scenes/levels/discard.gd" id="4_lrhs1"]
 [ext_resource type="Script" path="res://scenes/levels/pass.gd" id="5_ds7ne"]
 [ext_resource type="Script" path="res://scenes/levels/redraw.gd" id="5_psdsv"]
+[ext_resource type="Script" path="res://scenes/levels/Fields.gd" id="6_6piww"]
+[ext_resource type="Script" path="res://scenes/levels/enemyField.gd" id="6_7ja6n"]
 [ext_resource type="Texture2D" uid="uid://iuerj03bgclw" path="res://assets/placeholders/circle-512.png" id="6_irrae"]
 [ext_resource type="PackedScene" uid="uid://cp2dq35rmenyb" path="res://scenes/widgets/Hero_slot.tscn" id="6_psknn"]
 [ext_resource type="PackedScene" uid="uid://du33lb712teva" path="res://scenes/widgets/Enemy_slot.tscn" id="6_y6pg6"]
+[ext_resource type="Script" path="res://scenes/levels/heroField.gd" id="8_i55w3"]
 [ext_resource type="PackedScene" uid="uid://bkdnrwe7a3fic" path="res://scenes/widgets/baselabel.tscn" id="8_k1ayk"]
 [ext_resource type="Script" path="res://scenes/levels/endTurn.gd" id="9_q2lej"]
+[ext_resource type="Script" path="res://scenes/levels/heroHp.gd" id="11_1cvjj"]
+[ext_resource type="Script" path="res://scenes/levels/enemyHp.gd" id="13_t4000"]
 
 [node name="battleUI" type="Control"]
 layout_mode = 3
@@ -27,6 +32,7 @@ anchors_preset = 0
 script = ExtResource("1_tdpnw")
 
 [node name="draw" type="Control" parent="decks"]
+z_index = 1
 anchors_preset = 0
 offset_left = 1700.0
 offset_top = 750.0
@@ -36,7 +42,8 @@ script = ExtResource("2_er755")
 
 [node name="drawDeckSprite" type="Sprite2D" parent="decks/draw"]
 self_modulate = Color(0, 0, 0, 1)
-scale = Vector2(0.4, 0.6)
+position = Vector2(-16, -29)
+scale = Vector2(0.462, 0.693)
 texture = ExtResource("3_pufj1")
 centered = false
 
@@ -70,7 +77,8 @@ script = ExtResource("4_lrhs1")
 
 [node name="discardDeckSprite" type="Sprite2D" parent="decks/discard"]
 self_modulate = Color(0, 0, 0, 1)
-scale = Vector2(0.4, 0.6)
+position = Vector2(-17, -30)
+scale = Vector2(0.462, 0.693)
 texture = ExtResource("3_pufj1")
 centered = false
 
@@ -97,83 +105,135 @@ text = "[center]0[/center]"
 [node name="hand" type="Control" parent="decks"]
 anchors_preset = 0
 
-[node name="enemyField" type="Control" parent="."]
+[node name="Fields" type="Control" parent="decks"]
+anchors_preset = 0
+offset_right = 40.0
+offset_bottom = 40.0
+script = ExtResource("6_6piww")
+
+[node name="enemyField" type="Control" parent="decks/Fields"]
 anchors_preset = 0
 offset_left = 150.0
 offset_right = 190.0
 offset_bottom = 40.0
+script = ExtResource("6_7ja6n")
 
-[node name="CardSlot" parent="enemyField" instance=ExtResource("6_y6pg6")]
+[node name="CardSlot" parent="decks/Fields/enemyField" instance=ExtResource("6_y6pg6")]
 layout_mode = 0
 offset_left = 320.0
 offset_top = 170.0
 offset_right = 488.0
 offset_bottom = 422.0
 
-[node name="CardSlot2" parent="enemyField" instance=ExtResource("6_y6pg6")]
+[node name="CardSlot2" parent="decks/Fields/enemyField" instance=ExtResource("6_y6pg6")]
+layout_mode = 0
 offset_left = 520.0
 offset_top = 170.0
 offset_right = 688.0
 offset_bottom = 422.0
 
-[node name="CardSlot3" parent="enemyField" instance=ExtResource("6_y6pg6")]
+[node name="CardSlot3" parent="decks/Fields/enemyField" instance=ExtResource("6_y6pg6")]
+layout_mode = 0
 offset_left = 720.0
 offset_top = 170.0
 offset_right = 888.0
 offset_bottom = 422.0
 
-[node name="CardSlot4" parent="enemyField" instance=ExtResource("6_y6pg6")]
+[node name="CardSlot4" parent="decks/Fields/enemyField" instance=ExtResource("6_y6pg6")]
+layout_mode = 0
 offset_left = 920.0
 offset_top = 170.0
 offset_right = 1088.0
 offset_bottom = 422.0
 
-[node name="CardSlot5" parent="enemyField" instance=ExtResource("6_y6pg6")]
+[node name="CardSlot5" parent="decks/Fields/enemyField" instance=ExtResource("6_y6pg6")]
+layout_mode = 0
 offset_left = 1120.0
 offset_top = 170.0
 offset_right = 1288.0
 offset_bottom = 422.0
 
-[node name="heroField" type="Control" parent="."]
+[node name="heroField" type="Control" parent="decks/Fields"]
 anchors_preset = 0
 offset_left = 150.0
 offset_right = 190.0
 offset_bottom = 40.0
+script = ExtResource("8_i55w3")
 
-[node name="CardSlot" parent="heroField" instance=ExtResource("6_psknn")]
+[node name="CardSlot" parent="decks/Fields/heroField" instance=ExtResource("6_psknn")]
 layout_mode = 0
 offset_left = 320.0
 offset_top = 470.0
 offset_right = 488.0
 offset_bottom = 722.0
 
-[node name="CardSlot2" parent="heroField" instance=ExtResource("6_psknn")]
+[node name="CardSlot2" parent="decks/Fields/heroField" instance=ExtResource("6_psknn")]
 layout_mode = 0
 offset_left = 520.0
 offset_top = 470.0
 offset_right = 688.0
 offset_bottom = 722.0
 
-[node name="CardSlot3" parent="heroField" instance=ExtResource("6_psknn")]
+[node name="CardSlot3" parent="decks/Fields/heroField" instance=ExtResource("6_psknn")]
 layout_mode = 0
 offset_left = 720.0
 offset_top = 470.0
 offset_right = 888.0
 offset_bottom = 722.0
 
-[node name="CardSlot4" parent="heroField" instance=ExtResource("6_psknn")]
+[node name="CardSlot4" parent="decks/Fields/heroField" instance=ExtResource("6_psknn")]
 layout_mode = 0
 offset_left = 920.0
 offset_top = 470.0
 offset_right = 1088.0
 offset_bottom = 722.0
 
-[node name="CardSlot5" parent="heroField" instance=ExtResource("6_psknn")]
+[node name="CardSlot5" parent="decks/Fields/heroField" instance=ExtResource("6_psknn")]
 layout_mode = 0
 offset_left = 1120.0
 offset_top = 470.0
 offset_right = 1288.0
 offset_bottom = 722.0
+
+[node name="heroHp" type="Control" parent="decks/Fields"]
+anchors_preset = 0
+offset_right = 40.0
+offset_bottom = 40.0
+script = ExtResource("11_1cvjj")
+
+[node name="heroHpSprite" type="Sprite2D" parent="decks/Fields/heroHp"]
+position = Vector2(151.4, 67)
+scale = Vector2(0.502344, 0.15)
+texture = ExtResource("3_pufj1")
+
+[node name="heroHpLabel" parent="decks/Fields/heroHp" instance=ExtResource("8_k1ayk")]
+layout_mode = 0
+offset_left = 63.0
+offset_top = 45.0
+offset_right = 244.0
+offset_bottom = 93.0
+text = "[center]Hero:50/50
+[/center]"
+
+[node name="enemyHp" type="Control" parent="decks/Fields"]
+anchors_preset = 0
+offset_right = 40.0
+offset_bottom = 40.0
+script = ExtResource("13_t4000")
+
+[node name="enemyHpSprite" type="Sprite2D" parent="decks/Fields/enemyHp"]
+position = Vector2(1758, 67)
+scale = Vector2(0.533984, 0.15)
+texture = ExtResource("3_pufj1")
+
+[node name="enemyHpLabel" parent="decks/Fields/enemyHp" instance=ExtResource("8_k1ayk")]
+layout_mode = 0
+offset_left = 1629.0
+offset_top = 45.0
+offset_right = 1893.0
+offset_bottom = 93.0
+text = "[center]Enemy:50/50
+[/center]"
 
 [node name="UI wireframe" type="Control" parent="."]
 anchors_preset = 0
@@ -275,7 +335,7 @@ text = "[center]End turn[/center]"
 
 [connection signal="mouse_entered" from="turnButtons/pass/passButton" to="turnButtons/pass" method="_on_redraw_button_mouse_entered"]
 [connection signal="mouse_exited" from="turnButtons/pass/passButton" to="turnButtons/pass" method="_on_redraw_button_mouse_exited"]
-[connection signal="pressed" from="turnButtons/pass/passButton" to="decks" method="_on_redraw_button_pressed"]
+[connection signal="pressed" from="turnButtons/pass/passButton" to="." method="_on_pass_button_pressed"]
 [connection signal="mouse_entered" from="turnButtons/redraw/redrawButton" to="turnButtons/redraw" method="_on_redraw_button_mouse_entered"]
 [connection signal="mouse_exited" from="turnButtons/redraw/redrawButton" to="turnButtons/redraw" method="_on_redraw_button_mouse_exited"]
 [connection signal="pressed" from="turnButtons/redraw/redrawButton" to="decks" method="_on_redraw_button_pressed"]

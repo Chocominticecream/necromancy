@@ -5,3 +5,9 @@
 
 [node name="SpellCard" instance=ExtResource("1_ei2fd")]
 script = ExtResource("2_r03g0")
+
+[node name="Type" parent="spriteNodes/TextNormal" index="1"]
+text = "[center]Spell"
+
+[node name="Type" parent="spriteNodes/TextFocused" index="1"]
+text = "[center][b]Spell"

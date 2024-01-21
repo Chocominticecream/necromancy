@@ -7,17 +7,16 @@ var cardfunc = Universalfunc.new()
 
 func createStarterDeck(deck):
      var data_cbd = cardfunc.readDatabase()
-     var zombieentry = cardfunc.findCard(data_cbd, 0, "SummonData", "numID")
-     var zombiecard = cardfunc.createCard(zombieentry, 'summon')
-     
-     var manaballentry = cardfunc.findCard(data_cbd, 0, 'SpellData', 'numID')
-     var manaballcard = cardfunc.createCard(manaballentry, 'spell')
     
      for i in range(5):
-         deck.append(zombiecard.duplicate())
+         var zombieentry = cardfunc.findCard(data_cbd, 0, "SummonData", "numID")
+         var zombiecard = cardfunc.createCard(zombieentry, 'summon')
+         deck.append(zombiecard)
      
      for i in range(5):
-         deck.append(manaballcard.duplicate())
+         var manaballentry = cardfunc.findCard(data_cbd, 0, 'SpellData', 'numID')
+         var manaballcard = cardfunc.createCard(manaballentry, 'spell')
+         deck.append(manaballcard)
 
 # Called when the node enters the scene tree for the first time.
 func _ready():
