@@ -21,6 +21,22 @@ enum{
     inDeck #card is in a deck
     }
 
+# Called when the node enters the scene tree for the first time.
+func _ready():
+    $draw.drawdeck = DataManager.maindeck.duplicate()
+    $draw/drawValue.text = str(len(DataManager.maindeck))
+    EventsBus.connect("resetCards", reorganiser)
+    EventsBus.connect("redrawCards", cardRedrawer)
+    # for i in range(10):
+       # var base = load("res://scenes/widgets/Summoncard.tscn").instantiate()
+       # $draw.drawdeck.append(base)
+    carddrawer(5)
+
+
+# Called every frame. 'delta' is the elapsed time since the previous frame.
+func _process(delta):
+    pass
+    
 #DRAW LOGIC
 func carddrawer(drawno):
      var drawglobal = $draw
@@ -61,6 +77,7 @@ func cardRedrawer():
     var discardGlobal = $discard
     var handGlobal = $hand
     var discardDeck = discardGlobal.discarddeck
+    var awaitTime = 0
     EventsBus.emit_signal("setAnimationstate", false)
     for card in handGlobal.get_children():
         card.target = discardGlobal.global_position
@@ -72,7 +89,9 @@ func cardRedrawer():
           card.get_parent().remove_child(card)
         reorganiser()
         $discard/discardValue.text = "[center]" + str(int($discard/discardValue.text) + 1) + "[/center]"
-    carddrawer(5)
+        awaitTime += card.DRAWTIME
+    await carddrawer(5)
+    EventsBus.emit_signal("countdown", 3)
 
 func reshuffleIntoDraw(drawdeck, discarddeck):
      
@@ -151,26 +170,10 @@ func reorganiser():
          increment += 1
      cardspreadval = cardspreadmax
 
-# Called when the node enters the scene tree for the first time.
-func _ready():
-    $draw.drawdeck = DataManager.maindeck.duplicate()
-    $draw/drawValue.text = str(len(DataManager.maindeck))
-    EventsBus.connect("resetCards", reorganiser)
-    # for i in range(10):
-       # var base = load("res://scenes/widgets/Summoncard.tscn").instantiate()
-       # $draw.drawdeck.append(base)
-    carddrawer(5)
-
-
-# Called every frame. 'delta' is the elapsed time since the previous frame.
-func _process(delta):
-    pass
-
 func startTurn():
     pass
     
 func _on_redraw_button_pressed():
-    EventsBus.emit_signal("countdown", 1)
     cardRedrawer()
     
    

@@ -6,11 +6,12 @@ var hp : int :get = hpget, set = hpset
 var attack : int : get = attget, set = attset
 var counter: int : get = counterget, set = counterset
 
+var maxcounter : int
+
 func _ready():
     super._ready()
+    maxcounter = counter
     #battle logic signals
-    EventsBus.connect("countdown", countdown)
-    print(attack)
 
 #-------- SETTER AND GETTERS---------------
 
@@ -37,10 +38,14 @@ func counterset(val):
 
 func counterget():
     return counter
-# Called when the node enters the scene tree for the first time.
+
 #-------- END OF SETTER AND GETTERS---------------
-func countdown(val):
-    var newcount = counter - val
-    counterset(newcount)
-    
+
+func fight():
+    TweenNode = create_tween()
+    TweenNode.tween_property(self, "global_position", global_position + Vector2(0,50) , DRAWTIME/2).set_ease(Tween.EASE_IN_OUT).set_trans(Tween.TRANS_LINEAR)
+    TweenNode.tween_property(self, "global_position", global_position + Vector2(0,-100) , DRAWTIME/2).set_ease(Tween.EASE_IN_OUT).set_trans(Tween.TRANS_LINEAR)
+    TweenNode.tween_property(self, "global_position", global_position , DRAWTIME/2).set_ease(Tween.EASE_IN_OUT).set_trans(Tween.TRANS_LINEAR)
+    await get_tree().create_timer(DRAWTIME*2).timeout;
+    counterset(maxcounter)
 
