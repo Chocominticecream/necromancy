@@ -6,8 +6,14 @@ enum{
     }
 
 var phase = countDownPhase
+
+#values for hero
 var maindeck = []
-# Called when the node enters the scene tree for the first time.
+
+#values for enemy
+var enemydeck = []
+var enemywaves = []
+
 func _ready():
     pass # Replace with function body.
 

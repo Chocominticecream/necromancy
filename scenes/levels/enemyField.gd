@@ -1,11 +1,33 @@
 extends Control
 
+var enemydeck = []
+var enemywaves = []
+var currentwave = []
 
 # Called when the node enters the scene tree for the first time.
 func _ready():
-    pass # Replace with function body.
+    enemydeck = DataManager.enemydeck.duplicate()
+    enemywaves = DataManager.enemywaves.duplicate()
+    summonWave()
 
-
-# Called every frame. 'delta' is the elapsed time since the previous frame.
-func _process(delta):
+func takeDamage():
     pass
+
+func summonWave():
+    currentwave = enemywaves[0]
+    enemywaves.erase(enemywaves[0])
+    
+    #iterate through first wave pair value to summon that many cards
+    for i in range(currentwave[0]):
+        var summonFlag = false
+        while !summonFlag:
+            #choose a random slot to summon the card in
+            var slot = randi() % 5
+            #if slot is empty, summon, else reset while loop
+            if get_child(slot).activeCard == null:
+               summonFlag = true
+               get_child(slot).summonEnemy(enemydeck[0])
+               enemydeck.erase(enemydeck[0])
+               await get_tree().create_timer(enemydeck[0].DRAWTIME).timeout;
+        
+    

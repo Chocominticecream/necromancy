@@ -1,10 +1,11 @@
-Sprite2D
+Node2D
+Container
 Control
+Sprite2D
 MarginContainer
 RichTextLabel
 Button
 TextureButton
 AnimationPlayer
-Node2D
 Camera2D
 XRController3D

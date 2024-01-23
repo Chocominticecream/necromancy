@@ -13,6 +13,9 @@ signal takedamage()
 signal attack()
 signal countdown(val)
 
+#button signals
+signal buttonActivation()
+
 # Called when the node enters the scene tree for the first time.
 func _ready():
     pass # Replace with function body.

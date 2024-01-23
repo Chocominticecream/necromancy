@@ -16,3 +16,4 @@ func _on_redraw_button_mouse_entered():
 
 func _on_redraw_button_mouse_exited():
     $endButton.self_modulate = Color(1,1,1,1)
+    

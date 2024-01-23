@@ -123,6 +123,67 @@
 			"separators": [],
 			"lines": [],
 			"columns": []
+		},
+		{
+			"name": "EnemyData",
+			"columns": [
+				{
+					"typeStr": "1",
+					"name": "name"
+				},
+				{
+					"typeStr": "3",
+					"name": "numID",
+					"display": null
+				},
+				{
+					"typeStr": "1",
+					"name": "description",
+					"display": null
+				},
+				{
+					"typeStr": "3",
+					"name": "counter",
+					"display": null
+				},
+				{
+					"typeStr": "3",
+					"name": "attack",
+					"display": null
+				},
+				{
+					"typeStr": "3",
+					"name": "hp",
+					"display": null
+				},
+				{
+					"typeStr": "8",
+					"name": "effect",
+					"display": null
+				}
+			],
+			"lines": [
+				{
+					"name": "Foot soldier",
+					"numID": 0,
+					"description": "",
+					"counter": 3,
+					"attack": 5,
+					"hp": 8,
+					"effect": []
+				}
+			],
+			"separators": [],
+			"props": {}
+		},
+		{
+			"name": "EnemyData@effect",
+			"props": {
+				"hide": true
+			},
+			"separators": [],
+			"lines": [],
+			"columns": []
 		}
 	],
 	"customTypes": [],

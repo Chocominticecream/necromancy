@@ -104,6 +104,23 @@ func createCard(carddict, type):
        base.energy = energy
        base.description = description #+ '. ' + createEffectDesc(effect, base.type)
        base.type = "spell"
+    
+     elif type == "enemySummon" :
+       base = load("res://scenes/widgets/Summoncard.tscn").instantiate()
+       var att = carddict["attack"]
+       var hp = carddict["hp"]
+       var printedname = carddict["name"]
+       var effect = carddict["effect"]
+       var description = carddict["description"]
+       var counter = carddict["counter"]
+    
+       base.attack = att
+       base.hp = hp
+       base.printedname = printedname
+       base.effect = effect
+       base.description = description #+ '. ' + createEffectDesc(effect, base.type)
+       base.counter = counter
+       base.type = "summon"
      
      return base
 
