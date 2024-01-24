@@ -121,6 +121,7 @@ func createCard(carddict, type):
        base.description = description #+ '. ' + createEffectDesc(effect, base.type)
        base.counter = counter
        base.type = "summon"
+       base.alliance = false
      
      return base
 

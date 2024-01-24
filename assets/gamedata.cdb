@@ -108,7 +108,7 @@
 					"attack": 5,
 					"hp": 10,
 					"effect": [],
-					"counter": 3,
+					"counter": 5,
 					"numID": 0
 				}
 			],
@@ -167,9 +167,18 @@
 					"name": "Foot soldier",
 					"numID": 0,
 					"description": "",
-					"counter": 3,
+					"counter": 5,
 					"attack": 5,
 					"hp": 8,
+					"effect": []
+				},
+				{
+					"name": "Cockroach",
+					"numID": 1,
+					"description": "",
+					"counter": 3,
+					"attack": 2,
+					"hp": 3,
 					"effect": []
 				}
 			],

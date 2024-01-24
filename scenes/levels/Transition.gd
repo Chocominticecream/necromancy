@@ -21,11 +21,13 @@ func createStarterDeck(deck):
 func createEnemyDeck(deck, wavedeck):
     var data_cbd = cardfunc.readDatabase()
     
-    for i in range(5):
-         var soldierentry = cardfunc.findCard(data_cbd, 0, "EnemyData", "numID")
-         var soldiercard = cardfunc.createCard(soldierentry , 'enemySummon')
-         soldiercard.alliance = false
-         deck.append(soldiercard)
+    #for i in range(5):
+    var soldierentry = cardfunc.findCard(data_cbd, 0, "EnemyData", "numID")
+    var soldiercard = cardfunc.createCard(soldierentry , 'enemySummon')
+    deck.append(soldiercard)
+    
+    var spiderCard = cardfunc.createCard(cardfunc.findCard(data_cbd, 1, "EnemyData", "numID") , 'enemySummon')
+    deck.append(spiderCard)
     #appending wave deck value, first value is the amount of enemies summoned, second number is time til the next wave
     wavedeck.append([2,3])  
 # Called when the node enters the scene tree for the first time.

@@ -18,7 +18,7 @@
 [ext_resource type="Script" path="res://scenes/levels/heroHp.gd" id="11_1cvjj"]
 [ext_resource type="Script" path="res://scenes/levels/enemyHp.gd" id="13_t4000"]
 
-[node name="battleUI" type="Control"]
+[node name="battleUI" type="Control" groups=["enemy", "hero"]]
 layout_mode = 3
 anchors_preset = 15
 anchor_right = 1.0

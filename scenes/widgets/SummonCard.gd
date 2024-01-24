@@ -18,7 +18,6 @@ var attackingFoe : Array
 
 func _ready():
     super._ready()
-    EventsBus.connect("takeDamage", takeDamage)
     maxcounter = counter
     #battle logic signals
 
@@ -86,7 +85,7 @@ func takeDamage(ally : bool , damage : int, targetingFoe: Array):
         for idx in targetingFoe:
             if index == idx:
                if ally:
-                 print("enemy card in slot " + str(index) + "has taken " + str(damage) + " from hero")
+                 print("enemy card in slot " + str(index) + " has taken " + str(damage) + " damage from hero")
                else:
-                 print("hero card in slot " + str(index) + "has taken " + str(damage) + " from enemy")
+                 print("hero card in slot " + str(index) + " has taken " + str(damage) + " damage from enemy")
                hpset(hp-damage)

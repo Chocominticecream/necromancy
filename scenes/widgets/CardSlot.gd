@@ -1,12 +1,14 @@
 extends MarginContainer
 class_name BaseSlot
 
+var alliance : bool 
+
 signal resetCards
 
 var activeCard = null
 # Called when the node enters the scene tree for the first time.
 func _ready():
-    pass
+    EventsBus.connect("takeDamage", takeDmg)
 
 # Called every frame. 'delta' is the elapsed time since the previous frame.
 func _process(delta):
@@ -26,5 +28,19 @@ func _drop_data(at_position, data):
     slotted_logic()
 
 func slotted_logic():
-    pass
-    
+    pass    
+
+func takeDmg(ally, damage, attackingFoe):
+    var teststring = ""
+    if alliance:
+        teststring = "hero has taken "
+    else:
+        teststring = "enemy has taken "
+    if !ally == alliance:
+       for idx in attackingFoe:
+         if activeCard == null and get_index() == idx:
+            print(teststring + str(damage) + " damage!")
+         elif get_index() == idx:
+            activeCard.takeDamage(ally,damage,attackingFoe)
+         else:
+            pass
