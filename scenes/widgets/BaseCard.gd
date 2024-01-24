@@ -141,7 +141,6 @@ func _process(delta):
           TweenRotate.tween_property(self, "rotation_degrees", targetrot , DRAWTIME).set_ease(Tween.EASE_IN_OUT).set_trans(Tween.TRANS_LINEAR)
           state = inDiscard
        focusing:
-          print("focus")
           rotation_degrees = 0
           TweenNode = create_tween()
           var focuspt = target

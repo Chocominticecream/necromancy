@@ -5,13 +5,20 @@ class_name SummonCard
 var hp : int :get = hpget, set = hpset
 var attack : int : get = attget, set = attset
 var counter: int : get = counterget, set = counterset
+var multihit: int = 1 #multi hit variable to determine how many tiems the card hits
+var index: int #returns value of card's cardslot index
 
 var maxcounter : int
 #true = hero side false = enemy side
 var alliance : bool
+#called when first played, sleeping cards dont deplete their counter
+var sleep : bool = true
+#grab the targetting foe, by default it is the opposing card
+var attackingFoe : Array
 
 func _ready():
     super._ready()
+    EventsBus.connect("takeDamage", takeDamage)
     maxcounter = counter
     #battle logic signals
 
@@ -55,8 +62,11 @@ func counterget():
 
 #-------- END OF SETTER AND GETTERS---------------
 
-#fight function if card is on the hero side
+#fight function, activate attack 
 func fight():
+    #fight factor controls the tweening of rhe card when the fight function is called
+    # it also sets the targets to attack for based on the card's ability
+    attackingFoe = [index]
     TweenNode = create_tween()
     var fightfactor = 1
     if alliance:
@@ -66,8 +76,17 @@ func fight():
     TweenNode.tween_property(self, "global_position", global_position + Vector2(0,50*fightfactor) , DRAWTIME/2).set_ease(Tween.EASE_IN_OUT).set_trans(Tween.TRANS_LINEAR)
     TweenNode.tween_property(self, "global_position", global_position + Vector2(0,-100*fightfactor) , DRAWTIME/2).set_ease(Tween.EASE_IN_OUT).set_trans(Tween.TRANS_LINEAR)
     TweenNode.tween_property(self, "global_position", global_position , DRAWTIME/2).set_ease(Tween.EASE_IN_OUT).set_trans(Tween.TRANS_LINEAR)
-    await get_tree().create_timer(DRAWTIME*2).timeout;
+    await get_tree().create_timer(DRAWTIME).timeout;
+    EventsBus.emit_signal("takeDamage", alliance, attack, attackingFoe)
+    await get_tree().create_timer(DRAWTIME).timeout;
     counterset(maxcounter)
 
-func takeDamage(target: Array):
-    pass
+func takeDamage(ally : bool , damage : int, targetingFoe: Array):
+     if !ally == alliance:
+        for idx in targetingFoe:
+            if index == idx:
+               if ally:
+                 print("enemy card in slot " + str(index) + "has taken " + str(damage) + " from hero")
+               else:
+                 print("hero card in slot " + str(index) + "has taken " + str(damage) + " from enemy")
+               hpset(hp-damage)

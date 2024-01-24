@@ -1,0 +1,18 @@
+Naming:
+nodes - capital letters (except for some because of godot breaking when naming nodes)
+methods- lowercase letters followed by capital for preceding nouns/adjectives
+attributes - same as methods
+classes- capital letters
+resources/singletons - capital letters except for some because of godot name breaking
+
+Attacking:
+Attacking is a bit complicated, most attack logic is being done inside the countdown() function.
+
+The best way it can be implemented is through a fight function in the card, upon executing this fight function inside the card. the opposing card/whatever target the card is atacking takes damage.
+
+Additional effects can be applied throughout effect objects using resources (to be covered later on)
+
+meanwhile in the countdown function, there should be multiple delays based on the objects within the enemy object.
+
+The countdown function can grab a list of targets the card is targetting and then iterate through that target list to study the delays needed for each card as well as activating each card's effect iteratively
+

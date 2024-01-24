@@ -18,8 +18,8 @@ func _on_redraw_button_mouse_exited():
     if !$redrawButton.disabled:
       $redrawButton.self_modulate = Color(1,1,1,1)
 
-func buttonActivation():
-    $redrawButton.disabled = !$redrawButton.disabled
+func buttonActivation(val : bool = true):
+    $redrawButton.disabled = val
     if $redrawButton.disabled:
       $redrawButton.self_modulate = Color(1,1,1,0.5)
     else:

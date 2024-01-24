@@ -23,6 +23,7 @@ enum{
 
 # Called when the node enters the scene tree for the first time.
 func _ready():
+   
     $draw.drawdeck = DataManager.maindeck.duplicate()
     $draw/drawValue.text = str(len(DataManager.maindeck))
     EventsBus.connect("resetCards", reorganiser)
@@ -30,7 +31,12 @@ func _ready():
     # for i in range(10):
        # var base = load("res://scenes/widgets/Summoncard.tscn").instantiate()
        # $draw.drawdeck.append(base)
+    DataManager.firstTurn = true
+    await get_tree().create_timer(0.1).timeout;
+    EventsBus.emit_signal("summonWave")
+    await get_tree().create_timer(0.5).timeout;
     carddrawer(5)
+    DataManager.firstTurn = false
 
 
 # Called every frame. 'delta' is the elapsed time since the previous frame.
@@ -39,6 +45,7 @@ func _process(delta):
     
 #DRAW LOGIC
 func carddrawer(drawno):
+     DataManager.phase = DataManager.drawingPhase
      var drawglobal = $draw
      var handglobal = $hand
      var drawvalue = drawno
@@ -70,7 +77,7 @@ func carddrawer(drawno):
          #   drawdeck[0].free()
      #reorganise the hand one last time
      reorganiser()
-     EventsBus.emit_signal("setAnimationstate", true)
+     DataManager.phase = DataManager.playPhase
     
 #END TURN LOGIC
 func cardRedrawer():
@@ -78,7 +85,7 @@ func cardRedrawer():
     var handGlobal = $hand
     var discardDeck = discardGlobal.discarddeck
     var awaitTime = 0
-    EventsBus.emit_signal("setAnimationstate", false)
+    DataManager.phase = DataManager.drawingPhase
     for card in handGlobal.get_children():
         card.target = discardGlobal.global_position
         card.targetrot = 0
@@ -174,11 +181,11 @@ func startTurn():
     pass
     
 func _on_redraw_button_pressed():
-    EventsBus.emit_signal("buttonActivation")
+    DataManager.phase = DataManager.drawingPhase
     cardRedrawer()
 
 func _on_pass_button_pressed():
-    EventsBus.emit_signal("buttonActivation")
+    DataManager.phase = DataManager.countDownPhase
     EventsBus.emit_signal("countdown", 1)
     
    

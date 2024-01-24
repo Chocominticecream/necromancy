@@ -5,6 +5,7 @@ func _ready():
     EventsBus.connect("buttonActivation", buttonActivation)
 
 
+
 # Called every frame. 'delta' is the elapsed time since the previous frame.
 func _process(delta):
     pass
@@ -19,8 +20,8 @@ func _on_redraw_button_mouse_exited():
     if !$passButton.disabled:
       $passButton.self_modulate = Color(1,1,1,1)
 
-func buttonActivation():
-    $passButton.disabled = !$passButton.disabled
+func buttonActivation(val : bool = true):
+    $passButton.disabled = val
     if $passButton.disabled:
       $passButton.self_modulate = Color(1,1,1,0.5)
     else:

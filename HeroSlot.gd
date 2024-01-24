@@ -13,4 +13,6 @@ func _can_drop_data(at_position, data):
     return data is SummonCard and self.activeCard == null
     
 func slotted_logic():
+    self.activeCard.index = get_index()
+    EventsBus.emit_signal("countdown", self.activeCard.energy)
     EventsBus.emit_signal("resetCards")
