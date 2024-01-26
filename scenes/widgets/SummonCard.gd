@@ -24,6 +24,7 @@ func _ready():
 func _process(delta):
     super._process(delta)
     
+    #disable the energy bubble if card is an enemy
     if !alliance:
         $spriteNodes/TextNormal/Energy.visible = false
         $spriteNodes/TextFocused/Energy.visible = false
@@ -62,7 +63,7 @@ func counterget():
 #-------- END OF SETTER AND GETTERS---------------
 
 #fight function, activate attack 
-func fight():
+func onAttack():
     #fight factor controls the tweening of rhe card when the fight function is called
     # it also sets the targets to attack for based on the card's ability
     attackingFoe = [index]
@@ -76,11 +77,11 @@ func fight():
     TweenNode.tween_property(self, "global_position", global_position + Vector2(0,-100*fightfactor) , DRAWTIME/2).set_ease(Tween.EASE_IN_OUT).set_trans(Tween.TRANS_LINEAR)
     TweenNode.tween_property(self, "global_position", global_position , DRAWTIME/2).set_ease(Tween.EASE_IN_OUT).set_trans(Tween.TRANS_LINEAR)
     await get_tree().create_timer(DRAWTIME).timeout;
-    EventsBus.emit_signal("takeDamage", alliance, attack, attackingFoe)
+    EventsBus.emit_signal("onTakeDamage", alliance, attack, attackingFoe)
     await get_tree().create_timer(DRAWTIME).timeout;
     counterset(maxcounter)
 
-func takeDamage(ally : bool , damage : int, targetingFoe: Array):
+func onTakeDamage(ally : bool , damage : int, targetingFoe: Array):
      if !ally == alliance:
         for idx in targetingFoe:
             if index == idx:
@@ -89,3 +90,10 @@ func takeDamage(ally : bool , damage : int, targetingFoe: Array):
                else:
                  print("hero card in slot " + str(index) + " has taken " + str(damage) + " damage from enemy")
                hpset(hp-damage)
+               if hp <= 0:
+                 onDeath()
+                 
+
+func onDeath():
+    emit_signal("activeCardToNull", index)
+    self.queue_free()

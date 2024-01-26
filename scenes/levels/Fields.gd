@@ -30,14 +30,14 @@ func countdown(val : int):
         if slot.activeCard != null and slot.activeCard.counter <= 0:
             for j in range(slot.activeCard.multihit):
               var actingCard = slot.activeCard
-              actingCard.fight()
+              actingCard.onAttack()
               await get_tree().create_timer(actingCard.DRAWTIME*2).timeout;
             
     for slot in $heroField.get_children():
         if slot.activeCard != null and slot.activeCard.counter <= 0:
             for j in range(slot.activeCard.multihit):
               var actingCard = slot.activeCard
-              actingCard.fight()
+              actingCard.onAttack()
               await get_tree().create_timer(actingCard.DRAWTIME*2).timeout;
     #some code to check for delaying takedamage effects and activate them here
             #some on take damage effect? (reduce counter when hit, draw when hit)

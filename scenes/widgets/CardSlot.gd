@@ -8,7 +8,8 @@ signal resetCards
 var activeCard = null
 # Called when the node enters the scene tree for the first time.
 func _ready():
-    EventsBus.connect("takeDamage", takeDmg)
+    EventsBus.connect("onTakeDamage", onTakeSlotDamage)
+    EventsBus.connect("activeCardToNull", activeCardToNull)
 
 # Called every frame. 'delta' is the elapsed time since the previous frame.
 func _process(delta):
@@ -30,7 +31,7 @@ func _drop_data(at_position, data):
 func slotted_logic():
     pass    
 
-func takeDmg(ally, damage, attackingFoe):
+func onTakeSlotDamage(ally : bool, damage : int, attackingFoe : Array):
     var teststring = ""
     if alliance:
         teststring = "hero has taken "
@@ -39,8 +40,13 @@ func takeDmg(ally, damage, attackingFoe):
     if !ally == alliance:
        for idx in attackingFoe:
          if activeCard == null and get_index() == idx:
-            print(teststring + str(damage) + " damage!")
+            print(teststring + str(damage) + " direct damage!")
          elif get_index() == idx:
-            activeCard.takeDamage(ally,damage,attackingFoe)
+            activeCard.onTakeDamage(ally,damage,attackingFoe)
          else:
             pass
+
+#code to set activecard after card death to null because my coding skills suck          
+func activeCardToNull(idx : int):
+    if get_index() == idx:
+        activeCard = null

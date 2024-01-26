@@ -10,9 +10,10 @@ signal redrawCards()
 signal summonWave()
 
 #basic card action signals
-signal takeDamage(alliance, damage, attackingFoe)
-signal attack()
+signal onTakeDamage(alliance, damage, attackingFoe)
+signal onAttack()
 signal countdown(val)
+signal activeCardToNull(idx)
 
 #button signals
 signal buttonActivation(val)

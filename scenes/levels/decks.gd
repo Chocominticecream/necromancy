@@ -44,7 +44,7 @@ func _process(delta):
     pass
     
 #DRAW LOGIC
-func carddrawer(drawno):
+func carddrawer(drawno : int):
      DataManager.phase = DataManager.drawingPhase
      var drawglobal = $draw
      var handglobal = $hand
@@ -100,7 +100,7 @@ func cardRedrawer():
     await carddrawer(5)
     EventsBus.emit_signal("countdown", 3)
 
-func reshuffleIntoDraw(drawdeck, discarddeck):
+func reshuffleIntoDraw(drawdeck : Control, discarddeck : Control):
      
      #buggy code to set the position correctly (omg)
      for i in range(len(discarddeck.discarddeck)):
@@ -129,7 +129,7 @@ func reshuffleIntoDraw(drawdeck, discarddeck):
 
 #CARD POSITIONING LOGIC
 #take an integer value and positions the card
-func cardpositioner(i):
+func cardpositioner(i : int):
     
     var cardspread = cardspreadval
     
@@ -151,7 +151,7 @@ func cardpositioner(i):
     return newposition
 
 #rotates the card accordingly after positioning them, take an integer
-func cardrotater(i):
+func cardrotater(i : int):
     var cardspread = cardspreadval
     var num_cards = $hand.get_child_count()-1
     

@@ -10,7 +10,7 @@ func _process(delta):
     pass
 
 func _can_drop_data(at_position, data):
-    return data is SummonCard and self.activeCard == null
+    return data is SummonCard and activeCard == null
     
 func slotted_logic():
     self.activeCard.index = get_index()

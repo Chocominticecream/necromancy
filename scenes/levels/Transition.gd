@@ -4,7 +4,7 @@ var cardfunc = Universalfunc.new()
 
 # a change
 
-func createStarterDeck(deck):
+func createStarterDeck(deck : Array):
      var data_cbd = cardfunc.readDatabase()
     
      for i in range(5):
@@ -18,7 +18,8 @@ func createStarterDeck(deck):
          var manaballcard = cardfunc.createCard(manaballentry, 'spell')
          deck.append(manaballcard)
 
-func createEnemyDeck(deck, wavedeck):
+#to expand on this function
+func createEnemyDeck(deck : Array, wavedeck : Array):
     var data_cbd = cardfunc.readDatabase()
     
     #for i in range(5):

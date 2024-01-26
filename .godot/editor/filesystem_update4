@@ -1,7 +1,5 @@
 res://scenes/levels/Transition.tscn
 res://scenes/widgets/BaseCard.gd
-res://scenes/widgets/CardSlot.gd
-res://EnemySlot.gd
 res://scenes/levels/battleUI.tscn
 res://scenes/levels/battleScene.tscn
 res://scenes/widgets/SummonCard.tscn
@@ -10,8 +8,9 @@ res://scenes/widgets/BaseCard.tscn
 res://scenes/levels/testroom.tscn
 res://scenes/widgets/SpellCard.tscn
 res://scenes/widgets/Enemy_slot.tscn
+res://scenes/widgets/cardSlot.tscn
+res://scenes/widgets/CardSlot.gd
 res://HeroSlot.gd
 res://scenes/widgets/SummonCard.gd
+res://assets/Singletons/eventsBus.gd
 res://scenes/levels/Transition.gd
-res://assets/Resources/Universalfunc.gd
-res://scenes/levels/enemyField.gd
