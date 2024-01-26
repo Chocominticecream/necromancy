@@ -7,5 +7,6 @@
  - main menu
  - basic innate card effects
  - basic buffs and debuffs
+ - other events
  - a "tarot map" navigation system, where the area you go to is decided by the tarot cards you choose
 
