@@ -22,15 +22,16 @@ enum{
     moveDrawnCardToHand, #check if card is being moved to hand
     reOrganiseHand, #reorganise (card is being moved to hand)
     discardCard, #card is being discarded to the pile
-    inSlot, #card is held in mouse and about to be played into a cardslot
-    inDeck, #card is in a deck
     redrawCard, #card is being moved into the discard for redrawing
     
     playing, #card is being played
     inDiscard, #card is in the discardpile
-    inDraw
+    inDraw,
+    
+    inEnemyPlay #enemy play state machine
     
     }
+
     
 var state = inHand
 
@@ -87,6 +88,9 @@ func stateset(val):
 
 func animationset(val):
     animationFinished = val
+    
+func setPosition(val):
+    global_position = val
 
 #--------------------------------end of setters/getters-------------------------------------
 
@@ -152,14 +156,16 @@ func _process(delta):
        focusInHand:
           rotation_degrees = 0
        inPlay:
+          # 0.64 * 1.3 to fit into card slot
           self.scale = Vector2(0.64,0.64)
        inDiscard:
           pass
        inDraw:
           target = Vector2(1700,750)
+       inEnemyPlay:
+          #enemy cards dont focus so scaling is different than inplay cards on the hero field
+          self.scale = Vector2(0.832,0.832)
         
-        
-
 
 func _on_mouse_entered():
     pass

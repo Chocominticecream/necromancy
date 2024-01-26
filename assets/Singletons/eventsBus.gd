@@ -7,11 +7,16 @@ signal setAnimationstate(val)
 
 #card logic signals
 signal redrawCards()
+signal summonWave()
 
 #basic card action signals
-signal takedamage()
-signal attack()
+signal onTakeDamage(alliance, damage, attackingFoe)
+signal onAttack()
 signal countdown(val)
+signal activeCardToNull(idx)
+
+#button signals
+signal buttonActivation(val)
 
 # Called when the node enters the scene tree for the first time.
 func _ready():

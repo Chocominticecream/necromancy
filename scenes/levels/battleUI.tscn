@@ -18,7 +18,7 @@
 [ext_resource type="Script" path="res://scenes/levels/heroHp.gd" id="11_1cvjj"]
 [ext_resource type="Script" path="res://scenes/levels/enemyHp.gd" id="13_t4000"]
 
-[node name="battleUI" type="Control"]
+[node name="battleUI" type="Control" groups=["enemy", "hero"]]
 layout_mode = 3
 anchors_preset = 15
 anchor_right = 1.0
@@ -335,7 +335,7 @@ text = "[center]End turn[/center]"
 
 [connection signal="mouse_entered" from="turnButtons/pass/passButton" to="turnButtons/pass" method="_on_redraw_button_mouse_entered"]
 [connection signal="mouse_exited" from="turnButtons/pass/passButton" to="turnButtons/pass" method="_on_redraw_button_mouse_exited"]
-[connection signal="pressed" from="turnButtons/pass/passButton" to="." method="_on_pass_button_pressed"]
+[connection signal="pressed" from="turnButtons/pass/passButton" to="decks" method="_on_pass_button_pressed"]
 [connection signal="mouse_entered" from="turnButtons/redraw/redrawButton" to="turnButtons/redraw" method="_on_redraw_button_mouse_entered"]
 [connection signal="mouse_exited" from="turnButtons/redraw/redrawButton" to="turnButtons/redraw" method="_on_redraw_button_mouse_exited"]
 [connection signal="pressed" from="turnButtons/redraw/redrawButton" to="decks" method="_on_redraw_button_pressed"]

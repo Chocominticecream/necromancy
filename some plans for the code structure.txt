@@ -1,0 +1,31 @@
+Naming:
+nodes - capital letters (except for some because of godot breaking when naming nodes)
+methods- lowercase letters followed by capital for preceding nouns/adjectives
+attributes - same as methods
+classes- capital letters
+resources/singletons - capital letters except for some because of godot name breaking
+
+Attacking:
+Attacking is a bit complicated, most attack logic is being done inside the countdown() function.
+
+The best way it can be implemented is through a fight function in the card, upon executing this fight function inside the card. the opposing card/whatever target the card is atacking takes damage.
+
+Additional effects can be applied throughout effect objects using resources (to be covered later on)
+
+meanwhile in the countdown function, there should be multiple delays based on the objects within the enemy object.
+
+The countdown function can grab a list of targets the card is targetting and then iterate through that target list to study the delays needed for each card as well as activating each card's effect iteratively
+
+grab attacking foe variable then iterate through opposing field
+check if variable is takedamage class object, if it is check for delay then add that here
+
+thinking of using groups to determine if a card is on the hero/enemy side but that would be a nightmare to implement if statements in since a card can belong to multiple groups and the get_groups function returns an array of groups and not a simple boolean that can be used for checking
+
+every effect is a resource object, each time the card takes a hit or do anything, a getEffect(value) method is invoked, where value is the action the card does. The card will have an effects array filled with resources objects with custom methods. the effects arrayw ill be iterated and the value of getEffect would be compared with the resource object's action. If == action, that resource object's methods would be called on to the card's variables (might have to start inputting all card variables into a resource) or look into the equivalent of pointer variables in godot. 
+
+some ideas for getEffect() method uses:
+
+A receiveEffect() method passed in from the fight() method, the fight method will pass in a resource which would then be passed into receiveeffect for all opposing cards. This receive effect method will then calculate the resources used and apply the appropriate effects.
+
+It is also preferred that card effects do not be too complex as the base mechanics are already quite complicated as they are
+

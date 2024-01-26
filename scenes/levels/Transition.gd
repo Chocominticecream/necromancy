@@ -1,16 +1,16 @@
 extends Node2D
 
-var deck = []
 var cardfunc = Universalfunc.new()
 
 # a change
 
-func createStarterDeck(deck):
+func createStarterDeck(deck : Array):
      var data_cbd = cardfunc.readDatabase()
     
      for i in range(5):
          var zombieentry = cardfunc.findCard(data_cbd, 0, "SummonData", "numID")
          var zombiecard = cardfunc.createCard(zombieentry, 'summon')
+         zombiecard.alliance = true
          deck.append(zombiecard)
      
      for i in range(5):
@@ -18,12 +18,25 @@ func createStarterDeck(deck):
          var manaballcard = cardfunc.createCard(manaballentry, 'spell')
          deck.append(manaballcard)
 
+#to expand on this function
+func createEnemyDeck(deck : Array, wavedeck : Array):
+    var data_cbd = cardfunc.readDatabase()
+    
+    #for i in range(5):
+    var soldierentry = cardfunc.findCard(data_cbd, 0, "EnemyData", "numID")
+    var soldiercard = cardfunc.createCard(soldierentry , 'enemySummon')
+    deck.append(soldiercard)
+    
+    var spiderCard = cardfunc.createCard(cardfunc.findCard(data_cbd, 1, "EnemyData", "numID") , 'enemySummon')
+    deck.append(spiderCard)
+    #appending wave deck value, first value is the amount of enemies summoned, second number is time til the next wave
+    wavedeck.append([2,3])  
 # Called when the node enters the scene tree for the first time.
 func _ready():
     cardfunc.copyDatabase()
     createStarterDeck(DataManager.maindeck)
+    createEnemyDeck(DataManager.enemydeck, DataManager.enemywaves)
     DataManager.maindeck.shuffle()
-
 
 # Called every frame. 'delta' is the elapsed time since the previous frame.
 func _process(delta):

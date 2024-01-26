@@ -24,7 +24,3 @@ func reParentChild(card, target):
     target.add_child(targetcard)
     #reset values
     targetcard.global_position = startGlob
-
-
-func _on_pass_button_pressed():
-    EventsBus.emit_signal("countdown", 1)
