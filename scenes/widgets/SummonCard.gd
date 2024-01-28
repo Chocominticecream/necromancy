@@ -11,7 +11,7 @@ var index: int #returns value of card's cardslot index
 var maxcounter : int
 #true = hero side false = enemy side
 var alliance : bool
-#called when first played, sleeping cards dont deplete their counter
+#called when first played, sleeping cards dont deplete their counter, TO REWORK THIS INTO A STATUS EFFECT
 var sleep : bool = true
 #grab the targetting foe, by default it is the opposing card
 var attackingFoe : Array

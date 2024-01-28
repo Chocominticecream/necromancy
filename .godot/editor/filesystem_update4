@@ -13,3 +13,8 @@ res://scenes/levels/enemyHp.gd
 res://assets/Singletons/eventsBus.gd
 res://scenes/levels/heroHp.gd
 res://assets/Singletons/data_manager.gd
+res://scenes/levels/main_menu.tscn
+res://scenes/widgets/BaseButton.tscn
+res://scenes/levels/main_menu.gd
+res://scenes/levels/Fields.gd
+res://scenes/widgets/SummonCard.gd

@@ -1,3 +1,89 @@
-[gd_scene format=3 uid="uid://1et4n80mrk8k"]
+[gd_scene load_steps=11 format=3 uid="uid://1et4n80mrk8k"]
+
+[ext_resource type="Texture2D" uid="uid://q6p8hp3svmij" path="res://assets/placeholders/square-128.png" id="1_d7xh7"]
+[ext_resource type="Script" path="res://scenes/levels/main_menu.gd" id="1_uu2s1"]
+[ext_resource type="PackedScene" uid="uid://bkdnrwe7a3fic" path="res://scenes/widgets/baselabel.tscn" id="2_r6q7s"]
+[ext_resource type="PackedScene" uid="uid://mkstt6knrqh6" path="res://scenes/widgets/BaseButton.tscn" id="3_wjpu0"]
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_yd4mo"]
+bg_color = Color(0, 0, 0, 1)
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_r8d55"]
+bg_color = Color(1, 1, 1, 1)
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_804dp"]
+bg_color = Color(1, 1, 1, 1)
+
+[sub_resource type="StyleBoxEmpty" id="StyleBoxEmpty_6g3ib"]
+
+[sub_resource type="StyleBoxEmpty" id="StyleBoxEmpty_pc8ci"]
+
+[sub_resource type="StyleBoxEmpty" id="StyleBoxEmpty_uyeb3"]
 
 [node name="main menu" type="Node2D"]
+script = ExtResource("1_uu2s1")
+
+[node name="background" type="Sprite2D" parent="."]
+self_modulate = Color(0, 0, 0, 1)
+position = Vector2(983, 542)
+scale = Vector2(17.6836, 9.9375)
+texture = ExtResource("1_d7xh7")
+
+[node name="Title" parent="." instance=ExtResource("2_r6q7s")]
+offset_left = 368.0
+offset_top = 243.0
+offset_right = 1572.0
+offset_bottom = 429.0
+theme_override_colors/default_color = Color(1, 1, 1, 1)
+theme_override_font_sizes/normal_font_size = 128
+text = "[center]Tarot Hero
+[/center]"
+
+[node name="StartButton" parent="." instance=ExtResource("3_wjpu0")]
+offset_left = 662.0
+offset_top = 503.0
+offset_right = 1284.0
+offset_bottom = 579.0
+theme_override_colors/font_color = Color(1, 1, 1, 1)
+theme_override_colors/font_pressed_color = Color(0, 0, 0, 1)
+theme_override_colors/font_hover_color = Color(0, 0, 0, 1)
+theme_override_font_sizes/font_size = 64
+theme_override_styles/normal = SubResource("StyleBoxFlat_yd4mo")
+theme_override_styles/hover = SubResource("StyleBoxFlat_r8d55")
+theme_override_styles/pressed = SubResource("StyleBoxFlat_804dp")
+theme_override_styles/focus = SubResource("StyleBoxEmpty_6g3ib")
+text = "Start"
+
+[node name="Options" parent="." instance=ExtResource("3_wjpu0")]
+offset_left = 662.0
+offset_top = 600.0
+offset_right = 1284.0
+offset_bottom = 676.0
+theme_override_colors/font_color = Color(1, 1, 1, 1)
+theme_override_colors/font_pressed_color = Color(0, 0, 0, 1)
+theme_override_colors/font_hover_color = Color(0, 0, 0, 1)
+theme_override_font_sizes/font_size = 64
+theme_override_styles/normal = SubResource("StyleBoxFlat_yd4mo")
+theme_override_styles/hover = SubResource("StyleBoxFlat_r8d55")
+theme_override_styles/pressed = SubResource("StyleBoxFlat_804dp")
+theme_override_styles/focus = SubResource("StyleBoxEmpty_pc8ci")
+text = "Options
+"
+
+[node name="Exit" parent="." instance=ExtResource("3_wjpu0")]
+offset_left = 662.0
+offset_top = 700.0
+offset_right = 1284.0
+offset_bottom = 776.0
+theme_override_colors/font_color = Color(1, 1, 1, 1)
+theme_override_colors/font_pressed_color = Color(0, 0, 0, 1)
+theme_override_colors/font_hover_color = Color(0, 0, 0, 1)
+theme_override_font_sizes/font_size = 64
+theme_override_styles/normal = SubResource("StyleBoxFlat_yd4mo")
+theme_override_styles/hover = SubResource("StyleBoxFlat_r8d55")
+theme_override_styles/pressed = SubResource("StyleBoxFlat_804dp")
+theme_override_styles/focus = SubResource("StyleBoxEmpty_uyeb3")
+text = "Exit
+"
+
+[connection signal="pressed" from="StartButton" to="." method="_on_start_button_pressed"]

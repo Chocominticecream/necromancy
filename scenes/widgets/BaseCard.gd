@@ -3,6 +3,7 @@ class_name BaseCard
 #miscellaneous variables for calculation purposes
 var printedname : String : get = nameget, set = nameset
 var effect : Array : get = effectget, set = effectset
+var status : Array = [] 
 var energy : int : get = energyget, set = energyset
 var description : String : get = descget, set = descset
 var type : String 
@@ -63,6 +64,7 @@ func nameget():
     
 func effectset(val):
     effect = val
+    print(effect)
     
 func effectget():
     return effect
