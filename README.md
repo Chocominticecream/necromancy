@@ -4,7 +4,7 @@
  The roadmap(in order of importance):
  - ~~Enemy and hero taking direct damage~~ + game over screen
  - death animations
- - main menu
+ - ~~main menu~~
  - basic innate card effects
  - basic buffs and debuffs
  - spells
