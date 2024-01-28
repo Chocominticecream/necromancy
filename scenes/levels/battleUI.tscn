@@ -212,7 +212,7 @@ offset_left = 63.0
 offset_top = 45.0
 offset_right = 244.0
 offset_bottom = 93.0
-text = "[center]Hero:50/50
+text = "[center]Hero:0/0
 [/center]"
 
 [node name="enemyHp" type="Control" parent="decks/Fields"]
@@ -232,7 +232,7 @@ offset_left = 1629.0
 offset_top = 45.0
 offset_right = 1893.0
 offset_bottom = 93.0
-text = "[center]Enemy:50/50
+text = "[center]Enemy:0/0
 [/center]"
 
 [node name="UI wireframe" type="Control" parent="."]

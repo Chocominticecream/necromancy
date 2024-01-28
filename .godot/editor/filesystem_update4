@@ -8,9 +8,8 @@ res://scenes/widgets/BaseCard.tscn
 res://scenes/levels/testroom.tscn
 res://scenes/widgets/SpellCard.tscn
 res://scenes/widgets/Enemy_slot.tscn
-res://scenes/widgets/cardSlot.tscn
 res://scenes/widgets/CardSlot.gd
-res://HeroSlot.gd
-res://scenes/widgets/SummonCard.gd
+res://scenes/levels/enemyHp.gd
 res://assets/Singletons/eventsBus.gd
-res://scenes/levels/Transition.gd
+res://scenes/levels/heroHp.gd
+res://assets/Singletons/data_manager.gd

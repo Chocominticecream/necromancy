@@ -41,6 +41,7 @@ func onTakeSlotDamage(ally : bool, damage : int, attackingFoe : Array):
        for idx in attackingFoe:
          if activeCard == null and get_index() == idx:
             print(teststring + str(damage) + " direct damage!")
+            EventsBus.emit_signal("onTakeDirectDamage", damage, alliance)
          elif get_index() == idx:
             activeCard.onTakeDamage(ally,damage,attackingFoe)
          else:
