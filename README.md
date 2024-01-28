@@ -2,7 +2,7 @@
  The godot 4 version of the card game I am working on. Base features from the godot 3 version have been re implemented + more. 
 
  The roadmap(in order of importance):
- - Enemy and hero taking direct damage + game over screen
+ - ~~Enemy and hero taking direct damage~~ + game over screen
  - death animations
  - main menu
  - basic innate card effects
