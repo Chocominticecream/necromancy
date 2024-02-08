@@ -174,6 +174,9 @@ scale = Vector2(0.1, 0.1)
 texture = ExtResource("5_tmnj2")
 centered = false
 
+[node name="StatusSpawn" type="Node2D" parent="spriteNodes/graphicsScaler"]
+position = Vector2(180, 70)
+
 [node name="TextNormal" type="Control" parent="spriteNodes"]
 layout_mode = 3
 anchors_preset = 0

@@ -137,6 +137,29 @@ func genericPopUp(spawnParent, nodepos, textMsg):
     spawnParent.add_child(popLabel)
     popLabel.popUp()
 
+#this function copies an array then adds a status/effect to the array, then sets the copied
+#array to the previous array, this is made so that setter functions can be activated
+
+#activeArray is the array to be edited, variable adds status if true and removes if false
+#statuses can either be a singular enum or an array of enum
+func editArray(activeArray : Array, add : bool , statuses):
+    if add:
+      var copyArray = activeArray.duplicate()
+      var newEffect = Status.new()
+      newEffect.statusTypeEnum = statuses
+      copyArray.append(newEffect)
+      return copyArray
+
+func spawnStatusSymbol(status : DataManager.STATUS):
+    match status:
+      DataManager.STATUS.sleep:
+        var symbol = load("res://scenes/widgets/statusSymbol.tscn").instantiate()
+        symbol.get_node("SymbolArt").texture = load("res://assets/Symbols/sleep.png")
+        return symbol
+      _:
+        pass
     
+            
+
 func _ready():
     copyDatabase()

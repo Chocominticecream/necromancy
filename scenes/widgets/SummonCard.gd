@@ -97,3 +97,5 @@ func onTakeDamage(ally : bool , damage : int, targetingFoe: Array):
 func onDeath():
     emit_signal("activeCardToNull", index)
     self.queue_free()
+
+

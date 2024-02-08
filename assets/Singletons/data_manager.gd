@@ -20,6 +20,14 @@ var enemydeck = []
 var enemywaves = []
 var enemyHp = 50
 
+enum STATUS {
+    sleep,
+    poison,
+    test # for cards first summoned on the field, cards that are just summoned, cannot deplete their counter
+}
+
+enum EFFECTS {}
+
 func _ready():
     pass # Replace with function body.
 
