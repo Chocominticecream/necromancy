@@ -14,6 +14,9 @@ func takeDamage():
     pass
 
 func summonWave():
+    if enemywaves.is_empty():
+        return
+    
     currentwave = enemywaves[0]
     enemywaves.erase(enemywaves[0])
     DataManager.phase = DataManager.drawingPhase

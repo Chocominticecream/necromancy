@@ -73,12 +73,11 @@ func createCard(carddict, type):
      #load all card values into variables
      var base
      #create a base empty card
-     if type == 'summon':
+     if type == 'summon' or type == 'enemySummon':
        base = load("res://scenes/widgets/Summoncard.tscn").instantiate()
        var att = carddict["attack"]
        var hp = carddict["hp"]
        var printedname = carddict["name"]
-       var energy = carddict["energy"]
        var effect = carddict["effect"]
        var description = carddict["description"]
        var counter = carddict["counter"]
@@ -86,11 +85,25 @@ func createCard(carddict, type):
        base.attack = att
        base.hp = hp
        base.printedname = printedname
-       base.effect = effect
-       base.energy = energy
+       #base.effect = effect
        base.description = description #+ '. ' + createEffectDesc(effect, base.type)
        base.counter = counter
        base.type = "summon"
+       
+       #specfic code for enemysummons and regular summons
+       if type == 'summon':
+         var energy = carddict["energy"]
+         base.energy = energy
+       
+       if type == 'enemySummon':
+         base.alliance = false
+       
+       #construct the effect array (only for summons for now)
+       var copyEffect = []
+       if !effect.is_empty():
+         for cardEffect in effect:
+           copyEffect.append(createEffect(cardEffect))
+       base.effect = copyEffect
     
      elif type == 'spell':
        base = load("res://scenes/widgets/Spellcard.tscn").instantiate()
@@ -104,24 +117,6 @@ func createCard(carddict, type):
        base.energy = energy
        base.description = description #+ '. ' + createEffectDesc(effect, base.type)
        base.type = "spell"
-    
-     elif type == "enemySummon" :
-       base = load("res://scenes/widgets/Summoncard.tscn").instantiate()
-       var att = carddict["attack"]
-       var hp = carddict["hp"]
-       var printedname = carddict["name"]
-       var effect = carddict["effect"]
-       var description = carddict["description"]
-       var counter = carddict["counter"]
-    
-       base.attack = att
-       base.hp = hp
-       base.printedname = printedname
-       base.effect = effect
-       base.description = description #+ '. ' + createEffectDesc(effect, base.type)
-       base.counter = counter
-       base.type = "summon"
-       base.alliance = false
      
      return base
 
@@ -142,24 +137,36 @@ func genericPopUp(spawnParent, nodepos, textMsg):
 
 #activeArray is the array to be edited, variable adds status if true and removes if false
 #statuses can either be a singular enum or an array of enum
-func editArray(activeArray : Array, add : bool , statuses):
+func editStatusArray(activeArray : Array, add : bool , statuses , value : int = 0):
     if add:
       var copyArray = activeArray.duplicate()
-      var newEffect = Status.new()
-      newEffect.statusTypeEnum = statuses
+      
+      for status in activeArray:
+        if status.statusTypeEnum == statuses:
+           print("status already present!")
+           return copyArray
+        
+      var newEffect = Status.new(statuses, value)
       copyArray.append(newEffect)
       return copyArray
 
 func spawnStatusSymbol(status : DataManager.STATUS):
+    var symbol = load("res://scenes/widgets/statusSymbol.tscn").instantiate()
     match status:
       DataManager.STATUS.sleep:
-        var symbol = load("res://scenes/widgets/statusSymbol.tscn").instantiate()
         symbol.get_node("SymbolArt").texture = load("res://assets/Symbols/sleep.png")
         return symbol
+      DataManager.STATUS.poison:
+        symbol.get_node("SymbolArt").texture = load("res://assets/Symbols/poison.png")
+        return symbol
       _:
-        pass
+        return symbol
     
-            
+func createEffect(effectArray : Dictionary):
+    var effectStringToEnum = DataManager.EFFECTS.get(effectArray["effectType"])
+    var statusStringToEnum = DataManager.STATUS.get(effectArray["status"])
+    
+    return Effect.new(effectStringToEnum, statusStringToEnum, effectArray["value"])         
 
 func _ready():
     copyDatabase()

@@ -16,6 +16,6 @@ func _can_drop_data(at_position, data):
 func slotted_logic():
     activeCard.index = get_index()
     #copy array, append and then assign that new array to activate the setter 
-    activeCard.status = universalMethods.editArray(activeCard.status, true, DataManager.STATUS.sleep)
+    activeCard.status = universalMethods.editStatusArray(activeCard.status, true, DataManager.STATUS.sleep)
     EventsBus.emit_signal("countdown", activeCard.energy)
     EventsBus.emit_signal("resetCards")

@@ -110,6 +110,22 @@
 					"effect": [],
 					"counter": 5,
 					"numID": 0
+				},
+				{
+					"name": "Swamp Zombie",
+					"numID": 1,
+					"description": "Inflict 3 poison on hit",
+					"counter": 4,
+					"energy": 2,
+					"attack": 5,
+					"hp": 8,
+					"effect": [
+						{
+							"effectType": "applyEffectOnHit",
+							"status": "poison",
+							"value": 3
+						}
+					]
 				}
 			],
 			"separators": [],
@@ -122,7 +138,21 @@
 			},
 			"separators": [],
 			"lines": [],
-			"columns": []
+			"columns": [
+				{
+					"typeStr": "1",
+					"name": "effectType",
+					"display": null
+				},
+				{
+					"typeStr": "1",
+					"name": "status"
+				},
+				{
+					"typeStr": "3",
+					"name": "value"
+				}
+			]
 		},
 		{
 			"name": "EnemyData",
@@ -168,8 +198,8 @@
 					"numID": 0,
 					"description": "",
 					"counter": 5,
-					"attack": 5,
-					"hp": 8,
+					"attack": 0,
+					"hp": 99,
 					"effect": []
 				},
 				{

@@ -21,12 +21,15 @@ var enemywaves = []
 var enemyHp = 50
 
 enum STATUS {
-    sleep,
-    poison,
-    test # for cards first summoned on the field, cards that are just summoned, cannot deplete their counter
+    test,
+    sleep, # for cards first summoned on the field, cards that are just summoned, cannot deplete their counter
+    poison, 
 }
 
-enum EFFECTS {}
+enum EFFECTS {
+    test,
+    applyEffectOnHit,
+}
 
 func _ready():
     pass # Replace with function body.
