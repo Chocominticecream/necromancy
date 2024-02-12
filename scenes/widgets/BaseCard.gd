@@ -76,7 +76,7 @@ func statusset(val):
         n.queue_free()
         
     for i in range(len(status)):
-        var symbol = universalMethods.spawnStatusSymbol(status[i].statusTypeEnum)
+        var symbol = universalMethods.spawnStatusSymbol(status[i])
         #print(status[i].statusTypeEnum)
         symbol.position.y += 50 * i
         spawn.add_child(symbol)

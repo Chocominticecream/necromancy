@@ -143,16 +143,17 @@ func editStatusArray(activeArray : Array, add : bool , statuses , value : int = 
       
       for status in activeArray:
         if status.statusTypeEnum == statuses:
-           print("status already present!")
+           status.value += value
            return copyArray
         
       var newEffect = Status.new(statuses, value)
       copyArray.append(newEffect)
       return copyArray
 
-func spawnStatusSymbol(status : DataManager.STATUS):
+func spawnStatusSymbol(status : Status):
     var symbol = load("res://scenes/widgets/statusSymbol.tscn").instantiate()
-    match status:
+    symbol.value = status.value
+    match status.statusTypeEnum:
       DataManager.STATUS.sleep:
         symbol.get_node("SymbolArt").texture = load("res://assets/Symbols/sleep.png")
         return symbol

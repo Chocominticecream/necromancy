@@ -18,7 +18,6 @@ var attackingFoe : Array
 
 func _ready():
     super._ready()
-    print(effect)
     maxcounter = counter
     #battle logic signals
 

@@ -34,6 +34,10 @@ func countdown(val : int):
               var actingCard = slot.activeCard
               actingCard.onAttack()
               await get_tree().create_timer(actingCard.DRAWTIME*2).timeout;
+              for statusEffect in actingCard.status:
+                if statusEffect.statusTypeEnum == DataManager.STATUS.poison:
+                  statusEffect.applyStatus(actingCard)
+                  await get_tree().create_timer(actingCard.DRAWTIME*1.5).timeout;
             
     for slot in $heroField.get_children():
         if slot.activeCard != null and slot.activeCard.counter <= 0:
