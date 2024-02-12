@@ -5,6 +5,7 @@ extends Control
 func _ready():
     EventsBus.connect("countdown", countdown)
 
+#TODO - rework sleep as a status effect and not a boolean
 func countdown(val : int):
   DataManager.phase = DataManager.countDownPhase
   var cardTime = 0
@@ -12,13 +13,14 @@ func countdown(val : int):
     #deplete count by 1 and assign the cardtime to delay the depletion of counter values
     for slot in $enemyField.get_children():
         if slot.activeCard != null:
-            if !slot.activeCard.sleep:
+            #checks if the card is sleeping, preventing it from attacking
+            if !slot.activeCard.checkStatus(DataManager.STATUS.sleep):
               var actingCard = slot.activeCard
               actingCard.counter -= 1
               cardTime = actingCard.DRAWTIME
     for slot in $heroField.get_children():
         if slot.activeCard != null:
-            if !slot.activeCard.sleep:
+            if !slot.activeCard.checkStatus(DataManager.STATUS.sleep):
               var actingCard = slot.activeCard
               actingCard.counter -= 1
               cardTime = actingCard.DRAWTIME
@@ -32,6 +34,10 @@ func countdown(val : int):
               var actingCard = slot.activeCard
               actingCard.onAttack()
               await get_tree().create_timer(actingCard.DRAWTIME*2).timeout;
+              for statusEffect in actingCard.status:
+                if statusEffect.statusTypeEnum == DataManager.STATUS.poison:
+                  statusEffect.applyStatus(actingCard)
+                  await get_tree().create_timer(actingCard.DRAWTIME*1.5).timeout;
             
     for slot in $heroField.get_children():
         if slot.activeCard != null and slot.activeCard.counter <= 0:
@@ -50,13 +56,10 @@ func countdown(val : int):
   #wake up all cards
   for slot in $enemyField.get_children():
      if slot.activeCard != null:
-        slot.activeCard.sleep = false
+        slot.activeCard.applyStatus(DataManager.STATUS.sleep)
   for slot in $heroField.get_children():
      if slot.activeCard != null:
-        slot.activeCard.sleep = false
+        slot.activeCard.applyStatus(DataManager.STATUS.sleep)
   #emit signals to reactivate cards and buttons
   DataManager.phase = DataManager.playPhase
 
-func takeDamage(alliance : bool, damage : int, index: int):
-    pass 
-  

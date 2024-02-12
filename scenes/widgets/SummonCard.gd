@@ -11,7 +11,7 @@ var index: int #returns value of card's cardslot index
 var maxcounter : int
 #true = hero side false = enemy side
 var alliance : bool
-#called when first played, sleeping cards dont deplete their counter
+#called when first played, sleeping cards dont deplete their counter, TO REWORK THIS INTO A STATUS EFFECT
 var sleep : bool = true
 #grab the targetting foe, by default it is the opposing card
 var attackingFoe : Array
@@ -77,11 +77,17 @@ func onAttack():
     TweenNode.tween_property(self, "global_position", global_position + Vector2(0,-100*fightfactor) , DRAWTIME/2).set_ease(Tween.EASE_IN_OUT).set_trans(Tween.TRANS_LINEAR)
     TweenNode.tween_property(self, "global_position", global_position , DRAWTIME/2).set_ease(Tween.EASE_IN_OUT).set_trans(Tween.TRANS_LINEAR)
     await get_tree().create_timer(DRAWTIME).timeout;
-    EventsBus.emit_signal("onTakeDamage", alliance, attack, attackingFoe)
+    EventsBus.emit_signal("onTakeDamage", alliance, attack, attackingFoe, effect)
     await get_tree().create_timer(DRAWTIME).timeout;
     counterset(maxcounter)
 
-func onTakeDamage(ally : bool , damage : int, targetingFoe: Array):
+func onTakeDamage(ally : bool , damage : int, targetingFoe: Array, effects: Array):
+     var fightfactor = 1
+     TweenNode = create_tween()
+     if alliance:
+        fightfactor = 1
+     else:
+        fightfactor = -1
      if !ally == alliance:
         for idx in targetingFoe:
             if index == idx:
@@ -89,7 +95,13 @@ func onTakeDamage(ally : bool , damage : int, targetingFoe: Array):
                  print("enemy card in slot " + str(index) + " has taken " + str(damage) + " damage from hero")
                else:
                  print("hero card in slot " + str(index) + " has taken " + str(damage) + " damage from enemy")
+               animation.play("hurt")
+               TweenNode.tween_property(self, "global_position", global_position + Vector2(0,20*fightfactor) , DRAWTIME/2).set_ease(Tween.EASE_IN_OUT).set_trans(Tween.TRANS_LINEAR)
+               TweenNode.tween_property(self, "global_position", global_position , DRAWTIME/2).set_ease(Tween.EASE_IN_OUT).set_trans(Tween.TRANS_LINEAR)
                hpset(hp-damage)
+               for trigger in effects:
+                 if trigger.effectTypeEnum == DataManager.EFFECTS.applyEffectOnHit:
+                    trigger.applyEffect(self)
                if hp <= 0:
                  onDeath()
                  
@@ -97,3 +109,5 @@ func onTakeDamage(ally : bool , damage : int, targetingFoe: Array):
 func onDeath():
     emit_signal("activeCardToNull", index)
     self.queue_free()
+
+

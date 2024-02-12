@@ -13,10 +13,23 @@ var firstTurn = true #checks if its the first turn, required for inital battle l
 
 #values for hero
 var maindeck = []
+var heroHp = 50
 
 #values for enemy
 var enemydeck = []
 var enemywaves = []
+var enemyHp = 50
+
+enum STATUS {
+    test,
+    sleep, # for cards first summoned on the field, cards that are just summoned, cannot deplete their counter
+    poison, 
+}
+
+enum EFFECTS {
+    test,
+    applyEffectOnHit,
+}
 
 func _ready():
     pass # Replace with function body.

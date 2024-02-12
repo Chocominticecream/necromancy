@@ -25,7 +25,7 @@ enum{
 func _ready():
    
     $draw.drawdeck = DataManager.maindeck.duplicate()
-    $draw/drawValue.text = str(len(DataManager.maindeck))
+    #$draw/drawValue.text =  "[center]" + str(len(DataManager.maindeck))
     EventsBus.connect("resetCards", reorganiser)
     EventsBus.connect("redrawCards", cardRedrawer)
     # for i in range(10):

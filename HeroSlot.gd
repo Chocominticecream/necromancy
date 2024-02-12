@@ -1,5 +1,6 @@
 extends BaseSlot
 
+var universalMethods = Universalfunc.new()
 # Called when the node enters the scene tree for the first time.
 func _ready():
     super._ready()
@@ -13,6 +14,8 @@ func _can_drop_data(at_position, data):
     return data is SummonCard and activeCard == null
     
 func slotted_logic():
-    self.activeCard.index = get_index()
-    EventsBus.emit_signal("countdown", self.activeCard.energy)
+    activeCard.index = get_index()
+    #copy array, append and then assign that new array to activate the setter 
+    activeCard.status = universalMethods.editStatusArray(activeCard.status, true, DataManager.STATUS.sleep)
+    EventsBus.emit_signal("countdown", activeCard.energy)
     EventsBus.emit_signal("resetCards")

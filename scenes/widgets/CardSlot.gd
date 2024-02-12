@@ -31,18 +31,13 @@ func _drop_data(at_position, data):
 func slotted_logic():
     pass    
 
-func onTakeSlotDamage(ally : bool, damage : int, attackingFoe : Array):
-    var teststring = ""
-    if alliance:
-        teststring = "hero has taken "
-    else:
-        teststring = "enemy has taken "
+func onTakeSlotDamage(ally : bool, damage : int, attackingFoe : Array, effect : Array):
     if !ally == alliance:
        for idx in attackingFoe:
          if activeCard == null and get_index() == idx:
-            print(teststring + str(damage) + " direct damage!")
+            EventsBus.emit_signal("onTakeDirectDamage", damage, alliance)
          elif get_index() == idx:
-            activeCard.onTakeDamage(ally,damage,attackingFoe)
+            activeCard.onTakeDamage(ally,damage,attackingFoe,effect)
          else:
             pass
 

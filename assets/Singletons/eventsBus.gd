@@ -12,6 +12,8 @@ signal summonWave()
 #basic card action signals
 signal onTakeDamage(alliance, damage, attackingFoe)
 signal onAttack()
+signal onTakeDirectDamage(val, alliance)
+
 signal countdown(val)
 signal activeCardToNull(idx)
 

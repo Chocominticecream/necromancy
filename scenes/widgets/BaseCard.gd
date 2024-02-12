@@ -2,7 +2,8 @@ extends MarginContainer
 class_name BaseCard
 #miscellaneous variables for calculation purposes
 var printedname : String : get = nameget, set = nameset
-var effect : Array : get = effectget, set = effectset
+var effect : Array = []: get = effectget, set = effectset
+var status : Array = [] : get = statusget, set = statusset
 var energy : int : get = energyget, set = energyset
 var description : String : get = descget, set = descset
 var type : String 
@@ -31,7 +32,6 @@ enum{
     inEnemyPlay #enemy play state machine
     
     }
-
     
 var state = inHand
 
@@ -50,6 +50,7 @@ var targetdiscard
 
 #animation
 @onready var animation = $AnimationPlayer
+var universalMethods = Universalfunc.new()
 
 #----------------------------setters and getters---------------------------------
     
@@ -66,6 +67,22 @@ func effectset(val):
     
 func effectget():
     return effect
+
+func statusset(val):
+    status = val
+    var spawn = $spriteNodes/graphicsScaler/StatusSpawn
+    for n in spawn.get_children():
+        spawn.remove_child(n)
+        n.queue_free()
+        
+    for i in range(len(status)):
+        var symbol = universalMethods.spawnStatusSymbol(status[i])
+        #print(status[i].statusTypeEnum)
+        symbol.position.y += 50 * i
+        spawn.add_child(symbol)
+
+func statusget():
+    return status
 
 func energyset(val):
     $spriteNodes/TextNormal/Energy.text = "[center]" + str(val) 
@@ -100,7 +117,8 @@ func _ready():
     #animation signals
     EventsBus.connect("setState", stateset)
     EventsBus.connect("setAnimationstate", animationset)
-
+    #statusset(universalMethods.editArray(status, true, DataManager.STATUS.test))
+    
 func _process(delta):
     
     if Input.is_action_just_released("ui_left_click") and state == playing:
@@ -213,4 +231,31 @@ func _can_drop_data(at_position, data):
 
 func _drop_data(at_position, data):
     pass
+
+#mockup method for applying card effects on to other cards
+func applyEffect( effectType, effectsArray : Array = effect, card : BaseCard = self):
+     for effect in effectsArray:
+        #an enum is supposed to go here in effectType
+        if effect.effectTypeEnum == effectType:
+            #apply effect based on inherited/overloaded applyEffect method
+            effect.applyEffect(card)
+    
+func applyStatus( statusType, statusArray: Array = status, card : BaseCard = self):
+    for status in statusArray:
+        #an enum is supposed to go here in effectType
+        if status.statusTypeEnum == statusType:
+            #apply effect based on inherited/overloaded applyEffect method
+            status.applyStatus(card)
+            
+#check if card/status effects exist, useful for ensuring that certain effects don't clash with each other
+# eg a hit all effect with a hit random effect would not make sense
+func checkEffect(effectType, effectsArray: Array = effect):
+    for effect in effectsArray:
+        if effect.effectTypeEnum == effectType:
+            return true
+            
+func checkStatus(statusType, statusArray: Array = status):
+    for status in statusArray:
+        if status.statusTypeEnum == statusType:
+            return true
 
