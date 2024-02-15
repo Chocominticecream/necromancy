@@ -124,11 +124,10 @@ func _process(delta):
     if Input.is_action_just_released("ui_left_click") and state == playing:
       animation.play("simpleUnfocus")
       state = unfocusing
-
     
     match state:
        inHand:
-          self.scale = Vector2(1,1)
+          pass
        reOrganiseHand:
           $spriteNodes.z_index = 1
           TweenNode = create_tween()
@@ -173,9 +172,10 @@ func _process(delta):
           state = reOrganiseHand
        focusInHand:
           rotation_degrees = 0
+       playing:
+          pass
        inPlay:
-          # 0.64 * 1.3 to fit into card slot
-          self.scale = Vector2(0.64,0.64)
+          self.scale = Vector2(0.832,0.832)
        inDiscard:
           pass
        inDraw:
@@ -223,6 +223,7 @@ func _get_drag_data(at_position):
       ghostdrag.add_child(preview)
       set_drag_preview(ghostdrag)
       state = playing
+      animation.play("normal")
     
       return self
 

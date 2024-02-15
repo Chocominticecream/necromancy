@@ -34,6 +34,16 @@ func _process(delta):
         $spriteNodes/TextFocused/Energy.visible = true
         $spriteNodes/graphicsScaler/EnergySprite.visible = true
 
+func _on_gui_input(event):
+    super._on_gui_input(event)
+    #test function , to be removed in final prototype
+    if Input.is_action_just_pressed("ui_left_click") and state == inPlay:
+        self.scale = Vector2(1,1)
+        animation.play("normal")
+        EventsBus.emit_signal("reParentChild", self , get_node("/root/battleScene/battleUI/decks/hand"))
+        EventsBus.emit_signal("resetCards")
+        EventsBus.emit_signal("activeCardToNull", index, alliance)
+        #self.scale = self.scale * 1.2
 #-------- SETTER AND GETTERS---------------
 
 func hpset(val : int):
@@ -107,7 +117,7 @@ func onTakeDamage(ally : bool , damage : int, targetingFoe: Array, effects: Arra
                  
 
 func onDeath():
-    emit_signal("activeCardToNull", index)
+    emit_signal("activeCardToNull", index, alliance)
     self.queue_free()
 
 

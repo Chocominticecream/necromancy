@@ -42,6 +42,6 @@ func onTakeSlotDamage(ally : bool, damage : int, attackingFoe : Array, effect : 
             pass
 
 #code to set activecard after card death to null because my coding skills suck          
-func activeCardToNull(idx : int):
-    if get_index() == idx:
+func activeCardToNull(idx : int, ally: bool):
+    if get_index() == idx and ally == alliance:
         activeCard = null
