@@ -37,7 +37,7 @@ func _process(delta):
 func _on_gui_input(event):
     super._on_gui_input(event)
     #test function , to be removed in final prototype
-    if Input.is_action_just_pressed("ui_left_click") and state == inPlay:
+    if Input.is_action_just_pressed("ui_left_click") and state == inPlay and animationFinished == true:
         self.scale = Vector2(1,1)
         animation.play("normal")
         EventsBus.emit_signal("reParentChild", self , get_node("/root/battleScene/battleUI/decks/hand"))
@@ -83,12 +83,12 @@ func onAttack():
         fightfactor = 1
     else:
         fightfactor = -1
-    TweenNode.tween_property(self, "global_position", global_position + Vector2(0,50*fightfactor) , DRAWTIME/2).set_ease(Tween.EASE_IN_OUT).set_trans(Tween.TRANS_LINEAR)
-    TweenNode.tween_property(self, "global_position", global_position + Vector2(0,-100*fightfactor) , DRAWTIME/2).set_ease(Tween.EASE_IN_OUT).set_trans(Tween.TRANS_LINEAR)
-    TweenNode.tween_property(self, "global_position", global_position , DRAWTIME/2).set_ease(Tween.EASE_IN_OUT).set_trans(Tween.TRANS_LINEAR)
-    await get_tree().create_timer(DRAWTIME).timeout;
+    TweenNode.tween_property(self, "global_position", global_position + Vector2(0,50*fightfactor) , DataManager.DRAWTIME/2).set_ease(Tween.EASE_IN_OUT).set_trans(Tween.TRANS_LINEAR)
+    TweenNode.tween_property(self, "global_position", global_position + Vector2(0,-100*fightfactor) , DataManager.DRAWTIME/2).set_ease(Tween.EASE_IN_OUT).set_trans(Tween.TRANS_LINEAR)
+    TweenNode.tween_property(self, "global_position", global_position , DataManager.DRAWTIME/2).set_ease(Tween.EASE_IN_OUT).set_trans(Tween.TRANS_LINEAR)
+    await get_tree().create_timer(DataManager.DRAWTIME).timeout;
     EventsBus.emit_signal("onTakeDamage", alliance, attack, attackingFoe, effect)
-    await get_tree().create_timer(DRAWTIME).timeout;
+    await get_tree().create_timer(DataManager.DRAWTIME).timeout;
     counterset(maxcounter)
 
 func onTakeDamage(ally : bool , damage : int, targetingFoe: Array, effects: Array):
@@ -106,8 +106,8 @@ func onTakeDamage(ally : bool , damage : int, targetingFoe: Array, effects: Arra
                else:
                  print("hero card in slot " + str(index) + " has taken " + str(damage) + " damage from enemy")
                animation.play("hurt")
-               TweenNode.tween_property(self, "global_position", global_position + Vector2(0,20*fightfactor) , DRAWTIME/2).set_ease(Tween.EASE_IN_OUT).set_trans(Tween.TRANS_LINEAR)
-               TweenNode.tween_property(self, "global_position", global_position , DRAWTIME/2).set_ease(Tween.EASE_IN_OUT).set_trans(Tween.TRANS_LINEAR)
+               TweenNode.tween_property(self, "global_position", global_position + Vector2(0,20*fightfactor) , DataManager.DRAWTIME/2).set_ease(Tween.EASE_IN_OUT).set_trans(Tween.TRANS_LINEAR)
+               TweenNode.tween_property(self, "global_position", global_position , DataManager.DRAWTIME/2).set_ease(Tween.EASE_IN_OUT).set_trans(Tween.TRANS_LINEAR)
                hpset(hp-damage)
                for trigger in effects:
                  if trigger.effectTypeEnum == DataManager.EFFECTS.applyEffectOnHit:

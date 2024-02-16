@@ -160,6 +160,9 @@ func spawnStatusSymbol(status : Status):
       DataManager.STATUS.poison:
         symbol.get_node("SymbolArt").texture = load("res://assets/Symbols/poison.png")
         return symbol
+      DataManager.STATUS.hex:
+        symbol.get_node("SymbolArt").texture = load("res://assets/Symbols/hex.png")
+        return symbol
       _:
         return symbol
     
@@ -169,5 +172,11 @@ func createEffect(effectArray : Dictionary):
     
     return Effect.new(effectStringToEnum, statusStringToEnum, effectArray["value"])         
 
+func triggerStatuses(triggeredEnum: DataManager.STATUS, card: BaseCard, altTrigger: bool = true):
+      for statusEffect in card.status:
+          match statusEffect.statusTypeEnum:
+            triggeredEnum:
+              statusEffect.applyStatus(card, altTrigger)
+       
 func _ready():
     copyDatabase()

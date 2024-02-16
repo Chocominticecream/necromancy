@@ -25,6 +25,7 @@ func _drop_data(at_position, data):
     data.get_node("spriteNodes").z_index = 0
     data.state = data.inPlay
     data.get_parent().remove_child(data)
+    data.animation.play("normal")
     self.add_child(data)
     slotted_logic()
 

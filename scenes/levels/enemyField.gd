@@ -35,7 +35,7 @@ func summonWave():
                get_child(slot).activeCard = enemydeck[0]
                get_child(slot).summonEnemy(enemydeck[0])
                enemydeck.erase(enemydeck[0])
-               await get_tree().create_timer(get_child(slot).activeCard.DRAWTIME).timeout;
+               await get_tree().create_timer(DataManager.DRAWTIME).timeout;
     DataManager.phase = DataManager.playPhase
         
     

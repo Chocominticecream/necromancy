@@ -70,7 +70,7 @@ func carddrawer(drawno : int):
          childcard.targetrot = cardrotater(i)
          childcard.state = childcard.moveDrawnCardToHand
          drawdeck.erase(drawdeck[0])
-         await get_tree().create_timer(childcard.DRAWTIME).timeout;
+         await get_tree().create_timer(DataManager.DRAWTIME).timeout;
          $draw/drawValue.text = "[center]" + str(int($draw/drawValue.text) - 1) + "[/center]"
          reorganiser()
          #if is_instance_valid(drawdeck[0]):
@@ -91,12 +91,12 @@ func cardRedrawer():
         card.targetrot = 0
         card.state = card.redrawCard
         discardDeck.append(card)
-        await get_tree().create_timer(card.DRAWTIME).timeout;
+        await get_tree().create_timer(DataManager.DRAWTIME).timeout;
         if card.get_parent() != null:
           card.get_parent().remove_child(card)
         reorganiser()
         $discard/discardValue.text = "[center]" + str(int($discard/discardValue.text) + 1) + "[/center]"
-        awaitTime += card.DRAWTIME
+        awaitTime += DataManager.DRAWTIME
     await carddrawer(5)
     EventsBus.emit_signal("countdown", 3)
 
