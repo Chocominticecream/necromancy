@@ -108,7 +108,10 @@ func onTakeDamage(ally : bool , damage : int, targetingFoe: Array, effects: Arra
                animation.play("hurt")
                TweenNode.tween_property(self, "global_position", global_position + Vector2(0,20*fightfactor) , DataManager.DRAWTIME/2).set_ease(Tween.EASE_IN_OUT).set_trans(Tween.TRANS_LINEAR)
                TweenNode.tween_property(self, "global_position", global_position , DataManager.DRAWTIME/2).set_ease(Tween.EASE_IN_OUT).set_trans(Tween.TRANS_LINEAR)
-               hpset(hp-damage)
+               if damage <= 0:
+                 hpset(hp)
+               else:
+                 hpset(hp-damage)
                for trigger in effects:
                  if trigger.effectTypeEnum == DataManager.EFFECTS.applyEffectOnHit:
                     trigger.applyEffect(self)

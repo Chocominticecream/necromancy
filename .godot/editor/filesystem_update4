@@ -7,15 +7,6 @@ res://scenes/widgets/Hero_slot.tscn
 res://scenes/widgets/SpellCard.tscn
 res://scenes/widgets/cardSlot.tscn
 res://scenes/widgets/BaseCard.tscn
-res://scenes/widgets/BaseCard.gd
-res://assets/Singletons/data_manager.gd
-res://scenes/levels/decks.gd
-res://scenes/levels/Fields.gd
 res://scenes/widgets/SummonCard.gd
-res://EnemySlot.gd
-res://scenes/levels/enemyField.gd
-res://scenes/levels/Transition.gd
-res://scenes/widgets/CardSlot.gd
-res://assets/Resources/Universalfunc.gd
 res://assets/Resources/Status.gd
-res://scenes/widgets/statusSymbol.gd
+res://scenes/widgets/statusSymbol.tscn
