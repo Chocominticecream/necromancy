@@ -30,8 +30,9 @@ func applyStatus(card : BaseCard, altTrigger : bool = true):
         DataManager.STATUS.hex:
             if altTrigger:
               print(card.printedname + " has been hexed for " + str(-value) + "!")
-              card.attack = card.attack + value
+              card.attack += value
             elif !altTrigger:
+              card.attack += -value
               copyArray.erase(self)
               card.status = copyArray
         _:
