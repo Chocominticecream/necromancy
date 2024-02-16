@@ -20,16 +20,21 @@ var enemydeck = []
 var enemywaves = []
 var enemyHp = 50
 
+#options values
+var DRAWTIME = 0.2
+
 enum STATUS {
     test,
     sleep, # for cards first summoned on the field, cards that are just summoned, cannot deplete their counter
-    poison, 
+    poison, #poison damage, take damage after attacking
+    hex 
 }
 
 enum EFFECTS {
     test,
     applyEffectOnHit,
 }
+
 
 func _ready():
     pass # Replace with function body.

@@ -18,6 +18,12 @@ func createStarterDeck(deck : Array):
          var swampcard = cardfunc.createCard(swampentry, 'summon')
          swampcard.alliance = true
          deck.append(swampcard)
+    
+     for i in range(2):
+         var mummyentry = cardfunc.findCard(data_cbd, 2, "SummonData", "numID")
+         var mummycard = cardfunc.createCard(mummyentry, 'summon')
+         mummycard.alliance = true
+         deck.append(mummycard)
      
      for i in range(5):
          var manaballentry = cardfunc.findCard(data_cbd, 0, 'SpellData', 'numID')
@@ -29,14 +35,18 @@ func createEnemyDeck(deck : Array, wavedeck : Array):
     var data_cbd = cardfunc.readDatabase()
     
     #for i in range(5):
-    var soldierentry = cardfunc.findCard(data_cbd, 0, "EnemyData", "numID")
+    var soldierentry = cardfunc.findCard(data_cbd, 1, "EnemyData", "numID")
     var soldiercard = cardfunc.createCard(soldierentry , 'enemySummon')
     deck.append(soldiercard)
     
-    var spiderCard = cardfunc.createCard(cardfunc.findCard(data_cbd, 1, "EnemyData", "numID") , 'enemySummon')
+    var spiderCard = cardfunc.createCard(cardfunc.findCard(data_cbd, 2, "EnemyData", "numID") , 'enemySummon')
     deck.append(spiderCard)
+    
+    var testCard = cardfunc.createCard(cardfunc.findCard(data_cbd, 0, "EnemyData", "numID") , 'enemySummon')
+    deck.append(testCard)
+    
     #appending wave deck value, first value is the amount of enemies summoned, second number is time til the next wave
-    wavedeck.append([2,3])  
+    wavedeck.append([3,3])  
 # Called when the node enters the scene tree for the first time.
 func _ready():
     cardfunc.copyDatabase()

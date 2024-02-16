@@ -38,7 +38,6 @@ var state = inHand
 #tweens
 var TweenNode
 var TweenRotate
-var DRAWTIME = 0.2
 var tweened = false
 
 #rotation and position
@@ -71,6 +70,9 @@ func effectget():
 func statusset(val):
     status = val
     var spawn = $spriteNodes/graphicsScaler/StatusSpawn
+    for effect in status:
+        universalMethods.triggerStatuses(DataManager.STATUS.hex, self)
+        
     for n in spawn.get_children():
         spawn.remove_child(n)
         n.queue_free()
@@ -112,7 +114,7 @@ func setPosition(val):
 #--------------------------------end of setters/getters-------------------------------------
 
 func _ready():
-    animation.speed_scale = 1/DRAWTIME
+    animation.speed_scale = 1/DataManager.DRAWTIME
     
     #animation signals
     EventsBus.connect("setState", stateset)
@@ -124,39 +126,38 @@ func _process(delta):
     if Input.is_action_just_released("ui_left_click") and state == playing:
       animation.play("simpleUnfocus")
       state = unfocusing
-
     
     match state:
        inHand:
-          self.scale = Vector2(1,1)
+          pass
        reOrganiseHand:
           $spriteNodes.z_index = 1
           TweenNode = create_tween()
           TweenRotate = create_tween()
-          TweenNode.tween_property(self, "global_position", target , DRAWTIME).set_ease(Tween.EASE_IN_OUT).set_trans(Tween.TRANS_LINEAR)
-          TweenRotate.tween_property(self, "rotation_degrees", targetrot , DRAWTIME).set_ease(Tween.EASE_IN_OUT).set_trans(Tween.TRANS_LINEAR)
+          TweenNode.tween_property(self, "global_position", target , DataManager.DRAWTIME).set_ease(Tween.EASE_IN_OUT).set_trans(Tween.TRANS_LINEAR)
+          TweenRotate.tween_property(self, "rotation_degrees", targetrot , DataManager.DRAWTIME).set_ease(Tween.EASE_IN_OUT).set_trans(Tween.TRANS_LINEAR)
           state = inHand
        moveDrawnCardToHand:
           #global_position = Vector2(1750, 750)
           $spriteNodes.z_index = 2
           TweenNode = create_tween()
           TweenRotate = create_tween()
-          TweenNode.tween_property(self, "global_position", target , DRAWTIME).set_ease(Tween.EASE_IN_OUT).set_trans(Tween.TRANS_LINEAR)
-          TweenRotate.tween_property(self, "rotation_degrees", targetrot , DRAWTIME).set_ease(Tween.EASE_IN_OUT).set_trans(Tween.TRANS_LINEAR)
+          TweenNode.tween_property(self, "global_position", target , DataManager.DRAWTIME).set_ease(Tween.EASE_IN_OUT).set_trans(Tween.TRANS_LINEAR)
+          TweenRotate.tween_property(self, "rotation_degrees", targetrot , DataManager.DRAWTIME).set_ease(Tween.EASE_IN_OUT).set_trans(Tween.TRANS_LINEAR)
           state = inHand
        discardCard:
           $spriteNodes.z_index = 0
           TweenNode = create_tween()
           TweenRotate = create_tween()
-          TweenNode.tween_property(self, "global_position", target , DRAWTIME).set_ease(Tween.EASE_IN_OUT).set_trans(Tween.TRANS_LINEAR)
-          TweenRotate.tween_property(self, "rotation_degrees", targetrot , DRAWTIME).set_ease(Tween.EASE_IN_OUT).set_trans(Tween.TRANS_LINEAR)
+          TweenNode.tween_property(self, "global_position", target , DataManager.DRAWTIME).set_ease(Tween.EASE_IN_OUT).set_trans(Tween.TRANS_LINEAR)
+          TweenRotate.tween_property(self, "rotation_degrees", targetrot , DataManager.DRAWTIME).set_ease(Tween.EASE_IN_OUT).set_trans(Tween.TRANS_LINEAR)
           state = inDiscard
        redrawCard:
           $spriteNodes.z_index = 0
           TweenNode = create_tween()
           TweenRotate = create_tween()
-          TweenNode.tween_property(self, "global_position", target , DRAWTIME).set_ease(Tween.EASE_IN_OUT).set_trans(Tween.TRANS_LINEAR)
-          TweenRotate.tween_property(self, "rotation_degrees", targetrot , DRAWTIME).set_ease(Tween.EASE_IN_OUT).set_trans(Tween.TRANS_LINEAR)
+          TweenNode.tween_property(self, "global_position", target , DataManager.DRAWTIME).set_ease(Tween.EASE_IN_OUT).set_trans(Tween.TRANS_LINEAR)
+          TweenRotate.tween_property(self, "rotation_degrees", targetrot , DataManager.DRAWTIME).set_ease(Tween.EASE_IN_OUT).set_trans(Tween.TRANS_LINEAR)
           state = inDiscard
        focusing:
           rotation_degrees = 0
@@ -165,7 +166,7 @@ func _process(delta):
           animation.play("simpleFocus")
               #1.62
           focuspt.y = projresolution.y*1.45 - $spriteNodes/graphicsScaler/Cardbackground.texture.get_height()*scale.y*1.8
-          TweenNode.tween_property(self, "global_position", focuspt , DRAWTIME).set_ease(Tween.EASE_IN_OUT).set_trans(Tween.TRANS_LINEAR)
+          TweenNode.tween_property(self, "global_position", focuspt , DataManager.DRAWTIME).set_ease(Tween.EASE_IN_OUT).set_trans(Tween.TRANS_LINEAR)
           $spriteNodes.z_index = 2
           state = focusInHand
        unfocusing:
@@ -173,9 +174,10 @@ func _process(delta):
           state = reOrganiseHand
        focusInHand:
           rotation_degrees = 0
+       playing:
+          pass
        inPlay:
-          # 0.64 * 1.3 to fit into card slot
-          self.scale = Vector2(0.64,0.64)
+          self.scale = Vector2(0.832,0.832)
        inDiscard:
           pass
        inDraw:

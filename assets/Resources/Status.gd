@@ -8,12 +8,13 @@ var DRAWTIME = 0.2
 
 func _ready():
     pass
+        
 #construct status with value and effect
 func _init(status : DataManager.STATUS, val : int):
     statusTypeEnum = status
     value = val
 #sleep
-func applyStatus(card : BaseCard):
+func applyStatus(card : BaseCard, altTrigger : bool = true):
     var copyArray = card.status.duplicate()
     match statusTypeEnum:
         DataManager.STATUS.sleep:
@@ -26,6 +27,13 @@ func applyStatus(card : BaseCard):
             if copyArray[copyArray.find(self)].value <= 0:
               copyArray.erase(self)
             card.status = copyArray
+        DataManager.STATUS.hex:
+            if altTrigger:
+              print(card.printedname + " has been hexed for " + str(-value) + "!")
+              card.attack = card.attack + value
+            elif !altTrigger:
+              copyArray.erase(self)
+              card.status = copyArray
         _:
             pass
             

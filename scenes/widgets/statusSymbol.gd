@@ -8,7 +8,7 @@ func valueget():
     
 func valueset(val):
     value = val
-    if val <= 0:
+    if val == 0:
         $StatusValue.text = "[center]" + ""
     else:
         $StatusValue.text = "[center]" + str(value)

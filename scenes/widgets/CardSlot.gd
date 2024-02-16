@@ -25,6 +25,7 @@ func _drop_data(at_position, data):
     data.get_node("spriteNodes").z_index = 0
     data.state = data.inPlay
     data.get_parent().remove_child(data)
+    data.animation.play("normal")
     self.add_child(data)
     slotted_logic()
 
@@ -42,6 +43,6 @@ func onTakeSlotDamage(ally : bool, damage : int, attackingFoe : Array, effect : 
             pass
 
 #code to set activecard after card death to null because my coding skills suck          
-func activeCardToNull(idx : int):
-    if get_index() == idx:
+func activeCardToNull(idx : int, ally: bool):
+    if get_index() == idx and ally == alliance:
         activeCard = null
