@@ -45,8 +45,11 @@ func createEnemyDeck(deck : Array, wavedeck : Array):
     var testCard = cardfunc.createCard(cardfunc.findCard(data_cbd, 0, "EnemyData", "numID") , 'enemySummon')
     deck.append(testCard)
     
+    var repeater = cardfunc.createCard(cardfunc.findCard(data_cbd, 3, "EnemyData", "numID") , 'enemySummon')
+    deck.append(repeater)
+    
     #appending wave deck value, first value is the amount of enemies summoned, second number is time til the next wave
-    wavedeck.append([3,3])  
+    wavedeck.append([4,3])  
 # Called when the node enters the scene tree for the first time.
 func _ready():
     cardfunc.copyDatabase()

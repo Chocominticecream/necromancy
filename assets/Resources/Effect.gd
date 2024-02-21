@@ -18,6 +18,9 @@ func applyEffect(card : BaseCard):
             for statusEffect in statusArray:
               card.status = card.universalMethods.editStatusArray(card.status, true, statusEffect.statusTypeEnum, statusEffect.value)
             return 
+        DataManager.EFFECTS.changeStatsOnAttack:
+            for statusEffect in statusArray:
+                statusEffect.applyStatus(card)
         _:
             pass
             

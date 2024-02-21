@@ -174,8 +174,7 @@ func createEffect(effectArray : Dictionary):
 
 func triggerStatuses(triggeredEnum: DataManager.STATUS, card: BaseCard, altTrigger: bool = true):
       for statusEffect in card.status:
-          match statusEffect.statusTypeEnum:
-            triggeredEnum:
+          if statusEffect.statusTypeEnum == triggeredEnum:
               statusEffect.applyStatus(card, altTrigger)
        
 func _ready():

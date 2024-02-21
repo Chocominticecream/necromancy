@@ -90,6 +90,9 @@ func onAttack():
     EventsBus.emit_signal("onTakeDamage", alliance, attack, attackingFoe, effect)
     await get_tree().create_timer(DataManager.DRAWTIME).timeout;
     counterset(maxcounter)
+    for trigger in effect:
+      if trigger.effectTypeEnum == DataManager.EFFECTS.changeStatsOnAttack:
+        trigger.applyEffect(self)
 
 func onTakeDamage(ally : bool , damage : int, targetingFoe: Array, effects: Array):
      var fightfactor = 1

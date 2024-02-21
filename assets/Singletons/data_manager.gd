@@ -27,12 +27,15 @@ enum STATUS {
     test,
     sleep, # for cards first summoned on the field, cards that are just summoned, cannot deplete their counter
     poison, #poison damage, take damage after attacking
-    hex 
+    hex, #temporary attack "debuff"
+    
+    attackUp, 
 }
 
 enum EFFECTS {
     test,
     applyEffectOnHit,
+    changeStatsOnAttack
 }
 
 

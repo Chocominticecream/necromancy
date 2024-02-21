@@ -70,8 +70,7 @@ func effectget():
 func statusset(val):
     status = val
     var spawn = $spriteNodes/graphicsScaler/StatusSpawn
-    for effect in status:
-        universalMethods.triggerStatuses(DataManager.STATUS.hex, self)
+    universalMethods.triggerStatuses(DataManager.STATUS.hex, self)
         
     for n in spawn.get_children():
         spawn.remove_child(n)

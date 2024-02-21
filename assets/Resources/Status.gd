@@ -2,6 +2,8 @@ extends Resource
 class_name Status
 
 var statusTypeEnum : DataManager.STATUS = DataManager.STATUS.test
+#originalvalue variable is for cartain stacking debuffing status effects 
+var originalValue : int = 0
 var value : int = 0
 #to set DRAWTIME to a global singleton variable
 var DRAWTIME = 0.2
@@ -30,11 +32,14 @@ func applyStatus(card : BaseCard, altTrigger : bool = true):
         DataManager.STATUS.hex:
             if altTrigger:
               print(card.printedname + " has been hexed for " + str(-value) + "!")
-              card.attack += value
+              card.attack = card.attack + value - originalValue
+              originalValue = value
             elif !altTrigger:
-              card.attack += -value
+              card.attack = card.attack - value
               copyArray.erase(self)
               card.status = copyArray
+        DataManager.STATUS.attackUp:
+            card.attack = card.attack + value
         _:
             pass
             

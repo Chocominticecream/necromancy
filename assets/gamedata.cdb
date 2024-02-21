@@ -137,7 +137,7 @@
 					"name": "Mummy",
 					"numID": 2,
 					"description": "Inflict 2 hex on hit",
-					"counter": 3,
+					"counter": 1,
 					"energy": 2,
 					"attack": 3,
 					"hp": 6,
@@ -217,7 +217,7 @@
 			],
 			"lines": [
 				{
-					"name": "test",
+					"name": "Test",
 					"numID": 0,
 					"description": "",
 					"counter": 3,
@@ -242,6 +242,21 @@
 					"attack": 2,
 					"hp": 3,
 					"effect": []
+				},
+				{
+					"name": "Repeater",
+					"numID": 3,
+					"description": "gain +1 atk ",
+					"counter": 1,
+					"attack": 0,
+					"hp": 8,
+					"effect": [
+						{
+							"effectType": "changeStatsOnAttack",
+							"status": "attackUp",
+							"value": 1
+						}
+					]
 				}
 			],
 			"separators": [],
@@ -254,7 +269,22 @@
 			},
 			"separators": [],
 			"lines": [],
-			"columns": []
+			"columns": [
+				{
+					"typeStr": "1",
+					"name": "effectType"
+				},
+				{
+					"typeStr": "1",
+					"name": "status",
+					"display": null
+				},
+				{
+					"typeStr": "3",
+					"name": "value",
+					"display": null
+				}
+			]
 		}
 	],
 	"customTypes": [],
