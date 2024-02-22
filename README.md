@@ -3,7 +3,7 @@
 
  The roadmap(in order of importance):
  - ~~Enemy and hero taking direct damage~~ + game over screen
- - death animations
+ - ~~death animations~~ (to be improved)
  - ~~main menu~~
 
  - ~~basic innate card effects: apply poison on hit, apply hex on hit, attack up on attack~~
