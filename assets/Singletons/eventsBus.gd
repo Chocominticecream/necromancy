@@ -16,6 +16,7 @@ signal onTakeDirectDamage(val, alliance)
 
 signal countdown(val)
 signal activeCardToNull(idx)
+signal addDelay(val)
 
 #button signals
 signal buttonActivation(val)

@@ -1,6 +1,8 @@
 extends Resource
 class_name Status
 
+
+
 var statusTypeEnum : DataManager.STATUS = DataManager.STATUS.test
 #originalvalue variable is for cartain stacking debuffing status effects 
 var originalValue : int = 0
@@ -24,7 +26,7 @@ func applyStatus(card : BaseCard, altTrigger : bool = true):
             card.status = copyArray
         DataManager.STATUS.poison:
             print(card.printedname + " has taken " + str(value) + " poison damage !")
-            card.onTakeDamage(!card.alliance, value, [card.index], [])
+            card.onTakeDamage(!card.alliance, value, [card.index], -1, [])
             copyArray[copyArray.find(self)].value -= 1
             if copyArray[copyArray.find(self)].value <= 0:
               copyArray.erase(self)
@@ -40,6 +42,10 @@ func applyStatus(card : BaseCard, altTrigger : bool = true):
               card.status = copyArray
         DataManager.STATUS.attackUp:
             card.attack = card.attack + value
+        DataManager.STATUS.attack:
+            EventsBus.emit_signal("addDelay", DataManager.DRAWTIME*2.0)
+            await DataManager.scene_tree.create_timer(DataManager.DRAWTIME*2.0).timeout
+            await card.onAttack()
         _:
             pass
             

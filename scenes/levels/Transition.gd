@@ -10,20 +10,22 @@ func createStarterDeck(deck : Array):
      for i in range(3):
          var zombieentry = cardfunc.findCard(data_cbd, 0, "SummonData", "numID")
          var zombiecard = cardfunc.createCard(zombieentry, 'summon')
-         zombiecard.alliance = true
          deck.append(zombiecard)
     
-     for i in range(2):
-         var swampentry = cardfunc.findCard(data_cbd, 1, "SummonData", "numID")
-         var swampcard = cardfunc.createCard(swampentry, 'summon')
-         swampcard.alliance = true
-         deck.append(swampcard)
+     #for i in range(2):
+         #var swampentry = cardfunc.findCard(data_cbd, 1, "SummonData", "numID")
+         #var swampcard = cardfunc.createCard(swampentry, 'summon')
+         #swampcard.alliance = true
+         #deck.append(swampcard)
     
      for i in range(2):
          var mummyentry = cardfunc.findCard(data_cbd, 2, "SummonData", "numID")
          var mummycard = cardfunc.createCard(mummyentry, 'summon')
-         mummycard.alliance = true
          deck.append(mummycard)
+        
+     for i in range(2):
+         var bruteCard = cardfunc.createCard(cardfunc.findCard(data_cbd, 3, "SummonData", "numID") , 'summon')
+         deck.append(bruteCard)
      
      for i in range(5):
          var manaballentry = cardfunc.findCard(data_cbd, 0, 'SpellData', 'numID')

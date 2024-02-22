@@ -10,11 +10,9 @@ var index: int #returns value of card's cardslot index
 
 var maxcounter : int
 #true = hero side false = enemy side
-var alliance : bool
-#called when first played, sleeping cards dont deplete their counter, TO REWORK THIS INTO A STATUS EFFECT
-var sleep : bool = true
+var alliance : bool = true
 #grab the targetting foe, by default it is the opposing card
-var attackingFoe : Array
+var attackingFoe : Array = [index]
 
 func _ready():
     super._ready()
@@ -87,14 +85,14 @@ func onAttack():
     TweenNode.tween_property(self, "global_position", global_position + Vector2(0,-100*fightfactor) , DataManager.DRAWTIME/2).set_ease(Tween.EASE_IN_OUT).set_trans(Tween.TRANS_LINEAR)
     TweenNode.tween_property(self, "global_position", global_position , DataManager.DRAWTIME/2).set_ease(Tween.EASE_IN_OUT).set_trans(Tween.TRANS_LINEAR)
     await get_tree().create_timer(DataManager.DRAWTIME).timeout;
-    EventsBus.emit_signal("onTakeDamage", alliance, attack, attackingFoe, effect)
+    EventsBus.emit_signal("onTakeDamage", alliance, attack, attackingFoe, index, effect)
     await get_tree().create_timer(DataManager.DRAWTIME).timeout;
     counterset(maxcounter)
     for trigger in effect:
-      if trigger.effectTypeEnum == DataManager.EFFECTS.changeStatsOnAttack:
+      if trigger.effectTypeEnum == DataManager.EFFECTS.applyEffectOnAttack:
         trigger.applyEffect(self)
 
-func onTakeDamage(ally : bool , damage : int, targetingFoe: Array, effects: Array):
+func onTakeDamage(ally : bool , damage : int, targetingFoe: Array, attacker: int, effects: Array):
      var fightfactor = 1
      TweenNode = create_tween()
      if alliance:
@@ -115,15 +113,34 @@ func onTakeDamage(ally : bool , damage : int, targetingFoe: Array, effects: Arra
                  hpset(hp)
                else:
                  hpset(hp-damage)
+               #trigger effects on to self from enemy
                for trigger in effects:
                  if trigger.effectTypeEnum == DataManager.EFFECTS.applyEffectOnHit:
                     trigger.applyEffect(self)
+               
+               #trigger effects on self from effects
+               for trigger in effect:
+                 if trigger.effectTypeEnum == DataManager.EFFECTS.applyEffectWhenAttack:
+                    
+                    #this is dumb lol
+                    var tempFoe = attackingFoe
+                    attackingFoe = [attacker]
+                    trigger.applyEffect(self)
+                    attackingFoe = tempFoe
+                    
                if hp <= 0:
                  onDeath()
                  
 
 func onDeath():
     emit_signal("activeCardToNull", index, alliance)
+    TweenNode = create_tween()
+    z_index = 1
+    state = death
+    TweenNode.tween_property(self, "global_position", global_position + Vector2(0,-250) , DataManager.DRAWTIME).set_ease(Tween.EASE_IN_OUT).set_trans(Tween.TRANS_LINEAR)
+    TweenNode.tween_property(self, "global_position", global_position + Vector2(0,1250) , DataManager.DRAWTIME*5).set_ease(Tween.EASE_IN_OUT).set_trans(Tween.TRANS_LINEAR)
+    animation.play("death")
+    await get_tree().create_timer(DataManager.DRAWTIME*7).timeout;
     self.queue_free()
 
 

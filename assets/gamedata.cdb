@@ -31,8 +31,9 @@
 					"description": "A weak magical attack that deals 3 magic damage to an enemy.",
 					"effect": [
 						{
-							"effectType": "magicAttack",
-							"value": 3
+							"effectType": "castSpell",
+							"value": 3,
+							"status": "damage"
 						}
 					],
 					"name": "Wisp",
@@ -54,6 +55,11 @@
 				{
 					"typeStr": "1",
 					"name": "effectType",
+					"display": null
+				},
+				{
+					"typeStr": "1",
+					"name": "status",
 					"display": null
 				},
 				{
@@ -149,6 +155,23 @@
 						}
 					],
 					"offensive": true
+				},
+				{
+					"name": "Brute",
+					"numID": 3,
+					"description": "Counterattacks",
+					"counter": 5,
+					"energy": 3,
+					"attack": 4,
+					"hp": 12,
+					"effect": [
+						{
+							"effectType": "applyEffectWhenAttack",
+							"status": "attack",
+							"value": 0
+						}
+					],
+					"offensive": true
 				}
 			],
 			"separators": [],
@@ -220,7 +243,7 @@
 					"name": "Test",
 					"numID": 0,
 					"description": "",
-					"counter": 3,
+					"counter": 1,
 					"attack": 0,
 					"hp": 99,
 					"effect": []
@@ -247,12 +270,12 @@
 					"name": "Repeater",
 					"numID": 3,
 					"description": "gain +1 atk ",
-					"counter": 1,
+					"counter": 3,
 					"attack": 0,
 					"hp": 8,
 					"effect": [
 						{
-							"effectType": "changeStatsOnAttack",
+							"effectType": "applyEffectOnAttack",
 							"status": "attackUp",
 							"value": 1
 						}

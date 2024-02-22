@@ -103,6 +103,7 @@ bbcode_enabled = true
 text = "[center]0[/center]"
 
 [node name="hand" type="Control" parent="decks"]
+z_index = 1
 anchors_preset = 0
 
 [node name="Fields" type="Control" parent="decks"]

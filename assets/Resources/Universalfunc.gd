@@ -94,6 +94,7 @@ func createCard(carddict, type):
        if type == 'summon':
          var energy = carddict["energy"]
          base.energy = energy
+         base.alliance = true
        
        if type == 'enemySummon':
          base.alliance = false

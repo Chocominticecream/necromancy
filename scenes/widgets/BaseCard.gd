@@ -27,7 +27,8 @@ enum{
     
     playing, #card is being played
     inDiscard, #card is in the discardpile
-    inDraw,
+    inDraw, #card is in draw pile
+    death, #card is dying
     
     inEnemyPlay #enemy play state machine
     
