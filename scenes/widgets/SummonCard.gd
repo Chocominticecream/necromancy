@@ -74,6 +74,9 @@ func counterget():
 func onAttack():
     #fight factor controls the tweening of rhe card when the fight function is called
     # it also sets the targets to attack for based on the card's ability
+    if state == death:
+        return
+    
     attackingFoe = [index]
     TweenNode = create_tween()
     var fightfactor = 1
@@ -117,19 +120,19 @@ func onTakeDamage(ally : bool , damage : int, targetingFoe: Array, attacker: int
                for trigger in effects:
                  if trigger.effectTypeEnum == DataManager.EFFECTS.applyEffectOnHit:
                     trigger.applyEffect(self)
+                    
+               if hp <= 0:
+                 onDeath()
                
                #trigger effects on self from effects
                for trigger in effect:
-                 if trigger.effectTypeEnum == DataManager.EFFECTS.applyEffectWhenAttack:
+                 if trigger.effectTypeEnum == DataManager.EFFECTS.applyEffectWhenAttack and state != death:
                     
                     #this is dumb lol
                     var tempFoe = attackingFoe
                     attackingFoe = [attacker]
                     trigger.applyEffect(self)
                     attackingFoe = tempFoe
-                    
-               if hp <= 0:
-                 onDeath()
                  
 
 func onDeath():
@@ -137,10 +140,10 @@ func onDeath():
     TweenNode = create_tween()
     z_index = 1
     state = death
-    TweenNode.tween_property(self, "global_position", global_position + Vector2(0,-250) , DataManager.DRAWTIME).set_ease(Tween.EASE_IN_OUT).set_trans(Tween.TRANS_LINEAR)
-    TweenNode.tween_property(self, "global_position", global_position + Vector2(0,1250) , DataManager.DRAWTIME*5).set_ease(Tween.EASE_IN_OUT).set_trans(Tween.TRANS_LINEAR)
-    animation.play("death")
-    await get_tree().create_timer(DataManager.DRAWTIME*7).timeout;
+    TweenNode.tween_property(self, "global_position", global_position + Vector2(0,-400) , DataManager.DRAWTIME).set_ease(Tween.EASE_OUT).set_trans(Tween.TRANS_SINE)
+    TweenNode.tween_property(self, "global_position", global_position + Vector2(0,1450) , DataManager.DRAWTIME*4.0).set_ease(Tween.EASE_IN).set_trans(Tween.TRANS_QUAD)
+    animationAlt.play("death")
+    await get_tree().create_timer(DataManager.DRAWTIME*6.0).timeout;
     self.queue_free()
 
 

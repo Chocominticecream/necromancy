@@ -7,6 +7,6 @@ res://scenes/widgets/Hero_slot.tscn
 res://scenes/widgets/SpellCard.tscn
 res://scenes/widgets/cardSlot.tscn
 res://scenes/widgets/BaseCard.tscn
-res://scenes/widgets/SummonCard.gd
 res://scenes/widgets/SummonCard.tscn
-res://scenes/widgets/BaseCard.gd
+res://scenes/levels/testroom.tscn
+res://scenes/widgets/SummonCard.gd

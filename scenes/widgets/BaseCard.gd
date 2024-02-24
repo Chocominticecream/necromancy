@@ -50,6 +50,7 @@ var targetdiscard
 
 #animation
 @onready var animation = $AnimationPlayer
+@onready var animationAlt = $AnimationPlayer2
 var universalMethods = Universalfunc.new()
 
 #----------------------------setters and getters---------------------------------
