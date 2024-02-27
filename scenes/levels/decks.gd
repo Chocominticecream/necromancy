@@ -28,6 +28,7 @@ func _ready():
     #$draw/drawValue.text =  "[center]" + str(len(DataManager.maindeck))
     EventsBus.connect("resetCards", reorganiser)
     EventsBus.connect("redrawCards", cardRedrawer)
+    EventsBus.connect("discardCard", cardDiscarder)
     # for i in range(10):
        # var base = load("res://scenes/widgets/Summoncard.tscn").instantiate()
        # $draw.drawdeck.append(base)
@@ -42,7 +43,18 @@ func _ready():
 # Called every frame. 'delta' is the elapsed time since the previous frame.
 func _process(delta):
     pass
-    
+
+func cardDiscarder(card : BaseCard):
+    card.target = $discard.global_position
+    card.targetrot = 0
+    card.state = card.redrawCard
+    $discard.discarddeck.append(card)
+    await get_tree().create_timer(DataManager.DRAWTIME).timeout;
+    if card.get_parent() != null:
+        card.get_parent().remove_child(card)
+    reorganiser()
+    $discard/discardValue.text = "[center]" + str(int($discard/discardValue.text) + 1) + "[/center]"
+
 #DRAW LOGIC
 func carddrawer(drawno : int):
      DataManager.phase = DataManager.drawingPhase

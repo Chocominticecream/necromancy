@@ -1,4 +1,6 @@
 res://scenes/levels/Transition.tscn
+res://scenes/widgets/BaseCard.gd
+res://scenes/widgets/SummonCard.gd
 res://scenes/levels/main_menu.tscn
 res://scenes/levels/battleUI.tscn
 res://scenes/levels/battleScene.tscn
@@ -9,4 +11,4 @@ res://scenes/widgets/cardSlot.tscn
 res://scenes/widgets/BaseCard.tscn
 res://scenes/widgets/SummonCard.tscn
 res://scenes/levels/testroom.tscn
-res://scenes/widgets/SummonCard.gd
+res://assets/Resources/Universalfunc.gd

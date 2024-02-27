@@ -16,6 +16,10 @@
 					"name": "energy"
 				},
 				{
+					"typeStr": "3",
+					"name": "attack"
+				},
+				{
 					"typeStr": "1",
 					"name": "description",
 					"display": null
@@ -24,21 +28,21 @@
 					"typeStr": "8",
 					"name": "effect",
 					"display": null
+				},
+				{
+					"typeStr": "2",
+					"name": "offensive"
 				}
 			],
 			"lines": [
 				{
 					"description": "A weak magical attack that deals 3 magic damage to an enemy.",
-					"effect": [
-						{
-							"effectType": "castSpell",
-							"value": 3,
-							"status": "damage"
-						}
-					],
+					"effect": [],
 					"name": "Wisp",
 					"energy": 1,
-					"numID": 0
+					"numID": 0,
+					"offensive": true,
+					"attack": 3
 				}
 			],
 			"separators": [],
@@ -125,7 +129,7 @@
 				{
 					"name": "Swamp Zombie",
 					"numID": 1,
-					"description": "Inflict 3 poison on hit",
+					"description": "Inflict 3 [poison] on hit",
 					"counter": 4,
 					"energy": 2,
 					"attack": 5,
@@ -142,7 +146,7 @@
 				{
 					"name": "Mummy",
 					"numID": 2,
-					"description": "Inflict 2 hex on hit",
+					"description": "Inflict 2 [hex] on hit",
 					"counter": 1,
 					"energy": 2,
 					"attack": 3,
@@ -243,7 +247,7 @@
 					"name": "Test",
 					"numID": 0,
 					"description": "",
-					"counter": 1,
+					"counter": 5,
 					"attack": 0,
 					"hp": 99,
 					"effect": []

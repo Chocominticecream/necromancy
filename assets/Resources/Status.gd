@@ -31,6 +31,7 @@ func applyStatus(card : BaseCard, altTrigger : bool = true):
             if copyArray[copyArray.find(self)].value <= 0:
               copyArray.erase(self)
             card.status = copyArray
+            EventsBus.emit_signal("addDelay", DataManager.DRAWTIME*1.5)
         DataManager.STATUS.hex:
             if altTrigger:
               print(card.printedname + " has been hexed for " + str(-value) + "!")
@@ -45,7 +46,9 @@ func applyStatus(card : BaseCard, altTrigger : bool = true):
         DataManager.STATUS.attack:
             EventsBus.emit_signal("addDelay", DataManager.DRAWTIME*2.0)
             await DataManager.scene_tree.create_timer(DataManager.DRAWTIME*2.0).timeout
-            await card.onAttack()
+            await card.onAttack(false)
+        DataManager.STATUS.damage:
+            pass
         _:
             pass
             

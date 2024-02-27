@@ -39,6 +39,11 @@ enum STATUS {
 enum EFFECTS {
     test,
     empty,
+    
+    #spell effects
+    castSpell,
+    
+    #summon effects
     applyEffectOnHit, #applies a status effect onto the enemy when attacking
     applyEffectOnAttack,  #applies a status effect onto self when attacking
     applyEffectWhenAttack,  #applies a status effect onto self/field when hit

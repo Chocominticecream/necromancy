@@ -112,12 +112,20 @@ func createCard(carddict, type):
        var energy = carddict["energy"]
        var effect = carddict["effect"]
        var description = carddict["description"]
+       var attack = carddict["attack"]
        
        base.printedname = printedname
-       base.effect = effect
+       base.attack = attack
        base.energy = energy
        base.description = description #+ '. ' + createEffectDesc(effect, base.type)
        base.type = "spell"
+       
+       #construct the effect array (only for summons for now)
+       var copyEffect = []
+       if !effect.is_empty():
+         for cardEffect in effect:
+           copyEffect.append(createEffect(cardEffect))
+       base.effect = copyEffect
      
      return base
 
@@ -177,6 +185,24 @@ func triggerStatuses(triggeredEnum: DataManager.STATUS, card: BaseCard, altTrigg
       for statusEffect in card.status:
           if statusEffect.statusTypeEnum == triggeredEnum:
               statusEffect.applyStatus(card, altTrigger)
+
+func createDesc(description : String, bigText : bool):
+    if description.contains("[") and description.contains("]"):
+        #tokenise the prefix
+        var tokenArray : Array = description.split("[", true, 1)
+        var statusPrefix : String = tokenArray[1].rsplit("]", true, 1)[0] 
+        
+        #replace the prefixes with the appropriate image (the prefix is the same as the image name)
+        var newDesc : String = description
+        if bigText:
+          newDesc = newDesc.replace("[" + statusPrefix + "]", "[img={26}]res://assets/Symbols/" + statusPrefix + ".png[img][color=black]")
+        else:
+          newDesc = newDesc.replace("[" + statusPrefix + "]", "[img={20}]res://assets/Symbols/" + statusPrefix + ".png[img][color=black]")
+        return newDesc
+    else:
+        return description
+    #return left side of [
+    
        
 func _ready():
     copyDatabase()

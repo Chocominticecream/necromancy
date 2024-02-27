@@ -1,4 +1,4 @@
-[gd_scene load_steps=18 format=3 uid="uid://c4t0qci1b1wj6"]
+[gd_scene load_steps=20 format=3 uid="uid://c4t0qci1b1wj6"]
 
 [ext_resource type="Script" path="res://scenes/levels/battleUI.gd" id="1_rpntx"]
 [ext_resource type="Script" path="res://scenes/levels/decks.gd" id="1_tdpnw"]
@@ -17,6 +17,8 @@
 [ext_resource type="Script" path="res://scenes/levels/endTurn.gd" id="9_q2lej"]
 [ext_resource type="Script" path="res://scenes/levels/heroHp.gd" id="11_1cvjj"]
 [ext_resource type="Script" path="res://scenes/levels/enemyHp.gd" id="13_t4000"]
+[ext_resource type="FontFile" uid="uid://bta8oyc37hnju" path="res://assets/fonts/Roboto-Black.ttf" id="18_h45vc"]
+[ext_resource type="Script" path="res://scenes/widgets/FPScounter.gd" id="19_h1h0y"]
 
 [node name="battleUI" type="Control" groups=["enemy", "hero"]]
 layout_mode = 3
@@ -103,7 +105,7 @@ bbcode_enabled = true
 text = "[center]0[/center]"
 
 [node name="hand" type="Control" parent="decks"]
-z_index = 1
+z_index = 2
 anchors_preset = 0
 
 [node name="Fields" type="Control" parent="decks"]
@@ -333,6 +335,17 @@ theme_override_colors/default_color = Color(0, 0, 0, 1)
 theme_override_font_sizes/normal_font_size = 32
 bbcode_enabled = true
 text = "[center]End turn[/center]"
+
+[node name="FPScounter" type="Label" parent="."]
+layout_mode = 0
+offset_left = 432.0
+offset_top = 28.0
+offset_right = 673.0
+offset_bottom = 98.0
+theme_override_fonts/font = ExtResource("18_h45vc")
+theme_override_font_sizes/font_size = 64
+text = "FPS:0"
+script = ExtResource("19_h1h0y")
 
 [connection signal="mouse_entered" from="turnButtons/pass/passButton" to="turnButtons/pass" method="_on_redraw_button_mouse_entered"]
 [connection signal="mouse_exited" from="turnButtons/pass/passButton" to="turnButtons/pass" method="_on_redraw_button_mouse_exited"]
