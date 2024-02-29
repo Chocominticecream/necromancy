@@ -1,0 +1,26 @@
+[gd_scene load_steps=5 format=3 uid="uid://btivt6rlyi25c"]
+
+[ext_resource type="FontFile" uid="uid://b4qnutn4jfdap" path="res://assets/fonts/Caprasimo-Regular.ttf" id="1_5q3fj"]
+[ext_resource type="FontFile" uid="uid://nswb4qjqs8ld" path="res://assets/fonts/Gupter-Bold.ttf" id="2_6o7dj"]
+[ext_resource type="FontFile" uid="uid://cdrh8tj0n4lxx" path="res://assets/fonts/ITC Avant Garde Gothic Bold.otf" id="3_oiuih"]
+[ext_resource type="Script" path="res://scenes/widgets/juicyButton.gd" id="4_3bnn6"]
+
+[node name="JuicyButton" type="RichTextLabel"]
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+offset_right = -1506.0
+offset_bottom = -984.0
+grow_horizontal = 2
+grow_vertical = 2
+theme_override_fonts/normal_font = ExtResource("1_5q3fj")
+theme_override_fonts/bold_font = ExtResource("2_6o7dj")
+theme_override_fonts/italics_font = ExtResource("3_oiuih")
+theme_override_font_sizes/normal_font_size = 64
+theme_override_font_sizes/bold_font_size = 64
+theme_override_font_sizes/italics_font_size = 64
+bbcode_enabled = true
+text = "[url=\"hi\"][center][i]S[/i][b]T[/b]A[i]R[/i]T"
+script = ExtResource("4_3bnn6")
+
+[connection signal="meta_clicked" from="." to="." method="_on_meta_clicked"]

@@ -1,0 +1,14 @@
+[gd_scene load_steps=3 format=3 uid="uid://bmyghr3uy34m5"]
+
+[ext_resource type="FontFile" uid="uid://bta8oyc37hnju" path="res://assets/fonts/Roboto-Black.ttf" id="1_grqun"]
+[ext_resource type="Script" path="res://scenes/widgets/FPScounter.gd" id="2_34l41"]
+
+[node name="FPScounter" type="Label"]
+offset_left = 432.0
+offset_top = 28.0
+offset_right = 673.0
+offset_bottom = 98.0
+theme_override_fonts/font = ExtResource("1_grqun")
+theme_override_font_sizes/font_size = 64
+text = "FPS:0"
+script = ExtResource("2_34l41")
