@@ -1,5 +1,4 @@
 res://scenes/levels/Transition.tscn
-res://scenes/levels/MainMenuBgAnimations.gd
 res://scenes/levels/main_menu.tscn
 res://scenes/levels/battleUI.tscn
 res://scenes/levels/battleScene.tscn
@@ -7,4 +6,6 @@ res://scenes/widgets/SummonCard.tscn
 res://scenes/levels/testroom.tscn
 res://scenes/widgets/BaseButton.tscn
 res://scenes/widgets/juicyButton.tscn
-res://scenes/widgets/BaseButton.gd
+res://assets/background/dangling_accessory.tscn
+res://assets/background/dangling_accessory.gd
+res://scenes/levels/MainMenuBgAnimations.gd

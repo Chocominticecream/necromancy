@@ -1,0 +1,28 @@
+[gd_scene load_steps=4 format=3 uid="uid://suoggd3d6wq5"]
+
+[ext_resource type="Script" path="res://assets/background/dangling_accessory.gd" id="1_ftbpo"]
+[ext_resource type="Texture2D" uid="uid://b0sekmw7p6arx" path="res://assets/portraits/moon.png" id="2_48noi"]
+[ext_resource type="Texture2D" uid="uid://bcpvi12vcnwg6" path="res://assets/UI/rope2.png" id="2_n7ibo"]
+
+[node name="danglingAccessory" type="Node2D"]
+position = Vector2(-176, -154)
+script = ExtResource("1_ftbpo")
+
+[node name="pivot" type="Node2D" parent="."]
+position = Vector2(575, -225)
+
+[node name="rope" type="Sprite2D" parent="pivot"]
+light_mask = 2
+texture_repeat = 2
+position = Vector2(1, 495)
+scale = Vector2(0.02, 0.02)
+texture = ExtResource("2_n7ibo")
+region_enabled = true
+region_rect = Rect2(0, 0, 512, 50000)
+
+[node name="Circle-512" type="Sprite2D" parent="pivot"]
+light_mask = 2
+position = Vector2(2, 964)
+rotation = 5.06145
+scale = Vector2(0.3, 0.3)
+texture = ExtResource("2_48noi")

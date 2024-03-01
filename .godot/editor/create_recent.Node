@@ -1,14 +1,14 @@
+DirectionalLight2D
+TextureButton
+Button
 PointLight2D
 Node2D
 Sprite2D
 MarginContainer
 Control
 GPUParticles2D
-DirectionalLight2D
 WorldEnvironment
 RichTextLabel
 Label
 CollisionShape2D
 RigidBody2D
-AnimationPlayer
-Container

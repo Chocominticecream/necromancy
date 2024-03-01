@@ -1,4 +1,4 @@
-extends Button
+extends TextureButton
 
 #ffffcd color code for highlighted text?
 
@@ -19,7 +19,7 @@ func _process(delta):
 
 func _on_mouse_entered():
     textTween = create_tween()
-    textTween.tween_property(textLabel, "global_position", initialTextPos + Vector2(20,0), 0.2).set_ease(Tween.EASE_IN_OUT).set_trans(Tween.TRANS_SINE)
+    textTween.tween_property(textLabel, "global_position", initialTextPos + Vector2(100,0), 0.2).set_ease(Tween.EASE_IN_OUT).set_trans(Tween.TRANS_SINE)
 
 
 func _on_mouse_exited():

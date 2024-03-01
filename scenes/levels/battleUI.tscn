@@ -337,6 +337,10 @@ text = "[center]End turn[/center]"
 
 [node name="FPScounter" parent="." instance=ExtResource("18_g38s0")]
 layout_mode = 0
+offset_left = 0.0
+offset_top = 0.0
+offset_right = 241.0
+offset_bottom = 70.0
 
 [connection signal="mouse_entered" from="turnButtons/pass/passButton" to="turnButtons/pass" method="_on_redraw_button_mouse_entered"]
 [connection signal="mouse_exited" from="turnButtons/pass/passButton" to="turnButtons/pass" method="_on_redraw_button_mouse_exited"]
