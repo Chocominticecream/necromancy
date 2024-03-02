@@ -7,6 +7,17 @@
 script = ExtResource("1_rkewc")
 
 [node name="transitionButton" parent="." instance=ExtResource("2_2im7d")]
+offset_left = 527.0
+offset_top = 399.0
+offset_right = 783.0
+offset_bottom = 463.0
+
+[node name="TextLabel" parent="transitionButton" index="0"]
+offset_left = 1.0
+offset_top = -3.0
+offset_right = 251.0
+offset_bottom = 72.0
+text = "[center]Load test"
 
 [connection signal="pressed" from="transitionButton" to="." method="_on_transition_button_pressed"]
 
