@@ -1,89 +1,446 @@
-[gd_scene load_steps=11 format=3 uid="uid://1et4n80mrk8k"]
+[gd_scene load_steps=36 format=3 uid="uid://1et4n80mrk8k"]
 
 [ext_resource type="Texture2D" uid="uid://q6p8hp3svmij" path="res://assets/placeholders/square-128.png" id="1_d7xh7"]
 [ext_resource type="Script" path="res://scenes/levels/main_menu.gd" id="1_uu2s1"]
 [ext_resource type="PackedScene" uid="uid://bkdnrwe7a3fic" path="res://scenes/widgets/baselabel.tscn" id="2_r6q7s"]
 [ext_resource type="PackedScene" uid="uid://mkstt6knrqh6" path="res://scenes/widgets/BaseButton.tscn" id="3_wjpu0"]
+[ext_resource type="Texture2D" uid="uid://cinh8068c28n" path="res://assets/UI/witchCircle1.png" id="5_j7lwi"]
+[ext_resource type="PackedScene" uid="uid://dxa06w1jgqan1" path="res://assets/background/orbit.tscn" id="5_t6ou1"]
+[ext_resource type="Texture2D" uid="uid://5376ss4r5cyd" path="res://assets/UI/witchCircle3.png" id="6_ift1d"]
+[ext_resource type="Script" path="res://scenes/levels/MainMenuBgAnimations.gd" id="6_mlm3y"]
+[ext_resource type="Texture2D" uid="uid://b0sekmw7p6arx" path="res://assets/portraits/moon.png" id="7_bwmu7"]
+[ext_resource type="Texture2D" uid="uid://cb1b5fivvqece" path="res://assets/portraits/star.png" id="7_hnklc"]
+[ext_resource type="Texture2D" uid="uid://iuerj03bgclw" path="res://assets/placeholders/circle-512.png" id="7_lwxcv"]
+[ext_resource type="Texture2D" uid="uid://d3ocr3hvaxrgy" path="res://assets/placeholders/mountain2.png" id="7_n82yr"]
+[ext_resource type="Texture2D" uid="uid://cgv1lrq574uqp" path="res://assets/placeholders/mountain1.png" id="7_u3mmk"]
+[ext_resource type="Texture2D" uid="uid://d2unbluv8hath" path="res://assets/placeholders/mountain3.png" id="8_7y4u0"]
+[ext_resource type="Texture2D" uid="uid://br0cj3xya3j24" path="res://assets/placeholders/hills1.png" id="8_hr6dv"]
+[ext_resource type="Texture2D" uid="uid://dmhttftvnv3rr" path="res://assets/placeholders/mountainA.png" id="9_sqwft"]
+[ext_resource type="Texture2D" uid="uid://010nmypafjj1" path="res://assets/placeholders/mountainB.png" id="10_m5na5"]
+[ext_resource type="Texture2D" uid="uid://cse7kusibyvri" path="res://assets/placeholders/mountainC.png" id="11_8ifpw"]
+[ext_resource type="Script" path="res://scenes/levels/Titlebox.gd" id="14_c6gki"]
+[ext_resource type="Texture2D" uid="uid://b88ymxt5xnsgs" path="res://assets/UI/UIpurple1.png" id="14_xroml"]
+[ext_resource type="Texture2D" uid="uid://dtv3lxr7owkda" path="res://assets/placeholders/star-512.png" id="16_loo7x"]
+[ext_resource type="FontFile" uid="uid://basqqe0aj8rdw" path="res://assets/fonts/VenturisSansADFCd-Bold.otf" id="17_u2msq"]
+[ext_resource type="PackedScene" uid="uid://suoggd3d6wq5" path="res://assets/background/dangling_accessory.tscn" id="19_mtmyd"]
+[ext_resource type="PackedScene" uid="uid://bmyghr3uy34m5" path="res://scenes/widgets/fp_scounter.tscn" id="19_pobrf"]
 
-[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_yd4mo"]
-bg_color = Color(0, 0, 0, 1)
+[sub_resource type="Gradient" id="Gradient_euvma"]
+offsets = PackedFloat32Array(0, 0.459016, 0.934426)
+colors = PackedColorArray(0.356863, 0.352941, 0.498039, 1, 1, 1, 1, 1, 0.356863, 0.352941, 0.498039, 1)
 
-[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_r8d55"]
-bg_color = Color(1, 1, 1, 1)
+[sub_resource type="GradientTexture1D" id="GradientTexture1D_r8kdh"]
+gradient = SubResource("Gradient_euvma")
 
-[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_804dp"]
-bg_color = Color(1, 1, 1, 1)
+[sub_resource type="Curve" id="Curve_ksmgj"]
+_data = [Vector2(0, 1), 0.0, 0.0, 0, 0, Vector2(0.753333, 1), 0.0, 0.0, 0, 0, Vector2(1, 0.527472), 0.0, 0.0, 0, 0]
+point_count = 3
 
-[sub_resource type="StyleBoxEmpty" id="StyleBoxEmpty_6g3ib"]
+[sub_resource type="CurveTexture" id="CurveTexture_0cr1g"]
+curve = SubResource("Curve_ksmgj")
 
-[sub_resource type="StyleBoxEmpty" id="StyleBoxEmpty_pc8ci"]
+[sub_resource type="ParticleProcessMaterial" id="ParticleProcessMaterial_kd1hn"]
+particle_flag_disable_z = true
+emission_shape = 3
+emission_box_extents = Vector3(960, 540, 1)
+gravity = Vector3(0, 0, 0)
+scale_min = 0.3
+scale_curve = SubResource("CurveTexture_0cr1g")
+color_ramp = SubResource("GradientTexture1D_r8kdh")
 
-[sub_resource type="StyleBoxEmpty" id="StyleBoxEmpty_uyeb3"]
+[sub_resource type="Gradient" id="Gradient_qq1f4"]
+interpolation_mode = 2
+colors = PackedColorArray(1, 1, 1, 1, 0, 0, 0, 1)
+
+[sub_resource type="GradientTexture2D" id="GradientTexture2D_ixvfl"]
+gradient = SubResource("Gradient_qq1f4")
+width = 256
+height = 256
+fill = 1
+fill_from = Vector2(0.481651, 0.481651)
+fill_to = Vector2(0.5, 0.2)
+
+[sub_resource type="Environment" id="Environment_6flf8"]
+background_mode = 3
+tonemap_mode = 3
+glow_enabled = true
+glow_normalized = true
+glow_intensity = 1.14
+glow_bloom = 0.15
+glow_blend_mode = 0
+
+[sub_resource type="Gradient" id="Gradient_8ohw0"]
+offsets = PackedFloat32Array(0, 0.103896, 0.363636, 0.818182, 0.896104)
+colors = PackedColorArray(0, 0, 0, 1, 0.0454545, 0.0454545, 0.0454545, 1, 0.215902, 0.215902, 0.215902, 1, 0.896829, 0.896829, 0.896829, 1, 1, 1, 1, 1)
+
+[sub_resource type="GradientTexture2D" id="GradientTexture2D_c32c2"]
+gradient = SubResource("Gradient_8ohw0")
+fill_from = Vector2(0.00917431, 0.481651)
+fill_to = Vector2(0.00458716, 1)
+
+[sub_resource type="FontVariation" id="FontVariation_rhs3e"]
+base_font = ExtResource("17_u2msq")
+spacing_glyph = 8
 
 [node name="main menu" type="Node2D"]
 script = ExtResource("1_uu2s1")
 
 [node name="background" type="Sprite2D" parent="."]
-self_modulate = Color(0, 0, 0, 1)
+self_modulate = Color(0.356863, 0.352941, 0.498039, 1)
+z_index = -2
 position = Vector2(983, 542)
 scale = Vector2(17.6836, 9.9375)
 texture = ExtResource("1_d7xh7")
 
-[node name="Title" parent="." instance=ExtResource("2_r6q7s")]
-offset_left = 368.0
-offset_top = 243.0
-offset_right = 1572.0
-offset_bottom = 429.0
-theme_override_colors/default_color = Color(1, 1, 1, 1)
-theme_override_font_sizes/normal_font_size = 128
+[node name="MainMenuBgAnimations" type="Node2D" parent="."]
+position = Vector2(176, 154)
+script = ExtResource("6_mlm3y")
+
+[node name="Stars" type="GPUParticles2D" parent="MainMenuBgAnimations"]
+position = Vector2(800, 200)
+amount = 128
+process_material = SubResource("ParticleProcessMaterial_kd1hn")
+texture = ExtResource("7_hnklc")
+lifetime = 5.0
+
+[node name="Orbits" type="Node2D" parent="MainMenuBgAnimations"]
+
+[node name="Orbit1" parent="MainMenuBgAnimations/Orbits" instance=ExtResource("5_t6ou1")]
+modulate = Color(0.717647, 0.717647, 0.717647, 1)
+position = Vector2(800, 400)
+scale = Vector2(2.2, 2.2)
+circleSpeed = 0.0
+orbitalVisible = false
+
+[node name="Circle" parent="MainMenuBgAnimations/Orbits/Orbit1/CircleAxis" index="0"]
+texture = ExtResource("5_j7lwi")
+
+[node name="OrbitalObject" parent="MainMenuBgAnimations/Orbits/Orbit1/OrbitalAxis" index="0"]
+visible = false
+
+[node name="Orbit2" parent="MainMenuBgAnimations/Orbits" instance=ExtResource("5_t6ou1")]
+position = Vector2(800, 400)
+scale = Vector2(2, 2)
+circleSpeed = 0.0
+
+[node name="Circle" parent="MainMenuBgAnimations/Orbits/Orbit2/CircleAxis" index="0"]
+texture = ExtResource("5_j7lwi")
+
+[node name="OrbitalObject" parent="MainMenuBgAnimations/Orbits/Orbit2/OrbitalAxis" index="0"]
+light_mask = 2
+scale = Vector2(0.05, 0.05)
+
+[node name="Orbit3" parent="MainMenuBgAnimations/Orbits" instance=ExtResource("5_t6ou1")]
+modulate = Color(0.717647, 0.717647, 0.717647, 1)
+position = Vector2(800, 400)
+scale = Vector2(1.8, 1.8)
+orbitalVisible = false
+
+[node name="OrbitalObject" parent="MainMenuBgAnimations/Orbits/Orbit3/OrbitalAxis" index="0"]
+visible = false
+
+[node name="Orbit4" parent="MainMenuBgAnimations/Orbits" instance=ExtResource("5_t6ou1")]
+modulate = Color(0.717647, 0.717647, 0.717647, 1)
+position = Vector2(800, 400)
+scale = Vector2(1.6, 1.6)
+circleSpeed = 0.0
+orbitalVisible = false
+
+[node name="Circle" parent="MainMenuBgAnimations/Orbits/Orbit4/CircleAxis" index="0"]
+texture = ExtResource("5_j7lwi")
+
+[node name="OrbitalObject" parent="MainMenuBgAnimations/Orbits/Orbit4/OrbitalAxis" index="0"]
+visible = false
+
+[node name="Orbit5" parent="MainMenuBgAnimations/Orbits" instance=ExtResource("5_t6ou1")]
+position = Vector2(800, 400)
+scale = Vector2(1.4, 1.4)
+circleSpeed = -0.6
+orbitSpeed = 1.2
+
+[node name="Circle" parent="MainMenuBgAnimations/Orbits/Orbit5/CircleAxis" index="0"]
+texture = ExtResource("6_ift1d")
+
+[node name="OrbitalObject" parent="MainMenuBgAnimations/Orbits/Orbit5/OrbitalAxis" index="0"]
+light_mask = 2
+
+[node name="Orbit1Outer" parent="MainMenuBgAnimations/Orbits" instance=ExtResource("5_t6ou1")]
+modulate = Color(0.717647, 0.717647, 0.717647, 1)
+position = Vector2(250, -100)
+scale = Vector2(1.4, 1.4)
+circleSpeed = -1.0
+orbitSpeed = 1.2
+orbitalVisible = false
+
+[node name="Circle" parent="MainMenuBgAnimations/Orbits/Orbit1Outer/CircleAxis" index="0"]
+texture = ExtResource("6_ift1d")
+
+[node name="OrbitalObject" parent="MainMenuBgAnimations/Orbits/Orbit1Outer/OrbitalAxis" index="0"]
+visible = false
+
+[node name="Orbit1Outer2" parent="MainMenuBgAnimations/Orbits" instance=ExtResource("5_t6ou1")]
+modulate = Color(0.717647, 0.717647, 0.717647, 1)
+position = Vector2(250, -100)
+scale = Vector2(1.1, 1.1)
+circleSpeed = 0.0
+orbitSpeed = 1.2
+orbitalVisible = false
+
+[node name="OrbitalObject" parent="MainMenuBgAnimations/Orbits/Orbit1Outer2/OrbitalAxis" index="0"]
+visible = false
+
+[node name="planetOuterbg" type="Sprite2D" parent="MainMenuBgAnimations/Orbits"]
+visible = false
+modulate = Color(0.356863, 0.352941, 0.498039, 1)
+position = Vector2(250, -100)
+scale = Vector2(0.5, 0.5)
+texture = ExtResource("7_lwxcv")
+
+[node name="planetOuter" type="Sprite2D" parent="MainMenuBgAnimations/Orbits"]
+modulate = Color(0.819608, 0.709804, 0.521569, 0.376471)
+position = Vector2(250, -100)
+scale = Vector2(0.5, 0.5)
+texture = ExtResource("7_lwxcv")
+
+[node name="Moon" type="Sprite2D" parent="MainMenuBgAnimations"]
+self_modulate = Color(0.909804, 0.835294, 0.709804, 1)
+position = Vector2(243.5, 200)
+scale = Vector2(1.5, 1.5)
+texture = ExtResource("7_bwmu7")
+
+[node name="moonlight" type="PointLight2D" parent="MainMenuBgAnimations/Moon"]
+visible = false
+position = Vector2(-10.3333, -7.33333)
+scale = Vector2(4.26711, -3.70473)
+texture = SubResource("GradientTexture2D_ixvfl")
+
+[node name="ground" type="Node2D" parent="MainMenuBgAnimations"]
+
+[node name="mountains" type="Node2D" parent="MainMenuBgAnimations/ground"]
+modulate = Color(0.658824, 0.658824, 0.658824, 1)
+
+[node name="Mountain2" type="Sprite2D" parent="MainMenuBgAnimations/ground/mountains"]
+self_modulate = Color(0.286275, 0.286275, 0.45098, 1)
+position = Vector2(-62, 710)
+texture = ExtResource("7_n82yr")
+
+[node name="Mountain3" type="Sprite2D" parent="MainMenuBgAnimations/ground/mountains"]
+self_modulate = Color(0.286275, 0.286275, 0.45098, 1)
+position = Vector2(170, 654)
+texture = ExtResource("8_7y4u0")
+
+[node name="Mountain1" type="Sprite2D" parent="MainMenuBgAnimations/ground/mountains"]
+self_modulate = Color(0.286275, 0.286275, 0.45098, 1)
+position = Vector2(445, 659)
+texture = ExtResource("7_u3mmk")
+
+[node name="mountain4" type="Sprite2D" parent="MainMenuBgAnimations/ground/mountains"]
+self_modulate = Color(0.286275, 0.286275, 0.45098, 1)
+position = Vector2(738, 650)
+texture = ExtResource("9_sqwft")
+
+[node name="mountain5" type="Sprite2D" parent="MainMenuBgAnimations/ground/mountains"]
+self_modulate = Color(0.286275, 0.286275, 0.45098, 1)
+position = Vector2(1134, 689)
+texture = ExtResource("10_m5na5")
+
+[node name="mountain6" type="Sprite2D" parent="MainMenuBgAnimations/ground/mountains"]
+self_modulate = Color(0.286275, 0.286275, 0.45098, 1)
+position = Vector2(1481, 630)
+texture = ExtResource("11_8ifpw")
+
+[node name="mountain7" type="Sprite2D" parent="MainMenuBgAnimations/ground/mountains"]
+self_modulate = Color(0.286275, 0.286275, 0.45098, 1)
+position = Vector2(1684, 707)
+texture = ExtResource("7_u3mmk")
+
+[node name="hills" type="Node2D" parent="MainMenuBgAnimations/ground"]
+
+[node name="hills1" type="Sprite2D" parent="MainMenuBgAnimations/ground/hills"]
+self_modulate = Color(0.239216, 0.239216, 0.380392, 1)
+position = Vector2(312, 814)
+scale = Vector2(1, 2)
+texture = ExtResource("8_hr6dv")
+region_rect = Rect2(0, 0, 2000, 200)
+
+[node name="hills3" type="Sprite2D" parent="MainMenuBgAnimations/ground/hills"]
+self_modulate = Color(0.239216, 0.239216, 0.380392, 1)
+position = Vector2(1310, 814)
+scale = Vector2(1, 2)
+texture = ExtResource("8_hr6dv")
+region_rect = Rect2(0, 0, 2000, 200)
+
+[node name="hills2" type="Sprite2D" parent="MainMenuBgAnimations/ground/hills"]
+self_modulate = Color(0.172549, 0.172549, 0.286275, 1)
+position = Vector2(792, 902)
+scale = Vector2(2, 0.8)
+texture = ExtResource("8_hr6dv")
+
+[node name="WorldEnvironment" type="WorldEnvironment" parent="MainMenuBgAnimations"]
+environment = SubResource("Environment_6flf8")
+
+[node name="DirectionalLight2D" type="DirectionalLight2D" parent="MainMenuBgAnimations"]
+color = Color(0.960784, 0.960784, 0.960784, 1)
+blend_mode = 2
+
+[node name="PointLight2D" type="PointLight2D" parent="MainMenuBgAnimations"]
+position = Vector2(783, 379.712)
+scale = Vector2(31.25, 17.3035)
+texture = SubResource("GradientTexture2D_c32c2")
+
+[node name="UI elements" type="Node2D" parent="."]
+light_mask = 2
+
+[node name="Titlebox" type="Node2D" parent="UI elements"]
+script = ExtResource("14_c6gki")
+
+[node name="UIpurple2" type="Sprite2D" parent="UI elements/Titlebox"]
+self_modulate = Color(0.756863, 0.756863, 0.756863, 1)
+light_mask = 2
+position = Vector2(989, 337)
+scale = Vector2(0.4, 0.4)
+texture = ExtResource("14_xroml")
+
+[node name="danglingAccessory2" parent="UI elements/Titlebox" instance=ExtResource("19_mtmyd")]
+modulate = Color(0.909804, 0.835294, 0.709804, 1)
+position = Vector2(701, 640)
+swingTime = 1.5
+
+[node name="rope" parent="UI elements/Titlebox/danglingAccessory2/pivot" index="0"]
+position = Vector2(1, 200)
+region_rect = Rect2(0, 0, 512, 20150)
+
+[node name="accessory" parent="UI elements/Titlebox/danglingAccessory2/pivot" index="1"]
+position = Vector2(2, 400)
+rotation = 0.0
+scale = Vector2(0.1, 0.1)
+texture = ExtResource("16_loo7x")
+
+[node name="danglingAccessory3" parent="UI elements/Titlebox" instance=ExtResource("19_mtmyd")]
+modulate = Color(0.909804, 0.835294, 0.709804, 1)
+position = Vector2(103, 640)
+swingTime = 1.5
+
+[node name="rope" parent="UI elements/Titlebox/danglingAccessory3/pivot" index="0"]
+position = Vector2(1, 200)
+region_rect = Rect2(0, 0, 512, 20150)
+
+[node name="accessory" parent="UI elements/Titlebox/danglingAccessory3/pivot" index="1"]
+position = Vector2(2, 380)
+
+[node name="UIpurple1" type="Sprite2D" parent="UI elements/Titlebox"]
+light_mask = 2
+position = Vector2(973, 311)
+scale = Vector2(0.4, 0.4)
+texture = ExtResource("14_xroml")
+
+[node name="Title" parent="UI elements/Titlebox" instance=ExtResource("2_r6q7s")]
+light_mask = 2
+offset_left = 373.0
+offset_top = 225.0
+offset_right = 1577.0
+offset_bottom = 411.0
+theme_override_colors/default_color = Color(0.909804, 0.835294, 0.709804, 1)
+theme_override_colors/font_shadow_color = Color(0.909804, 0.835294, 0.709804, 1)
+theme_override_colors/font_outline_color = Color(0.360784, 0.317647, 0.223529, 1)
+theme_override_constants/shadow_offset_x = 7
+theme_override_constants/shadow_offset_y = 0
+theme_override_constants/shadow_outline_size = 3
+theme_override_constants/outline_size = 7
+theme_override_fonts/normal_font = SubResource("FontVariation_rhs3e")
+theme_override_font_sizes/normal_font_size = 160
 text = "[center]Tarot Hero
 [/center]"
 
-[node name="StartButton" parent="." instance=ExtResource("3_wjpu0")]
-offset_left = 662.0
-offset_top = 503.0
-offset_right = 1284.0
-offset_bottom = 579.0
-theme_override_colors/font_color = Color(1, 1, 1, 1)
-theme_override_colors/font_pressed_color = Color(0, 0, 0, 1)
-theme_override_colors/font_hover_color = Color(0, 0, 0, 1)
-theme_override_font_sizes/font_size = 64
-theme_override_styles/normal = SubResource("StyleBoxFlat_yd4mo")
-theme_override_styles/hover = SubResource("StyleBoxFlat_r8d55")
-theme_override_styles/pressed = SubResource("StyleBoxFlat_804dp")
-theme_override_styles/focus = SubResource("StyleBoxEmpty_6g3ib")
-text = "Start"
+[node name="StartButton" parent="UI elements" instance=ExtResource("3_wjpu0")]
+light_mask = 2
+offset_left = 794.0
+offset_top = 510.0
+offset_right = 1178.0
+offset_bottom = 596.0
+pivot_offset = Vector2(192, 43)
 
-[node name="Options" parent="." instance=ExtResource("3_wjpu0")]
-offset_left = 662.0
-offset_top = 600.0
-offset_right = 1284.0
-offset_bottom = 676.0
-theme_override_colors/font_color = Color(1, 1, 1, 1)
-theme_override_colors/font_pressed_color = Color(0, 0, 0, 1)
-theme_override_colors/font_hover_color = Color(0, 0, 0, 1)
-theme_override_font_sizes/font_size = 64
-theme_override_styles/normal = SubResource("StyleBoxFlat_yd4mo")
-theme_override_styles/hover = SubResource("StyleBoxFlat_r8d55")
-theme_override_styles/pressed = SubResource("StyleBoxFlat_804dp")
-theme_override_styles/focus = SubResource("StyleBoxEmpty_pc8ci")
-text = "Options
-"
+[node name="TextLabel" parent="UI elements/StartButton" index="0"]
+light_mask = 2
+offset_left = 130.0
+offset_top = 3.0
+offset_right = 280.0
+offset_bottom = 83.0
+theme_override_colors/default_color = Color(0.909804, 0.835294, 0.709804, 1)
+theme_override_colors/font_shadow_color = Color(0.909804, 0.835294, 0.709804, 1)
+theme_override_colors/font_outline_color = Color(0.360784, 0.317647, 0.223529, 1)
+theme_override_constants/shadow_offset_x = 2
+theme_override_constants/shadow_offset_y = 0
+theme_override_constants/shadow_outline_size = 1
+theme_override_constants/outline_size = 5
+theme_override_fonts/normal_font = ExtResource("17_u2msq")
+text = "[left]Start"
 
-[node name="Exit" parent="." instance=ExtResource("3_wjpu0")]
-offset_left = 662.0
-offset_top = 700.0
-offset_right = 1284.0
-offset_bottom = 776.0
-theme_override_colors/font_color = Color(1, 1, 1, 1)
-theme_override_colors/font_pressed_color = Color(0, 0, 0, 1)
-theme_override_colors/font_hover_color = Color(0, 0, 0, 1)
-theme_override_font_sizes/font_size = 64
-theme_override_styles/normal = SubResource("StyleBoxFlat_yd4mo")
-theme_override_styles/hover = SubResource("StyleBoxFlat_r8d55")
-theme_override_styles/pressed = SubResource("StyleBoxFlat_804dp")
-theme_override_styles/focus = SubResource("StyleBoxEmpty_uyeb3")
-text = "Exit
-"
+[node name="OptionsButton" parent="UI elements" instance=ExtResource("3_wjpu0")]
+light_mask = 2
+offset_left = 794.0
+offset_top = 610.0
+offset_right = 1178.0
+offset_bottom = 696.0
+pivot_offset = Vector2(192, 43)
 
-[connection signal="pressed" from="StartButton" to="." method="_on_start_button_pressed"]
+[node name="TextLabel" parent="UI elements/OptionsButton" index="0"]
+light_mask = 2
+offset_left = 100.0
+offset_top = 8.0
+offset_right = 300.0
+offset_bottom = 88.0
+theme_override_colors/default_color = Color(0.909804, 0.835294, 0.709804, 1)
+theme_override_colors/font_shadow_color = Color(0.909804, 0.835294, 0.709804, 1)
+theme_override_colors/font_outline_color = Color(0.360784, 0.317647, 0.223529, 1)
+theme_override_constants/shadow_offset_x = 2
+theme_override_constants/shadow_offset_y = 0
+theme_override_constants/shadow_outline_size = 1
+theme_override_constants/outline_size = 5
+theme_override_fonts/normal_font = ExtResource("17_u2msq")
+text = "[left]Options"
+
+[node name="ExitButton" parent="UI elements" instance=ExtResource("3_wjpu0")]
+light_mask = 2
+offset_left = 793.0
+offset_top = 718.0
+offset_right = 1177.0
+offset_bottom = 804.0
+pivot_offset = Vector2(192, 43)
+
+[node name="TextLabel" parent="UI elements/ExitButton" index="0"]
+light_mask = 2
+offset_left = 136.0
+offset_top = 8.0
+offset_right = 336.0
+offset_bottom = 88.0
+theme_override_colors/default_color = Color(0.909804, 0.835294, 0.709804, 1)
+theme_override_colors/font_shadow_color = Color(0.909804, 0.835294, 0.709804, 1)
+theme_override_colors/font_outline_color = Color(0.360784, 0.317647, 0.223529, 1)
+theme_override_constants/shadow_offset_x = 2
+theme_override_constants/shadow_offset_y = 0
+theme_override_constants/shadow_outline_size = 1
+theme_override_constants/outline_size = 5
+theme_override_fonts/normal_font = ExtResource("17_u2msq")
+text = "[left]Exit"
+
+[node name="FPScounter" parent="." instance=ExtResource("19_pobrf")]
+offset_left = 883.0
+offset_top = 56.0
+offset_right = 1124.0
+offset_bottom = 132.0
+
+[connection signal="pressed" from="UI elements/StartButton" to="." method="_on_start_button_pressed"]
+
+[editable path="MainMenuBgAnimations/Orbits/Orbit1"]
+[editable path="MainMenuBgAnimations/Orbits/Orbit2"]
+[editable path="MainMenuBgAnimations/Orbits/Orbit3"]
+[editable path="MainMenuBgAnimations/Orbits/Orbit4"]
+[editable path="MainMenuBgAnimations/Orbits/Orbit5"]
+[editable path="MainMenuBgAnimations/Orbits/Orbit1Outer"]
+[editable path="MainMenuBgAnimations/Orbits/Orbit1Outer2"]
+[editable path="UI elements/Titlebox/danglingAccessory2"]
+[editable path="UI elements/Titlebox/danglingAccessory3"]
+[editable path="UI elements/StartButton"]
+[editable path="UI elements/OptionsButton"]
+[editable path="UI elements/ExitButton"]

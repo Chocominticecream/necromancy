@@ -10,7 +10,6 @@ func createStarterDeck(deck : Array):
      for i in range(3):
          var zombieentry = cardfunc.findCard(data_cbd, 0, "SummonData", "numID")
          var zombiecard = cardfunc.createCard(zombieentry, 'summon')
-         zombiecard.alliance = true
          deck.append(zombiecard)
     
      for i in range(2):
@@ -22,8 +21,11 @@ func createStarterDeck(deck : Array):
      for i in range(2):
          var mummyentry = cardfunc.findCard(data_cbd, 2, "SummonData", "numID")
          var mummycard = cardfunc.createCard(mummyentry, 'summon')
-         mummycard.alliance = true
          deck.append(mummycard)
+        
+     for i in range(2):
+         var bruteCard = cardfunc.createCard(cardfunc.findCard(data_cbd, 3, "SummonData", "numID") , 'summon')
+         deck.append(bruteCard)
      
      for i in range(5):
          var manaballentry = cardfunc.findCard(data_cbd, 0, 'SpellData', 'numID')
@@ -45,8 +47,11 @@ func createEnemyDeck(deck : Array, wavedeck : Array):
     var testCard = cardfunc.createCard(cardfunc.findCard(data_cbd, 0, "EnemyData", "numID") , 'enemySummon')
     deck.append(testCard)
     
+    var repeater = cardfunc.createCard(cardfunc.findCard(data_cbd, 3, "EnemyData", "numID") , 'enemySummon')
+    deck.append(repeater)
+    
     #appending wave deck value, first value is the amount of enemies summoned, second number is time til the next wave
-    wavedeck.append([3,3])  
+    wavedeck.append([4,3])  
 # Called when the node enters the scene tree for the first time.
 func _ready():
     cardfunc.copyDatabase()
@@ -57,3 +62,7 @@ func _ready():
 # Called every frame. 'delta' is the elapsed time since the previous frame.
 func _process(delta):
     pass
+
+
+func _on_transition_button_pressed():
+    get_tree().change_scene_to_file("res://scenes/levels/battleScene.tscn")

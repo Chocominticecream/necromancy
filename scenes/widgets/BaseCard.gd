@@ -26,8 +26,10 @@ enum{
     redrawCard, #card is being moved into the discard for redrawing
     
     playing, #card is being played
+    playingSpell, #playing a spell
     inDiscard, #card is in the discardpile
-    inDraw,
+    inDraw, #card is in draw pile
+    death, #card is dying
     
     inEnemyPlay #enemy play state machine
     
@@ -49,6 +51,7 @@ var targetdiscard
 
 #animation
 @onready var animation = $AnimationPlayer
+@onready var animationAlt = $AnimationPlayer2
 var universalMethods = Universalfunc.new()
 
 #----------------------------setters and getters---------------------------------
@@ -70,8 +73,7 @@ func effectget():
 func statusset(val):
     status = val
     var spawn = $spriteNodes/graphicsScaler/StatusSpawn
-    for effect in status:
-        universalMethods.triggerStatuses(DataManager.STATUS.hex, self)
+    universalMethods.triggerStatuses(DataManager.STATUS.hex, self)
         
     for n in spawn.get_children():
         spawn.remove_child(n)
@@ -95,8 +97,8 @@ func energyget():
     return energy
     
 func descset(val):
-    $spriteNodes/TextNormal/Description.text = "[center]" + str(val)
-    $spriteNodes/TextFocused/Description.text = "[center][b]" + str(val)
+    $spriteNodes/TextNormal/Description.text = "[center]" + universalMethods.createDesc(str(val), false)
+    $spriteNodes/TextFocused/Description.text = "[center][b]" + universalMethods.createDesc(str(val), true)
     description = val
 
 func descget():
@@ -223,17 +225,24 @@ func _get_drag_data(at_position):
     
       var ghostdrag = Control.new()
       ghostdrag.add_child(preview)
+      ghostdrag.z_index = 3
       set_drag_preview(ghostdrag)
       state = playing
     
       return self
 
 func _can_drop_data(at_position, data):
-    return data
+    return data is SpellCard and (state == inPlay or state == inEnemyPlay) #or state == inHand
 
 func _drop_data(at_position, data):
-    pass
-
+    print("played spell card!")
+    data.castSpell(self)
+    DataManager.phase = DataManager.countDownPhase
+    await get_tree().create_timer(DataManager.DRAWTIME*1.5).timeout;
+    EventsBus.emit_signal("discardCard", data)
+    DataManager.phase = DataManager.playPhase
+    EventsBus.emit_signal("countdown", data.energy)
+    
 #mockup method for applying card effects on to other cards
 func applyEffect( effectType, effectsArray : Array = effect, card : BaseCard = self):
      for effect in effectsArray:
@@ -261,3 +270,7 @@ func checkStatus(statusType, statusArray: Array = status):
         if status.statusTypeEnum == statusType:
             return true
 
+func triggerCardEffects(cardEffect : DataManager.EFFECTS, effectsArray: Array = effect, placeholderVar = 0):
+    for trigger in effectsArray:
+      if trigger.effectTypeEnum == cardEffect:
+        trigger.applyEffect(self)

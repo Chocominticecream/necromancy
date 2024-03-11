@@ -1,21 +1,24 @@
-[gd_scene load_steps=5 format=3 uid="uid://cwb27uq1chtoq"]
+[gd_scene load_steps=3 format=3 uid="uid://cwb27uq1chtoq"]
 
 [ext_resource type="Script" path="res://scenes/levels/Transition.gd" id="1_rkewc"]
 [ext_resource type="PackedScene" uid="uid://mkstt6knrqh6" path="res://scenes/widgets/BaseButton.tscn" id="2_2im7d"]
-[ext_resource type="Script" path="res://scenes/widgets/nextScene.gd" id="3_s6x7r"]
-
-[sub_resource type="StyleBoxEmpty" id="StyleBoxEmpty_b6h6q"]
 
 [node name="Transition" type="Node2D"]
 script = ExtResource("1_rkewc")
 
-[node name="TransitionButton" parent="." instance=ExtResource("2_2im7d")]
-offset_left = 841.0
-offset_top = 451.0
-offset_right = 1086.0
-offset_bottom = 511.0
-theme_override_styles/focus = SubResource("StyleBoxEmpty_b6h6q")
-text = "Load test battle"
-script = ExtResource("3_s6x7r")
+[node name="transitionButton" parent="." instance=ExtResource("2_2im7d")]
+offset_left = 527.0
+offset_top = 399.0
+offset_right = 783.0
+offset_bottom = 463.0
 
-[connection signal="pressed" from="TransitionButton" to="TransitionButton" method="_on_pressed"]
+[node name="TextLabel" parent="transitionButton" index="0"]
+offset_left = 1.0
+offset_top = -3.0
+offset_right = 251.0
+offset_bottom = 72.0
+text = "[center]Load test"
+
+[connection signal="pressed" from="transitionButton" to="." method="_on_transition_button_pressed"]
+
+[editable path="transitionButton"]

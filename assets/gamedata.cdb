@@ -16,6 +16,10 @@
 					"name": "energy"
 				},
 				{
+					"typeStr": "3",
+					"name": "attack"
+				},
+				{
 					"typeStr": "1",
 					"name": "description",
 					"display": null
@@ -24,20 +28,21 @@
 					"typeStr": "8",
 					"name": "effect",
 					"display": null
+				},
+				{
+					"typeStr": "2",
+					"name": "offensive"
 				}
 			],
 			"lines": [
 				{
 					"description": "A weak magical attack that deals 3 magic damage to an enemy.",
-					"effect": [
-						{
-							"effectType": "magicAttack",
-							"value": 3
-						}
-					],
+					"effect": [],
 					"name": "Wisp",
 					"energy": 1,
-					"numID": 0
+					"numID": 0,
+					"offensive": true,
+					"attack": 3
 				}
 			],
 			"separators": [],
@@ -54,6 +59,11 @@
 				{
 					"typeStr": "1",
 					"name": "effectType",
+					"display": null
+				},
+				{
+					"typeStr": "1",
+					"name": "status",
 					"display": null
 				},
 				{
@@ -119,7 +129,7 @@
 				{
 					"name": "Swamp Zombie",
 					"numID": 1,
-					"description": "Inflict 3 poison on hit",
+					"description": "Inflict 3 [poison] on hit",
 					"counter": 4,
 					"energy": 2,
 					"attack": 5,
@@ -136,8 +146,8 @@
 				{
 					"name": "Mummy",
 					"numID": 2,
-					"description": "Inflict 2 hex on hit",
-					"counter": 3,
+					"description": "Inflict 2 [hex] on hit",
+					"counter": 1,
 					"energy": 2,
 					"attack": 3,
 					"hp": 6,
@@ -146,6 +156,23 @@
 							"effectType": "applyEffectOnHit",
 							"status": "hex",
 							"value": -2
+						}
+					],
+					"offensive": true
+				},
+				{
+					"name": "Brute",
+					"numID": 3,
+					"description": "Counterattacks",
+					"counter": 5,
+					"energy": 3,
+					"attack": 4,
+					"hp": 12,
+					"effect": [
+						{
+							"effectType": "applyEffectWhenAttack",
+							"status": "attack",
+							"value": 0
 						}
 					],
 					"offensive": true
@@ -217,10 +244,10 @@
 			],
 			"lines": [
 				{
-					"name": "test",
+					"name": "Test",
 					"numID": 0,
 					"description": "",
-					"counter": 3,
+					"counter": 5,
 					"attack": 0,
 					"hp": 99,
 					"effect": []
@@ -242,6 +269,21 @@
 					"attack": 2,
 					"hp": 3,
 					"effect": []
+				},
+				{
+					"name": "Repeater",
+					"numID": 3,
+					"description": "gain +1 atk ",
+					"counter": 3,
+					"attack": 0,
+					"hp": 8,
+					"effect": [
+						{
+							"effectType": "applyEffectOnAttack",
+							"status": "attackUp",
+							"value": 1
+						}
+					]
 				}
 			],
 			"separators": [],
@@ -254,7 +296,22 @@
 			},
 			"separators": [],
 			"lines": [],
-			"columns": []
+			"columns": [
+				{
+					"typeStr": "1",
+					"name": "effectType"
+				},
+				{
+					"typeStr": "1",
+					"name": "status",
+					"display": null
+				},
+				{
+					"typeStr": "3",
+					"name": "value",
+					"display": null
+				}
+			]
 		}
 	],
 	"customTypes": [],

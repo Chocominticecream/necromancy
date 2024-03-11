@@ -1,9 +1,13 @@
-[gd_scene load_steps=5 format=3 uid="uid://d1uxd1kj0mhom"]
+[gd_scene load_steps=7 format=3 uid="uid://d1uxd1kj0mhom"]
 
 [ext_resource type="PackedScene" uid="uid://mkstt6knrqh6" path="res://scenes/widgets/BaseButton.tscn" id="1_b1iir"]
 [ext_resource type="Script" path="res://scenes/levels/testroom.gd" id="1_k2r0k"]
 [ext_resource type="Script" path="res://scenes/widgets/testButton.gd" id="2_py4be"]
 [ext_resource type="PackedScene" uid="uid://cb88yr5ic2fsh" path="res://scenes/widgets/BaseCard.tscn" id="2_qsbml"]
+[ext_resource type="Script" path="res://scenes/levels/testphysics.gd" id="5_njltv"]
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_gddlk"]
+size = Vector2(212, 311)
 
 [node name="Testroom" type="Node2D"]
 script = ExtResource("1_k2r0k")
@@ -21,5 +25,15 @@ offset_left = 56.0
 offset_top = 125.0
 offset_right = 266.0
 offset_bottom = 440.0
+
+[node name="RigidBody2D" type="RigidBody2D" parent="."]
+position = Vector2(700, 0)
+script = ExtResource("5_njltv")
+
+[node name="BaseCard" parent="RigidBody2D" instance=ExtResource("2_qsbml")]
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="RigidBody2D"]
+position = Vector2(102, 154.5)
+shape = SubResource("RectangleShape2D_gddlk")
 
 [connection signal="pressed" from="Button" to="." method="_on_button_pressed"]

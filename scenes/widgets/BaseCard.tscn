@@ -1,4 +1,4 @@
-[gd_scene load_steps=13 format=3 uid="uid://cb88yr5ic2fsh"]
+[gd_scene load_steps=16 format=3 uid="uid://cb88yr5ic2fsh"]
 
 [ext_resource type="Script" path="res://scenes/widgets/BaseCard.gd" id="1_34vqh"]
 [ext_resource type="Texture2D" uid="uid://bharxinwotuuv" path="res://assets/placeholders/square-rounded-512.png" id="2_mvs82"]
@@ -31,7 +31,43 @@ tracks/1/keys = {
 "times": PackedFloat32Array(0),
 "transitions": PackedFloat32Array(1),
 "update": 0,
-"values": [Vector2(210, 409.5)]
+"values": [Vector2(210, 315)]
+}
+tracks/2/type = "value"
+tracks/2/imported = false
+tracks/2/enabled = true
+tracks/2/path = NodePath(".:rotation")
+tracks/2/interp = 1
+tracks/2/loop_wrap = true
+tracks/2/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [0.0]
+}
+tracks/3/type = "value"
+tracks/3/imported = false
+tracks/3/enabled = true
+tracks/3/path = NodePath(".:scale")
+tracks/3/interp = 1
+tracks/3/loop_wrap = true
+tracks/3/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [Vector2(1, 1)]
+}
+tracks/4/type = "value"
+tracks/4/imported = false
+tracks/4/enabled = true
+tracks/4/path = NodePath(".:modulate")
+tracks/4/interp = 1
+tracks/4/loop_wrap = true
+tracks/4/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [Color(1, 1, 1, 1)]
 }
 
 [sub_resource type="Animation" id="Animation_enf4p"]
@@ -235,9 +271,70 @@ _data = {
 "simpleUnfocus": SubResource("Animation_gmjir")
 }
 
+[sub_resource type="Animation" id="Animation_wkijk"]
+length = 0.001
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath(".:scale")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [Vector2(1, 1)]
+}
+tracks/1/type = "value"
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/path = NodePath(".:rotation")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [0.0]
+}
+
+[sub_resource type="Animation" id="Animation_7bdk2"]
+resource_name = "death"
+length = 4.0
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath(".:scale")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0, 1.5),
+"transitions": PackedFloat32Array(1, 1),
+"update": 0,
+"values": [Vector2(0.832, 0.832), Vector2(1.3, 1.3)]
+}
+tracks/1/type = "value"
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/path = NodePath(".:rotation")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/keys = {
+"times": PackedFloat32Array(0, 1.5),
+"transitions": PackedFloat32Array(1, 1),
+"update": 0,
+"values": [0.0, -0.785398]
+}
+
+[sub_resource type="AnimationLibrary" id="AnimationLibrary_8vj3c"]
+_data = {
+"RESET": SubResource("Animation_wkijk"),
+"death": SubResource("Animation_7bdk2")
+}
+
 [node name="BaseCard" type="MarginContainer"]
 offset_right = 210.0
-offset_bottom = 409.5
+offset_bottom = 315.0
 script = ExtResource("1_34vqh")
 
 [node name="spriteNodes" type="Node2D" parent="."]
@@ -350,7 +447,7 @@ theme_override_fonts/bold_font = ExtResource("6_eluye")
 theme_override_font_sizes/normal_font_size = 14
 theme_override_font_sizes/bold_font_size = 24
 bbcode_enabled = true
-text = "[center]Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt"
+text = "[center]Lorem ipsum dolor sit amet, consectetur adipiscing elit [img={25}]res://assets/Symbols/poison.png[img]"
 
 [node name="TextFocused" type="Control" parent="spriteNodes"]
 visible = false
@@ -418,11 +515,16 @@ theme_override_fonts/bold_font = ExtResource("6_eluye")
 theme_override_font_sizes/normal_font_size = 14
 theme_override_font_sizes/bold_font_size = 18
 bbcode_enabled = true
-text = "[center][b]Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt"
+text = "[center][b]Lorem ipsum dolor sit amet, consectetur adipiscing elit [img={25}]res://assets/Symbols/poison.png[img]"
 
 [node name="AnimationPlayer" type="AnimationPlayer" parent="."]
 libraries = {
 "": SubResource("AnimationLibrary_5tw3a")
+}
+
+[node name="AnimationPlayer2" type="AnimationPlayer" parent="."]
+libraries = {
+"": SubResource("AnimationLibrary_8vj3c")
 }
 
 [connection signal="gui_input" from="." to="." method="_on_gui_input"]

@@ -1,9 +1,15 @@
 extends Control
 
 var universalFunc = Universalfunc.new()
+var delay : Array = []
+
 # Called when the node enters the scene tree for the first time.
 func _ready():
     EventsBus.connect("countdown", countdown)
+    EventsBus.connect("addDelay", addDelay)
+
+func addDelay(delayval: float):
+    delay.append(delayval)
 
 #TODO - rework sleep as a status effect and not a boolean
 func countdown(val : int):
@@ -12,7 +18,7 @@ func countdown(val : int):
   for i in range(val):
     #deplete count by 1 and assign the cardtime to delay the depletion of counter values
     for slot in $enemyField.get_children()+$heroField.get_children():
-        if slot.activeCard != null:
+        if slot.activeCard != null and slot.activeCard.state != slot.activeCard.death:
             #checks if the card is sleeping, preventing it from attacking
             if !slot.activeCard.checkStatus(DataManager.STATUS.sleep):
               var actingCard = slot.activeCard
@@ -26,11 +32,14 @@ func countdown(val : int):
             for j in range(slot.activeCard.multihit):
               var actingCard = slot.activeCard
               actingCard.onAttack()
-              await get_tree().create_timer(DataManager.DRAWTIME*2).timeout;
-            
+              #activate special effects like counterattacks
+              await get_tree().create_timer(DataManager.DRAWTIME*2.0).timeout;
+              if !delay.is_empty():
+                for waittime in delay:
+                  await get_tree().create_timer(waittime).timeout;
+                  delay.clear()
             #trigger after attack effects
-            universalFunc.triggerStatuses(DataManager.STATUS.poison, slot.activeCard)
-            universalFunc.triggerStatuses(DataManager.STATUS.hex, slot.activeCard, false)
+           
             
             await get_tree().create_timer(DataManager.DRAWTIME*1.5).timeout;    
             
@@ -40,7 +49,7 @@ func countdown(val : int):
             #check if variable is takedamage class object, if it is check for delay then add that here
     
     #this is to delay after every depletion of a count
-    await get_tree().create_timer(cardTime).timeout;
+    await get_tree().create_timer(DataManager.DRAWTIME*1.5).timeout;
   
   #wake up all cards
   for slot in $enemyField.get_children()+$heroField.get_children():
