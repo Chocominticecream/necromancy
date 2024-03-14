@@ -128,6 +128,7 @@ offset_left = 320.0
 offset_top = 170.0
 offset_right = 488.0
 offset_bottom = 422.0
+pivot_offset = Vector2(0, 0)
 
 [node name="CardSlot2" parent="decks/Fields/enemyField" instance=ExtResource("6_y6pg6")]
 layout_mode = 0
@@ -135,6 +136,7 @@ offset_left = 520.0
 offset_top = 170.0
 offset_right = 688.0
 offset_bottom = 422.0
+pivot_offset = Vector2(0, 0)
 
 [node name="CardSlot3" parent="decks/Fields/enemyField" instance=ExtResource("6_y6pg6")]
 layout_mode = 0
@@ -142,6 +144,7 @@ offset_left = 720.0
 offset_top = 170.0
 offset_right = 888.0
 offset_bottom = 422.0
+pivot_offset = Vector2(0, 0)
 
 [node name="CardSlot4" parent="decks/Fields/enemyField" instance=ExtResource("6_y6pg6")]
 layout_mode = 0
@@ -149,6 +152,7 @@ offset_left = 920.0
 offset_top = 170.0
 offset_right = 1088.0
 offset_bottom = 422.0
+pivot_offset = Vector2(0, 0)
 
 [node name="CardSlot5" parent="decks/Fields/enemyField" instance=ExtResource("6_y6pg6")]
 layout_mode = 0
@@ -156,6 +160,7 @@ offset_left = 1120.0
 offset_top = 170.0
 offset_right = 1288.0
 offset_bottom = 422.0
+pivot_offset = Vector2(0, 0)
 
 [node name="heroField" type="Control" parent="decks/Fields"]
 anchors_preset = 0
@@ -170,6 +175,7 @@ offset_left = 320.0
 offset_top = 470.0
 offset_right = 488.0
 offset_bottom = 722.0
+pivot_offset = Vector2(0, 0)
 
 [node name="CardSlot2" parent="decks/Fields/heroField" instance=ExtResource("6_psknn")]
 layout_mode = 0
@@ -177,6 +183,7 @@ offset_left = 520.0
 offset_top = 470.0
 offset_right = 688.0
 offset_bottom = 722.0
+pivot_offset = Vector2(0, 0)
 
 [node name="CardSlot3" parent="decks/Fields/heroField" instance=ExtResource("6_psknn")]
 layout_mode = 0
@@ -184,6 +191,7 @@ offset_left = 720.0
 offset_top = 470.0
 offset_right = 888.0
 offset_bottom = 722.0
+pivot_offset = Vector2(0, 0)
 
 [node name="CardSlot4" parent="decks/Fields/heroField" instance=ExtResource("6_psknn")]
 layout_mode = 0
@@ -191,6 +199,7 @@ offset_left = 920.0
 offset_top = 470.0
 offset_right = 1088.0
 offset_bottom = 722.0
+pivot_offset = Vector2(0, 0)
 
 [node name="CardSlot5" parent="decks/Fields/heroField" instance=ExtResource("6_psknn")]
 layout_mode = 0
@@ -198,6 +207,7 @@ offset_left = 1120.0
 offset_top = 470.0
 offset_right = 1288.0
 offset_bottom = 722.0
+pivot_offset = Vector2(0, 0)
 
 [node name="heroHp" type="Control" parent="decks/Fields"]
 anchors_preset = 0

@@ -10,19 +10,19 @@ script = ExtResource("2_rv30f")
 
 [node name="AttackSprite" type="Sprite2D" parent="spriteNodes/graphicsScaler" index="6"]
 self_modulate = Color(0.717647, 1, 0.905882, 1)
-position = Vector2(17, 297)
+position = Vector2(-89, 138)
 scale = Vector2(0.1, 0.1)
 texture = ExtResource("3_687cd")
 
 [node name="HpSprite" type="Sprite2D" parent="spriteNodes/graphicsScaler" index="7"]
 self_modulate = Color(0.717647, 1, 0.905882, 1)
-position = Vector2(190, 297)
+position = Vector2(86, 138)
 scale = Vector2(0.1, 0.1)
 texture = ExtResource("3_687cd")
 
 [node name="CounterSprite" type="Sprite2D" parent="spriteNodes/graphicsScaler" index="8"]
 self_modulate = Color(0, 0.741176, 0.596078, 1)
-position = Vector2(105, 297)
+position = Vector2(1.00002, 140)
 scale = Vector2(0.12, 0.12)
 texture = ExtResource("3_687cd")
 

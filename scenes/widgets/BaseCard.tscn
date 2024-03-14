@@ -393,53 +393,52 @@ script = ExtResource("1_34vqh")
 [node name="spriteNodes" type="Node2D" parent="."]
 
 [node name="graphicsScaler" type="Node2D" parent="spriteNodes"]
+position = Vector2(105, 157)
 
 [node name="Cardbackground" type="Sprite2D" parent="spriteNodes/graphicsScaler"]
 scale = Vector2(0.4, 0.6)
 texture = ExtResource("2_mvs82")
-centered = false
 
 [node name="Cardborder" type="Sprite2D" parent="spriteNodes/graphicsScaler"]
 self_modulate = Color(0, 0, 0, 1)
-position = Vector2(-24, -35)
+position = Vector2(4, 4)
 scale = Vector2(0.5, 0.75)
 texture = ExtResource("3_0pi0c")
-centered = false
 
 [node name="CardArt" type="Sprite2D" parent="spriteNodes/graphicsScaler"]
 self_modulate = Color(0.435294, 0.435294, 0.435294, 1)
-position = Vector2(20, 30)
+position = Vector2(-2, -54)
 scale = Vector2(1.25, 1.25)
 texture = ExtResource("4_sdltv")
-centered = false
 
 [node name="NameRibbon" type="Sprite2D" parent="spriteNodes/graphicsScaler"]
 self_modulate = Color(0.717647, 1, 0.905882, 1)
-position = Vector2(100.7, 30)
+position = Vector2(-5.99999, -126)
 scale = Vector2(0.341016, 0.06)
 texture = ExtResource("2_mvs82")
 
 [node name="TypeRibbon" type="Sprite2D" parent="spriteNodes/graphicsScaler"]
 self_modulate = Color(0.717647, 1, 0.905882, 1)
-position = Vector2(101, 177)
+position = Vector2(-5, 18)
 scale = Vector2(0.341016, 0.0534375)
 texture = ExtResource("2_mvs82")
 
 [node name="EnergySprite" type="Sprite2D" parent="spriteNodes/graphicsScaler"]
 self_modulate = Color(0.694118, 0.694118, 0.694118, 1)
-position = Vector2(1, 7)
+position = Vector2(-104, -151)
 scale = Vector2(0.1, 0.1)
 texture = ExtResource("5_tmnj2")
 centered = false
 
 [node name="StatusSpawn" type="Node2D" parent="spriteNodes/graphicsScaler"]
-position = Vector2(180, 70)
+position = Vector2(74, -91)
 
 [node name="TextNormal" type="Control" parent="spriteNodes"]
 layout_mode = 3
 anchors_preset = 0
 offset_right = 40.0
 offset_bottom = 40.0
+pivot_offset = Vector2(105, 157)
 mouse_filter = 2
 
 [node name="Name" type="RichTextLabel" parent="spriteNodes/TextNormal"]
@@ -506,8 +505,11 @@ text = "[center]Lorem ipsum dolor sit amet, consectetur adipiscing elit [img={25
 visible = false
 layout_mode = 3
 anchors_preset = 0
-offset_right = 273.0
-offset_bottom = 409.0
+offset_left = -32.0
+offset_top = -47.0
+offset_right = 241.0
+offset_bottom = 362.0
+pivot_offset = Vector2(107, 157)
 mouse_filter = 2
 
 [node name="Name" type="RichTextLabel" parent="spriteNodes/TextFocused"]
