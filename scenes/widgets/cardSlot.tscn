@@ -12,6 +12,5 @@ pivot_offset = Vector2(84, 126)
 script = ExtResource("1_kdj7j")
 
 [node name="CardSlotBorder" type="Sprite2D" parent="."]
-position = Vector2(5, 10)
 texture = ExtResource("2_cdl7u")
 centered = false
