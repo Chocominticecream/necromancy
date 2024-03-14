@@ -1,17 +1,19 @@
-[gd_scene load_steps=3 format=3 uid="uid://dj66ecsukdg8e"]
+[gd_scene load_steps=5 format=3 uid="uid://dj66ecsukdg8e"]
 
-[ext_resource type="Texture2D" uid="uid://q6p8hp3svmij" path="res://assets/placeholders/square-128.png" id="1_hdme5"]
+[ext_resource type="Script" path="res://scenes/levels/battleScene.gd" id="1_472bf"]
+[ext_resource type="PackedScene" uid="uid://b1wqj7hkcbqhx" path="res://scenes/levels/BattleBackground1.tscn" id="1_ei1ud"]
 [ext_resource type="PackedScene" uid="uid://c4t0qci1b1wj6" path="res://scenes/levels/battleUI.tscn" id="1_j0k7h"]
+[ext_resource type="PackedScene" uid="uid://b24xigrrfwecy" path="res://scenes/widgets/BaseParticles.tscn" id="2_7l6vu"]
 
 [node name="battleScene" type="Node2D"]
+script = ExtResource("1_472bf")
 
-[node name="background" type="Sprite2D" parent="."]
-self_modulate = Color(0.345098, 0.6, 0.301961, 1)
-position = Vector2(943, 559.5)
-scale = Vector2(15.7344, 9.74219)
-texture = ExtResource("1_hdme5")
+[node name="BattleBackground1" parent="." instance=ExtResource("1_ei1ud")]
 
-[node name="battleUI" parent="." instance=ExtResource("1_j0k7h")]
+[node name="Stars" parent="." instance=ExtResource("2_7l6vu")]
+position = Vector2(900, 600)
 
 [node name="Camera2D" type="Camera2D" parent="."]
 anchor_mode = 0
+
+[node name="battleUI" parent="." instance=ExtResource("1_j0k7h")]

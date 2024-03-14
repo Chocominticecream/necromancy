@@ -1,6 +1,6 @@
 extends Node2D
 
-
+#original color : 5b5a7f
 
 # Called when the node enters the scene tree for the first time.
 func _ready():

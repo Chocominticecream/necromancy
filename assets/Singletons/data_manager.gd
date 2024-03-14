@@ -25,6 +25,9 @@ var enemyHp = 50
 #options values
 var DRAWTIME = 0.2
 
+#stored shaders
+var nebulaShader
+
 enum STATUS {
     test,
     empty,
@@ -52,7 +55,7 @@ enum EFFECTS {
 
 
 func _ready():
-    pass # Replace with function body.
+    preloadShaders()
 
 # Called every frame. 'delta' is the elapsed time since the previous frame.
 func _process(delta):
@@ -73,3 +76,6 @@ func _process(delta):
            EventsBus.emit_signal("buttonActivation", true)
         restPhase:
            pass
+
+func preloadShaders():
+    nebulaShader = load("res://scenes/widgets/NebulaShader.tscn").instantiate()

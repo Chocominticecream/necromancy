@@ -1,4 +1,4 @@
-[gd_scene load_steps=19 format=3 uid="uid://c4t0qci1b1wj6"]
+[gd_scene load_steps=20 format=3 uid="uid://c4t0qci1b1wj6"]
 
 [ext_resource type="Script" path="res://scenes/levels/battleUI.gd" id="1_rpntx"]
 [ext_resource type="Script" path="res://scenes/levels/decks.gd" id="1_tdpnw"]
@@ -12,6 +12,7 @@
 [ext_resource type="Texture2D" uid="uid://iuerj03bgclw" path="res://assets/placeholders/circle-512.png" id="6_irrae"]
 [ext_resource type="PackedScene" uid="uid://cp2dq35rmenyb" path="res://scenes/widgets/Hero_slot.tscn" id="6_psknn"]
 [ext_resource type="PackedScene" uid="uid://du33lb712teva" path="res://scenes/widgets/Enemy_slot.tscn" id="6_y6pg6"]
+[ext_resource type="Texture2D" uid="uid://boq4kfw0ewww3" path="res://assets/background/necromancerMat1.png" id="7_8uc5h"]
 [ext_resource type="Script" path="res://scenes/levels/heroField.gd" id="8_i55w3"]
 [ext_resource type="PackedScene" uid="uid://bkdnrwe7a3fic" path="res://scenes/widgets/baselabel.tscn" id="8_k1ayk"]
 [ext_resource type="Script" path="res://scenes/levels/endTurn.gd" id="9_q2lej"]
@@ -19,16 +20,11 @@
 [ext_resource type="Script" path="res://scenes/levels/enemyHp.gd" id="13_t4000"]
 [ext_resource type="PackedScene" uid="uid://bmyghr3uy34m5" path="res://scenes/widgets/fp_scounter.tscn" id="18_g38s0"]
 
-[node name="battleUI" type="Control" groups=["enemy", "hero"]]
-layout_mode = 3
-anchors_preset = 15
-anchor_right = 1.0
-anchor_bottom = 1.0
-grow_horizontal = 2
-grow_vertical = 2
+[node name="battleUI" type="CanvasLayer" groups=["enemy", "hero"]]
 script = ExtResource("1_rpntx")
 
 [node name="decks" type="Control" parent="."]
+layout_mode = 3
 anchors_preset = 0
 script = ExtResource("1_tdpnw")
 
@@ -112,6 +108,12 @@ anchors_preset = 0
 offset_right = 40.0
 offset_bottom = 40.0
 script = ExtResource("6_6piww")
+
+[node name="NecromancerMat1" type="Sprite2D" parent="decks/Fields"]
+visible = false
+position = Vector2(950, 445)
+scale = Vector2(1.1, 1.1)
+texture = ExtResource("7_8uc5h")
 
 [node name="enemyField" type="Control" parent="decks/Fields"]
 anchors_preset = 0
@@ -238,11 +240,13 @@ text = "[center]Enemy:0/0
 [/center]"
 
 [node name="UI wireframe" type="Control" parent="."]
+layout_mode = 3
 anchors_preset = 0
 offset_right = 40.0
 offset_bottom = 40.0
 
 [node name="turnButtons" type="Control" parent="."]
+layout_mode = 3
 anchors_preset = 0
 offset_right = 40.0
 offset_bottom = 40.0
@@ -336,11 +340,10 @@ bbcode_enabled = true
 text = "[center]End turn[/center]"
 
 [node name="FPScounter" parent="." instance=ExtResource("18_g38s0")]
-layout_mode = 0
-offset_left = 0.0
+offset_left = 400.0
 offset_top = 0.0
-offset_right = 241.0
-offset_bottom = 70.0
+offset_right = 641.0
+offset_bottom = 76.0
 
 [connection signal="mouse_entered" from="turnButtons/pass/passButton" to="turnButtons/pass" method="_on_redraw_button_mouse_entered"]
 [connection signal="mouse_exited" from="turnButtons/pass/passButton" to="turnButtons/pass" method="_on_redraw_button_mouse_exited"]
