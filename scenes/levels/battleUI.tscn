@@ -1,15 +1,13 @@
-[gd_scene load_steps=20 format=3 uid="uid://c4t0qci1b1wj6"]
+[gd_scene load_steps=21 format=3 uid="uid://c4t0qci1b1wj6"]
 
 [ext_resource type="Script" path="res://scenes/levels/battleUI.gd" id="1_rpntx"]
 [ext_resource type="Script" path="res://scenes/levels/decks.gd" id="1_tdpnw"]
 [ext_resource type="Script" path="res://scenes/levels/draw.gd" id="2_er755"]
 [ext_resource type="Texture2D" uid="uid://bharxinwotuuv" path="res://assets/placeholders/square-rounded-512.png" id="3_pufj1"]
+[ext_resource type="Texture2D" uid="uid://f57cv7khf32k" path="res://assets/UI/cardback.png" id="4_emdax"]
 [ext_resource type="Script" path="res://scenes/levels/discard.gd" id="4_lrhs1"]
-[ext_resource type="Script" path="res://scenes/levels/pass.gd" id="5_ds7ne"]
-[ext_resource type="Script" path="res://scenes/levels/redraw.gd" id="5_psdsv"]
 [ext_resource type="Script" path="res://scenes/levels/Fields.gd" id="6_6piww"]
 [ext_resource type="Script" path="res://scenes/levels/enemyField.gd" id="6_7ja6n"]
-[ext_resource type="Texture2D" uid="uid://iuerj03bgclw" path="res://assets/placeholders/circle-512.png" id="6_irrae"]
 [ext_resource type="PackedScene" uid="uid://cp2dq35rmenyb" path="res://scenes/widgets/Hero_slot.tscn" id="6_psknn"]
 [ext_resource type="PackedScene" uid="uid://du33lb712teva" path="res://scenes/widgets/Enemy_slot.tscn" id="6_y6pg6"]
 [ext_resource type="Texture2D" uid="uid://boq4kfw0ewww3" path="res://assets/background/necromancerMat1.png" id="7_8uc5h"]
@@ -18,7 +16,10 @@
 [ext_resource type="Script" path="res://scenes/levels/endTurn.gd" id="9_q2lej"]
 [ext_resource type="Script" path="res://scenes/levels/heroHp.gd" id="11_1cvjj"]
 [ext_resource type="Script" path="res://scenes/levels/enemyHp.gd" id="13_t4000"]
+[ext_resource type="PackedScene" uid="uid://dfc75y8newma4" path="res://scenes/widgets/ActionButtonRedraw.tscn" id="18_cdidy"]
 [ext_resource type="PackedScene" uid="uid://bmyghr3uy34m5" path="res://scenes/widgets/fp_scounter.tscn" id="18_g38s0"]
+[ext_resource type="PackedScene" uid="uid://gual5wtsno2x" path="res://scenes/widgets/ActionButtonPass.tscn" id="19_imybh"]
+[ext_resource type="Texture2D" uid="uid://cl4iofc66ifqc" path="res://assets/UI/actionButtoncomp2.png" id="22_f71c3"]
 
 [node name="battleUI" type="CanvasLayer" groups=["enemy", "hero"]]
 script = ExtResource("1_rpntx")
@@ -38,18 +39,15 @@ offset_bottom = 750.0
 script = ExtResource("2_er755")
 
 [node name="drawDeckSprite" type="Sprite2D" parent="decks/draw"]
-self_modulate = Color(0, 0, 0, 1)
-position = Vector2(-16, -29)
-scale = Vector2(0.462, 0.693)
-texture = ExtResource("3_pufj1")
+texture = ExtResource("4_emdax")
 centered = false
 
 [node name="drawLabel" type="RichTextLabel" parent="decks/draw"]
 layout_mode = 0
 offset_left = 55.0
-offset_top = 120.0
+offset_top = 30.0
 offset_right = 155.0
-offset_bottom = 180.0
+offset_bottom = 90.0
 theme_override_font_sizes/normal_font_size = 32
 bbcode_enabled = true
 text = "[center]Draw[/center]"
@@ -57,9 +55,9 @@ text = "[center]Draw[/center]"
 [node name="drawValue" type="RichTextLabel" parent="decks/draw"]
 layout_mode = 0
 offset_left = 55.0
-offset_top = 180.0
+offset_top = 240.0
 offset_right = 155.0
-offset_bottom = 240.0
+offset_bottom = 300.0
 theme_override_font_sizes/normal_font_size = 32
 bbcode_enabled = true
 text = "[center]0[/center]"
@@ -73,18 +71,15 @@ offset_bottom = 750.0
 script = ExtResource("4_lrhs1")
 
 [node name="discardDeckSprite" type="Sprite2D" parent="decks/discard"]
-self_modulate = Color(0, 0, 0, 1)
-position = Vector2(-17, -30)
-scale = Vector2(0.462, 0.693)
-texture = ExtResource("3_pufj1")
+texture = ExtResource("4_emdax")
 centered = false
 
 [node name="discardLabel" type="RichTextLabel" parent="decks/discard"]
 layout_mode = 0
 offset_left = 13.0
-offset_top = 120.0
+offset_top = 30.0
 offset_right = 195.0
-offset_bottom = 180.0
+offset_bottom = 90.0
 theme_override_font_sizes/normal_font_size = 32
 bbcode_enabled = true
 text = "[center]Discard[/center]"
@@ -92,9 +87,9 @@ text = "[center]Discard[/center]"
 [node name="discardValue" type="RichTextLabel" parent="decks/discard"]
 layout_mode = 0
 offset_left = 55.0
-offset_top = 180.0
+offset_top = 240.0
 offset_right = 155.0
-offset_bottom = 240.0
+offset_bottom = 300.0
 theme_override_font_sizes/normal_font_size = 32
 bbcode_enabled = true
 text = "[center]0[/center]"
@@ -261,62 +256,6 @@ anchors_preset = 0
 offset_right = 40.0
 offset_bottom = 40.0
 
-[node name="pass" type="Control" parent="turnButtons"]
-anchors_preset = 0
-offset_left = 1700.0
-offset_top = 500.0
-offset_right = 1740.0
-offset_bottom = 540.0
-mouse_filter = 1
-script = ExtResource("5_ds7ne")
-
-[node name="passButton" type="TextureButton" parent="turnButtons/pass"]
-layout_mode = 0
-offset_right = 512.0
-offset_bottom = 512.0
-scale = Vector2(0.4, 0.4)
-texture_normal = ExtResource("6_irrae")
-texture_pressed = ExtResource("6_irrae")
-texture_hover = ExtResource("6_irrae")
-
-[node name="passLabel" type="RichTextLabel" parent="turnButtons/pass"]
-layout_mode = 0
-offset_left = 10.0
-offset_top = 80.0
-offset_right = 191.0
-offset_bottom = 128.0
-mouse_filter = 2
-theme_override_colors/default_color = Color(0, 0, 0, 1)
-theme_override_font_sizes/normal_font_size = 32
-bbcode_enabled = true
-text = "[center]Pass[/center]"
-
-[node name="redraw" type="Control" parent="turnButtons"]
-layout_mode = 3
-anchors_preset = 0
-offset_left = 20.0
-offset_top = 500.0
-offset_right = 60.0
-offset_bottom = 540.0
-mouse_filter = 1
-script = ExtResource("5_psdsv")
-
-[node name="redrawButton" type="TextureButton" parent="turnButtons/redraw"]
-layout_mode = 0
-offset_right = 512.0
-offset_bottom = 512.0
-scale = Vector2(0.4, 0.4)
-texture_normal = ExtResource("6_irrae")
-texture_pressed = ExtResource("6_irrae")
-texture_hover = ExtResource("6_irrae")
-
-[node name="redrawLabel" parent="turnButtons/redraw" instance=ExtResource("8_k1ayk")]
-layout_mode = 0
-offset_left = 9.0
-offset_top = 75.0
-offset_right = 190.0
-offset_bottom = 123.0
-
 [node name="endTurn" type="Control" parent="turnButtons"]
 visible = false
 layout_mode = 3
@@ -332,10 +271,9 @@ script = ExtResource("9_q2lej")
 layout_mode = 0
 offset_right = 512.0
 offset_bottom = 512.0
-scale = Vector2(0.4, 0.4)
-texture_normal = ExtResource("6_irrae")
-texture_pressed = ExtResource("6_irrae")
-texture_hover = ExtResource("6_irrae")
+texture_normal = ExtResource("22_f71c3")
+texture_pressed = ExtResource("22_f71c3")
+texture_hover = ExtResource("22_f71c3")
 
 [node name="endLabel" type="RichTextLabel" parent="turnButtons/endTurn"]
 layout_mode = 0
@@ -349,18 +287,27 @@ theme_override_font_sizes/normal_font_size = 32
 bbcode_enabled = true
 text = "[center]End turn[/center]"
 
+[node name="redraw" parent="turnButtons" instance=ExtResource("18_cdidy")]
+
+[node name="pass" parent="turnButtons" instance=ExtResource("19_imybh")]
+offset_left = 1700.0
+offset_right = 1740.0
+
+[node name="passLabel" parent="turnButtons/pass" index="4"]
+text = "[center]Pass
+[/center]"
+
 [node name="FPScounter" parent="." instance=ExtResource("18_g38s0")]
 offset_left = 400.0
 offset_top = 0.0
 offset_right = 641.0
 offset_bottom = 76.0
 
-[connection signal="mouse_entered" from="turnButtons/pass/passButton" to="turnButtons/pass" method="_on_redraw_button_mouse_entered"]
-[connection signal="mouse_exited" from="turnButtons/pass/passButton" to="turnButtons/pass" method="_on_redraw_button_mouse_exited"]
-[connection signal="pressed" from="turnButtons/pass/passButton" to="decks" method="_on_pass_button_pressed"]
-[connection signal="mouse_entered" from="turnButtons/redraw/redrawButton" to="turnButtons/redraw" method="_on_redraw_button_mouse_entered"]
-[connection signal="mouse_exited" from="turnButtons/redraw/redrawButton" to="turnButtons/redraw" method="_on_redraw_button_mouse_exited"]
-[connection signal="pressed" from="turnButtons/redraw/redrawButton" to="decks" method="_on_redraw_button_pressed"]
 [connection signal="mouse_entered" from="turnButtons/endTurn/endButton" to="turnButtons/endTurn" method="_on_redraw_button_mouse_entered"]
 [connection signal="mouse_exited" from="turnButtons/endTurn/endButton" to="turnButtons/endTurn" method="_on_redraw_button_mouse_exited"]
 [connection signal="pressed" from="turnButtons/endTurn/endButton" to="decks" method="_on_redraw_button_pressed"]
+[connection signal="pressed" from="turnButtons/redraw/redrawButton" to="decks" method="_on_redraw_button_pressed"]
+[connection signal="pressed" from="turnButtons/pass/passButton" to="decks" method="_on_pass_button_pressed"]
+
+[editable path="turnButtons/redraw"]
+[editable path="turnButtons/pass"]

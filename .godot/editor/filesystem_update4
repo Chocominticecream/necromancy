@@ -7,6 +7,13 @@ res://scenes/levels/testroom.tscn
 res://scenes/widgets/BaseButton.tscn
 res://scenes/levels/BattleBackground1.tscn
 res://scenes/widgets/cardSlot.tscn
-res://scenes/widgets/BaseCard.tscn
 res://scenes/levels/battleScene.tscn
 res://scenes/widgets/NebulaShader.tscn
+res://scenes/widgets/BaseCard.tscn
+res://scenes/levels/pass.gd
+res://scenes/levels/redraw.gd
+res://scenes/widgets/BaseCard.gd
+res://scenes/levels/decks.gd
+res://scenes/widgets/ActionButtonRedraw.tscn
+res://scenes/widgets/ActionButtonPass.tscn
+res://scenes/widgets/ActionButtonPass.gd

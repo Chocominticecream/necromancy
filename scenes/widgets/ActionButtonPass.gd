@@ -7,10 +7,10 @@ var animationFinished : bool = true
 #animation components
 @onready var tinyCircle = $component3
 
-@onready var redrawButton = $redrawButton
+@onready var redrawButton = $passButton
 @onready var animation = $AnimationPlayer
 
-@onready var crystalpos = $redrawButton.position
+@onready var crystalpos = $passButton.position
 
 
 # Called when the node enters the scene tree for the first time.
@@ -32,7 +32,7 @@ func _process(delta):
         animationFinished = true
 
 func buttonActivation(val : bool = true):
-    $redrawButton.disabled = val
+    $passButton.disabled = val
 
 func spinCircle(speed):
     tween = create_tween()
@@ -59,7 +59,6 @@ func playAnimation(val : String):
 
 func _on_redraw_button_mouse_exited():
       animationFinished = false
-    
 
 
 func _on_redraw_button_mouse_entered():

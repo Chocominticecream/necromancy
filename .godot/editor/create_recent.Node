@@ -1,11 +1,11 @@
+AnimationPlayer
+Sprite2D
 CanvasLayer
 ColorRect
 ParallaxLayer
 ParallaxBackground
-Sprite2D
 Node2D
 TextureRect
-AnimationPlayer
 DirectionalLight2D
 TextureButton
 Button
