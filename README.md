@@ -24,6 +24,7 @@ and krita for drawn art
  - ~~action button design~~
  - ~~card back design (easy)~~
  - Health bar design
+ - swap out ugly font for better appropriate font
  - character/enemy portrait
  - programatically fit card art into card
  - card front design (hard)
