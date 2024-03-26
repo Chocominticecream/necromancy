@@ -30,4 +30,5 @@ and krita for drawn art
  - card front design (hard)
  - fix glitchy action buttons in the battle UI (i would reimplement the buttons to use state machines instead of stopping variables)
  - fix graphic on star particles (star particles have a hole in them and are also pixelated, to be replaced with better graphic)
+- revisit HP graphic, maybe replace with dynamic health bars?
 
