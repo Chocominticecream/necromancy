@@ -1,4 +1,4 @@
-[gd_scene load_steps=14 format=3 uid="uid://gual5wtsno2x"]
+[gd_scene load_steps=16 format=3 uid="uid://gual5wtsno2x"]
 
 [ext_resource type="Script" path="res://scenes/widgets/ActionButtonPass.gd" id="1_resf2"]
 [ext_resource type="Texture2D" uid="uid://pmav8kfngl0e" path="res://assets/UI/actionButtoncomp1.png" id="2_xighm"]
@@ -7,7 +7,9 @@
 [ext_resource type="Texture2D" uid="uid://cl4iofc66ifqc" path="res://assets/UI/actionButtoncomp2.png" id="5_dd0xw"]
 [ext_resource type="Texture2D" uid="uid://db642g6sg1oqn" path="res://assets/UI/actionButtoncomp2lighten.png" id="6_ctvbr"]
 [ext_resource type="Texture2D" uid="uid://cb5ab5maaw6rg" path="res://assets/UI/ActionButtoncomp2Dark.png" id="7_qvc4s"]
-[ext_resource type="PackedScene" uid="uid://bkdnrwe7a3fic" path="res://scenes/widgets/baselabel.tscn" id="8_awbcx"]
+[ext_resource type="FontFile" uid="uid://basqqe0aj8rdw" path="res://assets/fonts/VenturisSansADFCd-Bold.otf" id="8_mtmi6"]
+[ext_resource type="FontFile" uid="uid://nswb4qjqs8ld" path="res://assets/fonts/Gupter-Bold.ttf" id="9_c3vhy"]
+[ext_resource type="FontFile" uid="uid://cdrh8tj0n4lxx" path="res://assets/fonts/ITC Avant Garde Gothic Bold.otf" id="10_4vsiu"]
 
 [sub_resource type="Animation" id="Animation_5ob0j"]
 length = 0.001
@@ -111,18 +113,35 @@ texture_pressed = ExtResource("6_ctvbr")
 texture_hover = ExtResource("6_ctvbr")
 texture_disabled = ExtResource("7_qvc4s")
 
-[node name="passLabel" parent="." instance=ExtResource("8_awbcx")]
-layout_mode = 0
-offset_left = 15.0
-offset_top = 75.0
-offset_right = 196.0
-offset_bottom = 123.0
-theme_override_colors/default_color = Color(1, 1, 1, 1)
-
 [node name="AnimationPlayer" type="AnimationPlayer" parent="."]
 libraries = {
 "": SubResource("AnimationLibrary_soix6")
 }
+
+[node name="passLabel" type="RichTextLabel" parent="."]
+light_mask = 2
+layout_mode = 0
+offset_left = 15.0
+offset_top = 75.0
+offset_right = 187.0
+offset_bottom = 125.0
+mouse_filter = 2
+theme_override_colors/default_color = Color(0.909804, 0.835294, 0.709804, 1)
+theme_override_colors/font_shadow_color = Color(0.909804, 0.835294, 0.709804, 1)
+theme_override_colors/font_outline_color = Color(0.360784, 0.317647, 0.223529, 1)
+theme_override_constants/shadow_offset_x = 2
+theme_override_constants/shadow_offset_y = 0
+theme_override_constants/shadow_outline_size = 1
+theme_override_constants/outline_size = 5
+theme_override_fonts/normal_font = ExtResource("8_mtmi6")
+theme_override_fonts/bold_font = ExtResource("9_c3vhy")
+theme_override_fonts/italics_font = ExtResource("10_4vsiu")
+theme_override_font_sizes/normal_font_size = 42
+theme_override_font_sizes/bold_font_size = 32
+theme_override_font_sizes/italics_font_size = 32
+bbcode_enabled = true
+text = "[center]Pass
+[/center]"
 
 [connection signal="mouse_entered" from="passButton" to="." method="_on_redraw_button_mouse_entered"]
 [connection signal="mouse_exited" from="passButton" to="." method="_on_redraw_button_mouse_exited"]

@@ -1,11 +1,11 @@
 ea4bc82a6ad023ab7ee23ee620429895
-::res://::1711374458
+::res://::1711468057
 EnemySlot.gd::GDScript::-1::1708096492::0::1::::<>BaseSlot<>::
 HeroSlot.gd::GDScript::-1::1707586246::0::1::::<>BaseSlot<>::
 icon.svg::CompressedTexture2D::5216335250923924737::1697116700::1702646918::1::::<><>::
 README.md::TextFile::-1::1710413432::0::1::::<><>::
 some plans for the code structure.txt::TextFile::-1::1706162736::0::1::::<><>::
-::res://assets/::1709285723
+::res://assets/::1711385285
 ::res://assets/background/::1709662822
 dangling_accessory.gd::GDScript::-1::1709382038::0::1::::<>Node2D<>::
 dangling_accessory.tscn::PackedScene::1305547814279897726::1709466965::0::1::::<><>::res://assets/background/dangling_accessory.gd<>uid://b0sekmw7p6arx::::res://assets/portraits/moon.png<>uid://ckwxmit8kpfag::::res://assets/UI/rope3.png
@@ -15,6 +15,9 @@ orbit.tscn::PackedScene::8775179935280445524::1709466966::0::1::::<><>::res://as
 ::res://assets/clickmasks/::1704717665
 triangleclickmask.bmp::BitMap::8207338387407519046::1666021168::1704717665::1::::<><>::
 triangleclickmask.png::BitMap::5599760548964810347::1666020655::1704717664::1::::<><>::
+::res://assets/drawnArt/::1711385421
+mummy.png::CompressedTexture2D::4111782527310007368::1710180267::1711385421::1::::<><>::
+variation4.png::CompressedTexture2D::2483450669653306787::1711195389::1711385421::1::::<><>::
 ::res://assets/fonts/::1709288844
 Aquatico-Regular.otf::FontFile::1213117854379156235::1498207524::1709288322::1::::<><>::
 BUBBS___.TTF::FontFile::6203197667723246887::906960150::1709032546::1::::<><>::
@@ -81,7 +84,7 @@ base.png::CompressedTexture2D::7526056985389091463::1663509877::1707391001::1:::
 hex.png::CompressedTexture2D::6924484186881183359::1708104480::1708104508::1::::<><>::
 poison.png::CompressedTexture2D::3223355387710989463::1707390914::1707391001::1::::<><>::
 sleep.png::CompressedTexture2D::4068876589021503601::1707392312::1707392477::1::::<><>::
-::res://assets/UI/::1711376426
+::res://assets/UI/::1711464087
 actionButtoncomp1.png::CompressedTexture2D::1077644438254603682::1711359881::1711359944::1::::<><>::
 actionButtoncomp2.png::CompressedTexture2D::5605296606485696966::1711359896::1711359944::1::::<><>::
 ActionButtoncomp2Dark.png::CompressedTexture2D::4904964923678991092::1711376104::1711376141::1::::<><>::
@@ -91,6 +94,7 @@ actionButtoncomp4.png::CompressedTexture2D::1960307399780169734::1711359855::171
 cardback.png::CompressedTexture2D::414823219056324584::1711283575::1711283687::1::::<><>::
 cardslot.png::CompressedTexture2D::8716849372968151611::1709567605::1709567607::1::::<><>::
 cardslot.svg::CompressedTexture2D::3127886861038391006::1709555891::1709555908::1::::<><>::
+HEALTH.png::CompressedTexture2D::1640006930024719248::1711464025::1711464087::1::::<><>::
 rope2.png::CompressedTexture2D::2559054788753573547::1709286219::1709286242::1::::<><>::
 rope3.png::CompressedTexture2D::5521564485767741202::1709379898::1709379930::1::::<><>::
 rope.png::CompressedTexture2D::5399691155636495130::1709286030::1709286087::1::::<><>::
@@ -102,14 +106,14 @@ witchCircle2.png::CompressedTexture2D::3777515440057866776::1709380902::17093809
 witchCircle3.png::CompressedTexture2D::2165467164202533211::1709381046::1709381063::1::::<><>::
 witchCircle3small.png::CompressedTexture2D::5097757540526089466::1709439036::1709439057::1::::<><>::
 ::res://scenes/::1697116781
-::res://scenes/levels/::1711384315
+::res://scenes/levels/::1711468040
 BattleBackground1.gd::GDScript::-1::1709812739::0::1::::<>Node2D<>::
 BattleBackground1.tscn::PackedScene::4257736164918586093::1711374961::0::1::::<><>::uid://q6p8hp3svmij::::res://assets/placeholders/square-128.png<>res://scenes/levels/BattleBackground1.gd
 battleScene.gd::GDScript::-1::1709812739::0::1::::<>Node2D<>::
 battleScene.tscn::PackedScene::7856846857924205238::1711374961::0::1::::<><>::res://scenes/levels/battleScene.gd<>uid://b1wqj7hkcbqhx::::res://scenes/levels/BattleBackground1.tscn<>uid://c4t0qci1b1wj6::::res://scenes/levels/battleUI.tscn<>uid://b24xigrrfwecy::::res://scenes/widgets/BaseParticles.tscn
 battleUI.gd::GDScript::-1::1709808513::0::1::::<>CanvasLayer<>::
-battleUI.tscn::PackedScene::6849087626326757577::1711384403::0::1::::<><>::res://scenes/levels/battleUI.gd<>res://scenes/levels/decks.gd<>res://scenes/levels/draw.gd<>uid://bharxinwotuuv::::res://assets/placeholders/square-rounded-512.png<>uid://f57cv7khf32k::::res://assets/UI/cardback.png<>res://scenes/levels/discard.gd<>res://scenes/levels/Fields.gd<>res://scenes/levels/enemyField.gd<>uid://cp2dq35rmenyb::::res://scenes/widgets/Hero_slot.tscn<>uid://du33lb712teva::::res://scenes/widgets/Enemy_slot.tscn<>uid://boq4kfw0ewww3::::res://assets/background/necromancerMat1.png<>res://scenes/levels/heroField.gd<>uid://bkdnrwe7a3fic::::res://scenes/widgets/baselabel.tscn<>res://scenes/levels/endTurn.gd<>res://scenes/levels/heroHp.gd<>res://scenes/levels/enemyHp.gd<>uid://dfc75y8newma4::::res://scenes/widgets/ActionButton.tscn<>uid://bmyghr3uy34m5::::res://scenes/widgets/fp_scounter.tscn<>uid://cl4iofc66ifqc::::res://assets/UI/actionButtoncomp2.png
-decks.gd::GDScript::-1::1711384297::0::1::::<>Control<>::
+battleUI.tscn::PackedScene::6849087626326757577::1711468040::0::1::::<><>::res://scenes/levels/battleUI.gd<>res://scenes/levels/decks.gd<>res://scenes/levels/draw.gd<>uid://f57cv7khf32k::::res://assets/UI/cardback.png<>res://scenes/levels/discard.gd<>res://scenes/levels/Fields.gd<>res://scenes/levels/enemyField.gd<>uid://cp2dq35rmenyb::::res://scenes/widgets/Hero_slot.tscn<>uid://du33lb712teva::::res://scenes/widgets/Enemy_slot.tscn<>uid://boq4kfw0ewww3::::res://assets/background/necromancerMat1.png<>res://scenes/levels/heroField.gd<>res://scenes/levels/endTurn.gd<>res://scenes/levels/heroHp.gd<>uid://xmow60ybwcpk::::res://assets/UI/HEALTH.png<>res://scenes/levels/enemyHp.gd<>uid://basqqe0aj8rdw::::res://assets/fonts/VenturisSansADFCd-Bold.otf<>uid://nswb4qjqs8ld::::res://assets/fonts/Gupter-Bold.ttf<>uid://cdrh8tj0n4lxx::::res://assets/fonts/ITC Avant Garde Gothic Bold.otf<>uid://dfc75y8newma4::::res://scenes/widgets/ActionButtonRedraw.tscn<>uid://bmyghr3uy34m5::::res://scenes/widgets/fp_scounter.tscn<>uid://gual5wtsno2x::::res://scenes/widgets/ActionButtonPass.tscn<>uid://cl4iofc66ifqc::::res://assets/UI/actionButtoncomp2.png
+decks.gd::GDScript::-1::1711384767::0::1::::<>Control<>::
 discard.gd::GDScript::-1::1705256501::0::1::::<>Control<>::
 draw.gd::GDScript::-1::1705256501::0::1::::<>Control<>::
 endTurn.gd::GDScript::-1::1707394565::0::1::::<>Control<>::
@@ -120,25 +124,26 @@ heroField.gd::GDScript::-1::1706025883::0::1::::<>Control<>::
 heroHp.gd::GDScript::-1::1706440737::0::1::::<>Control<>::
 MainMenuBgAnimations.gd::GDScript::-1::1709285859::0::1::::<>Node2D<>::
 main_menu.gd::GDScript::-1::1709465980::0::1::::<>Node2D<>::
-main_menu.tscn::PackedScene::1834373591425585980::1711384315::0::1::::<><>::uid://q6p8hp3svmij::::res://assets/placeholders/square-128.png<>res://scenes/levels/main_menu.gd<>uid://bkdnrwe7a3fic::::res://scenes/widgets/baselabel.tscn<>uid://mkstt6knrqh6::::res://scenes/widgets/BaseButton.tscn<>uid://b24xigrrfwecy::::res://scenes/widgets/BaseParticles.tscn<>uid://cinh8068c28n::::res://assets/UI/witchCircle1.png<>uid://dxa06w1jgqan1::::res://assets/background/orbit.tscn<>uid://5376ss4r5cyd::::res://assets/UI/witchCircle3.png<>res://scenes/levels/MainMenuBgAnimations.gd<>uid://b0sekmw7p6arx::::res://assets/portraits/moon.png<>uid://iuerj03bgclw::::res://assets/placeholders/circle-512.png<>uid://d3ocr3hvaxrgy::::res://assets/placeholders/mountain2.png<>uid://cgv1lrq574uqp::::res://assets/placeholders/mountain1.png<>uid://d2unbluv8hath::::res://assets/placeholders/mountain3.png<>uid://br0cj3xya3j24::::res://assets/placeholders/hills1.png<>uid://dmhttftvnv3rr::::res://assets/placeholders/mountainA.png<>uid://010nmypafjj1::::res://assets/placeholders/mountainB.png<>uid://cse7kusibyvri::::res://assets/placeholders/mountainC.png<>res://scenes/levels/Titlebox.gd<>uid://b88ymxt5xnsgs::::res://assets/UI/UIpurple1.png<>uid://dtv3lxr7owkda::::res://assets/placeholders/star-512.png<>uid://basqqe0aj8rdw::::res://assets/fonts/VenturisSansADFCd-Bold.otf<>uid://suoggd3d6wq5::::res://assets/background/dangling_accessory.tscn<>uid://bmyghr3uy34m5::::res://scenes/widgets/fp_scounter.tscn
+main_menu.tscn::PackedScene::1834373591425585980::1711467446::0::1::::<><>::uid://q6p8hp3svmij::::res://assets/placeholders/square-128.png<>res://scenes/levels/main_menu.gd<>uid://bkdnrwe7a3fic::::res://scenes/widgets/baselabel.tscn<>uid://mkstt6knrqh6::::res://scenes/widgets/BaseButton.tscn<>uid://b24xigrrfwecy::::res://scenes/widgets/BaseParticles.tscn<>uid://cinh8068c28n::::res://assets/UI/witchCircle1.png<>uid://dxa06w1jgqan1::::res://assets/background/orbit.tscn<>uid://5376ss4r5cyd::::res://assets/UI/witchCircle3.png<>res://scenes/levels/MainMenuBgAnimations.gd<>uid://b0sekmw7p6arx::::res://assets/portraits/moon.png<>uid://iuerj03bgclw::::res://assets/placeholders/circle-512.png<>uid://d3ocr3hvaxrgy::::res://assets/placeholders/mountain2.png<>uid://cgv1lrq574uqp::::res://assets/placeholders/mountain1.png<>uid://d2unbluv8hath::::res://assets/placeholders/mountain3.png<>uid://br0cj3xya3j24::::res://assets/placeholders/hills1.png<>uid://dmhttftvnv3rr::::res://assets/placeholders/mountainA.png<>uid://010nmypafjj1::::res://assets/placeholders/mountainB.png<>uid://cse7kusibyvri::::res://assets/placeholders/mountainC.png<>res://scenes/levels/Titlebox.gd<>uid://b88ymxt5xnsgs::::res://assets/UI/UIpurple1.png<>uid://dtv3lxr7owkda::::res://assets/placeholders/star-512.png<>uid://basqqe0aj8rdw::::res://assets/fonts/VenturisSansADFCd-Bold.otf<>uid://suoggd3d6wq5::::res://assets/background/dangling_accessory.tscn<>uid://bmyghr3uy34m5::::res://scenes/widgets/fp_scounter.tscn
 pass.gd::GDScript::-1::1711383991::0::1::::<>Control<>::
-redraw.gd::GDScript::-1::1711383837::0::1::::<>Control<>::
+redraw.gd::GDScript::-1::1711467967::0::1::::<>Control<>::
 testphysics.gd::GDScript::-1::1708779606::0::1::::<>RigidBody2D<>::
 testroom.gd::GDScript::-1::1705333551::0::1::::<>Node2D<>::
 testroom.tscn::PackedScene::9026862770462639380::1711374960::0::1::::<><>::uid://mkstt6knrqh6::::res://scenes/widgets/BaseButton.tscn<>res://scenes/levels/testroom.gd<>res://scenes/widgets/testButton.gd<>uid://cb88yr5ic2fsh::::res://scenes/widgets/BaseCard.tscn<>res://scenes/levels/testphysics.gd
 Titlebox.gd::GDScript::-1::1709382824::0::1::::<>Node2D<>::
 Transition.gd::GDScript::-1::1709811638::0::1::::<>Node2D<>::
-Transition.tscn::PackedScene::6320757885754790352::1711384314::0::1::::<><>::res://scenes/levels/Transition.gd<>uid://mkstt6knrqh6::::res://scenes/widgets/BaseButton.tscn
+Transition.tscn::PackedScene::6320757885754790352::1711467998::0::1::::<><>::res://scenes/levels/Transition.gd<>uid://mkstt6knrqh6::::res://scenes/widgets/BaseButton.tscn
 ::res://scenes/levels/logs/::1702292979
 godot.log::TextFile::-1::1702292980::0::1::::<><>::
-::res://scenes/widgets/::1711384393
-ActionButton.tscn::PackedScene::7516332854499091997::1711384060::0::1::::<><>::res://scenes/levels/redraw.gd<>uid://pmav8kfngl0e::::res://assets/UI/actionButtoncomp1.png<>uid://cmnodo60j0dyq::::res://assets/UI/actionButtoncomp3.png<>uid://26t8g2f4g167::::res://assets/UI/actionButtoncomp4.png<>uid://cl4iofc66ifqc::::res://assets/UI/actionButtoncomp2.png<>uid://db642g6sg1oqn::::res://assets/UI/actionButtoncomp2lighten.png<>uid://cb5ab5maaw6rg::::res://assets/UI/ActionButtoncomp2Dark.png<>uid://bkdnrwe7a3fic::::res://scenes/widgets/baselabel.tscn
-ActionButtonPass.tscn::PackedScene::462441871216400333::1711384393::0::1::::<><>::res://scenes/levels/redraw.gd<>uid://pmav8kfngl0e::::res://assets/UI/actionButtoncomp1.png<>uid://cmnodo60j0dyq::::res://assets/UI/actionButtoncomp3.png<>uid://26t8g2f4g167::::res://assets/UI/actionButtoncomp4.png<>uid://cl4iofc66ifqc::::res://assets/UI/actionButtoncomp2.png<>uid://db642g6sg1oqn::::res://assets/UI/actionButtoncomp2lighten.png<>uid://cb5ab5maaw6rg::::res://assets/UI/ActionButtoncomp2Dark.png<>uid://bkdnrwe7a3fic::::res://scenes/widgets/baselabel.tscn
+::res://scenes/widgets/::1711468041
+ActionButtonPass.gd::GDScript::-1::1711467967::0::1::::<>Control<>::
+ActionButtonPass.tscn::PackedScene::462441871216400333::1711467998::0::1::::<><>::res://scenes/widgets/ActionButtonPass.gd<>uid://pmav8kfngl0e::::res://assets/UI/actionButtoncomp1.png<>uid://cmnodo60j0dyq::::res://assets/UI/actionButtoncomp3.png<>uid://26t8g2f4g167::::res://assets/UI/actionButtoncomp4.png<>uid://cl4iofc66ifqc::::res://assets/UI/actionButtoncomp2.png<>uid://db642g6sg1oqn::::res://assets/UI/actionButtoncomp2lighten.png<>uid://cb5ab5maaw6rg::::res://assets/UI/ActionButtoncomp2Dark.png<>uid://basqqe0aj8rdw::::res://assets/fonts/VenturisSansADFCd-Bold.otf<>uid://nswb4qjqs8ld::::res://assets/fonts/Gupter-Bold.ttf<>uid://cdrh8tj0n4lxx::::res://assets/fonts/ITC Avant Garde Gothic Bold.otf
+ActionButtonRedraw.tscn::PackedScene::7516332854499091997::1711467295::0::1::::<><>::res://scenes/levels/redraw.gd<>uid://pmav8kfngl0e::::res://assets/UI/actionButtoncomp1.png<>uid://cmnodo60j0dyq::::res://assets/UI/actionButtoncomp3.png<>uid://26t8g2f4g167::::res://assets/UI/actionButtoncomp4.png<>uid://cl4iofc66ifqc::::res://assets/UI/actionButtoncomp2.png<>uid://db642g6sg1oqn::::res://assets/UI/actionButtoncomp2lighten.png<>uid://cb5ab5maaw6rg::::res://assets/UI/ActionButtoncomp2Dark.png<>uid://basqqe0aj8rdw::::res://assets/fonts/VenturisSansADFCd-Bold.otf<>uid://nswb4qjqs8ld::::res://assets/fonts/Gupter-Bold.ttf<>uid://cdrh8tj0n4lxx::::res://assets/fonts/ITC Avant Garde Gothic Bold.otf
 BaseButton.gd::GDScript::-1::1709308747::0::1::::<>TextureButton<>::
 BaseButton.tscn::PackedScene::864037783455978917::1711374961::0::1::::<><>::uid://b88ymxt5xnsgs::::res://assets/UI/UIpurple1.png<>res://scenes/widgets/BaseButton.gd<>uid://dy6svryrrc3fo::::res://assets/fonts/VenturisSansADFCd-Regular.otf<>uid://nswb4qjqs8ld::::res://assets/fonts/Gupter-Bold.ttf<>uid://cdrh8tj0n4lxx::::res://assets/fonts/ITC Avant Garde Gothic Bold.otf
 BaseCard.gd::GDScript::-1::1711379898::0::1::::BaseCard<>MarginContainer<>::
-BaseCard.tscn::PackedScene::4913202136331526519::1711384315::0::1::::<><>::res://scenes/widgets/BaseCard.gd<>uid://bharxinwotuuv::::res://assets/placeholders/square-rounded-512.png<>uid://usvgdabdqbcp::::res://assets/placeholders/squareoutline.png<>uid://q6p8hp3svmij::::res://assets/placeholders/square-128.png<>uid://iuerj03bgclw::::res://assets/placeholders/circle-512.png<>uid://foyvqv5qw4c4::::res://assets/fonts/Roboto-Bold.ttf
-baselabel.tscn::PackedScene::3095323095885912454::1705160419::0::1::::<><>::
+BaseCard.tscn::PackedScene::4913202136331526519::1711467294::0::1::::<><>::res://scenes/widgets/BaseCard.gd<>uid://bharxinwotuuv::::res://assets/placeholders/square-rounded-512.png<>uid://usvgdabdqbcp::::res://assets/placeholders/squareoutline.png<>uid://q6p8hp3svmij::::res://assets/placeholders/square-128.png<>uid://iuerj03bgclw::::res://assets/placeholders/circle-512.png<>uid://foyvqv5qw4c4::::res://assets/fonts/Roboto-Bold.ttf
+baselabel.tscn::PackedScene::3095323095885912454::1711467295::0::1::::<><>::
 BaseParticles.tscn::PackedScene::4342797536154305996::1709809216::0::1::::<><>::uid://cb1b5fivvqece::::res://assets/portraits/star.png
 CardSlot.gd::GDScript::-1::1708533158::0::1::::BaseSlot<>MarginContainer<>::
 cardSlot.tscn::PackedScene::1853888135559448351::1711374961::0::1::::<><>::res://scenes/widgets/CardSlot.gd<>uid://dwgrianam025l::::res://assets/UI/cardslot.png
@@ -148,7 +153,7 @@ fp_scounter.tscn::PackedScene::3278609613054248458::1709221734::0::1::::<><>::ui
 Hero_slot.tscn::PackedScene::5881624462783627365::1709143616::0::1::::<><>::uid://1objcl2hfcod::::res://scenes/widgets/cardSlot.tscn<>res://HeroSlot.gd
 juicyButton.gd::GDScript::-1::1709039298::0::1::::<>RichTextLabel<>::
 juicyButton.tscn::PackedScene::3737834376798221258::1709306338::0::1::::<><>::uid://b4qnutn4jfdap::::res://assets/fonts/Caprasimo-Regular.ttf<>uid://nswb4qjqs8ld::::res://assets/fonts/Gupter-Bold.ttf<>uid://cdrh8tj0n4lxx::::res://assets/fonts/ITC Avant Garde Gothic Bold.otf<>res://scenes/widgets/juicyButton.gd
-NebulaShader.gdshader::Shader::-1::1711384403::0::1::::<><>::
+NebulaShader.gdshader::Shader::-1::1711468041::0::1::::<><>::
 NebulaShader.tscn::PackedScene::1032449562817810338::1711374961::0::1::::<><>::res://scenes/widgets/NebulaShader.gdshader
 nextScene.gd::GDScript::-1::1704642083::0::1::::<>Button<>::
 SpellCard.gd::GDScript::-1::1709578024::0::1::::SpellCard<>BaseCard<>::
