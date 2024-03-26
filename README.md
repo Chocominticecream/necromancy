@@ -11,7 +11,7 @@
  - ~~basic buffs and debuffs: sleep, poison, attack up , hex, symbols~~
 
  - ~~spells~~ (made a simple damage spell might implement more)
- - other events
+ - other events (WIP idea)
  - a "tarot card" map navigation system, where the area you go to is decided by the tarot cards you choose (WIP idea)
 
 The UI doesnt have to be perfect, but it just has to have some concept of an art direction, using inkscape for vector art
