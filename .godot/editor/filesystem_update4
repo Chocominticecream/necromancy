@@ -5,3 +5,12 @@ res://scenes/widgets/NebulaShader.gdshader
 res://scenes/levels/Transition.tscn
 res://scenes/widgets/ActionButtonPass.tscn
 res://scenes/widgets/ActionButtonRedraw.tscn
+res://scenes/widgets/SummonCard.tscn
+res://scenes/levels/battleUI.gd
+res://scenes/levels/decks.gd
+res://scenes/levels/main_menu.tscn
+res://scenes/levels/Transition.gd
+res://scenes/levels/main_menu.gd
+res://assets/Resources/CardResource.gd
+res://assets/Resources/Universalfunc.gd
+res://scenes/levels/enemyField.gd

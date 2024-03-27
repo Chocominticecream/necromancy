@@ -21,3 +21,7 @@ func reParentChild(card, target):
     target.add_child(targetcard)
     #reset values
     targetcard.global_position = startGlob
+
+
+func _on_button_pressed():
+    get_tree().change_scene_to_file("res://scenes/levels/main_menu.tscn")

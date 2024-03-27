@@ -120,6 +120,7 @@ libraries = {
 
 [node name="redrawLabel" type="RichTextLabel" parent="."]
 light_mask = 2
+layout_mode = 0
 offset_left = 15.0
 offset_top = 75.0
 offset_right = 187.0
