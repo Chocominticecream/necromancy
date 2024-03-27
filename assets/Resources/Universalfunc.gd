@@ -115,7 +115,12 @@ func createResource(carddict, type):
        if !effect.is_empty():
          for cardEffect in effect:
            copyEffect.append(createEffect(cardEffect))
+        
+       base.name = printedname
+       base.energy = energy
        base.effect = copyEffect
+       base.description = description
+       base.attack = att
        base.type = "spell"
      
     return base
@@ -136,7 +141,7 @@ func createCard(resource : CardData):
     
        base.attack = att
        base.hp = hp
-       base.name = printedname
+       base.printedname = printedname
        #base.effect = effect
        base.description = description #+ '. ' + createEffectDesc(effect, base.type)
        base.counter = counter
@@ -166,7 +171,7 @@ func createCard(resource : CardData):
        var description = resource.description
        var att = resource.attack
        
-       base.name = printedname
+       base.printedname = printedname
        base.attack = att
        base.energy = energy
        base.description = description #+ '. ' + createEffectDesc(effect, base.type)

@@ -14,3 +14,4 @@ res://scenes/levels/main_menu.gd
 res://assets/Resources/CardResource.gd
 res://assets/Resources/Universalfunc.gd
 res://scenes/levels/enemyField.gd
+res://scenes/widgets/BaseCard.tscn
