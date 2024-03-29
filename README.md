@@ -28,7 +28,7 @@ and krita for drawn art
  - character/enemy portrait
  - programatically fit card art into card
  - card front design (hard)
- - fix glitchy action buttons in the battle UI (i would reimplement the buttons to use state machines instead of stopping variables)
+ - ~~fix glitchy action buttons in the battle UI (i would reimplement the buttons to use state machines instead of stopping variables)~~
  - fix graphic on star particles (star particles have a hole in them and are also pixelated, to be replaced with better graphic)
  - revisit Health bar graphic, maybe replace with dynamic health bars?
 
