@@ -25,7 +25,7 @@ enum{
 # Called when the node enters the scene tree for the first time.
 func _ready():
    
-    cardfunc.createProxyDeck(DataManager.maindeck,$draw.drawdeck)
+    $draw.drawdeck = cardfunc.createProxyDeck(DataManager.maindeck)
     #$draw/drawValue.text =  "[center]" + str(len(DataManager.maindeck))
     EventsBus.connect("resetCards", reorganiser)
     EventsBus.connect("redrawCards", cardRedrawer)

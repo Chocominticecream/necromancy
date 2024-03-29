@@ -8,10 +8,11 @@ func _ready():
     EventsBus.connect("countdown", countdown)
     EventsBus.connect("addDelay", addDelay)
 
+#code that plays status effects that activate during a turn
 func addDelay(delayval: float):
     delay.append(delayval)
 
-#TODO - rework sleep as a status effect and not a boolean
+#countdown function
 func countdown(val : int):
   DataManager.phase = DataManager.countDownPhase
   var cardTime = DataManager.DRAWTIME

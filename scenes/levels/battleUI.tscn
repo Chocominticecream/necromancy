@@ -1,4 +1,4 @@
-[gd_scene load_steps=25 format=3 uid="uid://c4t0qci1b1wj6"]
+[gd_scene load_steps=24 format=3 uid="uid://c4t0qci1b1wj6"]
 
 [ext_resource type="Script" path="res://scenes/levels/battleUI.gd" id="1_rpntx"]
 [ext_resource type="Script" path="res://scenes/levels/decks.gd" id="1_tdpnw"]
@@ -21,7 +21,6 @@
 [ext_resource type="Texture2D" uid="uid://bmio5wjd0kf5l" path="res://assets/placeholders/hearts-512.png" id="16_yvkcm"]
 [ext_resource type="PackedScene" uid="uid://dfc75y8newma4" path="res://scenes/widgets/ActionButtonRedraw.tscn" id="18_cdidy"]
 [ext_resource type="PackedScene" uid="uid://bmyghr3uy34m5" path="res://scenes/widgets/fp_scounter.tscn" id="18_g38s0"]
-[ext_resource type="PackedScene" uid="uid://gual5wtsno2x" path="res://scenes/widgets/ActionButtonPass.tscn" id="19_imybh"]
 [ext_resource type="Texture2D" uid="uid://cl4iofc66ifqc" path="res://assets/UI/actionButtoncomp2.png" id="22_f71c3"]
 [ext_resource type="PackedScene" uid="uid://mkstt6knrqh6" path="res://scenes/widgets/BaseButton.tscn" id="24_ynqgx"]
 
@@ -391,9 +390,13 @@ text = "[center]End turn[/center]"
 
 [node name="redraw" parent="turnButtons" instance=ExtResource("18_cdidy")]
 
-[node name="pass" parent="turnButtons" instance=ExtResource("19_imybh")]
+[node name="pass" parent="turnButtons" instance=ExtResource("18_cdidy")]
 offset_left = 1700.0
 offset_right = 1740.0
+
+[node name="redrawLabel" parent="turnButtons/pass" index="5"]
+text = "[center]Pass
+[/center]"
 
 [node name="FPScounter" parent="." instance=ExtResource("18_g38s0")]
 offset_left = 400.0
@@ -414,7 +417,7 @@ text = "[center]Back"
 [connection signal="mouse_exited" from="turnButtons/endTurn/endButton" to="turnButtons/endTurn" method="_on_redraw_button_mouse_exited"]
 [connection signal="pressed" from="turnButtons/endTurn/endButton" to="decks" method="_on_redraw_button_pressed"]
 [connection signal="pressed" from="turnButtons/redraw/redrawButton" to="decks" method="_on_redraw_button_pressed"]
-[connection signal="pressed" from="turnButtons/pass/passButton" to="decks" method="_on_pass_button_pressed"]
+[connection signal="pressed" from="turnButtons/pass/redrawButton" to="decks" method="_on_redraw_button_pressed"]
 [connection signal="pressed" from="Button" to="." method="_on_button_pressed"]
 
 [editable path="turnButtons/redraw"]

@@ -145,3 +145,4 @@ text = "[center]Redraw
 
 [connection signal="mouse_entered" from="redrawButton" to="." method="_on_redraw_button_mouse_entered"]
 [connection signal="mouse_exited" from="redrawButton" to="." method="_on_redraw_button_mouse_exited"]
+[connection signal="pressed" from="redrawButton" to="." method="_on_redraw_button_pressed"]

@@ -16,23 +16,26 @@ var animationFinished : bool = true
 # Called when the node enters the scene tree for the first time.
 func _ready():
     EventsBus.connect("buttonActivation", buttonActivation)
+    EventsBus.connect("animationActivation", animationActivation)
 
 
 # Called every frame. 'delta' is the elapsed time since the previous frame.
 func _process(delta):
-    if redrawButton.is_hovered() and !redrawButton.disabled:
+    if redrawButton.is_hovered() and DataManager.phase == DataManager.restPhase:
         spinCircle(3.0)
         playAnimation("hover")
         crystalHover()
         animationFinished = true
     else:
         spinCircle(1.5)
-        playAnimation("unhover")
         crystalSnapBack()
         animationFinished = true
-
+        
 func buttonActivation(val : bool = true):
     $redrawButton.disabled = val
+
+func animationActivation(val : bool):
+    animationFinished = val
 
 func spinCircle(speed):
     tween = create_tween()
@@ -58,9 +61,19 @@ func playAnimation(val : String):
 
 
 func _on_redraw_button_mouse_exited():
+    if DataManager.phase == DataManager.restPhase:
       animationFinished = false
+      playAnimation("unhover")
     
 
 
 func _on_redraw_button_mouse_entered():
+    if DataManager.phase == DataManager.restPhase:
       animationFinished = false
+
+
+func _on_redraw_button_pressed():
+    animationFinished = false
+    playAnimation("unhover")
+    crystalSnapBack()
+    animationFinished = true

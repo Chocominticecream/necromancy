@@ -160,8 +160,12 @@ func createCard(resource : CardData):
        var copyEffect = []
        if !effect.is_empty():
          for cardEffect in effect:
-           copyEffect.append(cardEffect.duplicate())
+           var copiedEffect = Effect.new(DataManager.EFFECTS.test, DataManager.STATUS.test, 0)
+           copiedEffect.effectTypeEnum = cardEffect.effectTypeEnum
+           copiedEffect.statusArray = cardEffect.statusArray
+           copyEffect.append(copiedEffect)
        base.effect = copyEffect
+       
     
      elif resource.type == 'spell':
        base = load("res://scenes/widgets/Spellcard.tscn").instantiate()
@@ -181,15 +185,20 @@ func createCard(resource : CardData):
        var copyEffect = []
        if !effect.is_empty():
          for cardEffect in effect:
-           copyEffect.append(cardEffect.duplicate())
+           var copiedEffect = Effect.new(DataManager.EFFECTS.test, DataManager.STATUS.test, 0)
+           copiedEffect.effectTypeEnum = cardEffect.effectTypeEnum
+           copiedEffect.statusArray = cardEffect.statusArray
+           copyEffect.append(copiedEffect)
        base.effect = copyEffect
      
      return base
 
-func createProxyDeck(maindeck: Array, deck : Array):
-    deck.clear()
+func createProxyDeck(maindeck: Array):
+    var proxyDeck = []
     for data in maindeck:
-        deck.append(createCard(data))
+        proxyDeck.append(createCard(data))
+    
+    return proxyDeck
 
 #spawn a generic pop up message to a node
 #this function behaves very weirdly, it will not spawn text properly when passing self as a reference

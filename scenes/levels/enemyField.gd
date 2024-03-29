@@ -7,7 +7,7 @@ var currentwave = []
 var cardfunc =  Universalfunc.new()
 # Called when the node enters the scene tree for the first time.
 func _ready():
-    cardfunc.createProxyDeck(DataManager.enemydeck,enemydeck)
+    enemydeck = cardfunc.createProxyDeck(DataManager.enemydeck)
     enemywaves = DataManager.enemywaves.duplicate()
     EventsBus.connect("summonWave", summonWave)
     

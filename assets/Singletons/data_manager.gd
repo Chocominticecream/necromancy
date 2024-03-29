@@ -67,6 +67,7 @@ func _process(delta):
         playPhase:
            EventsBus.emit_signal("setAnimationstate", true)
            EventsBus.emit_signal("buttonActivation", false)
+           EventsBus.emit_signal("animationActivation", false)
            phase = restPhase
         countDownPhase:
            EventsBus.emit_signal("setAnimationstate", false)
