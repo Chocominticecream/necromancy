@@ -417,7 +417,7 @@ text = "[center]Back"
 [connection signal="mouse_exited" from="turnButtons/endTurn/endButton" to="turnButtons/endTurn" method="_on_redraw_button_mouse_exited"]
 [connection signal="pressed" from="turnButtons/endTurn/endButton" to="decks" method="_on_redraw_button_pressed"]
 [connection signal="pressed" from="turnButtons/redraw/redrawButton" to="decks" method="_on_redraw_button_pressed"]
-[connection signal="pressed" from="turnButtons/pass/redrawButton" to="decks" method="_on_redraw_button_pressed"]
+[connection signal="pressed" from="turnButtons/pass/redrawButton" to="decks" method="_on_pass_button_pressed"]
 [connection signal="pressed" from="Button" to="." method="_on_button_pressed"]
 
 [editable path="turnButtons/redraw"]

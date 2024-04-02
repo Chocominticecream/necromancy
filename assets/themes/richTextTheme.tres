@@ -1,0 +1,33 @@
+[gd_resource type="Theme" load_steps=11 format=3 uid="uid://jtcjh78002qb"]
+
+[sub_resource type="StyleBoxEmpty" id="StyleBoxEmpty_5p46l"]
+
+[sub_resource type="StyleBoxEmpty" id="StyleBoxEmpty_ujjxq"]
+
+[sub_resource type="StyleBoxEmpty" id="StyleBoxEmpty_oobm5"]
+
+[sub_resource type="StyleBoxEmpty" id="StyleBoxEmpty_fq3ry"]
+
+[sub_resource type="StyleBoxEmpty" id="StyleBoxEmpty_xkh24"]
+
+[sub_resource type="StyleBoxEmpty" id="StyleBoxEmpty_efwda"]
+
+[sub_resource type="StyleBoxEmpty" id="StyleBoxEmpty_jsc33"]
+
+[sub_resource type="StyleBoxEmpty" id="StyleBoxEmpty_bm5fh"]
+
+[sub_resource type="StyleBoxEmpty" id="StyleBoxEmpty_axl0q"]
+
+[sub_resource type="StyleBoxEmpty" id="StyleBoxEmpty_8h5oe"]
+
+[resource]
+HScrollBar/styles/grabber = SubResource("StyleBoxEmpty_5p46l")
+HScrollBar/styles/grabber_highlight = SubResource("StyleBoxEmpty_ujjxq")
+HScrollBar/styles/grabber_pressed = SubResource("StyleBoxEmpty_oobm5")
+HScrollBar/styles/scroll = SubResource("StyleBoxEmpty_fq3ry")
+HScrollBar/styles/scroll_focus = SubResource("StyleBoxEmpty_xkh24")
+VScrollBar/styles/grabber = SubResource("StyleBoxEmpty_efwda")
+VScrollBar/styles/grabber_highlight = SubResource("StyleBoxEmpty_jsc33")
+VScrollBar/styles/grabber_pressed = SubResource("StyleBoxEmpty_bm5fh")
+VScrollBar/styles/scroll = SubResource("StyleBoxEmpty_axl0q")
+VScrollBar/styles/scroll_focus = SubResource("StyleBoxEmpty_8h5oe")

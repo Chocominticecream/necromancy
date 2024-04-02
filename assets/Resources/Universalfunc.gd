@@ -22,13 +22,13 @@ func copyDatabase():
 
 #read the dataabase
 func readDatabase():
-     var data_read 
-     if OS.get_name() == "HTML5":
-        #fix for web versions
-        #not save data so it should be ok
-        data_read =  FileAccess.open("res://assets/gamedata.cdb", FileAccess.READ)
-     else:
-        data_read = FileAccess.open("user://gamedata.cdb", FileAccess.READ)
+     #var data_read 
+     #if OS.get_name() == "HTML5":
+        ##fix for web versions
+        ##not save data so it should be ok
+        #data_read =  FileAccess.open("res://assets/gamedata.cdb", FileAccess.READ)
+     #else:
+     var data_read = FileAccess.open("user://gamedata.cdb", FileAccess.READ)
      var test_json_conv = JSON.new()
      test_json_conv.parse(data_read.get_as_text())
      var data_cbd = test_json_conv.get_data()
@@ -131,7 +131,7 @@ func createCard(resource : CardData):
      var base
      #create a base empty card
      if resource.type == 'summon' or resource.type == 'enemySummon':
-       base = load("res://scenes/widgets/Summoncard.tscn").instantiate()
+       base = ResourceLoader.load("res://scenes/widgets/SummonCard.tscn").instantiate()
        var att = resource.attack
        var hp = resource.hp
        var printedname = resource.name
@@ -168,7 +168,7 @@ func createCard(resource : CardData):
        
     
      elif resource.type == 'spell':
-       base = load("res://scenes/widgets/Spellcard.tscn").instantiate()
+       base = ResourceLoader.load("res://scenes/widgets/SpellCard.tscn").instantiate()
        var printedname = resource.name
        var energy = resource.energy
        var effect = resource.effect
@@ -197,6 +197,8 @@ func createProxyDeck(maindeck: Array):
     var proxyDeck = []
     for data in maindeck:
         proxyDeck.append(createCard(data))
+    #for i in range(3):
+        #proxyDeck.append(load("res://scenes/widgets/Basecard.tscn").instantiate())
     
     return proxyDeck
 
@@ -231,17 +233,17 @@ func editStatusArray(activeArray : Array, add : bool , statuses , value : int = 
       return copyArray
 
 func spawnStatusSymbol(status : Status):
-    var symbol = load("res://scenes/widgets/statusSymbol.tscn").instantiate()
+    var symbol = ResourceLoader.load("res://scenes/widgets/statusSymbol.tscn").instantiate()
     symbol.value = status.value
     match status.statusTypeEnum:
       DataManager.STATUS.sleep:
-        symbol.get_node("SymbolArt").texture = load("res://assets/Symbols/sleep.png")
+        symbol.get_node("SymbolArt").texture = ResourceLoader.load("res://assets/Symbols/sleep.png")
         return symbol
       DataManager.STATUS.poison:
-        symbol.get_node("SymbolArt").texture = load("res://assets/Symbols/poison.png")
+        symbol.get_node("SymbolArt").texture = ResourceLoader.load("res://assets/Symbols/poison.png")
         return symbol
       DataManager.STATUS.hex:
-        symbol.get_node("SymbolArt").texture = load("res://assets/Symbols/hex.png")
+        symbol.get_node("SymbolArt").texture = ResourceLoader.load("res://assets/Symbols/hex.png")
         return symbol
       _:
         return symbol

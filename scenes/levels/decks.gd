@@ -26,6 +26,7 @@ enum{
 func _ready():
    
     $draw.drawdeck = cardfunc.createProxyDeck(DataManager.maindeck)
+    print($draw.drawdeck)
     #$draw/drawValue.text =  "[center]" + str(len(DataManager.maindeck))
     EventsBus.connect("resetCards", reorganiser)
     EventsBus.connect("redrawCards", cardRedrawer)

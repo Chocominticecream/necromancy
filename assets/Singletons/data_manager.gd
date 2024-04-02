@@ -61,7 +61,7 @@ func _ready():
 func _process(delta):
   if firstTurn:
     EventsBus.emit_signal("setAnimationstate", false)
-    EventsBus.emit_signal("buttonActivation", true)
+    #EventsBus.emit_signal("buttonActivation", true)
   else:
     match phase:
         playPhase:

@@ -60,7 +60,7 @@ func _ready():
     createEnemyDeck(DataManager.enemydeck, DataManager.enemywaves)
     DataManager.maindeck.shuffle()
     #print(DataManager.enemydeck)
-    #print(DataManager.maindeck)
+    print(DataManager.maindeck)
     #print(DataManager.enemywaves)
 # Called every frame. 'delta' is the elapsed time since the previous frame.
 func _process(delta):
