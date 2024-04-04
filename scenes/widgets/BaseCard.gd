@@ -209,7 +209,6 @@ func _on_gui_input(event):
        if state == inHand and !Input.is_action_pressed("ui_left_click") and animationFinished == true:
          state = focusing
 
-
 func _on_animation_player_animation_finished(simpleUnfocus):
     pass
 

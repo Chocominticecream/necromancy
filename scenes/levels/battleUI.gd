@@ -1,4 +1,4 @@
-extends Control
+extends CanvasLayer
 
 
 # Called when the node enters the scene tree for the first time.
@@ -21,3 +21,11 @@ func reParentChild(card, target):
     target.add_child(targetcard)
     #reset values
     targetcard.global_position = startGlob
+
+
+func _on_button_pressed():
+    get_tree().change_scene_to_file("res://scenes/levels/main_menu.tscn")
+
+
+func _on_redraw_button_pressed():
+    pass # Replace with function body.

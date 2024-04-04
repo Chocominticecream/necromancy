@@ -143,7 +143,7 @@ func onDeath():
     z_index = 1
     state = death
     TweenNode.tween_property(self, "global_position", global_position + Vector2(0,-400) , DataManager.DRAWTIME).set_ease(Tween.EASE_OUT).set_trans(Tween.TRANS_SINE)
-    TweenNode.tween_property(self, "global_position", global_position + Vector2(0,1450) , DataManager.DRAWTIME*4.0).set_ease(Tween.EASE_IN).set_trans(Tween.TRANS_QUAD)
+    TweenNode.tween_property(self, "global_position", global_position + Vector2(0,1450) , DataManager.DRAWTIME*3.0).set_ease(Tween.EASE_IN).set_trans(Tween.TRANS_QUAD)
     animationAlt.play("death")
     await get_tree().create_timer(DataManager.DRAWTIME*6.0).timeout;
     self.queue_free()

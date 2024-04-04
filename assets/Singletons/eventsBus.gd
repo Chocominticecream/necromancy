@@ -21,6 +21,7 @@ signal discardCard(card)
 
 #button signals
 signal buttonActivation(val)
+signal animationActivation(val)
 
 #debug signals
 signal reParentChild(card, target)

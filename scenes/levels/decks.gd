@@ -3,6 +3,7 @@ extends Control
 #card positioning stats
 var cardspreadmax = 0.20
 var cardspreadval = cardspreadmax
+var cardfunc = Universalfunc.new()
 
 #for card state machine
 enum{
@@ -24,7 +25,8 @@ enum{
 # Called when the node enters the scene tree for the first time.
 func _ready():
    
-    $draw.drawdeck = DataManager.maindeck.duplicate()
+    $draw.drawdeck = cardfunc.createProxyDeck(DataManager.maindeck)
+    print($draw.drawdeck)
     #$draw/drawValue.text =  "[center]" + str(len(DataManager.maindeck))
     EventsBus.connect("resetCards", reorganiser)
     EventsBus.connect("redrawCards", cardRedrawer)
@@ -111,6 +113,7 @@ func cardRedrawer():
         awaitTime += DataManager.DRAWTIME
     await carddrawer(5)
     EventsBus.emit_signal("countdown", 3)
+    print(DataManager.maindeck)
 
 func reshuffleIntoDraw(drawdeck : Control, discarddeck : Control):
      

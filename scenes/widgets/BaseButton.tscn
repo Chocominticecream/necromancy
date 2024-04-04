@@ -6,8 +6,8 @@
 [ext_resource type="FontFile" uid="uid://nswb4qjqs8ld" path="res://assets/fonts/Gupter-Bold.ttf" id="3_5ggge"]
 [ext_resource type="FontFile" uid="uid://cdrh8tj0n4lxx" path="res://assets/fonts/ITC Avant Garde Gothic Bold.otf" id="4_s1fbf"]
 
-[sub_resource type="Animation" id="Animation_xulo5"]
-resource_name = "expand"
+[sub_resource type="Animation" id="Animation_eb323"]
+length = 0.001
 tracks/0/type = "value"
 tracks/0/imported = false
 tracks/0/enabled = true
@@ -15,10 +15,10 @@ tracks/0/path = NodePath(".:scale")
 tracks/0/interp = 1
 tracks/0/loop_wrap = true
 tracks/0/keys = {
-"times": PackedFloat32Array(0, 0.5, 1, 1.7, 2.4, 4.8, 5.3),
-"transitions": PackedFloat32Array(1, 1, 1, 1, 1, 1, 1),
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
 "update": 0,
-"values": [Vector2(1, 1), Vector2(1.35, 1.35), Vector2(1.2, 1.2), Vector2(1.25, 1.25), Vector2(1.2, 1.2), Vector2(1.25, 1.25), Vector2(1.2, 1.2)]
+"values": [Vector2(1, 1)]
 }
 tracks/1/type = "value"
 tracks/1/imported = false
@@ -33,8 +33,8 @@ tracks/1/keys = {
 "values": [0.0]
 }
 
-[sub_resource type="Animation" id="Animation_eb323"]
-length = 0.001
+[sub_resource type="Animation" id="Animation_xulo5"]
+resource_name = "expand"
 tracks/0/type = "value"
 tracks/0/imported = false
 tracks/0/enabled = true
@@ -42,10 +42,10 @@ tracks/0/path = NodePath(".:scale")
 tracks/0/interp = 1
 tracks/0/loop_wrap = true
 tracks/0/keys = {
-"times": PackedFloat32Array(0),
-"transitions": PackedFloat32Array(1),
+"times": PackedFloat32Array(0, 0.5, 1, 1.5, 2),
+"transitions": PackedFloat32Array(1, 1, 1, 1, 1),
 "update": 0,
-"values": [Vector2(1, 1)]
+"values": [Vector2(1, 1), Vector2(1.35, 1.35), Vector2(1.2, 1.2), Vector2(1.2, 1.2), Vector2(1.1, 1.1)]
 }
 tracks/1/type = "value"
 tracks/1/imported = false
@@ -82,6 +82,21 @@ _data = {
 "shrink": SubResource("Animation_dxfcl")
 }
 
+[sub_resource type="Animation" id="Animation_vqgf4"]
+length = 0.001
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath(".:rotation")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [0.0]
+}
+
 [sub_resource type="Animation" id="Animation_pey8v"]
 resource_name = "expand_loop"
 length = 4.0
@@ -97,21 +112,6 @@ tracks/0/keys = {
 "transitions": PackedFloat32Array(1, 1, 1, 1, 1, 1, 1),
 "update": 0,
 "values": [0.0, 0.0750492, 0.109956, 0.0, -0.0750492, -0.109956, 0.0]
-}
-
-[sub_resource type="Animation" id="Animation_vqgf4"]
-length = 0.001
-tracks/0/type = "value"
-tracks/0/imported = false
-tracks/0/enabled = true
-tracks/0/path = NodePath(".:rotation")
-tracks/0/interp = 1
-tracks/0/loop_wrap = true
-tracks/0/keys = {
-"times": PackedFloat32Array(0),
-"transitions": PackedFloat32Array(1),
-"update": 0,
-"values": [0.0]
 }
 
 [sub_resource type="Animation" id="Animation_qcoce"]

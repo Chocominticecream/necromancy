@@ -22,13 +22,13 @@ func copyDatabase():
 
 #read the dataabase
 func readDatabase():
-     var data_read 
-     if OS.get_name() == "HTML5":
-        #fix for web versions
-        #not save data so it should be ok
-        data_read =  FileAccess.open("res://assets/gamedata.cdb", FileAccess.READ)
-     else:
-        data_read = FileAccess.open("user://gamedata.cdb", FileAccess.READ)
+     #var data_read 
+     #if OS.get_name() == "HTML5":
+        ##fix for web versions
+        ##not save data so it should be ok
+        #data_read =  FileAccess.open("res://assets/gamedata.cdb", FileAccess.READ)
+     #else:
+     var data_read = FileAccess.open("user://gamedata.cdb", FileAccess.READ)
      var test_json_conv = JSON.new()
      test_json_conv.parse(data_read.get_as_text())
      var data_cbd = test_json_conv.get_data()
@@ -68,13 +68,10 @@ func createEffectDesc(effectlist, type):
          effectdesc += substring.replace('[...]', str(effect['value'])) + '. '
      return effectdesc
 
-#create a card using the base card, take in a dictionary
-func createCard(carddict, type):
-     #load all card values into variables
-     var base
-     #create a base empty card
-     if type == 'summon' or type == 'enemySummon':
-       base = load("res://scenes/widgets/Summoncard.tscn").instantiate()
+#create a resource from the dictionary
+func createResource(carddict, type):
+    var base = CardData.new()
+    if type == 'summon' or type == 'enemySummon':
        var att = carddict["attack"]
        var hp = carddict["hp"]
        var printedname = carddict["name"]
@@ -84,20 +81,21 @@ func createCard(carddict, type):
     
        base.attack = att
        base.hp = hp
-       base.printedname = printedname
+       base.name = printedname
        #base.effect = effect
        base.description = description #+ '. ' + createEffectDesc(effect, base.type)
        base.counter = counter
-       base.type = "summon"
        
        #specfic code for enemysummons and regular summons
        if type == 'summon':
          var energy = carddict["energy"]
          base.energy = energy
          base.alliance = true
+         base.type = "summon"
        
        if type == 'enemySummon':
          base.alliance = false
+         base.type = "enemySummon"
        
        #construct the effect array (only for summons for now)
        var copyEffect = []
@@ -106,16 +104,79 @@ func createCard(carddict, type):
            copyEffect.append(createEffect(cardEffect))
        base.effect = copyEffect
     
-     elif type == 'spell':
-       base = load("res://scenes/widgets/Spellcard.tscn").instantiate()
+    elif type == 'spell':
        var printedname = carddict["name"]
        var energy = carddict["energy"]
        var effect = carddict["effect"]
        var description = carddict["description"]
-       var attack = carddict["attack"]
+       var att = carddict["attack"]
+    
+       var copyEffect = []
+       if !effect.is_empty():
+         for cardEffect in effect:
+           copyEffect.append(createEffect(cardEffect))
+        
+       base.name = printedname
+       base.energy = energy
+       base.effect = copyEffect
+       base.description = description
+       base.attack = att
+       base.type = "spell"
+     
+    return base
+    
+#create a card using the base card, take in a dictionary
+func createCard(resource : CardData):
+     #load all card values into variables
+     var base
+     #create a base empty card
+     if resource.type == 'summon' or resource.type == 'enemySummon':
+       base = ResourceLoader.load("res://scenes/widgets/SummonCard.tscn").instantiate()
+       var att = resource.attack
+       var hp = resource.hp
+       var printedname = resource.name
+       var effect = resource.effect.duplicate()
+       var description = resource.description
+       var counter = resource.counter
+    
+       base.attack = att
+       base.hp = hp
+       base.printedname = printedname
+       #base.effect = effect
+       base.description = description #+ '. ' + createEffectDesc(effect, base.type)
+       base.counter = counter
+       base.type = resource.type
+       
+       #specfic code for enemysummons and regular summons
+       if resource.type == 'summon':
+         var energy = resource.energy
+         base.energy = energy
+         base.alliance = true
+       
+       if resource.type == 'enemySummon':
+         base.alliance = false
+       
+       #construct the effect array (only for summons for now)
+       var copyEffect = []
+       if !effect.is_empty():
+         for cardEffect in effect:
+           var copiedEffect = Effect.new(DataManager.EFFECTS.test, DataManager.STATUS.test, 0)
+           copiedEffect.effectTypeEnum = cardEffect.effectTypeEnum
+           copiedEffect.statusArray = cardEffect.statusArray
+           copyEffect.append(copiedEffect)
+       base.effect = copyEffect
+       
+    
+     elif resource.type == 'spell':
+       base = ResourceLoader.load("res://scenes/widgets/SpellCard.tscn").instantiate()
+       var printedname = resource.name
+       var energy = resource.energy
+       var effect = resource.effect
+       var description = resource.description
+       var att = resource.attack
        
        base.printedname = printedname
-       base.attack = attack
+       base.attack = att
        base.energy = energy
        base.description = description #+ '. ' + createEffectDesc(effect, base.type)
        base.type = "spell"
@@ -124,10 +185,22 @@ func createCard(carddict, type):
        var copyEffect = []
        if !effect.is_empty():
          for cardEffect in effect:
-           copyEffect.append(createEffect(cardEffect))
+           var copiedEffect = Effect.new(DataManager.EFFECTS.test, DataManager.STATUS.test, 0)
+           copiedEffect.effectTypeEnum = cardEffect.effectTypeEnum
+           copiedEffect.statusArray = cardEffect.statusArray
+           copyEffect.append(copiedEffect)
        base.effect = copyEffect
      
      return base
+
+func createProxyDeck(maindeck: Array):
+    var proxyDeck = []
+    for data in maindeck:
+        proxyDeck.append(createCard(data))
+    #for i in range(3):
+        #proxyDeck.append(load("res://scenes/widgets/Basecard.tscn").instantiate())
+    
+    return proxyDeck
 
 #spawn a generic pop up message to a node
 #this function behaves very weirdly, it will not spawn text properly when passing self as a reference
@@ -160,17 +233,17 @@ func editStatusArray(activeArray : Array, add : bool , statuses , value : int = 
       return copyArray
 
 func spawnStatusSymbol(status : Status):
-    var symbol = load("res://scenes/widgets/statusSymbol.tscn").instantiate()
+    var symbol = ResourceLoader.load("res://scenes/widgets/statusSymbol.tscn").instantiate()
     symbol.value = status.value
     match status.statusTypeEnum:
       DataManager.STATUS.sleep:
-        symbol.get_node("SymbolArt").texture = load("res://assets/Symbols/sleep.png")
+        symbol.get_node("SymbolArt").texture = ResourceLoader.load("res://assets/Symbols/sleep.png")
         return symbol
       DataManager.STATUS.poison:
-        symbol.get_node("SymbolArt").texture = load("res://assets/Symbols/poison.png")
+        symbol.get_node("SymbolArt").texture = ResourceLoader.load("res://assets/Symbols/poison.png")
         return symbol
       DataManager.STATUS.hex:
-        symbol.get_node("SymbolArt").texture = load("res://assets/Symbols/hex.png")
+        symbol.get_node("SymbolArt").texture = ResourceLoader.load("res://assets/Symbols/hex.png")
         return symbol
       _:
         return symbol
