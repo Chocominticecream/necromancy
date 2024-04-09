@@ -1,4 +1,4 @@
-[gd_scene load_steps=24 format=3 uid="uid://c4t0qci1b1wj6"]
+[gd_scene load_steps=20 format=3 uid="uid://c4t0qci1b1wj6"]
 
 [ext_resource type="Script" path="res://scenes/levels/battleUI.gd" id="1_rpntx"]
 [ext_resource type="Script" path="res://scenes/levels/decks.gd" id="1_tdpnw"]
@@ -12,17 +12,13 @@
 [ext_resource type="Texture2D" uid="uid://boq4kfw0ewww3" path="res://assets/background/necromancerMat1.png" id="7_8uc5h"]
 [ext_resource type="Script" path="res://scenes/levels/heroField.gd" id="8_i55w3"]
 [ext_resource type="Script" path="res://scenes/levels/endTurn.gd" id="9_q2lej"]
-[ext_resource type="Script" path="res://scenes/levels/heroHp.gd" id="11_1cvjj"]
-[ext_resource type="Texture2D" uid="uid://xmow60ybwcpk" path="res://assets/UI/HEALTH.png" id="13_nn7hs"]
-[ext_resource type="Script" path="res://scenes/levels/enemyHp.gd" id="13_t4000"]
 [ext_resource type="FontFile" uid="uid://basqqe0aj8rdw" path="res://assets/fonts/VenturisSansADFCd-Bold.otf" id="14_gul3f"]
+[ext_resource type="PackedScene" uid="uid://cbh1riy8uuggr" path="res://scenes/widgets/hpBar.tscn" id="15_8vtvh"]
 [ext_resource type="FontFile" uid="uid://nswb4qjqs8ld" path="res://assets/fonts/Gupter-Bold.ttf" id="15_cuxve"]
 [ext_resource type="FontFile" uid="uid://cdrh8tj0n4lxx" path="res://assets/fonts/ITC Avant Garde Gothic Bold.otf" id="16_3v8lf"]
-[ext_resource type="Texture2D" uid="uid://bmio5wjd0kf5l" path="res://assets/placeholders/hearts-512.png" id="16_yvkcm"]
 [ext_resource type="PackedScene" uid="uid://dfc75y8newma4" path="res://scenes/widgets/ActionButtonRedraw.tscn" id="18_cdidy"]
 [ext_resource type="PackedScene" uid="uid://bmyghr3uy34m5" path="res://scenes/widgets/fp_scounter.tscn" id="18_g38s0"]
 [ext_resource type="Texture2D" uid="uid://cl4iofc66ifqc" path="res://assets/UI/actionButtoncomp2.png" id="22_f71c3"]
-[ext_resource type="PackedScene" uid="uid://mkstt6knrqh6" path="res://scenes/widgets/BaseButton.tscn" id="24_ynqgx"]
 
 [node name="battleUI" type="CanvasLayer" groups=["enemy", "hero"]]
 script = ExtResource("1_rpntx")
@@ -265,85 +261,12 @@ offset_right = 1288.0
 offset_bottom = 722.0
 pivot_offset = Vector2(0, 0)
 
-[node name="heroHp" type="Control" parent="decks/Fields"]
-anchors_preset = 0
-offset_right = 40.0
-offset_bottom = 40.0
-script = ExtResource("11_1cvjj")
+[node name="herosHp" parent="decks/Fields" instance=ExtResource("15_8vtvh")]
+alliance = true
 
-[node name="heartSprite" type="Sprite2D" parent="decks/Fields/heroHp"]
-self_modulate = Color(0.933333, 0.619608, 0.709804, 1)
-position = Vector2(150, 87)
-scale = Vector2(0.3, 0.3)
-texture = ExtResource("16_yvkcm")
-
-[node name="heroHpSprite" type="Sprite2D" parent="decks/Fields/heroHp"]
-position = Vector2(158, 103)
-texture = ExtResource("13_nn7hs")
-
-[node name="heroHpLabel" type="RichTextLabel" parent="decks/Fields/heroHp"]
-light_mask = 2
-layout_mode = 0
-offset_left = 60.0
-offset_top = 80.0
-offset_right = 254.0
-offset_bottom = 130.0
-mouse_filter = 2
-theme_override_colors/default_color = Color(0.909804, 0.835294, 0.709804, 1)
-theme_override_colors/font_shadow_color = Color(0.909804, 0.835294, 0.709804, 1)
-theme_override_colors/font_outline_color = Color(0.360784, 0.317647, 0.223529, 1)
-theme_override_constants/shadow_offset_x = 2
-theme_override_constants/shadow_offset_y = 0
-theme_override_constants/shadow_outline_size = 1
-theme_override_constants/outline_size = 5
-theme_override_fonts/normal_font = ExtResource("14_gul3f")
-theme_override_fonts/bold_font = ExtResource("15_cuxve")
-theme_override_fonts/italics_font = ExtResource("16_3v8lf")
-theme_override_font_sizes/normal_font_size = 36
-theme_override_font_sizes/bold_font_size = 32
-theme_override_font_sizes/italics_font_size = 32
-bbcode_enabled = true
-text = "[left]Hero: 999/999"
-
-[node name="enemyHp" type="Control" parent="decks/Fields"]
-anchors_preset = 0
-offset_right = 40.0
-offset_bottom = 40.0
-script = ExtResource("13_t4000")
-
-[node name="heartSprite" type="Sprite2D" parent="decks/Fields/enemyHp"]
-self_modulate = Color(0.933333, 0.619608, 0.709804, 1)
-position = Vector2(1778, 87)
-scale = Vector2(0.3, 0.3)
-texture = ExtResource("16_yvkcm")
-
-[node name="enemyHpSprite" type="Sprite2D" parent="decks/Fields/enemyHp"]
-position = Vector2(1776, 103)
-texture = ExtResource("13_nn7hs")
-
-[node name="enemyHpLabel" type="RichTextLabel" parent="decks/Fields/enemyHp"]
-light_mask = 2
-layout_mode = 0
-offset_left = 1667.0
-offset_top = 83.0
-offset_right = 1886.0
-offset_bottom = 131.0
-mouse_filter = 2
-theme_override_colors/default_color = Color(0.909804, 0.835294, 0.709804, 1)
-theme_override_colors/font_shadow_color = Color(0.909804, 0.835294, 0.709804, 1)
-theme_override_colors/font_outline_color = Color(0.360784, 0.317647, 0.223529, 1)
-theme_override_constants/shadow_offset_x = 2
-theme_override_constants/shadow_offset_y = 0
-theme_override_constants/shadow_outline_size = 1
-theme_override_constants/outline_size = 5
-theme_override_fonts/normal_font = ExtResource("14_gul3f")
-theme_override_fonts/bold_font = ExtResource("15_cuxve")
-theme_override_fonts/italics_font = ExtResource("16_3v8lf")
-theme_override_font_sizes/normal_font_size = 36
-theme_override_font_sizes/bold_font_size = 32
-theme_override_font_sizes/italics_font_size = 32
-bbcode_enabled = true
-text = "[left]Enemy: 999/999"
+[node name="Hp" parent="decks/Fields" instance=ExtResource("15_8vtvh")]
+offset_left = 1690.0
+offset_right = 1730.0
 
 [node name="UI wireframe" type="Control" parent="."]
 layout_mode = 3
@@ -404,22 +327,11 @@ offset_top = 0.0
 offset_right = 641.0
 offset_bottom = 76.0
 
-[node name="Button" parent="." instance=ExtResource("24_ynqgx")]
-offset_left = 24.0
-offset_top = 177.0
-offset_right = 280.0
-offset_bottom = 241.0
-
-[node name="TextLabel" parent="Button" index="0"]
-text = "[center]Back"
-
 [connection signal="mouse_entered" from="turnButtons/endTurn/endButton" to="turnButtons/endTurn" method="_on_redraw_button_mouse_entered"]
 [connection signal="mouse_exited" from="turnButtons/endTurn/endButton" to="turnButtons/endTurn" method="_on_redraw_button_mouse_exited"]
 [connection signal="pressed" from="turnButtons/endTurn/endButton" to="decks" method="_on_redraw_button_pressed"]
 [connection signal="pressed" from="turnButtons/redraw/redrawButton" to="decks" method="_on_redraw_button_pressed"]
 [connection signal="pressed" from="turnButtons/pass/redrawButton" to="decks" method="_on_pass_button_pressed"]
-[connection signal="pressed" from="Button" to="." method="_on_button_pressed"]
 
 [editable path="turnButtons/redraw"]
 [editable path="turnButtons/pass"]
-[editable path="Button"]

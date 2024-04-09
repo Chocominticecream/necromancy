@@ -20,7 +20,7 @@ var heroHp = 50
 #values for enemy
 var enemydeck = []
 var enemywaves = []
-var enemyHp = 50
+var enemyHp = 60
 
 #options values
 var DRAWTIME = 0.2
