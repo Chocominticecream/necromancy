@@ -26,6 +26,7 @@ and krita for drawn art
  - ~~Health bar design~~
  - swap out ugly font for better appropriate font (partly done)
  - character/enemy portrait
+ - make cards less curved
  - programatically fit card art into card
  - card front design (hard)
  - ~~fix glitchy action buttons in the battle UI (i would reimplement the buttons to use state machines instead of stopping variables)~~
