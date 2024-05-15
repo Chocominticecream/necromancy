@@ -14,7 +14,7 @@
  - other events (WIP idea)
  -  implement waves mechanic (debug room)
  -  implement lose/win condition (debug room)
- - a "tarot card" map navigation system, where the area you go to is decided by the tarot cards you choose (WIP idea)
+ - map navigation system (WIP idea)
 
 The UI doesnt have to be perfect, but it just has to have some concept of an art direction, using inkscape for vector art
 and krita for drawn art
