@@ -167,7 +167,7 @@ func _process(delta):
           var focuspt = target
           animation.play("simpleFocus")
               #1.62
-          focuspt.y = projresolution.y*1.45 - $spriteNodes/graphicsScaler/Cardbackground.texture.get_height()*scale.y*1.8
+          focuspt.y = projresolution.y*1.15 - $spriteNodes/graphicsScaler/Cardbackground.texture.get_height()*scale.y*1.8
           TweenNode.tween_property(self, "global_position", focuspt , DataManager.DRAWTIME).set_ease(Tween.EASE_IN_OUT).set_trans(Tween.TRANS_LINEAR)
           $spriteNodes.z_index = 2
           state = focusInHand

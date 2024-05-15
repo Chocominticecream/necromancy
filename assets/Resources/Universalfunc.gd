@@ -268,9 +268,9 @@ func createDesc(description : String, bigText : bool):
         #replace the prefixes with the appropriate image (the prefix is the same as the image name)
         var newDesc : String = description
         if bigText:
-          newDesc = newDesc.replace("[" + statusPrefix + "]", "[img={26}]res://assets/Symbols/" + statusPrefix + ".png[img][color=black]")
+          newDesc = newDesc.replace("[" + statusPrefix + "]", "[img={26}]res://assets/Symbols/" + statusPrefix + ".png[/img]")
         else:
-          newDesc = newDesc.replace("[" + statusPrefix + "]", "[img={20}]res://assets/Symbols/" + statusPrefix + ".png[img][color=black]")
+          newDesc = newDesc.replace("[" + statusPrefix + "]", "[img={20}]res://assets/Symbols/" + statusPrefix + ".png[/img]")
         return newDesc
     else:
         return description

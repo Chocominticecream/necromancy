@@ -1,12 +1,16 @@
-[gd_scene load_steps=18 format=3 uid="uid://cb88yr5ic2fsh"]
+[gd_scene load_steps=22 format=3 uid="uid://cb88yr5ic2fsh"]
 
 [ext_resource type="Script" path="res://scenes/widgets/BaseCard.gd" id="1_34vqh"]
-[ext_resource type="Texture2D" uid="uid://bharxinwotuuv" path="res://assets/placeholders/square-rounded-512.png" id="2_mvs82"]
-[ext_resource type="Texture2D" uid="uid://usvgdabdqbcp" path="res://assets/placeholders/squareoutline.png" id="3_0pi0c"]
+[ext_resource type="Texture2D" uid="uid://bnlrutx6fqn75" path="res://assets/UI/cardbackground.png" id="2_18s7j"]
 [ext_resource type="Texture2D" uid="uid://q6p8hp3svmij" path="res://assets/placeholders/square-128.png" id="4_sdltv"]
-[ext_resource type="Texture2D" uid="uid://iuerj03bgclw" path="res://assets/placeholders/circle-512.png" id="5_tmnj2"]
+[ext_resource type="Texture2D" uid="uid://ciok7q1ig2v3b" path="res://assets/UI/nameribbon.png" id="4_yin7f"]
+[ext_resource type="Texture2D" uid="uid://b17hdt1ivq6c" path="res://assets/UI/typeribbon.png" id="5_w12c3"]
 [ext_resource type="Theme" uid="uid://jtcjh78002qb" path="res://assets/themes/richTextTheme.tres" id="6_bqiuq"]
 [ext_resource type="FontFile" uid="uid://foyvqv5qw4c4" path="res://assets/fonts/Roboto-Bold.ttf" id="6_eluye"]
+[ext_resource type="Texture2D" uid="uid://buu5823mrf4qc" path="res://assets/UI/energy.png" id="6_oq0hy"]
+[ext_resource type="FontFile" uid="uid://basqqe0aj8rdw" path="res://assets/fonts/VenturisSansADFCd-Bold.otf" id="8_5fvps"]
+[ext_resource type="FontFile" uid="uid://bkfee5lrwcpce" path="res://assets/fonts/Kalam-Regular.ttf" id="8_57257"]
+[ext_resource type="FontFile" uid="uid://dy6svryrrc3fo" path="res://assets/fonts/VenturisSansADFCd-Regular.otf" id="9_4epq5"]
 
 [sub_resource type="Animation" id="Animation_odm30"]
 length = 0.001
@@ -397,14 +401,7 @@ script = ExtResource("1_34vqh")
 position = Vector2(105, 157)
 
 [node name="Cardbackground" type="Sprite2D" parent="spriteNodes/graphicsScaler"]
-scale = Vector2(0.4, 0.6)
-texture = ExtResource("2_mvs82")
-
-[node name="Cardborder" type="Sprite2D" parent="spriteNodes/graphicsScaler"]
-self_modulate = Color(0, 0, 0, 1)
-position = Vector2(4, 4)
-scale = Vector2(0.5, 0.75)
-texture = ExtResource("3_0pi0c")
+texture = ExtResource("2_18s7j")
 
 [node name="CardArt" type="Sprite2D" parent="spriteNodes/graphicsScaler"]
 self_modulate = Color(0.435294, 0.435294, 0.435294, 1)
@@ -413,22 +410,16 @@ scale = Vector2(1.25, 1.25)
 texture = ExtResource("4_sdltv")
 
 [node name="NameRibbon" type="Sprite2D" parent="spriteNodes/graphicsScaler"]
-self_modulate = Color(0.717647, 1, 0.905882, 1)
-position = Vector2(-5.99999, -126)
-scale = Vector2(0.341016, 0.06)
-texture = ExtResource("2_mvs82")
+position = Vector2(0, -125)
+texture = ExtResource("4_yin7f")
 
 [node name="TypeRibbon" type="Sprite2D" parent="spriteNodes/graphicsScaler"]
-self_modulate = Color(0.717647, 1, 0.905882, 1)
-position = Vector2(-5, 18)
-scale = Vector2(0.341016, 0.0534375)
-texture = ExtResource("2_mvs82")
+position = Vector2(0, 22)
+texture = ExtResource("5_w12c3")
 
 [node name="EnergySprite" type="Sprite2D" parent="spriteNodes/graphicsScaler"]
-self_modulate = Color(0.694118, 0.694118, 0.694118, 1)
 position = Vector2(-104, -151)
-scale = Vector2(0.1, 0.1)
-texture = ExtResource("5_tmnj2")
+texture = ExtResource("6_oq0hy")
 centered = false
 
 [node name="StatusSpawn" type="Node2D" parent="spriteNodes/graphicsScaler"]
@@ -437,39 +428,52 @@ position = Vector2(74, -91)
 [node name="TextNormal" type="Control" parent="spriteNodes"]
 layout_mode = 3
 anchors_preset = 0
+offset_top = 10.0
 offset_right = 40.0
-offset_bottom = 40.0
+offset_bottom = 50.0
 pivot_offset = Vector2(105, 157)
 mouse_filter = 2
 
 [node name="Name" type="RichTextLabel" parent="spriteNodes/TextNormal"]
 layout_mode = 0
-offset_left = 38.0
-offset_top = 18.0
-offset_right = 177.0
-offset_bottom = 41.0
+offset_left = 39.0
+offset_top = 13.0
+offset_right = 178.0
+offset_bottom = 36.0
 mouse_filter = 2
 theme = ExtResource("6_bqiuq")
-theme_override_colors/default_color = Color(0, 0, 0, 1)
-theme_override_fonts/normal_font = ExtResource("6_eluye")
+theme_override_colors/default_color = Color(0.862745, 0.92549, 0.972549, 1)
+theme_override_colors/font_shadow_color = Color(0.0745098, 0.180392, 0.25098, 1)
+theme_override_colors/font_outline_color = Color(0.0745098, 0.180392, 0.25098, 1)
+theme_override_constants/shadow_offset_x = 1
+theme_override_constants/shadow_offset_y = 0
+theme_override_constants/shadow_outline_size = 1
+theme_override_constants/outline_size = 2
+theme_override_fonts/normal_font = ExtResource("8_5fvps")
 theme_override_fonts/bold_font = ExtResource("6_eluye")
-theme_override_font_sizes/normal_font_size = 18
+theme_override_font_sizes/normal_font_size = 20
 theme_override_font_sizes/bold_font_size = 24
 bbcode_enabled = true
 text = "[center]Name"
 
 [node name="Type" type="RichTextLabel" parent="spriteNodes/TextNormal"]
 layout_mode = 0
-offset_left = 22.0
-offset_top = 166.0
-offset_right = 182.0
-offset_bottom = 189.0
+offset_left = 26.0
+offset_top = 158.5
+offset_right = 186.0
+offset_bottom = 181.5
 mouse_filter = 2
 theme = ExtResource("6_bqiuq")
-theme_override_colors/default_color = Color(0, 0, 0, 1)
-theme_override_fonts/normal_font = ExtResource("6_eluye")
+theme_override_colors/default_color = Color(0.862745, 0.92549, 0.972549, 1)
+theme_override_colors/font_shadow_color = Color(0.0745098, 0.180392, 0.25098, 1)
+theme_override_colors/font_outline_color = Color(0.0745098, 0.180392, 0.25098, 1)
+theme_override_constants/shadow_offset_x = 1
+theme_override_constants/shadow_offset_y = 0
+theme_override_constants/shadow_outline_size = 1
+theme_override_constants/outline_size = 2
+theme_override_fonts/normal_font = ExtResource("8_5fvps")
 theme_override_fonts/bold_font = ExtResource("6_eluye")
-theme_override_font_sizes/normal_font_size = 18
+theme_override_font_sizes/normal_font_size = 20
 theme_override_font_sizes/bold_font_size = 24
 bbcode_enabled = true
 text = "[center]Type"
@@ -477,13 +481,19 @@ text = "[center]Type"
 [node name="Energy" type="RichTextLabel" parent="spriteNodes/TextNormal"]
 layout_mode = 0
 offset_left = 4.0
-offset_top = 17.0
+offset_top = 8.0
 offset_right = 48.0
-offset_bottom = 51.0
+offset_bottom = 42.0
 mouse_filter = 2
 theme = ExtResource("6_bqiuq")
-theme_override_colors/default_color = Color(0, 0, 0, 1)
-theme_override_fonts/normal_font = ExtResource("6_eluye")
+theme_override_colors/default_color = Color(0.862745, 0.92549, 0.972549, 1)
+theme_override_colors/font_shadow_color = Color(0.0745098, 0.180392, 0.25098, 1)
+theme_override_colors/font_outline_color = Color(0.0745098, 0.180392, 0.25098, 1)
+theme_override_constants/shadow_offset_x = 1
+theme_override_constants/shadow_offset_y = 0
+theme_override_constants/shadow_outline_size = 1
+theme_override_constants/outline_size = 2
+theme_override_fonts/normal_font = ExtResource("8_5fvps")
 theme_override_fonts/bold_font = ExtResource("6_eluye")
 theme_override_font_sizes/normal_font_size = 24
 theme_override_font_sizes/bold_font_size = 24
@@ -492,16 +502,22 @@ text = "[center]0"
 
 [node name="Description" type="RichTextLabel" parent="spriteNodes/TextNormal"]
 layout_mode = 0
-offset_left = 15.0
+offset_left = 16.0
 offset_top = 192.0
-offset_right = 191.0
+offset_right = 192.0
 offset_bottom = 270.0
 mouse_filter = 2
 theme = ExtResource("6_bqiuq")
-theme_override_colors/default_color = Color(0, 0, 0, 1)
-theme_override_fonts/normal_font = ExtResource("6_eluye")
-theme_override_fonts/bold_font = ExtResource("6_eluye")
-theme_override_font_sizes/normal_font_size = 14
+theme_override_colors/default_color = Color(0.862745, 0.92549, 0.972549, 1)
+theme_override_colors/font_shadow_color = Color(0.0745098, 0.180392, 0.25098, 1)
+theme_override_colors/font_outline_color = Color(0.0745098, 0.180392, 0.25098, 1)
+theme_override_constants/shadow_offset_x = 1
+theme_override_constants/shadow_offset_y = 2
+theme_override_constants/shadow_outline_size = 1
+theme_override_constants/outline_size = 2
+theme_override_fonts/normal_font = ExtResource("8_5fvps")
+theme_override_fonts/bold_font = ExtResource("9_4epq5")
+theme_override_font_sizes/normal_font_size = 18
 theme_override_font_sizes/bold_font_size = 24
 bbcode_enabled = true
 text = "[center]Lorem ipsum dolor sit amet, consectetur adipiscing elit [img={25}]res://assets/Symbols/poison.png[img]"
@@ -511,55 +527,70 @@ visible = false
 layout_mode = 3
 anchors_preset = 0
 offset_left = -32.0
-offset_top = -47.0
+offset_top = -37.0
 offset_right = 241.0
-offset_bottom = 362.0
+offset_bottom = 372.0
 pivot_offset = Vector2(107, 157)
 mouse_filter = 2
 
 [node name="Name" type="RichTextLabel" parent="spriteNodes/TextFocused"]
 layout_mode = 0
 offset_left = 54.0
-offset_top = 22.0
+offset_top = 15.0
 offset_right = 226.0
-offset_bottom = 54.0
+offset_bottom = 47.0
 mouse_filter = 2
 theme = ExtResource("6_bqiuq")
-theme_override_colors/default_color = Color(0, 0, 0, 1)
-theme_override_fonts/normal_font = ExtResource("6_eluye")
-theme_override_fonts/bold_font = ExtResource("6_eluye")
+theme_override_colors/default_color = Color(0.862745, 0.92549, 0.972549, 1)
+theme_override_colors/font_shadow_color = Color(0.0745098, 0.180392, 0.25098, 1)
+theme_override_colors/font_outline_color = Color(0.0745098, 0.180392, 0.25098, 1)
+theme_override_constants/shadow_offset_x = 1
+theme_override_constants/shadow_offset_y = 0
+theme_override_constants/shadow_outline_size = 1
+theme_override_fonts/normal_font = ExtResource("8_57257")
+theme_override_fonts/bold_font = ExtResource("8_5fvps")
 theme_override_font_sizes/normal_font_size = 18
-theme_override_font_sizes/bold_font_size = 24
+theme_override_font_sizes/bold_font_size = 26
 bbcode_enabled = true
 text = "[center][b]Name"
 
 [node name="Type" type="RichTextLabel" parent="spriteNodes/TextFocused"]
 layout_mode = 0
-offset_left = 52.0
-offset_top = 216.0
-offset_right = 212.0
-offset_bottom = 247.0
+offset_left = 57.0
+offset_top = 205.0
+offset_right = 217.0
+offset_bottom = 236.0
 mouse_filter = 2
 theme = ExtResource("6_bqiuq")
-theme_override_colors/default_color = Color(0, 0, 0, 1)
-theme_override_fonts/normal_font = ExtResource("6_eluye")
-theme_override_fonts/bold_font = ExtResource("6_eluye")
+theme_override_colors/default_color = Color(0.862745, 0.92549, 0.972549, 1)
+theme_override_colors/font_shadow_color = Color(0.0745098, 0.180392, 0.25098, 1)
+theme_override_colors/font_outline_color = Color(0.0745098, 0.180392, 0.25098, 1)
+theme_override_constants/shadow_offset_x = 1
+theme_override_constants/shadow_offset_y = 0
+theme_override_constants/shadow_outline_size = 1
+theme_override_fonts/normal_font = ExtResource("8_57257")
+theme_override_fonts/bold_font = ExtResource("8_5fvps")
 theme_override_font_sizes/normal_font_size = 18
-theme_override_font_sizes/bold_font_size = 24
+theme_override_font_sizes/bold_font_size = 26
 bbcode_enabled = true
 text = "[center][b]Type"
 
 [node name="Energy" type="RichTextLabel" parent="spriteNodes/TextFocused"]
 layout_mode = 0
-offset_left = 8.0
-offset_top = 23.0
-offset_right = 60.0
-offset_bottom = 66.0
+offset_left = 7.0
+offset_top = 10.0
+offset_right = 59.0
+offset_bottom = 53.0
 mouse_filter = 2
 theme = ExtResource("6_bqiuq")
-theme_override_colors/default_color = Color(0, 0, 0, 1)
-theme_override_fonts/normal_font = ExtResource("6_eluye")
-theme_override_fonts/bold_font = ExtResource("6_eluye")
+theme_override_colors/default_color = Color(0.862745, 0.92549, 0.972549, 1)
+theme_override_colors/font_shadow_color = Color(0.0745098, 0.180392, 0.25098, 1)
+theme_override_colors/font_outline_color = Color(0.0745098, 0.180392, 0.25098, 1)
+theme_override_constants/shadow_offset_x = 1
+theme_override_constants/shadow_offset_y = 0
+theme_override_constants/shadow_outline_size = 1
+theme_override_fonts/normal_font = ExtResource("8_5fvps")
+theme_override_fonts/bold_font = ExtResource("9_4epq5")
 theme_override_font_sizes/normal_font_size = 24
 theme_override_font_sizes/bold_font_size = 32
 bbcode_enabled = true
@@ -567,17 +598,22 @@ text = "[center][b]0"
 
 [node name="Description" type="RichTextLabel" parent="spriteNodes/TextFocused"]
 layout_mode = 0
-offset_left = 18.0
-offset_top = 249.0
-offset_right = 244.0
-offset_bottom = 377.0
+offset_left = 21.0
+offset_top = 251.0
+offset_right = 247.0
+offset_bottom = 379.0
 mouse_filter = 2
 theme = ExtResource("6_bqiuq")
-theme_override_colors/default_color = Color(0, 0, 0, 1)
-theme_override_fonts/normal_font = ExtResource("6_eluye")
-theme_override_fonts/bold_font = ExtResource("6_eluye")
+theme_override_colors/default_color = Color(0.862745, 0.92549, 0.972549, 1)
+theme_override_colors/font_shadow_color = Color(0.0745098, 0.180392, 0.25098, 1)
+theme_override_colors/font_outline_color = Color(0.0745098, 0.180392, 0.25098, 1)
+theme_override_constants/shadow_offset_x = 1
+theme_override_constants/shadow_offset_y = 2
+theme_override_constants/shadow_outline_size = 1
+theme_override_fonts/normal_font = ExtResource("8_57257")
+theme_override_fonts/bold_font = ExtResource("8_5fvps")
 theme_override_font_sizes/normal_font_size = 14
-theme_override_font_sizes/bold_font_size = 18
+theme_override_font_sizes/bold_font_size = 24
 bbcode_enabled = true
 text = "[center][b]Lorem ipsum dolor sit amet, consectetur adipiscing elit [img={25}]res://assets/Symbols/poison.png[img]"
 

@@ -27,8 +27,8 @@ position = Vector2(115, 115)
 texture = ExtResource("3_8qgkd")
 
 [node name="component3" type="Sprite2D" parent="."]
+position = Vector2(115, 115)
 texture = ExtResource("4_wa1gs")
-offset = Vector2(115, 115)
 
 [node name="component2" type="Sprite2D" parent="."]
 position = Vector2(115, 115)
@@ -47,9 +47,9 @@ texture = ExtResource("7_ra84l")
 light_mask = 2
 layout_mode = 0
 offset_left = 21.0
-offset_top = 217.0
+offset_top = 95.0
 offset_right = 215.0
-offset_bottom = 267.0
+offset_bottom = 145.0
 mouse_filter = 2
 theme_override_colors/default_color = Color(0.909804, 0.835294, 0.709804, 1)
 theme_override_colors/font_shadow_color = Color(0.909804, 0.835294, 0.709804, 1)

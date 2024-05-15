@@ -1,4 +1,4 @@
-[gd_scene load_steps=31 format=3 uid="uid://1et4n80mrk8k"]
+[gd_scene load_steps=32 format=3 uid="uid://1et4n80mrk8k"]
 
 [ext_resource type="Texture2D" uid="uid://q6p8hp3svmij" path="res://assets/placeholders/square-128.png" id="1_d7xh7"]
 [ext_resource type="Script" path="res://scenes/levels/main_menu.gd" id="1_uu2s1"]
@@ -18,6 +18,7 @@
 [ext_resource type="Texture2D" uid="uid://dmhttftvnv3rr" path="res://assets/placeholders/mountainA.png" id="9_sqwft"]
 [ext_resource type="Texture2D" uid="uid://010nmypafjj1" path="res://assets/placeholders/mountainB.png" id="10_m5na5"]
 [ext_resource type="Texture2D" uid="uid://cse7kusibyvri" path="res://assets/placeholders/mountainC.png" id="11_8ifpw"]
+[ext_resource type="Texture2D" uid="uid://dc7ka66dicxu0" path="res://assets/UI/tinystar.png" id="12_kud1b"]
 [ext_resource type="Script" path="res://scenes/levels/Titlebox.gd" id="14_c6gki"]
 [ext_resource type="Texture2D" uid="uid://b88ymxt5xnsgs" path="res://assets/UI/UIpurple1.png" id="14_xroml"]
 [ext_resource type="Texture2D" uid="uid://dtv3lxr7owkda" path="res://assets/placeholders/star-512.png" id="16_loo7x"]
@@ -215,6 +216,7 @@ script = ExtResource("6_mlm3y")
 
 [node name="Stars" parent="MainMenuBgAnimations" instance=ExtResource("4_vk13u")]
 position = Vector2(800, 400)
+texture = ExtResource("12_kud1b")
 
 [node name="Orbits" type="Node2D" parent="MainMenuBgAnimations"]
 
