@@ -12,6 +12,7 @@
 
  - ~~spells~~ (made a simple damage spell might implement more)
  - other events (WIP idea)
+ -  fully implement the battle mechanic (with waves and such) for the debug room
  - a "tarot card" map navigation system, where the area you go to is decided by the tarot cards you choose (WIP idea)
 
 The UI doesnt have to be perfect, but it just has to have some concept of an art direction, using inkscape for vector art
