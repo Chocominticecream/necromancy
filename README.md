@@ -15,6 +15,7 @@
  -  implement waves mechanic (debug room)
  -  implement lose/win condition (debug room)
  - map navigation system (WIP idea)
+ - hub area (WIP idea)
 
 The UI doesnt have to be perfect, but it just has to have some concept of an art direction, using inkscape for vector art
 and krita for drawn art
