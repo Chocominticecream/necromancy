@@ -4,7 +4,8 @@ var cardfunc = Universalfunc.new()
 
 # a change
 
-func createStarterDeck(deck : Array):
+#debug battle stat load in
+func createTestStarterDeck(deck : Array):
      var data_cbd = cardfunc.readDatabase()
     
      for i in range(3):
@@ -32,8 +33,8 @@ func createStarterDeck(deck : Array):
          var manaballcard = cardfunc.createResource(manaballentry, 'spell')
          deck.append(manaballcard)
 
-#to expand on this function
-func createEnemyDeck(deck : Array, wavedeck : Array):
+#hardcoded function to create a bunch of test 
+func createTestEnemyDeck(deck : Array, wavedeck : Array):
     var data_cbd = cardfunc.readDatabase()
     
     #for i in range(5):
@@ -43,24 +44,28 @@ func createEnemyDeck(deck : Array, wavedeck : Array):
     
     var spiderCard = cardfunc.createResource(cardfunc.findCard(data_cbd, 2, "EnemyData", "numID") , 'enemySummon')
     deck.append(spiderCard)
+    deck.append(spiderCard)
     
     var testCard = cardfunc.createResource(cardfunc.findCard(data_cbd, 0, "EnemyData", "numID") , 'enemySummon')
+    deck.append(testCard)
+    deck.append(testCard)
     deck.append(testCard)
     
     var repeater = cardfunc.createResource(cardfunc.findCard(data_cbd, 3, "EnemyData", "numID") , 'enemySummon')
     deck.append(repeater)
     
     #appending wave deck value, first value is the amount of enemies summoned, second number is time til the next wave
-    wavedeck.append([4,3])  
+    wavedeck.append([3,0])
+    wavedeck.append([4,4])  
 # Called when the node enters the scene tree for the first time.
         
 func _ready():
     cardfunc.copyDatabase()
-    createStarterDeck(DataManager.maindeck)
-    createEnemyDeck(DataManager.enemydeck, DataManager.enemywaves)
+    createTestStarterDeck(DataManager.maindeck)
+    createTestEnemyDeck(DataManager.enemydeck, DataManager.enemywaves)
     DataManager.maindeck.shuffle()
     #print(DataManager.enemydeck)
-    print(DataManager.maindeck)
+    #print(DataManager.maindeck)
     #print(DataManager.enemywaves)
 # Called every frame. 'delta' is the elapsed time since the previous frame.
 func _process(delta):

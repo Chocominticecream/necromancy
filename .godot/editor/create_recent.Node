@@ -1,14 +1,15 @@
+RichTextLabel
+Control
 Sprite2D
+Node2D
 TextureButton
 AnimationPlayer
 CanvasLayer
 ColorRect
 ParallaxLayer
 ParallaxBackground
-Node2D
 TextureRect
 DirectionalLight2D
 Button
 PointLight2D
 MarginContainer
-Control

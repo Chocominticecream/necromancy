@@ -17,7 +17,12 @@ signal onTakeDirectDamage(val, alliance)
 signal countdown(val)
 signal activeCardToNull(idx)
 signal addDelay(val)
+signal addDeathDelay(val)
 signal discardCard(card)
+signal drawCards(val)
+signal depleteBell(val)
+signal disableBell()
+signal detectFullField(val)
 
 #button signals
 signal buttonActivation(val)

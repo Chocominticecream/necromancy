@@ -22,8 +22,9 @@ func applyStatus(card : BaseCard, altTrigger : bool = true):
     var copyArray = card.status.duplicate()
     match statusTypeEnum:
         DataManager.STATUS.sleep:
-            copyArray.erase(self)
-            card.status = copyArray
+            if !card.freshCard:
+              copyArray.erase(self)
+              card.status = copyArray
         DataManager.STATUS.poison:
             print(card.printedname + " has taken " + str(value) + " poison damage !")
             card.onTakeDamage(!card.alliance, value, [card.index], -1, [])

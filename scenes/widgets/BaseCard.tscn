@@ -458,9 +458,9 @@ text = "[center]Name"
 
 [node name="Type" type="RichTextLabel" parent="spriteNodes/TextNormal"]
 layout_mode = 0
-offset_left = 26.0
+offset_left = 24.945
 offset_top = 158.5
-offset_right = 186.0
+offset_right = 184.945
 offset_bottom = 181.5
 mouse_filter = 2
 theme = ExtResource("6_bqiuq")
@@ -495,7 +495,7 @@ theme_override_constants/shadow_outline_size = 1
 theme_override_constants/outline_size = 2
 theme_override_fonts/normal_font = ExtResource("8_5fvps")
 theme_override_fonts/bold_font = ExtResource("6_eluye")
-theme_override_font_sizes/normal_font_size = 24
+theme_override_font_sizes/normal_font_size = 30
 theme_override_font_sizes/bold_font_size = 24
 bbcode_enabled = true
 text = "[center]0"
@@ -577,9 +577,9 @@ text = "[center][b]Type"
 
 [node name="Energy" type="RichTextLabel" parent="spriteNodes/TextFocused"]
 layout_mode = 0
-offset_left = 7.0
+offset_left = 8.0
 offset_top = 10.0
-offset_right = 59.0
+offset_right = 60.0
 offset_bottom = 53.0
 mouse_filter = 2
 theme = ExtResource("6_bqiuq")
@@ -589,10 +589,11 @@ theme_override_colors/font_outline_color = Color(0.0745098, 0.180392, 0.25098, 1
 theme_override_constants/shadow_offset_x = 1
 theme_override_constants/shadow_offset_y = 0
 theme_override_constants/shadow_outline_size = 1
+theme_override_constants/outline_size = 2
 theme_override_fonts/normal_font = ExtResource("8_5fvps")
-theme_override_fonts/bold_font = ExtResource("9_4epq5")
+theme_override_fonts/bold_font = ExtResource("8_5fvps")
 theme_override_font_sizes/normal_font_size = 24
-theme_override_font_sizes/bold_font_size = 32
+theme_override_font_sizes/bold_font_size = 39
 bbcode_enabled = true
 text = "[center][b]0"
 

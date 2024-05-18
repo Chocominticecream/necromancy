@@ -28,6 +28,11 @@ var DRAWTIME = 0.2
 #stored shaders
 var nebulaShader
 
+#delay values for ensuring cards get timed properly
+var delay : Array = []
+var deathdelay: Array = []
+
+#enums and signal controllers
 enum STATUS {
     test,
     empty,
@@ -56,6 +61,8 @@ enum EFFECTS {
 
 func _ready():
     preloadShaders()
+    EventsBus.connect("addDelay", addDelay)
+    EventsBus.connect("addDeathDelay", addDeathDelay)
 
 # Called every frame. 'delta' is the elapsed time since the previous frame.
 func _process(delta):
@@ -78,5 +85,15 @@ func _process(delta):
         restPhase:
            pass
 
+#code that plays status effects that activate during a turn
+func addDelay(delayval: float):
+    delay.append(delayval)
+    print(delay)
+
+#code that waits for death before executing other functions
+func addDeathDelay(delayval: float):
+    deathdelay.append(delayval)
+    print(delay)
+    
 func preloadShaders():
     nebulaShader = load("res://scenes/widgets/NebulaShader.tscn").instantiate()

@@ -145,6 +145,9 @@ func onDeath():
     TweenNode.tween_property(self, "global_position", global_position + Vector2(0,-400) , DataManager.DRAWTIME).set_ease(Tween.EASE_OUT).set_trans(Tween.TRANS_SINE)
     TweenNode.tween_property(self, "global_position", global_position + Vector2(0,1450) , DataManager.DRAWTIME*3.0).set_ease(Tween.EASE_IN).set_trans(Tween.TRANS_QUAD)
     animationAlt.play("death")
+    
+    #this death delay fixed as the game would break and not work properly if the drawtime is lesser
+    EventsBus.emit_signal("addDeathDelay", 0.9)
     await get_tree().create_timer(DataManager.DRAWTIME*6.0).timeout;
     self.queue_free()
     

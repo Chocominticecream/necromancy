@@ -9,6 +9,13 @@ var description : String : get = descget, set = descset
 var type : String 
 var animationFinished : bool = false
 
+#weird stopping variable to ensure summoned enemy cards stay asleep after being summoned onto the field
+var freshCard : bool = false
+
+#NOTE if card fails unit testing this means that the phase and firstturn values are set to neutral and true respectively,
+#this is intended as cards are to behave differently based on the environment they are in, to unit test a card, set the firstturn to false and
+#phase to where you want to test the card
+
 var projresolution = Vector2(ProjectSettings.get_setting("display/window/size/viewport_width"),ProjectSettings.get_setting("display/window/size/viewport_height"))
 #for state machine of the card
 enum{
@@ -38,16 +45,16 @@ enum{
 var state = inHand
 
 #tweens
-var TweenNode
-var TweenRotate
-var tweened = false
+var TweenNode : Tween
+var TweenRotate : Tween
+var tweened : bool = false
 
 #rotation and position
-var target = position
-var targetrot = 0
-var focustarget
-var focusrot
-var targetdiscard
+var target : Vector2 = position
+var targetrot : float = 0
+var focustarget : Vector2
+var focusrot : float
+var targetdiscard : Vector2
 
 #animation
 @onready var animation = $AnimationPlayer
@@ -56,7 +63,7 @@ var universalMethods = Universalfunc.new()
 
 #----------------------------setters and getters---------------------------------
     
-func nameset(val):
+func nameset(val : String):
     $spriteNodes/TextNormal/Name.text = "[center]" + str(val) 
     $spriteNodes/TextFocused/Name.text = "[center][b]" + str(val) 
     printedname = val
@@ -64,13 +71,13 @@ func nameset(val):
 func nameget():
     return printedname
     
-func effectset(val):
+func effectset(val : Array):
     effect = val
     
 func effectget():
     return effect
 
-func statusset(val):
+func statusset(val : Array):
     status = val
     var spawn = $spriteNodes/graphicsScaler/StatusSpawn
     universalMethods.triggerStatuses(DataManager.STATUS.hex, self)
@@ -88,7 +95,7 @@ func statusset(val):
 func statusget():
     return status
 
-func energyset(val):
+func energyset(val : int):
     $spriteNodes/TextNormal/Energy.text = "[center]" + str(val) 
     $spriteNodes/TextFocused/Energy.text = "[center][b]" + str(val)
     energy = val
@@ -96,7 +103,7 @@ func energyset(val):
 func energyget():
     return energy
     
-func descset(val):
+func descset(val : String):
     $spriteNodes/TextNormal/Description.text = "[center]" + universalMethods.createDesc(str(val), false)
     $spriteNodes/TextFocused/Description.text = "[center][b]" + universalMethods.createDesc(str(val), true)
     description = val
@@ -107,10 +114,10 @@ func descget():
 func stateset(val):
     state = val
 
-func animationset(val):
+func animationset(val : bool):
     animationFinished = val
     
-func setPosition(val):
+func setPosition(val : Vector2):
     global_position = val
 
 #--------------------------------end of setters/getters-------------------------------------
@@ -201,9 +208,6 @@ func _on_mouse_exited():
       animation.play("simpleUnfocus")
       state = unfocusing
     
-
-
-
 func _on_gui_input(event):
     if event is InputEventMouseMotion:
        if state == inHand and !Input.is_action_pressed("ui_left_click") and animationFinished == true:
@@ -243,14 +247,14 @@ func _drop_data(at_position, data):
     EventsBus.emit_signal("countdown", data.energy)
     
 #mockup method for applying card effects on to other cards
-func applyEffect( effectType, effectsArray : Array = effect, card : BaseCard = self):
+func applyEffect( effectType : DataManager.EFFECTS, effectsArray : Array = effect, card : BaseCard = self):
      for effect in effectsArray:
         #an enum is supposed to go here in effectType
         if effect.effectTypeEnum == effectType:
             #apply effect based on inherited/overloaded applyEffect method
             effect.applyEffect(card)
     
-func applyStatus( statusType, statusArray: Array = status, card : BaseCard = self):
+func applyStatus( statusType : DataManager.STATUS, statusArray: Array = status, card : BaseCard = self):
     for status in statusArray:
         #an enum is supposed to go here in effectType
         if status.statusTypeEnum == statusType:
@@ -259,12 +263,12 @@ func applyStatus( statusType, statusArray: Array = status, card : BaseCard = sel
             
 #check if card/status effects exist, useful for ensuring that certain effects don't clash with each other
 # eg a hit all effect with a hit random effect would not make sense
-func checkEffect(effectType, effectsArray: Array = effect):
+func checkEffect(effectType : DataManager.EFFECTS, effectsArray: Array = effect):
     for effect in effectsArray:
         if effect.effectTypeEnum == effectType:
             return true
             
-func checkStatus(statusType, statusArray: Array = status):
+func checkStatus(statusType : DataManager.STATUS, statusArray: Array = status):
     for status in statusArray:
         if status.statusTypeEnum == statusType:
             return true

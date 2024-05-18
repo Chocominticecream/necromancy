@@ -1,21 +1,135 @@
-[gd_scene load_steps=6 format=3 uid="uid://dj66ecsukdg8e"]
+[gd_scene load_steps=12 format=3 uid="uid://dj66ecsukdg8e"]
 
 [ext_resource type="Script" path="res://scenes/levels/battleScene.gd" id="1_472bf"]
 [ext_resource type="PackedScene" uid="uid://b1wqj7hkcbqhx" path="res://scenes/levels/BattleBackground1.tscn" id="1_ei1ud"]
 [ext_resource type="PackedScene" uid="uid://c4t0qci1b1wj6" path="res://scenes/levels/battleUI.tscn" id="1_j0k7h"]
 [ext_resource type="PackedScene" uid="uid://b24xigrrfwecy" path="res://scenes/widgets/BaseParticles.tscn" id="2_7l6vu"]
 [ext_resource type="Texture2D" uid="uid://dc7ka66dicxu0" path="res://assets/UI/tinystar.png" id="4_8p4ox"]
+[ext_resource type="Script" path="res://scenes/levels/Fields.gd" id="6_1tf43"]
+[ext_resource type="Texture2D" uid="uid://boq4kfw0ewww3" path="res://assets/background/necromancerMat1.png" id="7_t1qe4"]
+[ext_resource type="Script" path="res://scenes/levels/enemyField.gd" id="8_5n07g"]
+[ext_resource type="PackedScene" uid="uid://du33lb712teva" path="res://scenes/widgets/Enemy_slot.tscn" id="9_s3c7v"]
+[ext_resource type="Script" path="res://scenes/levels/heroField.gd" id="10_70qb3"]
+[ext_resource type="PackedScene" uid="uid://cp2dq35rmenyb" path="res://scenes/widgets/Hero_slot.tscn" id="11_nkqeu"]
 
 [node name="battleScene" type="Node2D"]
 script = ExtResource("1_472bf")
 
 [node name="BattleBackground1" parent="." instance=ExtResource("1_ei1ud")]
+z_index = -2
 
 [node name="Stars" parent="." instance=ExtResource("2_7l6vu")]
 position = Vector2(900, 600)
 texture = ExtResource("4_8p4ox")
 
-[node name="Camera2D" type="Camera2D" parent="."]
-anchor_mode = 0
-
 [node name="battleUI" parent="." instance=ExtResource("1_j0k7h")]
+
+[node name="Camera2D" type="Camera2D" parent="."]
+offset = Vector2(960, 540)
+
+[node name="Fields" type="Control" parent="."]
+layout_mode = 3
+anchors_preset = 0
+offset_right = 40.0
+offset_bottom = 40.0
+script = ExtResource("6_1tf43")
+
+[node name="NecromancerMat1" type="Sprite2D" parent="Fields"]
+visible = false
+position = Vector2(950, 445)
+scale = Vector2(1.1, 1.1)
+texture = ExtResource("7_t1qe4")
+
+[node name="enemyField" type="Control" parent="Fields"]
+anchors_preset = 0
+offset_left = 150.0
+offset_right = 190.0
+offset_bottom = 40.0
+script = ExtResource("8_5n07g")
+
+[node name="CardSlot" parent="Fields/enemyField" instance=ExtResource("9_s3c7v")]
+layout_mode = 0
+offset_left = 320.0
+offset_top = 170.0
+offset_right = 488.0
+offset_bottom = 422.0
+pivot_offset = Vector2(0, 0)
+
+[node name="CardSlot2" parent="Fields/enemyField" instance=ExtResource("9_s3c7v")]
+layout_mode = 0
+offset_left = 520.0
+offset_top = 170.0
+offset_right = 688.0
+offset_bottom = 422.0
+pivot_offset = Vector2(0, 0)
+
+[node name="CardSlot3" parent="Fields/enemyField" instance=ExtResource("9_s3c7v")]
+layout_mode = 0
+offset_left = 720.0
+offset_top = 170.0
+offset_right = 888.0
+offset_bottom = 422.0
+pivot_offset = Vector2(0, 0)
+
+[node name="CardSlot4" parent="Fields/enemyField" instance=ExtResource("9_s3c7v")]
+layout_mode = 0
+offset_left = 920.0
+offset_top = 170.0
+offset_right = 1088.0
+offset_bottom = 422.0
+pivot_offset = Vector2(0, 0)
+
+[node name="CardSlot5" parent="Fields/enemyField" instance=ExtResource("9_s3c7v")]
+layout_mode = 0
+offset_left = 1120.0
+offset_top = 170.0
+offset_right = 1288.0
+offset_bottom = 422.0
+pivot_offset = Vector2(0, 0)
+
+[node name="heroField" type="Control" parent="Fields"]
+anchors_preset = 0
+offset_left = 150.0
+offset_right = 190.0
+offset_bottom = 40.0
+script = ExtResource("10_70qb3")
+
+[node name="CardSlot" parent="Fields/heroField" instance=ExtResource("11_nkqeu")]
+layout_mode = 0
+offset_left = 320.0
+offset_top = 470.0
+offset_right = 488.0
+offset_bottom = 722.0
+pivot_offset = Vector2(0, 0)
+
+[node name="CardSlot2" parent="Fields/heroField" instance=ExtResource("11_nkqeu")]
+layout_mode = 0
+offset_left = 520.0
+offset_top = 470.0
+offset_right = 688.0
+offset_bottom = 722.0
+pivot_offset = Vector2(0, 0)
+
+[node name="CardSlot3" parent="Fields/heroField" instance=ExtResource("11_nkqeu")]
+layout_mode = 0
+offset_left = 720.0
+offset_top = 470.0
+offset_right = 888.0
+offset_bottom = 722.0
+pivot_offset = Vector2(0, 0)
+
+[node name="CardSlot4" parent="Fields/heroField" instance=ExtResource("11_nkqeu")]
+layout_mode = 0
+offset_left = 920.0
+offset_top = 470.0
+offset_right = 1088.0
+offset_bottom = 722.0
+pivot_offset = Vector2(0, 0)
+
+[node name="CardSlot5" parent="Fields/heroField" instance=ExtResource("11_nkqeu")]
+layout_mode = 0
+offset_left = 1120.0
+offset_top = 470.0
+offset_right = 1288.0
+offset_bottom = 722.0
+pivot_offset = Vector2(0, 0)
