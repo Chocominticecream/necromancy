@@ -12,7 +12,10 @@
 
  - ~~spells~~ (made a simple damage spell might implement more)
  - other events (WIP idea)
- - a "tarot card" map navigation system, where the area you go to is decided by the tarot cards you choose (WIP idea)
+ -  implement waves mechanic (debug room)
+ -  implement lose/win condition (debug room)
+ - map navigation system (WIP idea)
+ - hub area (WIP idea)
 
 The UI doesnt have to be perfect, but it just has to have some concept of an art direction, using inkscape for vector art
 and krita for drawn art
@@ -25,10 +28,14 @@ and krita for drawn art
  - ~~card back design (easy)~~
  - ~~Health bar design~~
  - swap out ugly font for better appropriate font (partly done)
- - character/enemy portrait
+ - character/enemy portrait (hmm where do i put this?)
+ - ~~make cards less curved~~
  - programatically fit card art into card
  - card front design (hard)
  - ~~fix glitchy action buttons in the battle UI (i would reimplement the buttons to use state machines instead of stopping variables)~~
  - fix graphic on star particles (star particles have a hole in them and are also pixelated, to be replaced with better graphic)
- - revisit Health bar graphic, maybe replace with dynamic health bars?
 
+things that might need revisting:
+ - revisit Health bar graphic, maybe replace with dynamic health bars?
+ - as of now, the code relies on firing signals using delays to send information to each other, this could spell disaster when the game is played on different computers, might have to revisit this problem
+ - death delay and positions not updating correcly unless certain hacky methods are used (setting artificial delays or spawning the cards using visibility changes and invisible nodes, very weird)
