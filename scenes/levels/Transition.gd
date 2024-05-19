@@ -28,10 +28,15 @@ func createTestStarterDeck(deck : Array):
          var bruteCard = cardfunc.createResource(cardfunc.findCard(data_cbd, 3, "SummonData", "numID") , 'summon')
          deck.append(bruteCard)
      
-     for i in range(5):
+     for i in range(3):
          var manaballentry = cardfunc.findCard(data_cbd, 0, 'SpellData', 'numID')
          var manaballcard = cardfunc.createResource(manaballentry, 'spell')
          deck.append(manaballcard)
+    
+     for i in range(2):
+         var manaballentry = cardfunc.findCard(data_cbd, 1, 'SpellData', 'numID')
+         var deathcard = cardfunc.createResource(manaballentry, 'spell')
+         deck.append(deathcard)
 
 #hardcoded function to create a bunch of test 
 func createTestEnemyDeck(deck : Array, wavedeck : Array):
@@ -55,9 +60,10 @@ func createTestEnemyDeck(deck : Array, wavedeck : Array):
     deck.append(repeater)
     
     #appending wave deck value, first value is the amount of enemies summoned, second number is time til the next wave
-    wavedeck.append([3,0])
-    wavedeck.append([2,4])
-    wavedeck.append([2,3])  
+    wavedeck.append([2,0])
+    wavedeck.append([3,1])
+    wavedeck.append([1,1])
+    wavedeck.append([1,1])
 # Called when the node enters the scene tree for the first time.
         
 func _ready():

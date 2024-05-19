@@ -21,20 +21,15 @@ func bellset(val : int):
 
 func depleteBell(val: int):
     if onEmptySummons or onWaveJustSummoned:
+        print("wave just summoned!")
         return
     
     if !onFullField:
         bellset(bellcounter-val)
         
     if bellcounter <= 0:
-        if !onFullField and !enemywavetime.is_empty():
-          await get_tree().create_timer(DataManager.DRAWTIME).timeout;
-          bellset(enemywavetime[0])
-          enemywavetime.pop_front()
-          EventsBus.emit_signal("summonWave")
-          onWaveJustSummoned = true
-        else:
-          EventsBus.emit_signal("summonWave")
+        EventsBus.emit_signal("checkSummons")
+        
 #disables the bell afyer wavequeue and wave array is empty
 func disableBell():
     onEmptySummons = true
@@ -45,8 +40,15 @@ func detectFullField(value : bool):
     onFullField = value
     if !value:
        if !enemywavetime.is_empty():
-          bellset(enemywavetime.pop_front())
-
+          await get_tree().create_timer(DataManager.DRAWTIME).timeout;
+          enemywavetime.pop_front()
+          if !enemywavetime.is_empty():
+             bellset(enemywavetime[0])
+          else:
+             disableBell()
+          EventsBus.emit_signal("summonWave")
+          onWaveJustSummoned = true
+        
 func setWaveJustSummoned(val):
     onWaveJustSummoned = val
         

@@ -24,6 +24,7 @@ signal depleteBell(val)
 signal disableBell()
 signal detectFullField(val)
 signal setWaveJustSummoned(val)
+signal checkSummons()
 
 #button signals
 signal buttonActivation(val)

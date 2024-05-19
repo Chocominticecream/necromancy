@@ -10,7 +10,7 @@ enum{
 
 #get scene tree for time based functions
 var scene_tree := Engine.get_main_loop() as SceneTree
-var phase = neutral
+var phase = neutral : set = phaseSet
 var firstTurn = true #checks if its the first turn, required for inital battle logic to activate
 
 #values for hero
@@ -58,6 +58,8 @@ enum EFFECTS {
     applyEffectWhenHit, #applies a status effect onto the enemy when hit
 }
 
+func phaseSet(value):
+    phase = value
 
 func _ready():
     preloadShaders()
@@ -76,7 +78,6 @@ func _process(delta):
            EventsBus.emit_signal("buttonActivation", false)
            EventsBus.emit_signal("animationActivation", false)
            EventsBus.emit_signal("setWaveJustSummoned", false)
-           phase = restPhase
         countDownPhase:
            EventsBus.emit_signal("setAnimationstate", false)
            EventsBus.emit_signal("buttonActivation", true)

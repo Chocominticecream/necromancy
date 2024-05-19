@@ -17,6 +17,7 @@ func _ready():
     for wave in enemywavestorage:
         enemywavevalue.append(wave[0])
     EventsBus.connect("summonWave", summonWave)
+    EventsBus.connect("checkSummons", checkSummons)
     
 
 func takeDamage():
@@ -59,14 +60,18 @@ func summonWave():
                  await get_tree().create_timer(DataManager.DRAWTIME).timeout;
               else:
                  avaliableSlots.pop_front() 
-    
-    #check if wavequeue and enemywavevalue is empty (no more summons), disable the bell
-        if wavequeue.is_empty() and enemywavevalue.is_empty():
-           EventsBus.emit_signal("disableBell")
-    #check if field is full by checking wavequeue contents, if it is set the bell's state to detect a full field
-        elif !wavequeue.is_empty():
-           EventsBus.emit_signal("detectFullField", true)
-    #if wavequeue is empty and enemyarray still have enemies, set the bell state to be able to summon a new wave
-        elif wavequeue.is_empty():
+
+func checkSummons():
+    if wavequeue.is_empty() and enemywavevalue.is_empty():
+        EventsBus.emit_signal("disableBell")
+        return
+    for i in range(5):
+        if get_child(i).activeCard == null:
+           print("empty field! slot  " + str(i))
            EventsBus.emit_signal("detectFullField", false)
+           return
+    EventsBus.emit_signal("detectFullField", true)
+    print("full field!")
+    return
+    
     

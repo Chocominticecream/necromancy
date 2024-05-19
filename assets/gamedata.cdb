@@ -43,6 +43,15 @@
 					"numID": 0,
 					"offensive": true,
 					"attack": 3
+				},
+				{
+					"name": "admin spell",
+					"numID": 1,
+					"energy": 99,
+					"attack": 999,
+					"description": "a very broken spell used for testing.",
+					"effect": [],
+					"offensive": true
 				}
 			],
 			"separators": [],

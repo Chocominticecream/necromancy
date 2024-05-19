@@ -45,10 +45,8 @@ func _ready():
     await get_tree().create_timer(0.2).timeout;
     if !DataManager.delay.is_empty():
         for waittime in DataManager.delay:
-            await get_tree().create_timer(waittime).timeout;   
-            print(DataManager.delay)    
+            await get_tree().create_timer(waittime).timeout;      
     DataManager.delay.clear()
-    
     
     await carddrawer(5)
     
