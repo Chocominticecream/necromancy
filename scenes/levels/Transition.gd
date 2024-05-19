@@ -56,7 +56,8 @@ func createTestEnemyDeck(deck : Array, wavedeck : Array):
     
     #appending wave deck value, first value is the amount of enemies summoned, second number is time til the next wave
     wavedeck.append([3,0])
-    wavedeck.append([4,4])  
+    wavedeck.append([2,4])
+    wavedeck.append([2,3])  
 # Called when the node enters the scene tree for the first time.
         
 func _ready():

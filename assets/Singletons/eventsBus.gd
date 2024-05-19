@@ -23,6 +23,7 @@ signal drawCards(val)
 signal depleteBell(val)
 signal disableBell()
 signal detectFullField(val)
+signal setWaveJustSummoned(val)
 
 #button signals
 signal buttonActivation(val)

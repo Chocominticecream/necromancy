@@ -35,8 +35,6 @@ func summonWave():
           if !enemydeck.is_empty():
             wavequeue.append(enemydeck.pop_front())
     
-    DataManager.phase = DataManager.drawingPhase
-    
     #iterate through first wave pair value to summon that many cards
     for i in len(wavequeue):
         
@@ -63,14 +61,12 @@ func summonWave():
                  avaliableSlots.pop_front() 
     
     #check if wavequeue and enemywavevalue is empty (no more summons), disable the bell
-    if wavequeue.is_empty() and enemywavevalue.is_empty():
-        EventsBus.emit_signal("disableBell")
+        if wavequeue.is_empty() and enemywavevalue.is_empty():
+           EventsBus.emit_signal("disableBell")
     #check if field is full by checking wavequeue contents, if it is set the bell's state to detect a full field
-    elif !wavequeue.is_empty():
-        EventsBus.emit_signal("detectFullField", true)
+        elif !wavequeue.is_empty():
+           EventsBus.emit_signal("detectFullField", true)
     #if wavequeue is empty and enemyarray still have enemies, set the bell state to be able to summon a new wave
-    elif wavequeue.is_empty():
-        EventsBus.emit_signal("detectFullField", false)
-    
-    DataManager.phase = DataManager.playPhase
+        elif wavequeue.is_empty():
+           EventsBus.emit_signal("detectFullField", false)
     

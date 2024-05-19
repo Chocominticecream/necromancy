@@ -15,3 +15,6 @@ res://scenes/widgets/CardSlot.gd
 res://assets/Singletons/eventsBus.gd
 res://assets/Singletons/data_manager.gd
 res://scenes/levels/enemyField.gd
+res://scenes/levels/WaveBell.gd
+res://scenes/levels/Transition.gd
+res://scenes/levels/decks.gd

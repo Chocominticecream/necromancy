@@ -75,6 +75,7 @@ func _process(delta):
            EventsBus.emit_signal("setAnimationstate", true)
            EventsBus.emit_signal("buttonActivation", false)
            EventsBus.emit_signal("animationActivation", false)
+           EventsBus.emit_signal("setWaveJustSummoned", false)
            phase = restPhase
         countDownPhase:
            EventsBus.emit_signal("setAnimationstate", false)
