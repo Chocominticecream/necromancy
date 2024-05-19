@@ -88,12 +88,10 @@ func _process(delta):
 #code that plays status effects that activate during a turn
 func addDelay(delayval: float):
     delay.append(delayval)
-    print(delay)
 
 #code that waits for death before executing other functions
 func addDeathDelay(delayval: float):
     deathdelay.append(delayval)
-    print(delay)
     
 func preloadShaders():
     nebulaShader = load("res://scenes/widgets/NebulaShader.tscn").instantiate()

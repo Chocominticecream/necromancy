@@ -238,7 +238,6 @@ func _can_drop_data(at_position, data):
     return data is SpellCard and (state == inPlay or state == inEnemyPlay) #or state == inHand
 
 func _drop_data(at_position, data):
-    print("played spell card!")
     data.castSpell(self)
     DataManager.phase = DataManager.countDownPhase
     await get_tree().create_timer(DataManager.DRAWTIME*1.5).timeout;

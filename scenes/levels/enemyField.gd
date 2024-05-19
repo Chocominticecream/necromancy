@@ -17,7 +17,6 @@ func _ready():
     for wave in enemywavestorage:
         enemywavevalue.append(wave[0])
     EventsBus.connect("summonWave", summonWave)
-    print(enemywavevalue)
     
 
 func takeDamage():

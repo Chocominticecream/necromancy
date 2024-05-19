@@ -15,7 +15,7 @@ signal onAttack()
 signal onTakeDirectDamage(val, alliance)
 
 signal countdown(val)
-signal activeCardToNull(idx)
+signal activeCardToNull(idx, alliance)
 signal addDelay(val)
 signal addDeathDelay(val)
 signal discardCard(card)

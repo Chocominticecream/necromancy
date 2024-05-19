@@ -46,3 +46,4 @@ func onTakeSlotDamage(ally : bool, damage : int, attackingFoe : Array, attacker:
 func activeCardToNull(idx : int, ally: bool):
     if get_index() == idx and ally == alliance:
         activeCard = null
+        
