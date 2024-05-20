@@ -55,6 +55,11 @@ func countdown(val : int):
     EventsBus.emit_signal("depleteBell", 1)
         
     await get_tree().create_timer(DataManager.DRAWTIME*1.5).timeout;
+    
+  if !DataManager.delay.is_empty():
+    for waittime in DataManager.delay:
+       await get_tree().create_timer(waittime).timeout;
+    DataManager.delay.clear()
   
   #wake up all cards
   for slot in $enemyField.get_children()+$heroField.get_children():

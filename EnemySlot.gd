@@ -21,8 +21,8 @@ func summonEnemy(enemy : SummonCard):
     activeCard.status = universalMethods.editStatusArray(activeCard.status, true, DataManager.STATUS.sleep)
     if !DataManager.firstTurn:
         activeCard.freshCard = true
-    else:
-        EventsBus.emit_signal("addDelay", DataManager.DRAWTIME)    
+    EventsBus.emit_signal("addDelay", DataManager.DRAWTIME)
+        
         
     TweenNode.tween_property(enemy, "global_position", self.global_position , DataManager.DRAWTIME).set_ease(Tween.EASE_IN_OUT).set_trans(Tween.TRANS_LINEAR)
     await get_tree().create_timer(DataManager.DRAWTIME).timeout;
