@@ -137,6 +137,7 @@ _data = {
 }
 
 [node name="Button" type="TextureButton"]
+custom_minimum_size = Vector2(256, 64)
 offset_left = 224.0
 offset_top = 111.0
 offset_right = 480.0

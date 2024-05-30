@@ -68,6 +68,7 @@ func _ready():
 
 # Called every frame. 'delta' is the elapsed time since the previous frame.
 func _process(delta):
+ 
   if firstTurn:
     EventsBus.emit_signal("setAnimationstate", false)
     #EventsBus.emit_signal("buttonActivation", true)
@@ -78,6 +79,7 @@ func _process(delta):
            EventsBus.emit_signal("buttonActivation", false)
            EventsBus.emit_signal("animationActivation", false)
            EventsBus.emit_signal("setWaveJustSummoned", false)
+           phase = restPhase
         countDownPhase:
            EventsBus.emit_signal("setAnimationstate", false)
            EventsBus.emit_signal("buttonActivation", true)
@@ -91,9 +93,16 @@ func _process(delta):
 func addDelay(delayval: float):
     delay.append(delayval)
 
+func clearDeck():
+    maindeck.clear()
+    enemydeck.clear()
+    enemywaves.clear()
+
 #code that waits for death before executing other functions
 func addDeathDelay(delayval: float):
     deathdelay.append(delayval)
     
 func preloadShaders():
     nebulaShader = load("res://scenes/widgets/NebulaShader.tscn").instantiate()
+
+

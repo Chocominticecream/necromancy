@@ -18,6 +18,7 @@
 [ext_resource type="Texture2D" uid="uid://cl4iofc66ifqc" path="res://assets/UI/actionButtoncomp2.png" id="22_f71c3"]
 
 [node name="battleUI" type="CanvasLayer" groups=["enemy", "hero"]]
+process_mode = 1
 script = ExtResource("1_rpntx")
 
 [node name="decks" type="Control" parent="."]
@@ -214,7 +215,7 @@ offset_bottom = 79.0
 [node name="herosHp" parent="." instance=ExtResource("15_8vtvh")]
 alliance = true
 
-[node name="Hp" parent="." instance=ExtResource("15_8vtvh")]
+[node name="enemyHp" parent="." instance=ExtResource("15_8vtvh")]
 offset_left = 1690.0
 offset_right = 1730.0
 

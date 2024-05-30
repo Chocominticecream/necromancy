@@ -49,7 +49,7 @@
 					"numID": 1,
 					"energy": 99,
 					"attack": 999,
-					"description": "a very broken spell used for testing.",
+					"description": "A broken spell used for testing.",
 					"effect": [],
 					"offensive": true
 				}

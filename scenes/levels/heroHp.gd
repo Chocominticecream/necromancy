@@ -1,8 +1,9 @@
 extends Control
 
 var hp : int : get = hpget, set = hpset
-var maxhp
-var tween
+var maxhp : int
+var tween : Tween
+@onready var animation : AnimationPlayer = $AnimationPlayer
 @export var alliance : bool
 
 @onready var tinyCircle = $component3
@@ -40,3 +41,4 @@ func spinCircle():
 func onTakeDirectDamage(val : int,  allianceArg : bool):
     if alliance == allianceArg:
       hpset(hp - val)
+      animation.play("hurt")
