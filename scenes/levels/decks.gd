@@ -26,19 +26,30 @@ enum{
 func _ready():
    
     $draw.drawdeck = cardfunc.createProxyDeck(DataManager.maindeck)
-    print($draw.drawdeck)
+    #print($draw.drawdeck)
     #$draw/drawValue.text =  "[center]" + str(len(DataManager.maindeck))
     EventsBus.connect("resetCards", reorganiser)
     EventsBus.connect("redrawCards", cardRedrawer)
     EventsBus.connect("discardCard", cardDiscarder)
+    EventsBus.connect("drawCards", carddrawer)
     # for i in range(10):
        # var base = load("res://scenes/widgets/Summoncard.tscn").instantiate()
        # $draw.drawdeck.append(base)
     DataManager.firstTurn = true
+    
     await get_tree().create_timer(0.1).timeout;
-    EventsBus.emit_signal("summonWave")
-    await get_tree().create_timer(0.5).timeout;
-    carddrawer(5)
+    
+    #instantly deplete the bell by 0 so that we can summon cards on to the field immediately, there could be a better way to do this idk
+    EventsBus.emit_signal("depleteBell", 0)
+    
+    await get_tree().create_timer(0.2).timeout;
+    if !DataManager.delay.is_empty():
+        for waittime in DataManager.delay:
+            await get_tree().create_timer(waittime).timeout;      
+    DataManager.delay.clear()
+    
+    await carddrawer(5)
+    
     DataManager.firstTurn = false
 
 
@@ -57,7 +68,7 @@ func cardDiscarder(card : BaseCard):
     reorganiser()
     $discard/discardValue.text = "[center]" + str(int($discard/discardValue.text) + 1) + "[/center]"
 
-#DRAW LOGIC
+#DRAW LOGIC - draw cards without activating any special effects
 func carddrawer(drawno : int):
      DataManager.phase = DataManager.drawingPhase
      var drawglobal = $draw
@@ -113,7 +124,7 @@ func cardRedrawer():
         awaitTime += DataManager.DRAWTIME
     await carddrawer(5)
     EventsBus.emit_signal("countdown", 3)
-    print(DataManager.maindeck)
+    #print(DataManager.maindeck)
 
 func reshuffleIntoDraw(drawdeck : Control, discarddeck : Control):
      
@@ -196,11 +207,14 @@ func startTurn():
     pass
     
 func _on_redraw_button_pressed():
+    if DataManager.phase != DataManager.drawingPhase:
+       cardRedrawer()
     DataManager.phase = DataManager.drawingPhase
-    cardRedrawer()
+   
 
 func _on_pass_button_pressed():
+    if DataManager.phase != DataManager.countDownPhase:
+      EventsBus.emit_signal("countdown", 1)
     DataManager.phase = DataManager.countDownPhase
-    EventsBus.emit_signal("countdown", 1)
     
    

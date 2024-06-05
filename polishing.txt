@@ -1,0 +1,7 @@
+hp graphic:
+-make hexagon spin
+-make a spinning planet at the hp graphic
+-create heart "container" graphic
+-make heart reduce itself when taking damage
+-seperate enemy hp graphic
+-stars arounf graphic? (see if it looks good)

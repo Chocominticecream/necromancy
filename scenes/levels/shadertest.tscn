@@ -1,0 +1,28 @@
+[gd_scene load_steps=4 format=3 uid="uid://dvi0vtsq4idc3"]
+
+[ext_resource type="PackedScene" uid="uid://oyej8ia678bm" path="res://scenes/widgets/NebulaShader.tscn" id="1_0lwox"]
+[ext_resource type="Texture2D" uid="uid://q6p8hp3svmij" path="res://assets/placeholders/square-128.png" id="2_4k270"]
+[ext_resource type="Texture2D" uid="uid://xmow60ybwcpk" path="res://assets/UI/HEALTH.png" id="2_77iru"]
+
+[node name="Shadertest" type="Node2D"]
+
+[node name="Square-128" type="Sprite2D" parent="."]
+self_modulate = Color(0, 0, 0, 1)
+position = Vector2(757.5, 616)
+scale = Vector2(4.27344, 3.14063)
+texture = ExtResource("2_4k270")
+
+[node name="Control" type="Control" parent="."]
+z_index = 1
+layout_mode = 3
+anchors_preset = 0
+offset_right = 40.0
+offset_bottom = 40.0
+
+[node name="Energy" type="Sprite2D" parent="Control"]
+position = Vector2(747, 637)
+texture = ExtResource("2_77iru")
+
+[node name="NebulaShader" parent="." instance=ExtResource("1_0lwox")]
+
+[editable path="NebulaShader"]

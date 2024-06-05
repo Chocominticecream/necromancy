@@ -1,0 +1,14 @@
+[gd_scene load_steps=2 format=3 uid="uid://cs4uv0e28j6j0"]
+
+[ext_resource type="Texture2D" uid="uid://q6p8hp3svmij" path="res://assets/placeholders/square-128.png" id="1_xiaop"]
+
+[node name="HubArea" type="Node2D"]
+
+[node name="background" type="Sprite2D" parent="."]
+self_modulate = Color(0.121569, 0.117647, 0.184314, 1)
+z_index = -2
+texture_repeat = 2
+position = Vector2(960, 540)
+scale = Vector2(15.123, 8.5)
+texture = ExtResource("1_xiaop")
+region_rect = Rect2(0, 0, 1920, 1080)

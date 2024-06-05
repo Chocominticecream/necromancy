@@ -12,8 +12,8 @@
 
  - ~~spells~~ (made a simple damage spell might implement more)
  - other events (WIP idea)
- -  implement waves mechanic (debug room)
- -  implement lose/win condition (debug room)
+ -  ~~implement waves mechanic (debug room)
+ -  ~~implement lose/win condition (debug room)
  - map navigation system (WIP idea)
  - hub area (WIP idea)
 
@@ -34,5 +34,10 @@ and krita for drawn art
  - ~~card front design (hard)~~
  - ~~fix glitchy action buttons in the battle UI (i would reimplement the buttons to use state machines instead of stopping variables)~~
  - ~~fix graphic on star particles (star particles have a hole in them and are also pixelated, to be replaced with better graphic~~
+
  - revisit Health bar graphic, maybe replace with dynamic health bars?
 
+things that might need revisting:
+ - revisit Health bar graphic, maybe replace with dynamic health bars?
+ - as of now, the code relies on firing signals using delays to send information to each other, this could spell disaster when the game is played on different computers, might have to revisit this problem
+ - death delay and positions not updating correcly unless certain hacky methods are used (setting artificial delays or spawning the cards using visibility changes and invisible nodes, very weird)

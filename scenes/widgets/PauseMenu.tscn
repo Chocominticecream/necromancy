@@ -1,0 +1,207 @@
+[gd_scene load_steps=11 format=3 uid="uid://cmvj7dens8lu2"]
+
+[ext_resource type="PackedScene" uid="uid://mkstt6knrqh6" path="res://scenes/widgets/BaseButton.tscn" id="1_23fvy"]
+[ext_resource type="Texture2D" uid="uid://b88ymxt5xnsgs" path="res://assets/UI/UIpurple1.png" id="1_v58yb"]
+[ext_resource type="Script" path="res://scenes/widgets/PauseMenu.gd" id="1_vjvht"]
+[ext_resource type="FontFile" uid="uid://basqqe0aj8rdw" path="res://assets/fonts/VenturisSansADFCd-Bold.otf" id="3_13gqp"]
+[ext_resource type="FontFile" uid="uid://nswb4qjqs8ld" path="res://assets/fonts/Gupter-Bold.ttf" id="3_yv47y"]
+[ext_resource type="FontFile" uid="uid://cdrh8tj0n4lxx" path="res://assets/fonts/ITC Avant Garde Gothic Bold.otf" id="4_di327"]
+[ext_resource type="Texture2D" uid="uid://dtv3lxr7owkda" path="res://assets/placeholders/star-512.png" id="5_j44fn"]
+
+[sub_resource type="CanvasTexture" id="CanvasTexture_wksxm"]
+
+[sub_resource type="Animation" id="Animation_tmew5"]
+resource_name = "transition"
+length = 0.7
+step = 0.01
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("pivot:position")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [Vector2(960, 538)]
+}
+tracks/1/type = "value"
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/path = NodePath("pivot:rotation")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [0.0]
+}
+tracks/2/type = "value"
+tracks/2/imported = false
+tracks/2/enabled = true
+tracks/2/path = NodePath("pivot:scale")
+tracks/2/interp = 1
+tracks/2/loop_wrap = true
+tracks/2/keys = {
+"times": PackedFloat32Array(0, 0.06, 0.12, 0.24, 0.36, 0.48, 0.6),
+"transitions": PackedFloat32Array(1, 1, 1, 1, 1, 1, 1),
+"update": 0,
+"values": [Vector2(1.2, 1.2), Vector2(0.9, 0.9), Vector2(1.1, 1.1), Vector2(0.95, 0.95), Vector2(1.05, 1.05), Vector2(0.98, 0.98), Vector2(1, 1)]
+}
+
+[sub_resource type="AnimationLibrary" id="AnimationLibrary_8sa20"]
+_data = {
+"transition": SubResource("Animation_tmew5")
+}
+
+[node name="PauseMenu" type="CanvasLayer"]
+process_mode = 3
+layer = 2
+script = ExtResource("1_vjvht")
+
+[node name="Blackscreen" type="TextureRect" parent="."]
+visible = false
+self_modulate = Color(0.2, 0.2, 0.2, 0.521569)
+custom_minimum_size = Vector2(1920, 1080)
+offset_left = -6.10352e-05
+offset_top = -3.05176e-05
+offset_right = 1920.0
+offset_bottom = 1080.0
+mouse_filter = 0
+texture = SubResource("CanvasTexture_wksxm")
+
+[node name="pivot" type="Node2D" parent="."]
+position = Vector2(960, 538)
+scale = Vector2(1.2, 1.2)
+
+[node name="BG" type="Control" parent="pivot"]
+layout_mode = 3
+anchors_preset = 0
+offset_top = 2.0
+offset_right = 40.0
+offset_bottom = 42.0
+
+[node name="TextBoxUIBG" type="Sprite2D" parent="pivot/BG"]
+light_mask = 2
+position = Vector2(0, -100)
+scale = Vector2(0.3, 0.4)
+texture = ExtResource("1_v58yb")
+
+[node name="UIpurple2" type="Sprite2D" parent="pivot/BG"]
+self_modulate = Color(0.756863, 0.756863, 0.756863, 1)
+light_mask = 2
+position = Vector2(15, 26)
+scale = Vector2(0.4, 0.4)
+texture = ExtResource("1_v58yb")
+
+[node name="UIpurple1" type="Sprite2D" parent="pivot/BG"]
+light_mask = 2
+scale = Vector2(0.4, 0.4)
+texture = ExtResource("1_v58yb")
+
+[node name="Desc" type="RichTextLabel" parent="pivot/BG"]
+light_mask = 2
+layout_mode = 0
+offset_left = -184.0
+offset_top = -203.0
+offset_right = 189.0
+offset_bottom = -84.0
+mouse_filter = 2
+theme_override_colors/default_color = Color(0.909804, 0.835294, 0.709804, 1)
+theme_override_colors/font_shadow_color = Color(0.909804, 0.835294, 0.709804, 1)
+theme_override_colors/font_outline_color = Color(0.360784, 0.317647, 0.223529, 1)
+theme_override_constants/shadow_offset_x = 2
+theme_override_constants/shadow_offset_y = 0
+theme_override_constants/shadow_outline_size = 1
+theme_override_constants/outline_size = 5
+theme_override_fonts/normal_font = ExtResource("3_13gqp")
+theme_override_fonts/bold_font = ExtResource("3_yv47y")
+theme_override_fonts/italics_font = ExtResource("4_di327")
+theme_override_font_sizes/normal_font_size = 96
+theme_override_font_sizes/bold_font_size = 64
+theme_override_font_sizes/italics_font_size = 64
+bbcode_enabled = true
+text = "[center]Menu"
+
+[node name="star" type="Sprite2D" parent="pivot/BG"]
+modulate = Color(0.909804, 0.835294, 0.709804, 1)
+light_mask = 2
+position = Vector2(-200, -147)
+scale = Vector2(0.1, 0.1)
+texture = ExtResource("5_j44fn")
+
+[node name="star2" type="Sprite2D" parent="pivot/BG"]
+modulate = Color(0.909804, 0.835294, 0.709804, 1)
+light_mask = 2
+position = Vector2(200, -147)
+scale = Vector2(0.1, 0.1)
+texture = ExtResource("5_j44fn")
+
+[node name="VBoxContainer" type="VBoxContainer" parent="pivot"]
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = -128.0
+offset_top = -66.0
+offset_right = 128.0
+offset_bottom = 72.0
+grow_horizontal = 2
+grow_vertical = 2
+size_flags_horizontal = 3
+size_flags_vertical = 3
+theme_override_constants/separation = 10
+
+[node name="Resume" parent="pivot/VBoxContainer" instance=ExtResource("1_23fvy")]
+light_mask = 2
+layout_mode = 2
+
+[node name="TextLabel" parent="pivot/VBoxContainer/Resume" index="0"]
+light_mask = 2
+offset_left = 0.0
+offset_top = 0.0
+offset_right = 256.0
+offset_bottom = 72.0
+theme_override_colors/default_color = Color(0.909804, 0.835294, 0.709804, 1)
+theme_override_colors/font_shadow_color = Color(0.909804, 0.835294, 0.709804, 1)
+theme_override_colors/font_outline_color = Color(0.360784, 0.317647, 0.223529, 1)
+theme_override_constants/shadow_offset_x = 2
+theme_override_constants/shadow_offset_y = 0
+theme_override_constants/shadow_outline_size = 1
+theme_override_constants/outline_size = 5
+theme_override_fonts/normal_font = ExtResource("3_13gqp")
+text = "[center]Resume"
+
+[node name="Exit" parent="pivot/VBoxContainer" instance=ExtResource("1_23fvy")]
+light_mask = 2
+layout_mode = 2
+
+[node name="TextLabel" parent="pivot/VBoxContainer/Exit" index="0"]
+light_mask = 2
+offset_left = 0.0
+offset_top = 0.0
+offset_right = 256.0
+offset_bottom = 72.0
+theme_override_colors/default_color = Color(0.909804, 0.835294, 0.709804, 1)
+theme_override_colors/font_shadow_color = Color(0.909804, 0.835294, 0.709804, 1)
+theme_override_colors/font_outline_color = Color(0.360784, 0.317647, 0.223529, 1)
+theme_override_constants/shadow_offset_x = 2
+theme_override_constants/shadow_offset_y = 0
+theme_override_constants/shadow_outline_size = 1
+theme_override_constants/outline_size = 5
+theme_override_fonts/normal_font = ExtResource("3_13gqp")
+text = "[center]Exit"
+
+[node name="AnimationPlayer" type="AnimationPlayer" parent="."]
+libraries = {
+"": SubResource("AnimationLibrary_8sa20")
+}
+
+[connection signal="pressed" from="pivot/VBoxContainer/Resume" to="." method="_on_resume_pressed"]
+[connection signal="pressed" from="pivot/VBoxContainer/Exit" to="." method="_on_exit_pressed"]
+
+[editable path="pivot/VBoxContainer/Resume"]
+[editable path="pivot/VBoxContainer/Exit"]

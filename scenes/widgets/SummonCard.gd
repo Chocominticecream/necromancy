@@ -138,13 +138,15 @@ func onTakeDamage(ally : bool , damage : int, targetingFoe: Array, attacker: int
                triggerCardEffects(DataManager.EFFECTS.applyEffectWhenAttack, effect, attacker)
 
 func onDeath():
-    emit_signal("activeCardToNull", index, alliance)
+    EventsBus.emit_signal("activeCardToNull", index, alliance)
     TweenNode = create_tween()
     z_index = 1
     state = death
     TweenNode.tween_property(self, "global_position", global_position + Vector2(0,-400) , DataManager.DRAWTIME).set_ease(Tween.EASE_OUT).set_trans(Tween.TRANS_SINE)
     TweenNode.tween_property(self, "global_position", global_position + Vector2(0,1450) , DataManager.DRAWTIME*3.0).set_ease(Tween.EASE_IN).set_trans(Tween.TRANS_QUAD)
     animationAlt.play("death")
+    #this death delay fixed as the game would break and not work properly if the drawtime is lesser
+    EventsBus.emit_signal("addDeathDelay", DataManager.DRAWTIME)
     await get_tree().create_timer(DataManager.DRAWTIME*6.0).timeout;
     self.queue_free()
     

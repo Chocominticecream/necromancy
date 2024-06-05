@@ -1,6 +1,7 @@
-[gd_scene load_steps=5 format=3 uid="uid://oyej8ia678bm"]
+[gd_scene load_steps=6 format=3 uid="uid://oyej8ia678bm"]
 
 [ext_resource type="Shader" path="res://scenes/widgets/NebulaShader.gdshader" id="1_q8hh8"]
+[ext_resource type="Texture2D" uid="uid://b0w6plpbxrmse" path="res://assets/UI/blankbackground.png" id="2_2v2xs"]
 
 [sub_resource type="FastNoiseLite" id="FastNoiseLite_q14f1"]
 noise_type = 3
@@ -22,14 +23,20 @@ shader_parameter/density = 0.621
 shader_parameter/speed = Vector2(0.02, 0.01)
 shader_parameter/noise_texture = SubResource("NoiseTexture2D_r43nc")
 
-[node name="NebulaShader" type="ParallaxBackground"]
+[node name="ColorRect" type="Sprite2D"]
+z_as_relative = false
+texture_repeat = 2
+material = SubResource("ShaderMaterial_c3n0d")
+texture = ExtResource("2_2v2xs")
+centered = false
+region_enabled = true
+region_rect = Rect2(0, 0, 3840, 2160)
+
+[node name="NebulaShader" type="ParallaxBackground" parent="."]
 layer = 0
 scroll_ignore_camera_zoom = true
 
-[node name="ParallaxLayer" type="ParallaxLayer" parent="."]
+[node name="ParallaxLayer" type="ParallaxLayer" parent="NebulaShader"]
+z_index = -1
+z_as_relative = false
 motion_mirroring = Vector2(1920, 1080)
-
-[node name="ColorRect" type="ColorRect" parent="ParallaxLayer"]
-material = SubResource("ShaderMaterial_c3n0d")
-offset_right = 1920.0
-offset_bottom = 1080.0

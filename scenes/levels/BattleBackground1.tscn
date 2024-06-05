@@ -1,13 +1,12 @@
 [gd_scene load_steps=3 format=3 uid="uid://b1wqj7hkcbqhx"]
 
-[ext_resource type="Texture2D" uid="uid://q6p8hp3svmij" path="res://assets/placeholders/square-128.png" id="1_6ro2l"]
 [ext_resource type="Script" path="res://scenes/levels/BattleBackground1.gd" id="1_dbqvv"]
+[ext_resource type="Texture2D" uid="uid://b0w6plpbxrmse" path="res://assets/UI/blankbackground.png" id="2_s5kig"]
 
 [node name="BattleBackground1" type="Node2D"]
 script = ExtResource("1_dbqvv")
 
 [node name="background" type="Sprite2D" parent="."]
 modulate = Color(0, 0, 0, 1)
-position = Vector2(970.5, 565.5)
-scale = Vector2(16.7109, 9.97656)
-texture = ExtResource("1_6ro2l")
+position = Vector2(960, 540)
+texture = ExtResource("2_s5kig")

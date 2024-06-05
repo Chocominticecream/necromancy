@@ -19,6 +19,7 @@ config/icon="res://icon.svg"
 
 DataManager="*res://assets/Singletons/data_manager.gd"
 EventsBus="*res://assets/Singletons/eventsBus.gd"
+PauseMenu="*res://scenes/widgets/PauseMenu.tscn"
 
 [display]
 

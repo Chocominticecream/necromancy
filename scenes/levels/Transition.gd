@@ -4,7 +4,8 @@ var cardfunc = Universalfunc.new()
 
 # a change
 
-func createStarterDeck(deck : Array):
+#debug battle stat load in
+func createTestStarterDeck(deck : Array):
      var data_cbd = cardfunc.readDatabase()
     
      for i in range(3):
@@ -27,13 +28,18 @@ func createStarterDeck(deck : Array):
          var bruteCard = cardfunc.createResource(cardfunc.findCard(data_cbd, 3, "SummonData", "numID") , 'summon')
          deck.append(bruteCard)
      
-     for i in range(5):
+     for i in range(3):
          var manaballentry = cardfunc.findCard(data_cbd, 0, 'SpellData', 'numID')
          var manaballcard = cardfunc.createResource(manaballentry, 'spell')
          deck.append(manaballcard)
+    
+     for i in range(2):
+         var manaballentry = cardfunc.findCard(data_cbd, 1, 'SpellData', 'numID')
+         var deathcard = cardfunc.createResource(manaballentry, 'spell')
+         deck.append(deathcard)
 
-#to expand on this function
-func createEnemyDeck(deck : Array, wavedeck : Array):
+#hardcoded function to create a bunch of test 
+func createTestEnemyDeck(deck : Array, wavedeck : Array):
     var data_cbd = cardfunc.readDatabase()
     
     #for i in range(5):
@@ -43,24 +49,30 @@ func createEnemyDeck(deck : Array, wavedeck : Array):
     
     var spiderCard = cardfunc.createResource(cardfunc.findCard(data_cbd, 2, "EnemyData", "numID") , 'enemySummon')
     deck.append(spiderCard)
+    deck.append(spiderCard)
     
     var testCard = cardfunc.createResource(cardfunc.findCard(data_cbd, 0, "EnemyData", "numID") , 'enemySummon')
+    deck.append(testCard)
+    deck.append(testCard)
     deck.append(testCard)
     
     var repeater = cardfunc.createResource(cardfunc.findCard(data_cbd, 3, "EnemyData", "numID") , 'enemySummon')
     deck.append(repeater)
     
     #appending wave deck value, first value is the amount of enemies summoned, second number is time til the next wave
-    wavedeck.append([4,3])  
+    wavedeck.append([2,0])
+    wavedeck.append([3,1])
+    wavedeck.append([1,1])
+    wavedeck.append([1,1])
 # Called when the node enters the scene tree for the first time.
         
 func _ready():
     cardfunc.copyDatabase()
-    createStarterDeck(DataManager.maindeck)
-    createEnemyDeck(DataManager.enemydeck, DataManager.enemywaves)
+    createTestStarterDeck(DataManager.maindeck)
+    createTestEnemyDeck(DataManager.enemydeck, DataManager.enemywaves)
     DataManager.maindeck.shuffle()
     #print(DataManager.enemydeck)
-    print(DataManager.maindeck)
+    #print(DataManager.maindeck)
     #print(DataManager.enemywaves)
 # Called every frame. 'delta' is the elapsed time since the previous frame.
 func _process(delta):

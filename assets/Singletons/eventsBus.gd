@@ -8,16 +8,26 @@ signal setAnimationstate(val)
 #card logic signals
 signal redrawCards()
 signal summonWave()
+signal countdown(val)
+signal activeCardToNull(idx, alliance)
+signal addDelay(val)
+signal addDeathDelay(val)
+signal discardCard(card)
+signal drawCards(val)
+signal depleteBell(val)
+signal disableBell()
+signal detectFullField(val)
+signal setWaveJustSummoned(val)
+signal checkSummons()
+signal winBattle()
+signal loseBattle()
 
 #basic card action signals
 signal onTakeDamage(alliance, damage, attackingFoe)
 signal onAttack()
 signal onTakeDirectDamage(val, alliance)
 
-signal countdown(val)
-signal activeCardToNull(idx)
-signal addDelay(val)
-signal discardCard(card)
+
 
 #button signals
 signal buttonActivation(val)

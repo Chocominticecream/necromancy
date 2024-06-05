@@ -73,6 +73,7 @@ func _on_redraw_button_mouse_entered():
 
 
 func _on_redraw_button_pressed():
+    $redrawButton.disabled = true
     animationFinished = false
     playAnimation("unhover")
     crystalSnapBack()

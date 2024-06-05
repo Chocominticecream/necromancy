@@ -5,7 +5,7 @@ var alliance : bool
 
 signal resetCards
 
-var activeCard = null
+var activeCard : BaseCard = null
 # Called when the node enters the scene tree for the first time.
 func _ready():
     EventsBus.connect("onTakeDamage", onTakeSlotDamage)
@@ -46,3 +46,4 @@ func onTakeSlotDamage(ally : bool, damage : int, attackingFoe : Array, attacker:
 func activeCardToNull(idx : int, ally: bool):
     if get_index() == idx and ally == alliance:
         activeCard = null
+        
