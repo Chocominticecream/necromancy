@@ -6,6 +6,8 @@ enum{
       countDownPhase, # in a fight but countdowns are happening
       drawingPhase, # in a fight and cards are being drawn and shuffled
       restPhase, #the phase after a play phase, to avoid continous calling of signals as it is needed for certain signals to work
+      winPhase,
+      losePhase
     }
 
 #get scene tree for time based functions
@@ -87,6 +89,10 @@ func _process(delta):
            EventsBus.emit_signal("setAnimationstate", false)
            EventsBus.emit_signal("buttonActivation", true)
         restPhase:
+           pass
+        losePhase:
+           pass
+        winPhase:
            pass
 
 #code that plays status effects that activate during a turn

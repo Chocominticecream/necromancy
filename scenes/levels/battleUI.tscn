@@ -1,8 +1,9 @@
-[gd_scene load_steps=17 format=3 uid="uid://c4t0qci1b1wj6"]
+[gd_scene load_steps=18 format=3 uid="uid://c4t0qci1b1wj6"]
 
 [ext_resource type="Script" path="res://scenes/levels/battleUI.gd" id="1_rpntx"]
 [ext_resource type="Script" path="res://scenes/levels/decks.gd" id="1_tdpnw"]
 [ext_resource type="Script" path="res://scenes/levels/draw.gd" id="2_er755"]
+[ext_resource type="PackedScene" uid="uid://b3gh8jsfuio1w" path="res://scenes/widgets/EndBattleScene.tscn" id="2_ycwhx"]
 [ext_resource type="Texture2D" uid="uid://f57cv7khf32k" path="res://assets/UI/cardback.png" id="4_emdax"]
 [ext_resource type="Script" path="res://scenes/levels/discard.gd" id="4_lrhs1"]
 [ext_resource type="Script" path="res://scenes/levels/endTurn.gd" id="9_q2lej"]
@@ -20,6 +21,8 @@
 [node name="battleUI" type="CanvasLayer" groups=["enemy", "hero"]]
 process_mode = 1
 script = ExtResource("1_rpntx")
+
+[node name="EndBattleScene" parent="." instance=ExtResource("2_ycwhx")]
 
 [node name="decks" type="Control" parent="."]
 layout_mode = 3

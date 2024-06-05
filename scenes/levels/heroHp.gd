@@ -27,12 +27,16 @@ func hpget():
     return hp
 
 func hpset(val : int):
-    if alliance:
+    if alliance and DataManager.phase != DataManager.winPhase:
       $HpLabel.text = "[center]Hero:" + str(val) + "/" + str(maxhp)
       hp = val
-    else:
+      if hp <= 0:
+         DataManager.phase = DataManager.losePhase
+    elif DataManager.phase != DataManager.losePhase:
       $HpLabel.text = "[center]Enemy:" + str(val) + "/" + str(maxhp)
       hp = val
+      if hp <= 0:
+         DataManager.phase = DataManager.winPhase
 
 func spinCircle():
     tween = create_tween()

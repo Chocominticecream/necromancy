@@ -70,6 +70,11 @@ func countdown(val : int):
      if slot.activeCard != null:
         slot.activeCard.freshCard = false
   #emit signals to reactivate cards and buttons
+  if DataManager.phase == DataManager.losePhase:
+     EventsBus.emit_signal("loseBattle")
+  elif DataManager.phase == DataManager.winPhase:
+     EventsBus.emit_signal("winBattle")
+  else:
+     DataManager.phase = DataManager.playPhase
   
-  DataManager.phase = DataManager.playPhase
 

@@ -1,8 +1,8 @@
 TextureRect
-CanvasLayer
-Node2D
 Control
 AnimationPlayer
+Node2D
+CanvasLayer
 CenterContainer
 VBoxContainer
 VFlowContainer

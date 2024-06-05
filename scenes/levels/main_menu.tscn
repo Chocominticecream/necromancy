@@ -122,21 +122,20 @@ texture = ExtResource("14_xroml")
 
 [node name="Title" parent="Canvas/UI elements/Titlebox" instance=ExtResource("2_r6q7s")]
 light_mask = 2
-offset_left = 373.0
-offset_top = 225.0
-offset_right = 1577.0
-offset_bottom = 411.0
+offset_left = 562.0
+offset_top = 250.0
+offset_right = 1382.0
+offset_bottom = 450.0
 theme_override_colors/default_color = Color(0.909804, 0.835294, 0.709804, 1)
 theme_override_colors/font_shadow_color = Color(0.909804, 0.835294, 0.709804, 1)
 theme_override_colors/font_outline_color = Color(0.360784, 0.317647, 0.223529, 1)
-theme_override_constants/shadow_offset_x = 7
+theme_override_constants/shadow_offset_x = 4
 theme_override_constants/shadow_offset_y = 0
 theme_override_constants/shadow_outline_size = 3
 theme_override_constants/outline_size = 7
 theme_override_fonts/normal_font = SubResource("FontVariation_rhs3e")
-theme_override_font_sizes/normal_font_size = 160
-text = "[center]Tarot Hero
-[/center]"
+theme_override_font_sizes/normal_font_size = 100
+text = "[center]Wonder elevator"
 
 [node name="StartButton" parent="Canvas/UI elements" instance=ExtResource("3_wjpu0")]
 light_mask = 2
@@ -345,7 +344,6 @@ scale = Vector2(4.26711, -3.70473)
 texture = SubResource("GradientTexture2D_ixvfl")
 
 [node name="ground" type="Node2D" parent="MainMenuBgAnimations"]
-visible = false
 
 [node name="mountains" type="Node2D" parent="MainMenuBgAnimations/ground"]
 modulate = Color(0.658824, 0.658824, 0.658824, 1)
