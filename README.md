@@ -12,8 +12,8 @@
 
  - ~~spells~~ (made a simple damage spell might implement more)
  - other events (WIP idea)
- -  ~~implement waves mechanic (debug room)~~
- -  implement lose/win condition (debug room)
+ -  ~~implement waves mechanic (debug room)
+ -  ~~implement lose/win condition (debug room)
  - map navigation system (WIP idea)
  - hub area (WIP idea)
 
@@ -35,6 +35,7 @@ and krita for drawn art
  - ~~fix glitchy action buttons in the battle UI (i would reimplement the buttons to use state machines instead of stopping variables)~~
  - ~~fix graphic on star particles (star particles have a hole in them and are also pixelated, to be replaced with better graphic~~
 
+ - revisit Health bar graphic, maybe replace with dynamic health bars?
 
 things that might need revisting:
  - revisit Health bar graphic, maybe replace with dynamic health bars?
