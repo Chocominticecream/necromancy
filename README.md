@@ -12,8 +12,8 @@
 
  - ~~spells~~ (made a simple damage spell might implement more)
  - other events (WIP idea)
- -  ~~implement waves mechanic (debug room)
- -  ~~implement lose/win condition (debug room)
+ -  ~~implement waves mechanic (debug room)~~
+ -  ~~implement lose/win condition (debug room)~~
  - map navigation system (WIP idea)
  - hub area (WIP idea)
 
